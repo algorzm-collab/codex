@@ -1,0 +1,35 @@
+name: AI Mission Placeholder
+
+on:
+  issues:
+    types: [labeled]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: "GitHub Issue number to process"
+        required: false
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  mission-intake:
+    if: github.event_name == 'workflow_dispatch' || contains(github.event.issue.labels.*.name, 'ai-mission')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Explain placeholder
+        run: |
+          echo "AI Mission runner placeholder."
+          echo "Next implementation step: connect an approved non-interactive agent runner."
+          echo "This workflow intentionally does not execute Codex yet."
+
+      - name: Mission Control policy
+        run: |
+          echo "Allowed: branch, commit, PR, tests, docs."
+          echo "Restricted: direct main push, production deploy, secrets exposure, destructive commands."
