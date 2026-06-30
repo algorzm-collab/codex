@@ -1,0 +1,94 @@
+name: AI Mission
+
+description: CEO intent translated into structured AI work
+
+title: "[AI Mission] "
+
+labels:
+  - ai-mission
+  - mission-control
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to turn CEO intent into structured AI work.
+
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: What should be achieved?
+      placeholder: "Example: Build a Codex remote-control workflow through GitHub Issues."
+    validations:
+      required: true
+
+  - type: textarea
+    id: business_context
+    attributes:
+      label: Business Context
+      description: Why does this matter?
+    validations:
+      required: true
+
+  - type: textarea
+    id: success_criteria
+    attributes:
+      label: Success Criteria
+      description: How will we know this is done well?
+    validations:
+      required: true
+
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Constraints
+      description: What must be avoided or protected?
+      placeholder: "Avoid forcing the CEO to use GitHub manually."
+
+  - type: dropdown
+    id: target_agent
+    attributes:
+      label: Target Agent
+      options:
+        - CTO / ChatGPT
+        - Codex
+        - Claude Code
+        - Research Agent
+        - Design Agent
+        - Undecided
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: leverage_scan
+    attributes:
+      label: Leverage Scan Required
+      options:
+        - label: Evaluate latest relevant MCP servers
+        - label: Evaluate libraries / SDKs / APIs
+        - label: Evaluate multimodal opportunities
+        - label: Evaluate dashboard / visualization opportunities
+        - label: Evaluate automation / orchestration opportunities
+        - label: Evaluate harness / evaluation methods
+
+  - type: dropdown
+    id: approval_level
+    attributes:
+      label: Approval Level
+      options:
+        - No CEO approval needed after task definition
+        - CEO approval needed before implementation
+        - CEO approval needed before merge/release
+        - CEO approval needed for strategic decision only
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_output
+    attributes:
+      label: Expected Output
+      description: What should the agent produce?
+      placeholder: "Commit, PR, research summary, design, prototype, dashboard, etc."
+    validations:
+      required: true
