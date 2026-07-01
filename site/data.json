@@ -1,0 +1,13 @@
+{
+  "brief": {
+    "headline": "ALOS build",
+    "progress": 94,
+    "current_owner": "chatgpt_cto",
+    "next_action": "Connect short execution tasks",
+    "attention_needed": "none",
+    "critique": "Static view is ready. Live deployment and Telegram bridge remain."
+  },
+  "next_prompts": [
+    "Improve site/app.js to load generated status when available. Scope: site/app.js only."
+  ]
+}
