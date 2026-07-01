@@ -1,0 +1,18 @@
+{
+  "version": "0.1",
+  "default_micro_task_minutes": 10,
+  "small_window_minutes": 5,
+  "wrapup_window_minutes": 3,
+  "default_agents": [
+    "chatgpt_cto",
+    "codex",
+    "hermes_local"
+  ],
+  "principles": [
+    "ceo_first",
+    "minimal_context_first",
+    "micro_task_execution",
+    "harness_before_promotion",
+    "cross_agent_continuity"
+  ]
+}
