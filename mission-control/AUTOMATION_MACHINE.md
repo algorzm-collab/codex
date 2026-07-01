@@ -60,6 +60,10 @@ The CEO should not need to manage:
 
 The first reliable control surface is GitHub Issues.
 
+GitHub Issues are the first internal structured work object, not the only CEO interface.
+
+CEO intent may arrive through chat, Telegram, Google Sheets, dashboard, voice, images, documents, or future multimodal systems. Mission Control should translate any reliable input surface into the same Mission Contract.
+
 Mission Control converts CEO intent into a structured GitHub Issue with:
 
 - objective
@@ -70,6 +74,8 @@ Mission Control converts CEO intent into a structured GitHub Issue with:
 - required context
 - approval requirements
 - expected deliverable
+
+See `MISSION_CONTRACT.md` for the canonical mission and contract fields.
 
 ---
 

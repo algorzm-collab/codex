@@ -40,6 +40,37 @@ body:
       required: true
 
   - type: textarea
+    id: in_scope
+    attributes:
+      label: In Scope
+      description: What is included in this mission?
+
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Out of Scope
+      description: What should the agent avoid doing?
+
+  - type: textarea
+    id: acceptance_tests
+    attributes:
+      label: Acceptance Tests
+      description: How should the result be verified?
+
+  - type: dropdown
+    id: risk_level
+    attributes:
+      label: Risk Level
+      options:
+        - "1 - local/reversible"
+        - "2 - local artifact/doc"
+        - "3 - external write or PR"
+        - "4 - production/cost/credential"
+        - "5 - destructive/legal/security"
+    validations:
+      required: true
+
+  - type: textarea
     id: constraints
     attributes:
       label: Constraints
@@ -92,3 +123,13 @@ body:
       placeholder: "Commit, PR, research summary, design, prototype, dashboard, etc."
     validations:
       required: true
+
+  - type: checkboxes
+    id: memory_update
+    attributes:
+      label: Memory Update
+      options:
+        - label: This mission should update brain/feedback
+        - label: This mission should update brain/memory
+        - label: This mission should update rules or playbooks
+        - label: This mission should update architecture or governance proposals

@@ -1,5 +1,5 @@
 # ALGORZM AI OPERATING SYSTEM
-Version: 0.3
+Version: 0.4
 
 ## Mission
 
@@ -68,6 +68,8 @@ Before any implementation:
 10. Choose the highest-leverage solution.
 11. Then implement.
 
+If the agent is rejoining after a shift reset, repository handoff, token reset, cross-agent handoff, or architecture change, use `mission-control/CTO_REVIEW_MODE.md` before implementation.
+
 ## AI OS Layers
 
 Read and respect the system in this order:
@@ -77,11 +79,12 @@ Read and respect the system in this order:
 3. `AGENTS.md`
 4. `governance/`
 5. `mission-control/`
-6. `rules/`
-7. `playbooks/`
-8. `skills/`
-9. `memory/`
-10. `feedback/`
+6. `interfaces/`
+7. `rules/`
+8. `playbooks/`
+9. `skills/`
+10. `memory/`
+11. `feedback/`
 
 Higher-level documents override lower-level documents.
 
@@ -89,7 +92,7 @@ Higher-level documents override lower-level documents.
 
 For approved missions, continue low-risk work without unnecessary interruption.
 
-Use issues, PRs, branches, and structured summaries to coordinate execution.
+Use issues, PRs, branches, structured summaries, handoff packets, and continuity packets to coordinate execution.
 
 Do not push directly to production or make irreversible changes without approval.
 
@@ -127,7 +130,9 @@ Recommended handoff location:
 
 `.handoff/latest.yml`
 
-Use `mission-control/HANDOFF_PACKAGE_TEMPLATE.yml` as the structure.
+Use `mission-control/HANDOFF_PACKAGE_TEMPLATE.yml` when available.
+
+For Codex <-> ChatGPT continuation, use `mission-control/CONTINUITY_BRIDGE.md` and the templates in `continuity/`.
 
 ## Continuous Learning
 
@@ -152,31 +157,15 @@ Create a new document only when existing layers cannot absorb the learning clean
 
 ## Decision Priority
 
+```text
 Executive Leverage
-
-↓
-
-Business Value
-
-↓
-
-Problem Solving
-
-↓
-
-Architecture
-
-↓
-
-Maintainability
-
-↓
-
-Reliability
-
-↓
-
-Implementation Speed
+  -> Business Value
+  -> Problem Solving
+  -> Architecture
+  -> Maintainability
+  -> Reliability
+  -> Implementation Speed
+```
 
 ## Coding Rules
 
@@ -217,3 +206,10 @@ Did I improve the AI OS where appropriate?
 What reusable knowledge was created?
 
 If no reusable knowledge exists, I may not have thought deeply enough.
+
+For meaningful shifts, finish with:
+
+1. CEO Report
+2. CTO Report
+3. Developer Report
+

@@ -72,6 +72,8 @@ CTO approval is required for:
 - new third-party integrations
 - major dependency changes
 
+See `governance/APPROVAL_ROUTING.md` for risk levels, default routing, channel priority, and approval request format.
+
 ---
 
 ## Safe Execution Pattern

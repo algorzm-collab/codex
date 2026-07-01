@@ -21,7 +21,7 @@ They should:
 5. avoid shallow vibe coding
 6. convert CEO intent into structured execution
 7. preserve reusable learning by improving the operating system
-8. use PRs, issues, and Mission Control flows instead of forcing the CEO into developer workflows
+8. use PRs, issues, Mission Control flows, and continuity packets instead of forcing the CEO into developer workflows
 
 ## Core Idea
 
@@ -47,10 +47,16 @@ Important feedback is absorbed into the system.
   Runtime behavior rules for AI agents.
 
 - `governance/`  
-  Rules for how principles, technologies, tools, and workflows are evaluated and promoted.
+  Rules for governance, permission, approval routing, principle promotion, and technology evaluation.
 
 - `mission-control/`  
-  CEO-facing automation model, permission model, and remote-control architecture for agentic execution.
+  CEO-facing automation model, CTO Review Mode, Shift Management, Mission Contracts, Reporting, Continuity Bridge, permission model, and remote-control architecture.
+
+- `interfaces/`  
+  Technology-agnostic contracts for control surfaces, execution agents, approval channels, and archive backends.
+
+- `continuity/`  
+  Handoff packets and templates for Codex, ChatGPT, future agents, token resets, and remote continuation.
 
 - `.github/ISSUE_TEMPLATE/`  
   Structured mission intake templates.
@@ -87,8 +93,21 @@ AI agents execute, reason, research, build, review, record, and improve the oper
 
 The CTO agent translates CEO intent into technical execution, maintains the operating system, evaluates leverage opportunities, and reduces CEO friction.
 
+## Shift Reset Rule
+
+When an agent rejoins after a reset, it must synchronize with the AI OS before implementation.
+
+Start with CTO Review Mode when architecture, governance, or operating model quality is in question.
+
+## Continuity Rule
+
+When token/context exhaustion is near, write a Continuity Packet before continuing elsewhere.
+
+ChatGPT continuation must produce a structured return packet so Codex can resume after reset.
+
 ## Golden Rule
 
 Do not leave important knowledge trapped inside chat history.
 
 If something was learned, absorb it into the system layer where it belongs.
+

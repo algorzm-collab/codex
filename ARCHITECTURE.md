@@ -1,5 +1,5 @@
 # AI Operating System Architecture
-Version: 1.2
+Version: 1.3
 
 ## Purpose
 
@@ -7,65 +7,32 @@ This document defines the architecture, authority hierarchy, dependency graph, a
 
 The purpose is to ensure that every AI agent follows the same operating model while remaining independent from any single model, vendor, framework, language, or workflow.
 
-This repository is not a prompt collection.
+This repository is not a prompt collection. It is an evolving leverage operating system.
 
-It is an evolving leverage operating system.
-
----
-
-# Core Hierarchy
+## Core Hierarchy
 
 ```text
 Constitution
-      │
-      ▼
-Architecture
-      │
-      ▼
-Agents
-      │
-      ▼
-Governance
-      │
-      ▼
-Mission Control
-      │
-      ├── Permission Model
-      │
-      ├── Shift Management
-      │
-      └── Handoff Packages
-      │
-      ▼
-Rules
-      │
-      ▼
-Playbooks
-      │
-      ▼
-Skills
-      │
-      ▼
-Projects
-      │
-      ▼
-Memory
-      │
-      ▼
-Feedback
+  -> Architecture
+  -> Governance
+  -> Agents
+  -> Mission Control
+  -> Interfaces
+  -> Rules
+  -> Playbooks
+  -> Skills
+  -> Projects
+  -> Memory
+  -> Feedback
 ```
 
 Lower layers may influence upper layers only through proposals and validated learning.
 
 Upper layers govern lower layers.
 
----
+## Authority Levels
 
-# Authority Levels
-
-## Level 0 — Constitution
-
-Authority: ★★★★★
+### Level 0: Constitution
 
 Purpose:
 Defines permanent philosophy.
@@ -83,11 +50,7 @@ Examples:
 Modified by:
 Human approval required.
 
----
-
-## Level 1 — Architecture
-
-Authority: ★★★★★
+### Level 1: Architecture
 
 Purpose:
 Defines the operating system itself.
@@ -97,21 +60,32 @@ Includes:
 - hierarchy
 - dependencies
 - lifecycle
-- governance
+- governance boundaries
 - ownership
 - Mission Control position
 - Shift Management position
+- Continuity Bridge position
+- Interface layer position
 
 Modified by:
-Human approval required.
+Human approval required. AI may propose.
 
-AI may propose.
+### Level 2: Governance
 
----
+Purpose:
+Defines how principles, tools, MCP servers, methods, rules, playbooks, skills, approval routing, and permissions are evaluated and promoted.
 
-## Level 2 — Agents
+Governance prevents random documentation growth, unsafe automation, and tool lock-in.
 
-Authority: ★★★★☆
+Includes:
+
+- permission model
+- approval routing
+- principle promotion
+- conflict resolution
+- technology evaluation policy
+
+### Level 3: Agents
 
 Purpose:
 Defines how AI agents behave during real work.
@@ -119,34 +93,18 @@ Defines how AI agents behave during real work.
 Examples:
 
 - reasoning order
-- planning
-- coding style
+- planning behavior
 - review behavior
+- coding behavior
+- reporting behavior
 - CEO friction reduction
 - leverage-source evaluation
 - shift-aware handoff behavior
 
 Modified by:
-Human + AI.
+Human + AI. Major behavior changes require approval.
 
-Major behavior changes require approval.
-
----
-
-## Level 3 — Governance
-
-Authority: ★★★★☆
-
-Purpose:
-Defines how principles, tools, MCP servers, methods, rules, playbooks, and skills are evaluated and promoted.
-
-Governance prevents random documentation growth and tool lock-in.
-
----
-
-## Level 4 — Mission Control
-
-Authority: ★★★★☆
+### Level 4: Mission Control
 
 Purpose:
 Defines how CEO intent becomes structured AI work.
@@ -154,12 +112,18 @@ Defines how CEO intent becomes structured AI work.
 Mission Control handles:
 
 - task intake
+- CTO Review Mode
+- Mission Contracts
 - approval routing
 - permission boundaries
 - issue / PR based coordination
 - execution status
-- remote-control strategy for agents such as Codex
-- shift state tracking
+- remote-control strategy
+- Shift Management
+- Cross-Agent Handoff
+- Continuity Bridge
+- ChatGPT Bridge
+- Reporting
 - handoff package generation
 - next-agent routing
 
@@ -169,35 +133,39 @@ Agents may pause.
 
 Missions must continue.
 
----
+### Level 5: Interfaces
 
-## Level 5 — Rules
+Purpose:
+Keeps the AI OS technology-agnostic.
 
-Authority: ★★★★☆
+Interfaces define contracts for:
+
+- control surfaces
+- execution agents
+- approval channels
+- archive backends
+
+Interfaces prevent GitHub, Codex, Telegram, Google Sheets, ChatGPT, or any future tool from becoming the architecture itself.
+
+### Level 6: Rules
 
 Purpose:
 Reusable principles extracted from repeated experience.
 
-Rules should be short, universal, and durable.
+Rules should be short, universal, and durable across projects.
 
 Modified by:
-AI proposes.
+AI proposes. Human or CTO validates when the rule affects broad behavior.
 
-Human or CTO validates.
-
----
-
-## Level 6 — Playbooks
-
-Authority: ★★★☆☆
+### Level 7: Playbooks
 
 Purpose:
 Operational workflows.
 
 Examples:
 
-- debugging
 - architecture review
+- debugging
 - feature planning
 - deployment
 - consulting
@@ -207,18 +175,14 @@ Examples:
 - presentation creation
 - shift handoff
 
----
-
-## Level 7 — Skills
-
-Authority: ★★★☆☆
+### Level 8: Skills
 
 Purpose:
 Reusable capabilities.
 
-A Skill may include:
+A skill may include:
 
-- prompts
+- instructions
 - templates
 - examples
 - scripts
@@ -227,40 +191,33 @@ A Skill may include:
 
 Skills are stable implementations of playbooks.
 
----
-
-## Level 8 — Projects
-
-Authority: ★★☆☆☆
+### Level 9: Projects
 
 Purpose:
 Project-specific knowledge.
 
-Projects should never redefine the Constitution.
+Projects inherit the AI OS. Projects should never redefine the Constitution.
 
-Projects inherit the operating system.
-
----
-
-## Level 9 — Memory
-
-Authority: ★★☆☆☆
+### Level 10: Memory
 
 Purpose:
 Long-term accumulated knowledge.
+
+Examples:
+
+- preferences
+- mistakes
+- successful patterns
+- architecture lessons
 
 Memory should be distilled.
 
 Never store entire conversations when reusable learning can be absorbed into the system.
 
----
-
-## Level 10 — Feedback
-
-Authority: ★☆☆☆☆
+### Level 11: Feedback
 
 Purpose:
-Raw observations.
+Raw observations and CEO corrections.
 
 Feedback is evidence, not automatically truth.
 
@@ -268,57 +225,83 @@ Feedback should be absorbed into the appropriate layer whenever possible.
 
 Do not create feedback documents when the learning can directly improve Constitution, Architecture, Agents, Governance, Mission Control, Rules, Playbooks, or Skills.
 
----
+## Dependency Graph
 
-# Learning Lifecycle
+```text
+Constitution
+  -> Architecture
+  -> Governance
+  -> Agents
+  -> Mission Control
+  -> Interfaces
+  -> Rules
+  -> Playbooks
+  -> Skills
+  -> Projects
+  -> Memory
+  -> Feedback
+```
+
+No document may contradict a higher layer.
+
+## Learning Lifecycle
 
 ```text
 Raw Feedback
-    ↓
-Observation
-    ↓
-Learning
-    ↓
-System Refactor
-    ↓
-Candidate Rule
-    ↓
-Validated Rule
-    ↓
-Playbook Update
-    ↓
-Skill Update
-    ↓
-Agent Update
-    ↓
-Operating System Evolution
+  -> Observation
+  -> Learning
+  -> System Refactor
+  -> Candidate Rule
+  -> Validated Rule
+  -> Playbook Update
+  -> Skill Update
+  -> Agent Update
+  -> Operating System Evolution
 ```
 
----
+## Mission Lifecycle
 
-# Continuity Lifecycle
+```text
+CEO Intent
+  -> Mission Intake
+  -> Mission Contract
+  -> Approval Routing
+  -> Execution
+  -> Verification
+  -> Continuity Bridge when context or agent changes
+  -> Handoff
+  -> Memory Update
+  -> AI OS Improvement
+```
+
+## Shift Lifecycle
+
+```text
+Shift Start
+  -> Kernel Sync
+  -> CTO Review Mode when needed
+  -> Mission Contract
+  -> Execution or Review
+  -> Verification
+  -> Continuity Packet when needed
+  -> CEO / CTO / Developer Reports
+  -> Cross-Agent Handoff
+```
+
+## Continuity Lifecycle
 
 ```text
 Mission
-    ↓
-Agent Execution
-    ↓
-Limit Risk Detected
-    ↓
-Shift State Update
-    ↓
-Handoff Package
-    ↓
-Next Agent Routing
-    ↓
-Recovery
-    ↓
-Mission Continues
+  -> Agent Execution
+  -> Limit Risk Detected
+  -> Shift State Update
+  -> Handoff Package or Continuity Packet
+  -> Next Agent Routing
+  -> Recovery
+  -> Mission Continues
 ```
 
----
-
-# Decision Flow
+## Decision Flow
 
 Every important task follows this sequence:
 
@@ -332,26 +315,26 @@ Every important task follows this sequence:
 8. Evaluate multimodal, dashboard, visualization, presentation, automation, orchestration, and harness/evaluation opportunities when relevant.
 9. Compare alternatives.
 10. Decide.
-11. Implement.
+11. Implement or review.
 12. Verify.
 13. Preserve continuity if approaching a shift boundary.
 14. Learn.
 15. Improve AI OS.
 
----
-
-# Governance
+## Governance
 
 Human owns:
 
 - Constitution
-- Architecture
+- final judgment
+- major architecture changes
 - strategic approval
 
-Human + CTO Agent own:
+Human and CTO agent own:
 
-- Agents
+- Architecture
 - Governance
+- Agents
 - Mission Control
 - Rules
 
@@ -359,64 +342,52 @@ AI execution agents own proposals for:
 
 - Playbooks
 - Skills
-- Memory
-- Feedback
+- Memory proposals
+- Feedback capture
 - task-level improvements
 - handoff packages
 
 Human always has veto authority.
 
----
+## Update Policy
 
-# Update Policy
+| Layer | Update Frequency |
+|---|---|
+| Constitution | Rare |
+| Architecture | Occasional |
+| Governance | Occasional |
+| Agents | Frequent |
+| Mission Control | Frequent while automation is being built |
+| Interfaces | As new channels/tools emerge |
+| Rules | Continuous |
+| Playbooks | Continuous |
+| Skills | Continuous |
+| Memory | Daily or per meaningful shift |
+| Feedback | Every meaningful correction |
+| Handoff packages | Temporary and overwritten when no longer useful |
 
-Constitution: rare.
-
-Architecture: occasional.
-
-Agents: frequent.
-
-Governance: occasional.
-
-Mission Control: frequent while automation is being built.
-
-Shift Management: frequent while continuity procedures are being tested.
-
-Rules: continuous.
-
-Playbooks: continuous.
-
-Skills: continuous.
-
-Memory: continuous when distilled.
-
-Feedback: only when raw evidence cannot yet be absorbed.
-
-Handoff packages: temporary and overwritten when no longer useful.
-
----
-
-# Conflict Resolution
+## Conflict Resolution
 
 Priority order:
 
 1. `CONSTITUTION.md`
 2. `ARCHITECTURE.md`
-3. `AGENTS.md`
-4. `governance/`
+3. `governance/`
+4. `AGENTS.md`
 5. `mission-control/`
-6. `rules/`
-7. `playbooks/`
-8. `skills/`
-9. `projects/`
-10. `memory/`
-11. `feedback/`
+6. `interfaces/`
+7. `rules/`
+8. `playbooks/`
+9. `skills/`
+10. `projects/`
+11. `memory/`
+12. `feedback/`
 
 Higher authority always wins.
 
----
+Human judgment has final veto authority.
 
-# Repository Refactoring Principle
+## Repository Refactoring Principle
 
 Do not create documents because they sound useful.
 
@@ -429,12 +400,11 @@ First ask:
 
 Create new documents only when they reduce future confusion, improve execution, or preserve reusable intelligence better than modifying an existing layer.
 
----
-
-# Design Principle
+## Design Principle
 
 Never optimize isolated outputs.
 
 Always improve the operating system that produces them.
 
 Every project should make the AI OS more intelligent and higher-leverage than yesterday.
+
