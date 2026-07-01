@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ALOS Status</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div>
+        <p class="kicker">ALOS</p>
+        <h1>상태 보드</h1>
+        <p class="desc">작업 흐름, 다음 액션, 진행률을 한 화면에서 봅니다.</p>
+      </div>
+      <div class="score"><span id="score">--</span><small>%</small></div>
+    </header>
+
+    <section class="cards">
+      <article class="card">
+        <h2>현재 작업</h2>
+        <p id="headline">불러오는 중...</p>
+      </article>
+      <article class="card">
+        <h2>다음 액션</h2>
+        <p id="next">-</p>
+      </article>
+      <article class="card">
+        <h2>담당</h2>
+        <p id="owner">-</p>
+      </article>
+      <article class="card">
+        <h2>주의</h2>
+        <p id="attention">-</p>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>작업 프롬프트</h2>
+      <pre id="prompts">-</pre>
+    </section>
+
+    <section class="panel">
+      <h2>비판적 평가</h2>
+      <p id="critique">-</p>
+    </section>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
