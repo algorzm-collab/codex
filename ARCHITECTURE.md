@@ -1,23 +1,21 @@
 # AI Operating System Architecture
-Version: 1.0
+Version: 1.1
 
----
-
-# Purpose
+## Purpose
 
 This document defines the architecture, authority hierarchy, dependency graph, and lifecycle of the Algorzm AI Operating System.
 
-The purpose is to ensure that every AI agent (Codex, ChatGPT, Claude, future agents) follows the same operating model.
+The purpose is to ensure that every AI agent follows the same operating model while remaining independent from any single model, vendor, framework, language, or workflow.
 
 This repository is not a prompt collection.
 
-It is an evolving operating system.
+It is an evolving leverage operating system.
 
 ---
 
 # Core Hierarchy
 
-```
+```text
 Constitution
       │
       ▼
@@ -25,6 +23,12 @@ Architecture
       │
       ▼
 Agents
+      │
+      ▼
+Governance
+      │
+      ▼
+Mission Control
       │
       ▼
 Rules
@@ -45,7 +49,7 @@ Memory
 Feedback
 ```
 
-Lower layers may influence upper layers only through proposals.
+Lower layers may influence upper layers only through proposals and validated learning.
 
 Upper layers govern lower layers.
 
@@ -55,27 +59,29 @@ Upper layers govern lower layers.
 
 ## Level 0 — Constitution
 
-Authority:
-★★★★★
+Authority: ★★★★★
 
 Purpose:
 Defines permanent philosophy.
 
 Examples:
 
-- Why we exist
-- What must never change
-- Core values
+- why we exist
+- what must never change
+- core values
+- CEO First
+- High Leverage
+- Technology Agnostic
+- Continuous Evolution
 
 Modified by:
-Human only
+Human approval required.
 
 ---
 
 ## Level 1 — Architecture
 
-Authority:
-★★★★★
+Authority: ★★★★★
 
 Purpose:
 Defines the operating system itself.
@@ -87,9 +93,10 @@ Includes:
 - lifecycle
 - governance
 - ownership
+- Mission Control position
 
 Modified by:
-Human
+Human approval required.
 
 AI may propose.
 
@@ -97,12 +104,10 @@ AI may propose.
 
 ## Level 2 — Agents
 
-Authority:
-★★★★☆
+Authority: ★★★★☆
 
 Purpose:
-
-Defines how AI agents behave.
+Defines how AI agents behave during real work.
 
 Examples:
 
@@ -110,97 +115,107 @@ Examples:
 - planning
 - coding style
 - review behavior
+- CEO friction reduction
+- leverage-source evaluation
 
 Modified by:
+Human + AI.
 
-Human
-
-AI proposals allowed.
+Major behavior changes require approval.
 
 ---
 
-## Level 3 — Rules
+## Level 3 — Governance
 
-Authority:
-★★★★☆
+Authority: ★★★★☆
 
 Purpose:
+Defines how principles, tools, MCP servers, methods, rules, playbooks, and skills are evaluated and promoted.
 
+Governance prevents random documentation growth and tool lock-in.
+
+---
+
+## Level 4 — Mission Control
+
+Authority: ★★★★☆
+
+Purpose:
+Defines how CEO intent becomes structured AI work.
+
+Mission Control handles:
+
+- task intake
+- approval routing
+- permission boundaries
+- issue / PR based coordination
+- execution status
+- remote-control strategy for agents such as Codex
+
+---
+
+## Level 5 — Rules
+
+Authority: ★★★★☆
+
+Purpose:
 Reusable principles extracted from repeated experience.
 
-Rules should be short.
-
-Rules should be universal.
-
-Rules should survive projects.
+Rules should be short, universal, and durable.
 
 Modified by:
+AI proposes.
 
-AI proposes
-
-Human validates
+Human or CTO validates.
 
 ---
 
-## Level 4 — Playbooks
+## Level 6 — Playbooks
 
-Authority:
-★★★☆☆
+Authority: ★★★☆☆
 
 Purpose:
-
 Operational workflows.
 
-Examples
+Examples:
 
-Debugging
-
-Architecture Review
-
-Feature Planning
-
-Deployment
-
-Consulting
-
-Root Cause Analysis
-
-Modified by:
-
-AI
-
-Human
+- debugging
+- architecture review
+- feature planning
+- deployment
+- consulting
+- root cause analysis
+- MCP evaluation
+- visualization
+- presentation creation
 
 ---
 
-## Level 5 — Skills
+## Level 7 — Skills
 
-Authority:
-★★★☆☆
+Authority: ★★★☆☆
 
 Purpose:
-
 Reusable capabilities.
 
-A Skill may include
+A Skill may include:
 
 - prompts
 - templates
 - examples
 - scripts
 - checklists
+- evaluation criteria
 
-Skills are implementations of Playbooks.
+Skills are stable implementations of playbooks.
 
 ---
 
-## Level 6 — Projects
+## Level 8 — Projects
 
-Authority:
-★★☆☆☆
+Authority: ★★☆☆☆
 
 Purpose:
-
 Project-specific knowledge.
 
 Projects should never redefine the Constitution.
@@ -209,173 +224,78 @@ Projects inherit the operating system.
 
 ---
 
-## Level 7 — Memory
+## Level 9 — Memory
 
-Authority:
-★★☆☆☆
+Authority: ★★☆☆☆
 
 Purpose:
-
 Long-term accumulated knowledge.
-
-Examples
-
-Preferences
-
-Mistakes
-
-Successful patterns
-
-Architecture lessons
 
 Memory should be distilled.
 
-Never store entire conversations.
+Never store entire conversations when reusable learning can be absorbed into the system.
 
 ---
 
-## Level 8 — Feedback
+## Level 10 — Feedback
 
-Authority:
-★☆☆☆☆
+Authority: ★☆☆☆☆
 
 Purpose:
-
 Raw observations.
 
-Feedback is evidence.
+Feedback is evidence, not automatically truth.
 
-Feedback is never automatically truth.
+Feedback should be absorbed into the appropriate layer whenever possible.
 
-Feedback becomes learning.
-
-Learning becomes rules.
-
----
-
-# Dependency Graph
-
-Constitution
-
-↓
-
-Architecture
-
-↓
-
-Agents
-
-↓
-
-Rules
-
-↓
-
-Playbooks
-
-↓
-
-Skills
-
-↓
-
-Projects
-
-↓
-
-Memory
-
-↓
-
-Feedback
-
-No document may contradict a higher level.
+Do not create feedback documents when the learning can directly improve Constitution, Architecture, Agents, Governance, Mission Control, Rules, Playbooks, or Skills.
 
 ---
 
 # Learning Lifecycle
 
+```text
 Raw Feedback
-
-↓
-
+    ↓
 Observation
-
-↓
-
+    ↓
 Learning
-
-↓
-
+    ↓
+System Refactor
+    ↓
 Candidate Rule
-
-↓
-
+    ↓
 Validated Rule
-
-↓
-
+    ↓
 Playbook Update
-
-↓
-
+    ↓
 Skill Update
-
-↓
-
+    ↓
 Agent Update
-
-↓
-
+    ↓
 Operating System Evolution
+```
 
 ---
 
 # Decision Flow
 
-Every important task follows this sequence.
+Every important task follows this sequence:
 
-1. Understand the real problem
-
-↓
-
-2. Expand context
-
-↓
-
-3. Research existing knowledge
-
-↓
-
-4. Evaluate tools
-
-↓
-
-5. Evaluate libraries
-
-↓
-
-6. Compare alternatives
-
-↓
-
-7. Decide
-
-↓
-
-8. Implement
-
-↓
-
-9. Verify
-
-↓
-
-10. Learn
-
-↓
-
-11. Improve AI OS
+1. Understand the real problem.
+2. Reduce CEO friction.
+3. Expand context.
+4. Research existing knowledge.
+5. Evaluate tools.
+6. Evaluate libraries, SDKs, APIs, and frameworks.
+7. Evaluate MCP capability.
+8. Evaluate multimodal, dashboard, visualization, presentation, automation, orchestration, and harness/evaluation opportunities when relevant.
+9. Compare alternatives.
+10. Decide.
+11. Implement.
+12. Verify.
+13. Learn.
+14. Improve AI OS.
 
 ---
 
@@ -385,18 +305,22 @@ Human owns:
 
 - Constitution
 - Architecture
+- strategic approval
 
-Human + AI own:
+Human + CTO Agent own:
 
 - Agents
+- Governance
+- Mission Control
 - Rules
 
-AI owns:
+AI execution agents own proposals for:
 
 - Playbooks
 - Skills
 - Memory
 - Feedback
+- task-level improvements
 
 Human always has veto authority.
 
@@ -404,63 +328,60 @@ Human always has veto authority.
 
 # Update Policy
 
-Constitution
+Constitution: rare.
 
-Rare
+Architecture: occasional.
 
-Architecture
+Agents: frequent.
 
-Occasional
+Governance: occasional.
 
-Agents
+Mission Control: frequent while automation is being built.
 
-Frequent
+Rules: continuous.
 
-Rules
+Playbooks: continuous.
 
-Continuous
+Skills: continuous.
 
-Playbooks
+Memory: continuous when distilled.
 
-Continuous
-
-Skills
-
-Continuous
-
-Memory
-
-Daily
-
-Feedback
-
-Every meaningful interaction
+Feedback: only when raw evidence cannot yet be absorbed.
 
 ---
 
 # Conflict Resolution
 
-Priority order
+Priority order:
 
-1. Constitution
-
-2. Architecture
-
-3. Agents
-
-4. Rules
-
-5. Playbooks
-
-6. Skills
-
-7. Projects
-
-8. Memory
-
-9. Feedback
+1. `CONSTITUTION.md`
+2. `ARCHITECTURE.md`
+3. `AGENTS.md`
+4. `governance/`
+5. `mission-control/`
+6. `rules/`
+7. `playbooks/`
+8. `skills/`
+9. `projects/`
+10. `memory/`
+11. `feedback/`
 
 Higher authority always wins.
+
+---
+
+# Repository Refactoring Principle
+
+Do not create documents because they sound useful.
+
+First ask:
+
+1. Can the learning be absorbed into an existing document?
+2. Can the existing structure be clarified?
+3. Can the principle be generalized?
+4. Is a new document truly needed?
+
+Create new documents only when they reduce future confusion, improve execution, or preserve reusable intelligence better than modifying an existing layer.
 
 ---
 
@@ -470,4 +391,4 @@ Never optimize isolated outputs.
 
 Always improve the operating system that produces them.
 
-Every project should make the AI OS more intelligent than yesterday.
+Every project should make the AI OS more intelligent and higher-leverage than yesterday.
