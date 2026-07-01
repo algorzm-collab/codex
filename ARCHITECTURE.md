@@ -1,5 +1,5 @@
 # AI Operating System Architecture
-Version: 1.1
+Version: 1.2
 
 ## Purpose
 
@@ -29,6 +29,12 @@ Governance
       │
       ▼
 Mission Control
+      │
+      ├── Permission Model
+      │
+      ├── Shift Management
+      │
+      └── Handoff Packages
       │
       ▼
 Rules
@@ -94,6 +100,7 @@ Includes:
 - governance
 - ownership
 - Mission Control position
+- Shift Management position
 
 Modified by:
 Human approval required.
@@ -117,6 +124,7 @@ Examples:
 - review behavior
 - CEO friction reduction
 - leverage-source evaluation
+- shift-aware handoff behavior
 
 Modified by:
 Human + AI.
@@ -151,6 +159,15 @@ Mission Control handles:
 - issue / PR based coordination
 - execution status
 - remote-control strategy for agents such as Codex
+- shift state tracking
+- handoff package generation
+- next-agent routing
+
+Mission Control owns continuity.
+
+Agents may pause.
+
+Missions must continue.
 
 ---
 
@@ -188,6 +205,7 @@ Examples:
 - MCP evaluation
 - visualization
 - presentation creation
+- shift handoff
 
 ---
 
@@ -278,6 +296,28 @@ Operating System Evolution
 
 ---
 
+# Continuity Lifecycle
+
+```text
+Mission
+    ↓
+Agent Execution
+    ↓
+Limit Risk Detected
+    ↓
+Shift State Update
+    ↓
+Handoff Package
+    ↓
+Next Agent Routing
+    ↓
+Recovery
+    ↓
+Mission Continues
+```
+
+---
+
 # Decision Flow
 
 Every important task follows this sequence:
@@ -294,8 +334,9 @@ Every important task follows this sequence:
 10. Decide.
 11. Implement.
 12. Verify.
-13. Learn.
-14. Improve AI OS.
+13. Preserve continuity if approaching a shift boundary.
+14. Learn.
+15. Improve AI OS.
 
 ---
 
@@ -321,6 +362,7 @@ AI execution agents own proposals for:
 - Memory
 - Feedback
 - task-level improvements
+- handoff packages
 
 Human always has veto authority.
 
@@ -338,6 +380,8 @@ Governance: occasional.
 
 Mission Control: frequent while automation is being built.
 
+Shift Management: frequent while continuity procedures are being tested.
+
 Rules: continuous.
 
 Playbooks: continuous.
@@ -347,6 +391,8 @@ Skills: continuous.
 Memory: continuous when distilled.
 
 Feedback: only when raw evidence cannot yet be absorbed.
+
+Handoff packages: temporary and overwritten when no longer useful.
 
 ---
 
