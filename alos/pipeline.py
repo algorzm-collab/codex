@@ -1,6 +1,9 @@
 from __future__ import annotations
 
+from pathlib import Path
+
 from .ceo_view import CEOViewExporter
+from .executive_report import ExecutiveReport
 from .gh_reader import GitHubReader
 from .models import Mission
 from .runtime import ALOSRuntime
@@ -16,6 +19,7 @@ class ALOSPipeline:
         self.view = CEOViewExporter()
         self.site = SiteExporter()
         self.store = StateStore()
+        self.report = ExecutiveReport()
 
     def from_issue(self, number: int) -> dict[str, object]:
         mission = self.reader.mission_from_issue(number)
@@ -35,4 +39,6 @@ class ALOSPipeline:
         ])
         self.view.write(plan)
         self.site.write(plan)
+        Path(".alos").mkdir(exist_ok=True)
+        Path(".alos/report.txt").write_text(self.report.render(plan), encoding="utf-8")
         return plan
