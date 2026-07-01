@@ -1,0 +1,1312 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>STRAT Growth Advisory Prototype</title>
+  <style>
+    :root {
+      --ink: #15171a;
+      --graphite: #2e3238;
+      --muted: #606873;
+      --base: #f7f8f5;
+      --panel: #ffffff;
+      --line: #e2e6df;
+      --line-strong: #cfd6ce;
+      --teal: #0f766e;
+      --teal-soft: #e6f3f1;
+      --blue: #2563eb;
+      --blue-soft: #e9efff;
+      --amber: #b7791f;
+      --amber-soft: #fff4d8;
+      --red: #b91c1c;
+      --shadow: 0 24px 70px rgba(21, 23, 26, 0.08);
+      --radius: 8px;
+      --max: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--base);
+      color: var(--ink);
+      font-family: Pretendard, "Noto Sans KR", Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid rgba(226, 230, 223, 0.9);
+      background: rgba(247, 248, 245, 0.92);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      min-height: 72px;
+      padding: 0 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: 0;
+      color: var(--ink);
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--ink);
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      border-radius: 6px;
+      background: var(--panel);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+    }
+
+    .btn {
+      min-height: 44px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      padding: 0 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: background 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .btn:focus-visible,
+    .option:focus-visible {
+      outline: 3px solid rgba(37, 99, 235, 0.28);
+      outline-offset: 2px;
+    }
+
+    .btn-primary {
+      color: white;
+      background: var(--teal);
+      border-color: var(--teal);
+    }
+
+    .btn-primary:hover {
+      background: #0b615b;
+      border-color: #0b615b;
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      color: var(--ink);
+      background: var(--panel);
+      border-color: var(--line-strong);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--ink);
+      transform: translateY(-1px);
+    }
+
+    .hero {
+      min-height: calc(100vh - 72px);
+      padding: 72px 28px 50px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(430px, 0.98fr);
+      gap: 52px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 26px;
+      height: 2px;
+      background: var(--teal);
+      display: inline-block;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(38px, 5vw, 62px);
+      line-height: 1.08;
+      letter-spacing: 0;
+      color: var(--ink);
+    }
+
+    .hero-copy {
+      margin: 22px 0 0;
+      max-width: 650px;
+      color: var(--graphite);
+      font-size: 18px;
+      line-height: 1.76;
+    }
+
+    .hero-actions {
+      margin-top: 32px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .trust-row {
+      margin-top: 38px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.56);
+      border-radius: var(--radius);
+      overflow: hidden;
+      max-width: 680px;
+    }
+
+    .trust-item {
+      padding: 18px 18px;
+      border-right: 1px solid var(--line);
+    }
+
+    .trust-item:last-child {
+      border-right: 0;
+    }
+
+    .trust-item strong {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .trust-item span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .diagnostic-shell {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .diagnostic-top {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      background: #fbfcfa;
+    }
+
+    .diagnostic-top strong {
+      font-size: 15px;
+    }
+
+    .time-pill {
+      color: var(--teal);
+      background: var(--teal-soft);
+      border: 1px solid #cae5e1;
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 12px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .progress {
+      height: 5px;
+      background: #eef1ec;
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      width: 33%;
+      background: var(--teal);
+      transition: width 220ms ease;
+    }
+
+    .diagnostic-body {
+      padding: 26px;
+    }
+
+    .step-meta {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .question {
+      font-size: 24px;
+      line-height: 1.35;
+      font-weight: 800;
+      margin: 0 0 18px;
+      color: var(--ink);
+    }
+
+    .options {
+      display: grid;
+      gap: 10px;
+    }
+
+    .option {
+      width: 100%;
+      min-height: 50px;
+      background: var(--panel);
+      border: 1px solid var(--line-strong);
+      border-radius: var(--radius);
+      color: var(--graphite);
+      padding: 13px 14px;
+      text-align: left;
+      cursor: pointer;
+      transition: background 140ms ease, border-color 140ms ease, color 140ms ease;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .option:hover,
+    .option.is-selected {
+      border-color: var(--teal);
+      background: var(--teal-soft);
+      color: var(--ink);
+    }
+
+    .option small {
+      color: var(--muted);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .diagnostic-footer {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .result-panel {
+      display: none;
+      padding: 24px;
+      border-top: 1px solid var(--line);
+      background: #fbfcfa;
+    }
+
+    .result-panel.is-visible {
+      display: block;
+    }
+
+    .result-label {
+      color: var(--amber);
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .result-title {
+      font-size: 20px;
+      font-weight: 850;
+      line-height: 1.45;
+      margin-bottom: 16px;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .result-explain {
+      color: var(--graphite);
+      font-size: 14px;
+      line-height: 1.68;
+      margin: 0 0 16px;
+    }
+
+    .result-chip {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      padding: 12px;
+      border-radius: var(--radius);
+      font-size: 13px;
+      font-weight: 800;
+      line-height: 1.35;
+    }
+
+    .result-note {
+      border-left: 3px solid var(--amber);
+      background: var(--amber-soft);
+      color: #5f3b08;
+      padding: 12px 14px;
+      border-radius: 0 6px 6px 0;
+      font-size: 13px;
+      line-height: 1.58;
+      margin-bottom: 18px;
+    }
+
+    section {
+      padding: 92px 28px;
+    }
+
+    .section-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .section-head {
+      max-width: 780px;
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(28px, 3.4vw, 42px);
+      line-height: 1.2;
+      letter-spacing: 0;
+    }
+
+    .section-desc {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.72;
+    }
+
+    .problem-grid,
+    .cluster-grid,
+    .case-grid,
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .problem-card,
+    .cluster-card,
+    .case-card,
+    .insight-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .problem-card {
+      min-height: 142px;
+      cursor: pointer;
+      transition: border-color 160ms ease, transform 160ms ease;
+    }
+
+    .problem-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-2px);
+    }
+
+    .problem-card strong,
+    .cluster-card strong,
+    .case-card strong,
+    .insight-card strong {
+      display: block;
+      font-size: 17px;
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .problem-card p,
+    .cluster-card p,
+    .case-card p,
+    .insight-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .map-section {
+      background: #ffffff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .flow-map {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .flow-step {
+      border: 1px solid var(--line);
+      background: #fbfcfa;
+      border-radius: var(--radius);
+      padding: 20px;
+      position: relative;
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--teal);
+      font-weight: 900;
+    }
+
+    .flow-step span {
+      display: inline-flex;
+      width: 28px;
+      height: 28px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      color: white;
+      background: var(--teal);
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .flow-step strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    .flow-step p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .cluster-card {
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cluster-label {
+      display: inline-flex;
+      width: fit-content;
+      color: var(--teal);
+      background: var(--teal-soft);
+      border: 1px solid #cae5e1;
+      border-radius: 999px;
+      padding: 6px 9px;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .deliverables {
+      margin-top: auto;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--graphite);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .case-card {
+      min-height: 275px;
+    }
+
+    .case-meta {
+      color: var(--blue);
+      background: var(--blue-soft);
+      border: 1px solid #d4defc;
+      display: inline-flex;
+      border-radius: 999px;
+      padding: 6px 9px;
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    .method {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .method-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .method-item {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .method-item span {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: white;
+      border-radius: 6px;
+      font-weight: 900;
+      font-size: 12px;
+    }
+
+    .method-item strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .method-item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.58;
+      font-size: 14px;
+    }
+
+    .final-cta {
+      background: var(--ink);
+      color: white;
+      padding: 78px 28px;
+    }
+
+    .final-box {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .final-box h2 {
+      color: white;
+    }
+
+    .final-box p {
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 17px;
+      line-height: 1.7;
+      margin: 14px 0 0;
+    }
+
+    .final-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .contact-mini {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: var(--radius);
+      padding: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-mini label {
+      display: grid;
+      gap: 6px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .contact-mini input,
+    .contact-mini textarea {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.08);
+      color: white;
+      border-radius: 6px;
+      padding: 12px;
+      min-height: 42px;
+    }
+
+    .contact-mini textarea {
+      resize: vertical;
+      min-height: 84px;
+    }
+
+    .contact-mini input::placeholder,
+    .contact-mini textarea::placeholder {
+      color: rgba(255, 255, 255, 0.46);
+    }
+
+    .mobile-sticky {
+      display: none;
+      position: fixed;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      z-index: 40;
+      box-shadow: 0 16px 48px rgba(21, 23, 26, 0.2);
+    }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 52px;
+      }
+
+      .hero-inner,
+      .method,
+      .final-box {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-inner {
+        gap: 34px;
+      }
+
+      .problem-grid,
+      .cluster-grid,
+      .case-grid,
+      .insight-grid,
+      .flow-map {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .flow-step:not(:last-child)::after {
+        display: none;
+      }
+
+      .final-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        padding: 0 18px;
+      }
+
+      .brand span:last-child {
+        display: none;
+      }
+
+      .hero,
+      section {
+        padding-left: 18px;
+        padding-right: 18px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-bottom: 34px;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      .hero-copy,
+      .section-desc {
+        font-size: 16px;
+      }
+
+      .trust-row,
+      .result-grid,
+      .problem-grid,
+      .cluster-grid,
+      .case-grid,
+      .insight-grid,
+      .flow-map {
+        grid-template-columns: 1fr;
+      }
+
+      .trust-item {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .trust-item:last-child {
+        border-bottom: 0;
+      }
+
+      .diagnostic-body {
+        padding: 20px;
+      }
+
+      .question {
+        font-size: 21px;
+      }
+
+      .diagnostic-footer {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .mobile-sticky {
+        display: inline-flex;
+      }
+
+      body {
+        padding-bottom: 76px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="STRAT home">
+        <span class="brand-mark">ST</span>
+        <span>STRAT</span>
+      </a>
+      <div class="nav-links" aria-label="Primary links">
+        <a href="#finder">문제 짚어보기</a>
+        <a href="#cases">실적</a>
+        <a href="#services">서비스</a>
+        <a href="#company">회사소개</a>
+        <a href="#people">구성원</a>
+        <a href="#insights">Insights</a>
+        <a href="#contact">문의하기</a>
+      </div>
+      <a class="btn btn-primary" href="#finder">1분 진단</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">Issue Inference Interface</div>
+          <h1 id="hero-title">보고서는 있는데 실행이 안 되나요? 몇 가지 선택으로 조직의 진짜 병목을 짚어드립니다.</h1>
+          <p class="hero-copy">STRAT은 짧은 선택을 바탕으로 현재 문제가 전략, 조직, KPI, 성과평가, 인사, ESG/AI 중 어디에 가까운지 추론하고, 유사 실적과 가설적 접근을 제시합니다.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#finder">우리 문제 짚어보기</a>
+            <a class="btn btn-secondary" href="#cases">관련 실적 보기</a>
+          </div>
+          <div class="trust-row" aria-label="Trust indicators">
+            <div class="trust-item">
+              <strong>Strategy</strong>
+              <span>중장기전략, 사업전략, 실행 로드맵</span>
+            </div>
+            <div class="trust-item">
+              <strong>Operating</strong>
+              <span>조직구조, R&amp;R, 프로세스, 인력배분</span>
+            </div>
+            <div class="trust-item">
+              <strong>Performance</strong>
+              <span>KPI, 평가제도, 성과 모니터링</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="diagnostic-shell" id="finder" aria-label="STRAT Solution Finder">
+          <div class="diagnostic-top">
+            <strong>STRAT Issue Finder</strong>
+            <span class="time-pill">약 1분 소요</span>
+          </div>
+          <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+          <div class="diagnostic-body">
+            <div class="step-meta" id="stepMeta">STEP 1 / 3</div>
+            <h2 class="question" id="questionText">어떤 조직의 과제인가요?</h2>
+            <div class="options" id="options"></div>
+            <div class="diagnostic-footer">
+              <span>자료를 받지 않습니다. 몇 가지 선택으로 문제 가설만 먼저 짚습니다.</span>
+              <button class="btn btn-primary" id="nextButton" type="button">다음</button>
+            </div>
+          </div>
+          <div class="result-panel" id="resultPanel" aria-live="polite">
+            <div class="result-label">INFERENCE RESULT</div>
+            <div class="result-title" id="resultTitle">현재 조직은 전략은 있으나 KPI, R&amp;R, 성과평가로 이어지는 실행 연결부가 약한 상태로 보입니다.</div>
+            <div class="result-grid" id="resultGrid"></div>
+            <div class="result-note">이 결과는 간단한 선택을 바탕으로 한 가설입니다. 실제 과제 범위와 접근 방식은 STRAT과의 상담에서 구체화합니다.</div>
+            <a class="btn btn-primary" href="#contact">이 문제에 대해 STRAT에 문의하기</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section aria-labelledby="problem-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="section-kicker">Problem Mirror</div>
+          <h2 id="problem-title">이런 말이 반복된다면, 문제는 전략 자체가 아닐 수 있습니다.</h2>
+          <p class="section-desc">좋은 컨설팅 홈페이지는 서비스를 설명하기 전에 방문자의 문제를 정확히 비춥니다. STRAT은 전략, 조직, KPI, 성과평가 사이의 단절을 먼저 짚습니다.</p>
+        </div>
+        <div class="problem-grid">
+          <button class="problem-card option-jump" type="button" data-route="execution_gap">
+            <strong>보고서는 있는데 실행이 안 된다.</strong>
+            <p>전략체계도는 있으나 실제 업무와 역할로 내려오지 않는 상태입니다.</p>
+          </button>
+          <button class="problem-card option-jump" type="button" data-route="performance_issue">
+            <strong>KPI는 많은데 무엇을 바꿔야 할지 모르겠다.</strong>
+            <p>지표는 많지만 의사결정과 성과 향상에 쓰이지 않는 상태입니다.</p>
+          </button>
+          <button class="problem-card option-jump" type="button" data-route="organization_rr_issue">
+            <strong>이 일이 어느 부서 책임인지 애매하다.</strong>
+            <p>구조 변경보다 역할과 권한 정렬이 먼저 필요한 신호입니다.</p>
+          </button>
+          <button class="problem-card option-jump" type="button" data-route="performance_issue">
+            <strong>평가제도는 있는데 구성원들이 납득하지 못한다.</strong>
+            <p>평가 기준, 피드백, 보상 연결의 설득력이 약할 수 있습니다.</p>
+          </button>
+          <button class="problem-card option-jump" type="button" data-route="hr_capability_issue">
+            <strong>조직개편 이야기는 많은데 기준이 없다.</strong>
+            <p>조직도보다 먼저 구조 변경의 기준과 역할 체계를 잡아야 합니다.</p>
+          </button>
+          <button class="problem-card option-jump" type="button" data-route="esg_ai_dt_issue">
+            <strong>AI/ESG 과제가 생겼는데 실행과제로 정리되지 않았다.</strong>
+            <p>새로운 과제를 전략, 지표, 운영체계로 연결해야 합니다.</p>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="map-section" aria-labelledby="map-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="section-kicker">Solution Path</div>
+          <h2 id="map-title">설문이 아니라 추론입니다.</h2>
+          <p class="section-desc">홈페이지에서 자료를 받거나 긴 진단을 하지 않습니다. 짧은 증상 선택으로 문제를 명명하고, 유사 실적과 가설적 접근을 보여준 뒤 회사 문의로 연결합니다.</p>
+        </div>
+        <div class="flow-map">
+          <div class="flow-step">
+            <span>1</span>
+            <strong>증상 선택</strong>
+            <p>요즘 조직에서 가장 자주 나오는 말을 고르게 해 문제의 표면 신호를 잡습니다.</p>
+          </div>
+          <div class="flow-step">
+            <span>2</span>
+            <strong>막힌 지점 추적</strong>
+            <p>회의, 협업, KPI, 조직역할, 외부평가 중 어디서 문제가 드러나는지 좁힙니다.</p>
+          </div>
+          <div class="flow-step">
+            <span>3</span>
+            <strong>문제 이름 붙이기</strong>
+            <p>단순 전략수립인지, 조직/R&R인지, 성과관리인지 문제 가설을 붙입니다.</p>
+          </div>
+          <div class="flow-step">
+            <span>4</span>
+            <strong>회사 문의 연결</strong>
+            <p>유사 실적과 가설 솔루션을 보여주고 더 구체적인 논의는 STRAT으로 오게 합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" aria-labelledby="services-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="section-kicker">Services</div>
+          <h2 id="services-title">STRAT은 문제를 7개 솔루션 체계로 좁혀갑니다.</h2>
+          <p class="section-desc">서비스 나열이 아니라 문제 해결 경로로 보여줘야 합니다. 각 솔루션은 문제, 접근, 산출물이 명확해야 합니다.</p>
+        </div>
+        <div class="cluster-grid">
+          <article class="cluster-card">
+            <span class="cluster-label">Strategy Alignment</span>
+            <strong>전략체계 정렬</strong>
+            <p>미션, 비전, 전략방향, 사업계획, 실행과제가 따로 움직일 때.</p>
+            <div class="deliverables">산출물: 전략체계도, 전략과제, 실행 로드맵</div>
+          </article>
+          <article class="cluster-card">
+            <span class="cluster-label">Performance</span>
+            <strong>KPI 및 성과관리체계</strong>
+            <p>KPI와 평가제도가 전략 및 실제 성과 향상과 연결되지 않을 때.</p>
+            <div class="deliverables">산출물: KPI 맵, 평가 운영안, 모니터링 구조</div>
+          </article>
+          <article class="cluster-card">
+            <span class="cluster-label">Organization</span>
+            <strong>조직구조 및 R&amp;R</strong>
+            <p>조직구조, 역할, 권한, 책임이 전략 변화와 맞지 않을 때.</p>
+            <div class="deliverables">산출물: 조직진단, R&amp;R 매트릭스, 위임전결표</div>
+          </article>
+          <article class="cluster-card">
+            <span class="cluster-label">Collaboration</span>
+            <strong>업무프로세스 및 협업</strong>
+            <p>부서 간 협업과 업무 방식이 성과 확산을 막고 있을 때.</p>
+            <div class="deliverables">산출물: 프로세스 맵, 협업 이슈맵, 개선과제</div>
+          </article>
+          <article class="cluster-card">
+            <span class="cluster-label">Capability</span>
+            <strong>인사·직무·역량</strong>
+            <p>직무, 역량, 배치, 승진, 경력개발 기준이 연결되지 않을 때.</p>
+            <div class="deliverables">산출물: 직무분류체계, 역량모델, 직무기술서</div>
+          </article>
+          <article class="cluster-card">
+            <span class="cluster-label">Transformation</span>
+            <strong>ESG 및 AI/DT 전환</strong>
+            <p>전환 과제가 실제 업무혁신과 지표, 운영체계로 연결되지 않을 때.</p>
+            <div class="deliverables">산출물: 전환 과제맵, 우선순위, 실행 로드맵</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="company" class="map-section" aria-labelledby="company-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="section-kicker">Company</div>
+          <h2 id="company-title">STRAT은 전략을 보고서로 끝내지 않고, 조직과 성과체계로 연결합니다.</h2>
+          <p class="section-desc">좋은 컨설팅 홈페이지에는 회사소개가 반드시 필요합니다. 다만 STRAT의 회사소개는 연혁보다 관점이 먼저 보여야 합니다. 우리는 복잡한 경영문제를 전략, 조직, KPI, 실행 로드맵으로 구조화하는 실행 중심 전략자문그룹입니다.</p>
+        </div>
+        <div class="flow-map">
+          <div class="flow-step">
+            <span>01</span>
+            <strong>문제 정의</strong>
+            <p>고객의 막연한 고민을 의사결정 가능한 과제로 바꿉니다.</p>
+          </div>
+          <div class="flow-step">
+            <span>02</span>
+            <strong>근거 기반</strong>
+            <p>정책, 시장, 조직, 성과 데이터를 연결해 설득 논리를 만듭니다.</p>
+          </div>
+          <div class="flow-step">
+            <span>03</span>
+            <strong>실행 연결</strong>
+            <p>전략을 조직, R&R, KPI, 로드맵으로 내려보냅니다.</p>
+          </div>
+          <div class="flow-step">
+            <span>04</span>
+            <strong>의사결정 지원</strong>
+            <p>보고서, 발표자료, 내부 합의 자료까지 연결합니다.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="people" aria-labelledby="people-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="section-kicker">People</div>
+          <h2 id="people-title">컨설팅의 신뢰는 결국 사람에서 완성됩니다.</h2>
+          <p class="section-desc">구성원 소개는 이력 나열이 아니라 “누가 이 문제를 다룰 수 있는가”를 보여주는 영역입니다. 실제 프로필이 확정되면 전문 분야, 대표 프로젝트, 한 줄 관점으로 교체합니다.</p>
+        </div>
+        <div class="case-grid">
+          <article class="case-card">
+            <span class="case-meta">Strategy / Public</span>
+            <strong>전략체계와 공공기관 경영과제를 구조화하는 전문가</strong>
+            <p>중장기전략, 경영평가, 정책환경 분석, 실행과제 로드맵을 연결하는 역할을 담당합니다.</p>
+          </article>
+          <article class="case-card">
+            <span class="case-meta">Organization / HR</span>
+            <strong>조직구조, R&amp;R, 직무·역량체계를 설계하는 전문가</strong>
+            <p>조직진단, 역할 재정립, 직무분류체계, 역량모델링을 통해 실행 기반을 만듭니다.</p>
+          </article>
+          <article class="case-card">
+            <span class="case-meta">Performance / Transformation</span>
+            <strong>KPI, 성과관리, ESG/AI 전환 과제를 연결하는 전문가</strong>
+            <p>성과지표, 평가 운영, 전환 과제맵, 모니터링 체계를 설계합니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="cases" class="map-section" aria-labelledby="cases-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="section-kicker">Proof by Cases</div>
+          <h2 id="cases-title">전략을 조직과 성과체계로 연결한 사례</h2>
+          <p class="section-desc">실적 목록보다 문제, 접근, 산출물 구조가 더 강한 신뢰를 만듭니다.</p>
+        </div>
+        <div class="case-grid">
+          <article class="case-card">
+            <span class="case-meta">Public Institution</span>
+            <strong>중장기전략과 경영평가 지표가 분리된 상태</strong>
+            <p>정책환경과 기관 역할을 재정의하고, 전략과 KPI를 하나의 성과체계로 연결했습니다.</p>
+          </article>
+          <article class="case-card">
+            <span class="case-meta">Organization</span>
+            <strong>조직개편 이후에도 역할 혼선이 지속된 상태</strong>
+            <p>부서별 핵심업무, 권한, 책임을 재정리하고 R&amp;R 매트릭스와 위임전결 기준을 설계했습니다.</p>
+          </article>
+          <article class="case-card">
+            <span class="case-meta">Performance</span>
+            <strong>성과평가가 업무 개선보다 불만을 만든 상태</strong>
+            <p>목표설정 방식, 평가 기준, 피드백 운영을 재설계해 연중 성과관리 체계로 전환했습니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="method" aria-labelledby="method-title">
+      <div class="section-inner method">
+        <div class="section-head">
+          <div class="section-kicker">STRAT Method</div>
+          <h2 id="method-title">문제 정의부터 의사결정 패키지까지.</h2>
+          <p class="section-desc">STRAT의 방법론은 철학으로 끝나지 않습니다. 각 단계는 고객이 실제로 받게 되는 산출물로 연결됩니다.</p>
+        </div>
+        <div class="method-list">
+          <div class="method-item"><span>01</span><div><strong>Issue Framing</strong><p>문제를 정확히 정의하고 의사결정 질문으로 바꿉니다.</p></div></div>
+          <div class="method-item"><span>02</span><div><strong>Evidence Mapping</strong><p>정책, 시장, 조직, 성과 데이터를 근거로 정리합니다.</p></div></div>
+          <div class="method-item"><span>03</span><div><strong>Strategy Design</strong><p>전략방향, 목표, 과제, 로드맵을 설계합니다.</p></div></div>
+          <div class="method-item"><span>04</span><div><strong>Operating Model</strong><p>조직구조, R&amp;R, KPI, 업무체계로 실행 기반을 만듭니다.</p></div></div>
+          <div class="method-item"><span>05</span><div><strong>Execution Roadmap</strong><p>우선순위, 일정, 책임, 성과지표를 실행계획으로 연결합니다.</p></div></div>
+          <div class="method-item"><span>06</span><div><strong>Decision Package</strong><p>보고서, 발표자료, 내부 설득 자료로 의사결정을 지원합니다.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="insights" class="map-section" aria-labelledby="insights-title">
+      <div class="section-inner">
+        <div class="section-head">
+          <div class="section-kicker">Insights</div>
+          <h2 id="insights-title">전략 과제를 준비하는 담당자를 위한 인사이트</h2>
+        </div>
+        <div class="insight-grid">
+          <article class="insight-card"><strong>중장기전략 착수 전 체크리스트</strong><p>발주 전 정리해야 할 범위, 산출물, 내부 의사결정 포인트.</p></article>
+          <article class="insight-card"><strong>KPI가 전략과 분리되는 이유</strong><p>전략체계와 성과관리 사이에서 가장 자주 생기는 단절.</p></article>
+          <article class="insight-card"><strong>R&amp;R 재정립이 먼저 필요한 경우</strong><p>조직개편보다 역할과 권한 설계가 우선인 상황.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" id="contact" aria-labelledby="contact-title">
+      <div class="final-box">
+        <div>
+          <h2 id="contact-title">이 문제가 우리 조직에도 해당되는지 물어보세요.</h2>
+          <p>홈페이지 결과는 간단한 선택을 바탕으로 한 가설입니다. 실제 과제 범위와 접근 방식은 STRAT과의 상담에서 구체화합니다.</p>
+        </div>
+        <form class="contact-mini" action="mailto:contact@strat.kr" method="post" enctype="text/plain">
+          <label>이름
+            <input name="name" autocomplete="name" placeholder="홍길동">
+          </label>
+          <label>기관/회사명
+            <input name="organization" autocomplete="organization" placeholder="기관 또는 회사명">
+          </label>
+          <label>연락처 또는 이메일
+            <input name="contact" autocomplete="email" placeholder="연락 가능한 정보">
+          </label>
+          <label>상담하고 싶은 문제
+            <textarea name="message" placeholder="예: 보고서는 있는데 실행이 안 되고, KPI와 조직 역할이 따로 움직이는 것 같습니다."></textarea>
+          </label>
+          <div class="final-actions">
+            <a class="btn btn-secondary" href="#finder">문제 다시 짚어보기</a>
+            <button class="btn btn-primary" type="submit">STRAT에 문의하기</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <a class="btn btn-primary mobile-sticky" href="#finder">우리 문제 짚어보기</a>
+
+  <script>
+    const steps = [
+      {
+        meta: "STEP 1 / 3",
+        question: "요즘 조직에서 가장 자주 들리는 말은 무엇인가요?",
+        options: [
+          { label: "보고서는 있는데 실행이 안 된다", value: "execution_gap", hint: "자주 발생" },
+          { label: "이 일이 어느 부서 책임인지 애매하다", value: "organization_rr_issue" },
+          { label: "KPI는 많은데 무엇을 바꿔야 할지 모르겠다", value: "performance_issue" },
+          { label: "평가제도는 있는데 구성원들이 납득하지 못한다", value: "performance_issue" },
+          { label: "AI/ESG 과제가 생겼는데 실행과제로 정리되지 않았다", value: "esg_ai_dt_issue" }
+        ]
+      },
+      {
+        meta: "STEP 2 / 3",
+        question: "그 문제가 실제로 터지는 장면은 어디인가요?",
+        options: [
+          { label: "회의와 의사결정", value: "execution_gap" },
+          { label: "부서 간 협업", value: "organization_rr_issue" },
+          { label: "성과지표와 평가", value: "performance_issue", hint: "강한 신호" },
+          { label: "인사배치와 역량", value: "hr_capability_issue" },
+          { label: "외부 평가/정책 대응", value: "new_strategy" }
+        ]
+      },
+      {
+        meta: "STEP 3 / 3",
+        question: "지금 필요한 것은 어느 쪽에 더 가깝나요?",
+        options: [
+          { label: "문제를 정리해 내부 설득 논리로 만들기", value: "logic_gap" },
+          { label: "컨설팅/용역 발주 전 과업 범위 잡기", value: "project_ready" },
+          { label: "기존 전략을 실행체계로 연결하기", value: "execution_system" },
+          { label: "조직과 KPI의 연결 상태 확인하기", value: "alignment_check" },
+          { label: "아직 문제인지부터 확인하기", value: "uncertain" }
+        ]
+      }
+    ];
+
+    const routeResults = {
+      execution_gap: {
+        title: "이 문제는 단순한 전략수립 문제가 아니라 ‘전략-조직-성과 연결부 약화’에 가까워 보입니다.",
+        explain: "전략은 존재하지만 부서별 역할, KPI, 평가 방식이 한 방향으로 연결되지 않으면 실행력이 떨어집니다. 이 경우 새 전략을 다시 쓰기보다 기존 전략이 조직과 성과체계로 내려오는 경로를 먼저 봐야 합니다.",
+        chips: ["유사 실적: 전략체계-KPI 재정렬", "가설 접근: R&R 및 실행과제 매핑", "문의 주제: 실행 연결부 점검"]
+      },
+      performance_issue: {
+        title: "현재 상황은 KPI가 많아서가 아니라 ‘성과로 이어지는 운영체계’가 약한 문제일 수 있습니다.",
+        explain: "지표가 많아도 전략과 업무, 평가, 피드백이 연결되지 않으면 성과관리는 형식화됩니다. KPI 수를 늘리는 것보다 성과관리 운영 방식을 재설계해야 할 수 있습니다.",
+        chips: ["유사 실적: KPI/성과관리체계 개선", "가설 접근: 평가 운영안 재설계", "문의 주제: 성과관리 작동 여부"]
+      },
+      organization_rr_issue: {
+        title: "현재 상황은 조직개편보다 먼저 역할, 책임, 권한의 정렬 상태를 봐야 하는 신호일 수 있습니다.",
+        explain: "조직도는 바뀌어도 역할과 책임이 명확하지 않으면 같은 혼선이 반복됩니다. 조직구조보다 부서별 핵심업무, 의사결정 권한, 책임소재를 먼저 봐야 합니다.",
+        chips: ["유사 실적: 조직진단/R&R 재정립", "가설 접근: 위임전결체계 개선", "문의 주제: 조직역할 혼선"]
+      },
+      hr_capability_issue: {
+        title: "현재 상황은 직무, 역량, 배치 기준이 하나의 체계로 연결되지 않은 문제일 수 있습니다.",
+        explain: "직무와 역량 기준이 모호하면 인사배치, 승진, 평가가 모두 흔들립니다. 이 경우 사람 문제가 아니라 직무와 역량체계 문제로 접근해야 합니다.",
+        chips: ["유사 실적: 직무/역량체계", "가설 접근: 역량모델링", "문의 주제: 인사체계 점검"]
+      },
+      esg_ai_dt_issue: {
+        title: "현재 상황은 AI/ESG 과제를 기술이나 선언이 아니라 실행과제와 지표로 바꿔야 하는 단계로 보입니다.",
+        explain: "새로운 전환 과제는 기술 도입이나 슬로건만으로 작동하지 않습니다. 업무, 조직, 성과지표, 실행 로드맵으로 내려와야 실제 변화가 만들어집니다.",
+        chips: ["유사 실적: 전환 과제 로드맵", "가설 접근: 실행과제맵 구성", "문의 주제: 전환 우선순위"]
+      }
+    };
+
+    let stepIndex = 0;
+    let selected = {};
+
+    const stepMeta = document.getElementById("stepMeta");
+    const questionText = document.getElementById("questionText");
+    const optionsEl = document.getElementById("options");
+    const nextButton = document.getElementById("nextButton");
+    const progressBar = document.getElementById("progressBar");
+    const resultPanel = document.getElementById("resultPanel");
+    const resultTitle = document.getElementById("resultTitle");
+    const resultGrid = document.getElementById("resultGrid");
+
+    function renderStep() {
+      const step = steps[stepIndex];
+      stepMeta.textContent = step.meta;
+      questionText.textContent = step.question;
+      progressBar.style.width = `${((stepIndex + 1) / steps.length) * 100}%`;
+      optionsEl.innerHTML = "";
+      step.options.forEach((option) => {
+        const button = document.createElement("button");
+        button.className = "option";
+        button.type = "button";
+        button.innerHTML = `<span>${option.label}</span>${option.hint ? `<small>${option.hint}</small>` : "<small>선택</small>"}`;
+        button.addEventListener("click", () => {
+          selected[stepIndex] = option.value;
+          [...optionsEl.children].forEach((child) => child.classList.remove("is-selected"));
+          button.classList.add("is-selected");
+        });
+        optionsEl.appendChild(button);
+      });
+    }
+
+    function showResult() {
+      const route = selected[1] || "execution_gap";
+      const result = routeResults[route] || routeResults.execution_gap;
+      resultTitle.textContent = result.title;
+      let explain = document.getElementById("resultExplain");
+      if (!explain) {
+        explain = document.createElement("p");
+        explain.className = "result-explain";
+        explain.id = "resultExplain";
+        resultTitle.insertAdjacentElement("afterend", explain);
+      }
+      explain.textContent = result.explain;
+      resultGrid.innerHTML = result.chips.map((chip) => `<div class="result-chip">${chip}</div>`).join("");
+      resultPanel.classList.add("is-visible");
+      resultPanel.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    nextButton.addEventListener("click", () => {
+      if (selected[stepIndex] === undefined) {
+        const first = optionsEl.querySelector(".option");
+        if (first) first.focus();
+        return;
+      }
+      if (stepIndex < steps.length - 1) {
+        stepIndex += 1;
+        renderStep();
+      } else {
+        showResult();
+      }
+    });
+
+    document.querySelectorAll(".option-jump").forEach((button) => {
+      button.addEventListener("click", () => {
+        selected[1] = button.dataset.route;
+        stepIndex = 2;
+        renderStep();
+        document.getElementById("finder").scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+    });
+
+    renderStep();
+  </script>
+</body>
+</html>

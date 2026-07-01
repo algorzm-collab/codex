@@ -1,0 +1,5 @@
+outputs/strat_site_mvp/data/
+outputs/strat_site_mvp/__pycache__/
+*.pyc
+*.sqlite3
+admin_secret.txt
