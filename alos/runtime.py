@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from .agent_router import AgentRouter
+from .briefing import BriefingBuilder
 from .context_engine import ContextEngine
 from .executors import DryRunExecutor, ExecutionResult
 from .harness_engine import HarnessEngine
@@ -11,8 +12,6 @@ from .prompt_emitter import PromptEmitter
 
 
 class ALOSRuntime:
-    """Coordinates mission intake, planning, routing, and dry-run execution."""
-
     def __init__(self) -> None:
         self.context = ContextEngine()
         self.compiler = MissionCompiler()
@@ -20,6 +19,7 @@ class ALOSRuntime:
         self.harness = HarnessEngine()
         self.intake = IntakeConverter()
         self.prompts = PromptEmitter()
+        self.briefs = BriefingBuilder()
 
     def from_text(self, title: str, body: str = "", source: str = "") -> Mission:
         return self.intake.convert(IntakeText(title=title, body=body, source=source))
@@ -30,6 +30,7 @@ class ALOSRuntime:
         evaluated = [(task, self.harness.evaluate_plan(task)) for task in tasks]
         routes = [self.router.route(task) for task, result in evaluated if result.passed]
         prompts = [self.prompts.emit(route.task) for route in routes]
+        brief = self.briefs.build(mission, tasks)
 
         return {
             "mission": mission,
@@ -38,6 +39,7 @@ class ALOSRuntime:
             "evaluations": evaluated,
             "routes": routes,
             "prompts": prompts,
+            "brief": brief,
         }
 
     def dry_run(self, mission: Mission) -> list[ExecutionResult]:
