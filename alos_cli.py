@@ -12,6 +12,7 @@ def main() -> None:
     parser.add_argument("title")
     parser.add_argument("objective")
     parser.add_argument("--level", type=int, default=0)
+    parser.add_argument("--show-prompts", action="store_true")
     args = parser.parse_args()
 
     mission = Mission(title=args.title, objective=args.objective)
@@ -33,6 +34,12 @@ def main() -> None:
     print("\nRoutes:")
     for route in plan["routes"]:  # type: ignore[index]
         print(f"- {route.task.title}: {route.agent} ({route.reason})")
+
+    if args.show_prompts:
+        print("\nPrompts:")
+        for idx, prompt in enumerate(plan["prompts"], start=1):  # type: ignore[index]
+            print(f"\n--- Prompt {idx} ---")
+            print(prompt)
 
 
 if __name__ == "__main__":
