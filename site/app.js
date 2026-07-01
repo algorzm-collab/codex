@@ -1,24 +1,32 @@
 const fallback = {
   brief: {
-    headline: "ALOS 구축",
-    progress: 88,
+    headline: "ALOS build",
+    progress: 94,
     current_owner: "chatgpt_cto",
-    next_action: "GitHub 상태를 정적 화면에 연결",
+    next_action: "Connect short execution tasks",
     attention_needed: "none",
-    critique: "정적 화면은 생겼지만 자동 배포와 실시간 동기화는 아직 남아 있습니다."
+    critique: "Static view is ready. Live deployment and Telegram bridge remain."
   },
   next_prompts: [
-    "Task type: MICRO TASK\nObjective: Connect ceo_view.json to the status page.\nScope: site/app.js only.\nStop after one focused commit."
+    "Improve site/app.js to load generated status when available. Scope: site/app.js only."
   ]
 };
 
+async function fetchJson(path) {
+  const res = await fetch(path, { cache: "no-store" });
+  if (!res.ok) throw new Error("missing data");
+  return await res.json();
+}
+
 async function loadData() {
   try {
-    const res = await fetch("../.alos/ceo_view.json", { cache: "no-store" });
-    if (!res.ok) throw new Error("missing data");
-    return await res.json();
+    return await fetchJson("data.json");
   } catch (err) {
-    return fallback;
+    try {
+      return await fetchJson("../.alos/ceo_view.json");
+    } catch (inner) {
+      return fallback;
+    }
   }
 }
 
