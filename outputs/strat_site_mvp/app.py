@@ -697,6 +697,43 @@ class Handler(SimpleHTTPRequestHandler):
             if not self.require_admin_json():
                 return
             with connect() as conn:
+                event_summary = {
+                    "total": conn.execute("SELECT COUNT(*) FROM analytics_events").fetchone()[0],
+                    "by_event": [
+                        row_to_dict(r)
+                        for r in conn.execute(
+                            """
+                            SELECT event_name AS name, COUNT(*) AS count
+                            FROM analytics_events
+                            GROUP BY event_name
+                            ORDER BY count DESC, name
+                            """
+                        )
+                    ],
+                    "by_inferred_type": [
+                        row_to_dict(r)
+                        for r in conn.execute(
+                            """
+                            SELECT COALESCE(NULLIF(inferred_type, ''), 'unknown') AS name, COUNT(*) AS count
+                            FROM analytics_events
+                            GROUP BY COALESCE(NULLIF(inferred_type, ''), 'unknown')
+                            ORDER BY count DESC, name
+                            """
+                        )
+                    ],
+                    "by_target": [
+                        row_to_dict(r)
+                        for r in conn.execute(
+                            """
+                            SELECT COALESCE(NULLIF(target_title, ''), NULLIF(target_id, ''), 'none') AS name, COUNT(*) AS count
+                            FROM analytics_events
+                            GROUP BY COALESCE(NULLIF(target_title, ''), NULLIF(target_id, ''), 'none')
+                            ORDER BY count DESC, name
+                            LIMIT 12
+                            """
+                        )
+                    ],
+                }
                 payload = {
                     "users": [row_to_dict(r) for r in conn.execute("SELECT * FROM users ORDER BY id DESC LIMIT 100")],
                     "mailing": [row_to_dict(r) for r in conn.execute("SELECT * FROM mailing_subscribers ORDER BY id DESC LIMIT 100")],
@@ -707,6 +744,7 @@ class Handler(SimpleHTTPRequestHandler):
                     "slides": [row_to_dict(r) for r in conn.execute("SELECT * FROM key_slides ORDER BY display_order, id")],
                     "project_records": [row_to_dict(r) for r in conn.execute("SELECT * FROM project_records ORDER BY display_order, id")],
                     "events": [row_to_dict(r) for r in conn.execute("SELECT * FROM analytics_events ORDER BY id DESC LIMIT 200")],
+                    "event_summary": event_summary,
                 }
             self.send_json(payload)
             return

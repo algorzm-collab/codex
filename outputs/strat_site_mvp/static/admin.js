@@ -31,7 +31,29 @@ async function loadRecords() {
 function renderRecords() {
   const items = adminData[activeTab] || [];
   const html = items.map(renderItem).join("") || "<p>기록이 없습니다.</p>";
-  $("#records").innerHTML = html;
+  $("#records").innerHTML = activeTab === "events" ? `${renderEventSummary()}${html}` : html;
+}
+
+function renderRank(title, items = []) {
+  const rows = items.length
+    ? items.map((item) => `<li><span>${item.name}</span><b>${item.count}</b></li>`).join("")
+    : "<li><span>none</span><b>0</b></li>";
+  return `<div class="analytics-rank"><h3>${title}</h3><ol>${rows}</ol></div>`;
+}
+
+function renderEventSummary() {
+  const summary = adminData.event_summary || { total: 0, by_event: [], by_inferred_type: [], by_target: [] };
+  return `
+    <section class="analytics-summary">
+      <div class="analytics-total">
+        <span>Total Events</span>
+        <b>${summary.total || 0}</b>
+      </div>
+      ${renderRank("By Event", summary.by_event)}
+      ${renderRank("By Problem Type", summary.by_inferred_type)}
+      ${renderRank("By Target", summary.by_target)}
+    </section>
+  `;
 }
 
 function renderItem(item) {
