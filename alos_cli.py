@@ -3,21 +3,30 @@ from __future__ import annotations
 import argparse
 
 from alos.models import Mission
+from alos.pipeline import ALOSPipeline
 from alos.runtime import ALOSRuntime
 from alos.work_window import WorkWindowPlanner
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="ALOS mission compiler")
-    parser.add_argument("title")
-    parser.add_argument("objective")
+    parser.add_argument("title", nargs="?", default="")
+    parser.add_argument("objective", nargs="?", default="")
     parser.add_argument("--level", type=int, default=0)
     parser.add_argument("--show-prompts", action="store_true")
+    parser.add_argument("--repo", default="algorzm-collab/codex")
+    parser.add_argument("--issue", type=int)
     args = parser.parse_args()
 
-    mission = Mission(title=args.title, objective=args.objective)
-    runtime = ALOSRuntime()
-    plan = runtime.prepare(mission)
+    if args.issue:
+        pipeline = ALOSPipeline(repo=args.repo)
+        plan = pipeline.from_issue(args.issue)
+        mission = plan["mission"]
+    else:
+        mission = Mission(title=args.title, objective=args.objective)
+        runtime = ALOSRuntime()
+        plan = runtime.prepare(mission)
+
     window = WorkWindowPlanner().choose(args.level)
     brief = plan["brief"]
 
