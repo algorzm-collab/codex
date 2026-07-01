@@ -4,24 +4,32 @@ from .agent_router import AgentRouter
 from .context_engine import ContextEngine
 from .executors import DryRunExecutor, ExecutionResult
 from .harness_engine import HarnessEngine
+from .intake import IntakeConverter, IntakeText
 from .mission_compiler import MissionCompiler
 from .models import AgentType, Mission
+from .prompt_emitter import PromptEmitter
 
 
 class ALOSRuntime:
-    """Coordinates mission planning, routing, and dry-run execution."""
+    """Coordinates mission intake, planning, routing, and dry-run execution."""
 
     def __init__(self) -> None:
         self.context = ContextEngine()
         self.compiler = MissionCompiler()
         self.router = AgentRouter()
         self.harness = HarnessEngine()
+        self.intake = IntakeConverter()
+        self.prompts = PromptEmitter()
+
+    def from_text(self, title: str, body: str = "", source: str = "") -> Mission:
+        return self.intake.convert(IntakeText(title=title, body=body, source=source))
 
     def prepare(self, mission: Mission) -> dict[str, object]:
         context_plan = self.context.plan(mission.objective, mission.metadata.get("read_only"))
         tasks = self.compiler.compile(mission)
         evaluated = [(task, self.harness.evaluate_plan(task)) for task in tasks]
         routes = [self.router.route(task) for task, result in evaluated if result.passed]
+        prompts = [self.prompts.emit(route.task) for route in routes]
 
         return {
             "mission": mission,
@@ -29,6 +37,7 @@ class ALOSRuntime:
             "tasks": tasks,
             "evaluations": evaluated,
             "routes": routes,
+            "prompts": prompts,
         }
 
     def dry_run(self, mission: Mission) -> list[ExecutionResult]:
