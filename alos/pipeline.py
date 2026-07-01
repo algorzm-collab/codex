@@ -4,6 +4,7 @@ from .ceo_view import CEOViewExporter
 from .gh_reader import GitHubReader
 from .models import Mission
 from .runtime import ALOSRuntime
+from .site_exporter import SiteExporter
 from .state_store import MissionState, StateStore
 
 
@@ -13,6 +14,7 @@ class ALOSPipeline:
         self.reader = GitHubReader(repo)
         self.runtime = ALOSRuntime()
         self.view = CEOViewExporter()
+        self.site = SiteExporter()
         self.store = StateStore()
 
     def from_issue(self, number: int) -> dict[str, object]:
@@ -32,4 +34,5 @@ class ALOSPipeline:
             )
         ])
         self.view.write(plan)
+        self.site.write(plan)
         return plan
