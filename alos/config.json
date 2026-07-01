@@ -1,5 +1,5 @@
 {
-  "version": "0.1",
+  "version": "0.2",
   "default_micro_task_minutes": 10,
   "small_window_minutes": 5,
   "wrapup_window_minutes": 3,
@@ -13,6 +13,27 @@
     "minimal_context_first",
     "micro_task_execution",
     "harness_before_promotion",
-    "cross_agent_continuity"
+    "cross_agent_continuity",
+    "leverage_radar",
+    "copy_adapt_break_create"
+  ],
+  "radar_sources": [
+    "gitbap",
+    "reddit",
+    "github",
+    "youtube",
+    "papers",
+    "official_docs"
+  ],
+  "radar_categories": [
+    "ai_coding",
+    "agent_orchestration",
+    "context_engineering",
+    "harness_engineering",
+    "mcp",
+    "multimodal",
+    "dashboards",
+    "data_visualization",
+    "presentation_generation"
   ]
 }
