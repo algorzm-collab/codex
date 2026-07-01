@@ -19,9 +19,12 @@ def main() -> None:
     runtime = ALOSRuntime()
     plan = runtime.prepare(mission)
     window = WorkWindowPlanner().choose(args.level)
+    brief = plan["brief"]
 
     print(f"Mission: {mission.title}")
     print(f"Window: {window.name} {window.max_minutes}m")
+    print(f"Progress: {brief.progress}%")
+    print(f"Next: {brief.next_action}")
 
     print("\nContext required:")
     for item in plan["context_plan"].required_files:  # type: ignore[attr-defined]
