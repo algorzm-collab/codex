@@ -1,3 +1,8 @@
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
 from alos.micro_task_issue import MicroTaskIssueBuilder
 
 issue = MicroTaskIssueBuilder().build(
