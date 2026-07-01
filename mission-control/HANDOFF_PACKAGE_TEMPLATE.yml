@@ -1,0 +1,43 @@
+mission: ""
+current_objective: ""
+status: "NORMAL | WARNING | HANDOFF | FROZEN | RECOVERY"
+progress_estimate: "0-100%"
+
+current_context:
+  issue: ""
+  branch: ""
+  pull_request: ""
+  last_commit: ""
+
+completed_work:
+  - ""
+
+modified_files:
+  - path: ""
+    reason: ""
+
+important_decisions:
+  - decision: ""
+    reason: ""
+
+rejected_options:
+  - option: ""
+    reason: ""
+
+risks:
+  - ""
+
+blockers:
+  - ""
+
+next_recommended_action:
+  - ""
+
+recommended_next_agent: "Codex | ChatGPT CTO | Claude | Gemini | Other"
+
+approval_needed:
+  required: false
+  reason: ""
+  approval_owner: "CEO | CTO | none"
+
+continuity_notes: ""
