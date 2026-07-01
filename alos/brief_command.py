@@ -1,0 +1,11 @@
+from __future__ import annotations
+
+
+def is_portfolio_brief_command(text: str) -> bool:
+    normalized = " ".join((text or "").strip().lower().split())
+    return normalized in {
+        "포트폴리오 브리핑",
+        "portfolio brief",
+        "portfolio briefing",
+        "cockpit",
+    }
