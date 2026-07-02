@@ -89,6 +89,12 @@ Success/failure learning log:
 outputs/STRATEGY_Homepage_Success_Failure_Learning_v1.md
 ```
 
+Next planning and decision gate:
+
+```text
+outputs/STRATEGY_Next_Plan_Decision_Reference_v1.md
+```
+
 ## 1. 실행
 
 ```powershell
