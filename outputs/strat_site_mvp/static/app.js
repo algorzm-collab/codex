@@ -76,6 +76,7 @@ function setInquiryContext(next = {}) {
       flagship_case: "대표 실적 기반 문의 유도",
       nav_contact: "상단 메뉴에서 유입된 문의",
       contact_nav: "상단 메뉴에서 유입된 문의",
+      case_grid: "사례 카드에서 유입된 문의",
       direct: "문의 유도",
       hero: "히어로 문진 유도",
       contact_form: "문의 폼 시작",
@@ -227,71 +228,70 @@ const flagshipProofByType = {
 
 const defaultProofs = [
   {
-    title: "한국도로공사 - 유연한 미래사업체계 전략",
-    client_type: "Infrastructure Sector",
-    problem: "기술 변화 속 빠른 신사업 우선순위 혼선",
-    solution_cluster: "전략수립·프로젝트 포트폴리오 정렬",
-    approach: "현상-목표-제약 조건별로 전략 가설을 3개 축으로 모델링하고, 실행 시나리오를 운영계획으로 전환",
-    deliverables: "우선순위맵, 전략로드맵, 조직 실행 프로토콜",
-    customer_type: "강소/공공 파트너십",
-    year_note: "2023~2024",
-    link_url: "",
-    id: 1001,
-  },
-  {
     title: "신용보증기금 - NEW 비전 수립",
-    client_type: "Financial Sector",
-    problem: "조직 미션 변화 대비 성과지표 분산",
-    solution_cluster: "뉴비전 및 성과평가지표 정렬",
-    approach: "기존 지표군을 리스코프 기반으로 정비해 의사결정 속도 개선",
-    deliverables: "전략지표체계, 실행 KPI, 커뮤니케이션 프레임",
-    customer_type: "금융기관",
+    client_type: "금융",
+    problem: "조직 미션 변화와 조직구조 재설계 요구가 겹치며 전략 우선순위가 흔들렸습니다.",
+    solution_cluster: "비전 정렬·조직·성과 프레임 구축",
+    approach: "현상진단으로 핵심 제약을 추출하고, 실행 우선순위와 KPI 계열을 재정렬했습니다.",
+    deliverables: "비전 실행체계, 핵심 KPI 세트, 조직 커뮤니케이션 아키텍처",
+    customer_type: "신용보증기금",
     year_note: "2023",
     id: 1002,
   },
   {
-    title: "주택도시보증공사 - 부서성과평가 체계 간소화",
-    client_type: "Financial Sector",
-    problem: "평가결과에 대한 수용성 부족",
-    solution_cluster: "성과관리 시스템 재설계",
-    approach: "평가기준을 업무결과 단위로 분해하고, 부서/개인 보상 연계 구조 정립",
-    deliverables: "성과평가 프레임, 보상 연동 정책",
-    customer_type: "공공기관",
-    year_note: "2023",
+    title: "해양진흥공사 - 중장기 경영 전략 수립",
+    client_type: "공공/국책",
+    problem: "중장기 성장전략과 부처 간 실행 동선이 불일치했습니다.",
+    solution_cluster: "전략재정렬·사업포트폴리오 구조화",
+    approach: "시나리오 기반으로 전략 축과 과제 우선순위를 재조정하고, 실행 가이드와 성과체계를 묶었습니다.",
+    deliverables: "중장기 전략안, 사업체계 지도, 실행 가이드라인",
+    customer_type: "해양진흥공사",
+    year_note: "2020/2023",
     id: 1003,
   },
   {
-    title: "서울산업진흥원 - 직무분석 기반 인력운영계획 수립",
-    client_type: "Organization & Personnel",
-    problem: "역할 중첩과 평가 저항",
-    solution_cluster: "조직진단·성과체계 고도화",
-    approach: "R&R 재정렬, 성과지표 간 종속관계 분석, 운영 규범 정비",
-    deliverables: "R&R 설계문서, KPI 재설계, 운영체계",
-    customer_type: "준공공기관",
-    year_note: "2022",
+    title: "주택도시보증공사 - 부서성과평가 간소화",
+    client_type: "성과관리",
+    problem: "평가 지표는 있었지만 현장 실행과 보상 연계가 약했습니다.",
+    solution_cluster: "성과·보상 연계형 평가 설계",
+    approach: "업무 산출단위와 보상 기준을 정렬해 조직 공통 언어로 수용성을 높였습니다.",
+    deliverables: "성과평가 운영안, 보상 연동 규정, 합의 프레임",
+    customer_type: "주택도시보증공사",
+    year_note: "2023",
     id: 1004,
   },
   {
-    title: "해양환경공단 - 조직 전략 고도화",
-    client_type: "Environment Sector",
-    problem: "조직 개편 후 성과 지표 미달",
-    solution_cluster: "거버넌스+전략 재정렬",
-    approach: "조직 진단을 기반으로 성과·보상 설계와 운영 프로세스를 동시 조정",
-    deliverables: "구조도, 책임체계, 운영규정, 실행 로드맵",
-    customer_type: "공사",
-    year_note: "2019/2021",
+    title: "강원도개발공사 - 평창 올림픽 레거시 활용방안",
+    client_type: "인프라/지역개발",
+    problem: "대형 레거시 자산을 지역경제와 조직 미션으로 전환하지 못한 상태였습니다.",
+    solution_cluster: "레거시-성장 포트폴리오 재설계",
+    approach: "자산·조직·사업을 묶어 단계별 실행과 KPI로 재정의했습니다.",
+    deliverables: "활용 전략, 기관 조직안, 실행계획",
+    customer_type: "강원도개발공사",
+    year_note: "2021/2022",
     id: 1005,
   },
   {
-    title: "UAM Team Korea - 미래교통 대응 전략",
-    client_type: "Aerospace Sector",
-    problem: "기술비전은 있으나 실행 주체·측정체계 미정비",
-    solution_cluster: "AI/ESG·규제 기반 실행전략",
-    approach: "정책·산업·기술을 한 프레임으로 묶고 시점별 실행 체크리스트 설계",
-    deliverables: "전략정합안, 실행 가설, 단계별 KPI",
-    customer_type: "공공민간 협업",
-    year_note: "2024",
+    title: "한국도로공사 - 미래전략 및 UAM 대응 전략",
+    client_type: "인프라/교통",
+    problem: "기술 규제·산업 변동이 빠른 환경에서 실행 중심의 장기안이 필요했습니다.",
+    solution_cluster: "시나리오+실행로드맵 결합 설계",
+    approach: "향후 6~10년의 도로·교통 전략 가설을 정리해 과제맵과 우선순위를 설계했습니다.",
+    deliverables: "전략 아키텍처, 실행 체크리스트, 의사결정 기준표",
+    customer_type: "한국도로공사",
+    year_note: "2023/2024",
     id: 1006,
+  },
+  {
+    title: "UAM Team Korea - 전략·조직·성과 정합 과제",
+    client_type: "모빌리티/AI·ESG",
+    problem: "비전·규제 변화 속에서 수행조직과 정책 실행이 분리되어 있었습니다.",
+    solution_cluster: "AI·ESG 연계 실행전략",
+    approach: "정책·산업·조직 체계를 연결해 단계별 실행 시나리오와 지표를 수립했습니다.",
+    deliverables: "실행전략안, KPI 설계, 운영 체계",
+    customer_type: "UAM Team Korea",
+    year_note: "2024",
+    id: 1007,
   },
 ];
 
@@ -597,13 +597,25 @@ async function loadContent() {
       project_records: [],
     }));
   renderFlagshipProof(response.cases.slice(0, 6));
-  $("#caseGrid").innerHTML = response.cases.map((item) => `
+  $("#caseGrid").innerHTML = response.cases.map((item, index) => `
     <article class=\"case-card\">
       <span class=\"tag\">${toText(item.customer_type) || "Strategy Case"}</span>
       <b>${toText(item.title)}</b>
       <p><b>문제</b><br>${toText(item.problem)}</p>
       <p><b>방식</b><br>${toText(item.approach)}</p>
       <p><b>성과</b><br>${toText(item.deliverables)}</p>
+      <a
+        class=\"btn secondary\"
+        href=\"#contact\"
+        data-case-cta=\"${toText(item.title)}\"
+        data-case-id=\"case-grid-${index + 1}\"
+        data-case-source=\"case_grid\"
+        data-inquiry-source=\"case_grid\"
+        data-inquiry-route=\"case_grid\"
+        data-inquiry-case-title=\"${toText(item.title)}\"
+        data-inquiry-case-id=\"case-grid-${index + 1}\"
+        data-event=\"case_cta_click\"
+      >이 사례로 진단 적용하기</a>
     </article>
   `).join("");
   $("#slideGrid").innerHTML = response.slides.map((item) => `
@@ -747,8 +759,9 @@ document.addEventListener("click", (event) => {
   const caseCta = event.target.closest("[data-case-cta]");
   if (caseCta) {
     setInquiryContextFromElement(caseCta);
+    const sourceSection = caseCta.dataset.caseSource === "case_grid" ? "case_grid" : "flagship_proof";
     track("case_cta_click", {
-      source_section: "flagship_proof",
+      source_section: sourceSection,
       target_title: caseCta.dataset.caseCta || caseCta.dataset.inquiryCaseTitle || "",
       target_id: caseCta.dataset.caseId || caseCta.closest(".proof-panel")?.getAttribute("id") || "",
     });
