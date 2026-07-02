@@ -1,9 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>STRATEGY | 臾몄젣?닿껐???꾨왂 而⑥꽕??/title>
+  <title>STRATEGY | 문제 진단형 전략 컨설팅</title>
   <link rel="stylesheet" href="/styles.css?v=20260702-sprint06">
 </head>
 <body>
@@ -12,16 +12,16 @@
   <header class="topbar">
     <a class="brand" href="#home"><span>ST</span> STRATEGY</a>
     <nav>
-      <a href="#finder">吏꾨떒</a>
-      <a href="#cases">?щ?</a>
-      <a href="#services">?쒕퉬??/a>
-      <a href="#company">?뚯궗?뚭컻</a>
-      <a href="#people">援ъ꽦??/a>
-      <a href="#track-record">?ㅼ쟻</a>
+      <a href="#finder">문의</a>
+      <a href="#cases">사례</a>
+      <a href="#services">서비스</a>
+      <a href="#company">회사소개</a>
+      <a href="#people">구성원</a>
+      <a href="#track-record">실적</a>
       <a href="#qa">QA</a>
       <a href="#contact" data-inquiry-source="contact_nav" data-inquiry-route="direct" data-inquiry-case-title="문의 진입" data-inquiry-case-id="topnav_contact">문의</a>
     </nav>
-    <a class="btn primary" href="#finder" data-event="hero_cta_click">吏꾨떒 ?쒖옉</a>
+    <a class="btn primary" href="#finder" data-event="hero_cta_click">문진 시작</a>
   </header>
 
   <main id="home">
@@ -30,45 +30,51 @@
 
       <div class="hero-copy">
         <p class="kicker">Problem-first advisory</p>
-        <h1>臾몄젣瑜?癒쇱? ?뺥솗???뺤쓽?섍퀬, ?ㅽ뻾?쇰줈 ?앸궡???꾨왂 而⑥꽕??/h1>
+        <h1>문제 해결형 컨설팅, 실행으로 바로 연결되는 전략 진단</h1>
         <p>
-          strategy??釉뚮━?꽷룸낫怨좎꽌 以묒떖???곸뾽???꾨떃?덈떎.
-          諛⑸Ц?먮뒗 ??臾몄젣瑜?吏꾨떒諛쏄퀬 諛붾줈 ?ㅼ쓬 ?④퀎濡?媛???⑸땲??
-          60珥??덉뿉 ?닿? 留욌뒗 臾몄젣 ?좏삎???뚯븙?섍퀬, 利앷굅 湲곕컲 ?ㅼ쟻?쇰줈 諛붾줈 ?곌껐?⑸땲??
+          3개 질문으로 조직의 병목 지점을 좁히고,
+          대표 실적 + 실행 프레임 + 문의 유도로 다음 단계로 연결합니다.
         </p>
         <div class="actions">
-          <a class="btn primary" href="#finder" data-event="hero_cta_click">??臾몄젣 吏꾨떒?섍린</a>
-          <a class="btn secondary" href="#cases">????ㅼ쟻 蹂대윭 媛湲?/a>
+          <a class="btn primary" href="#finder" data-event="hero_cta_click">문진 시작하고 진단 받기</a>
+          <a class="btn secondary" href="#cases">대표 실적 먼저 보기</a>
+        </div>
+        <div class="hero-journey">
+          <span>0. 증상 진단</span>
+          <span>→</span>
+          <span>1. 문제 유형 추론</span>
+          <span>→</span>
+          <span>2. 문의 제안</span>
         </div>
         <div class="hero-proof">
           <span>Sein &amp; Sollen</span>
           <span>Fermat Point</span>
-          <span>6媛?Flagship</span>
-          <span>吏꾨떒??CTA ?먮쫫</span>
-          <span>?ㅽ뻾???쒖븞</span>
+          <span>6개 Flagship</span>
+          <span>문진 CTA</span>
+          <span>데이터 기반</span>
         </div>
       </div>
 
       <aside class="panel finder" id="finder">
         <div class="panel-head">
           <strong>Issue Finder</strong>
-          <span>3?④퀎</span>
+          <span>3단계</span>
         </div>
         <div class="progress"><i id="progress"></i></div>
         <div class="finder-body">
           <p class="step" id="stepLabel">STEP 1 / 3</p>
-          <h2 id="question">?꾩옱 議곗쭅?먯꽌 媛??癒쇱? ?닿껐?댁빞 ??臾몄젣??臾댁뾿?멸???</h2>
+          <h2 id="question">지금 가장 느끼는 조직 이슈를 골라주세요</h2>
           <div class="options" id="options"></div>
-          <button class="btn primary" id="nextBtn" type="button">?ㅼ쓬</button>
+          <button class="btn primary" id="nextBtn" type="button">다음</button>
         </div>
         <div class="result" id="result" hidden></div>
       </aside>
     </section>
 
     <section class="strip">
-      <div class="metric"><b>Strategy</b><span>?꾨왂 ?섎┰쨌?ъ꽕怨?/span></div>
-      <div class="metric"><b>Organization</b><span>R&amp;R쨌??븷泥닿퀎 ?뺣젹</span></div>
-      <div class="metric"><b>Performance</b><span>KPI쨌?됯?쨌?ㅽ뻾 ?곌껐</span></div>
+      <div class="metric"><b>Strategy</b><span>전략 수립 · 실행 정렬</span></div>
+      <div class="metric"><b>Organization</b><span>R&amp;R 역할 정합성</span></div>
+      <div class="metric"><b>Performance</b><span>KPI 운영 · 성과체계</span></div>
     </section>
 
     <section class="method-marquee" aria-label="method chips">
@@ -87,23 +93,23 @@
     <section class="section" id="mirror">
       <div class="section-head">
         <p class="kicker">Problem Mirror</p>
-        <h2>?뱀떊??吏꾩쭨 臾몄젣瑜?癒쇱? 鍮꾩떠遊낅땲??</h2>
+        <h2>문제 거울: 가장 먼저 진단해야 할 이슈를 찾아보세요</h2>
       </div>
       <div class="grid cards">
-        <button data-symptom="report_no_execution">吏묓뻾瑜좎? ??퀬 ?ㅽ뻾? ?먮━??/button>
-        <button data-symptom="unclear_owner">梨낆엫?먯? ?섏궗寃곗젙 沅뚰븳???먮젮議뚮떎</button>
-        <button data-symptom="too_many_kpi">KPI媛 留롮?留??깃낵媛 ???섏삤吏 ?딅뒗??/button>
-        <button data-symptom="evaluation_not_accepted">?됯? 寃곌낵媛 ?꾩뾽?먯꽌 諛쏆븘?ㅼ뿬吏吏 ?딅뒗??/button>
-        <button data-symptom="reorg_no_standard">?ы렪?덈뒗?곕룄 ??븷泥닿퀎媛 ?뺣룉?섏? ?딅뒗??/button>
-        <button data-symptom="transformation_not_actionable">AI/ESG ?꾨왂? ?덈뒗???ㅽ뻾怨꾪쉷???쏀븯??/button>
+        <button data-symptom="report_no_execution">실행은 되는데 결과가 안 나옵니다</button>
+        <button data-symptom="unclear_owner">책임자/결재선이 불명확합니다</button>
+        <button data-symptom="too_many_kpi">KPI가 많아 핵심이 보이지 않습니다</button>
+        <button data-symptom="evaluation_not_accepted">성과 결과가 현장에서 반발을 만납니다</button>
+        <button data-symptom="reorg_no_standard">조직 개편 후에도 역할이 중복되거나 비어 있습니다</button>
+        <button data-symptom="transformation_not_actionable">AI/ESG는 있는데 실행 가설이 약합니다</button>
       </div>
     </section>
 
     <section class="section alt" id="cases">
       <div class="section-head">
         <p class="kicker">Cases</p>
-        <h2>6媛?????ㅼ쟻 以묒떖?쇰줈, ??臾몄젣? ?곌껐?섎뒗 利앷굅瑜?蹂댁뿬?쒕┰?덈떎.</h2>
-        <p>臾몄젣 ?뺤쓽 ???묎렐 諛⑹떇 ???ㅽ뻾 ?꾨젅?꾩썙?????깃낵 ?뺤갑源뚯?, ?ㅼ젣 ?꾨줈?앺듃 濡쒓렇瑜?洹쇨굅濡??쒖떆?⑸땲??</p>
+        <h2>핵심 실적 6건으로 증명하는 문제 해결력</h2>
+        <p>문제 유형별로 검증된 전략·실행 레시피와 운영체계를 한 번에 확인해 보세요.</p>
       </div>
       <div class="proof-stage" id="flagshipProof" aria-label="flagship case proofs"></div>
       <div class="grid case-grid" id="caseGrid"></div>
@@ -112,51 +118,51 @@
     <section class="section" id="services">
       <div class="section-head">
         <p class="kicker">Services</p>
-        <h2>strategy??臾몄젣蹂꾨줈 ?ㅻⅤ寃??ㅺ퀎?⑸땲??</h2>
+        <h2>strategy는 문제 자체를 정렬해 해결하는 구조형 자문입니다</h2>
       </div>
       <div class="grid service-grid">
-        <article><b>?꾨왂 而⑥꽕??/b><p>鍮꾩쟾, ?뺤콉 蹂?? ?섍꼍?붿냼瑜?諛섏쁺???꾨왂???ъ꽕怨꾪빀?덈떎.</p></article>
-        <article><b>?깃낵愿由??쒖뒪??/b><p>KPI, 蹂댁긽, ?됯?, ?ъ뾽?깃낵瑜??곌껐???ㅽ뻾?μ쓣 留뚮벊?덈떎.</p></article>
-        <article><b>議곗쭅쨌?몄궗 ?쒕룄</b><p>議곗쭅 援ъ“? ??븷???뺣젹??梨낆엫쨌沅뚰븳 臾몄젣瑜??댁냼?⑸땲??</p></article>
-        <article><b>?곸떊 ?꾨왂</b><p>AI/ESG ?꾩엯??異붿쭊紐⑺몴媛 ?꾨땶 ?ㅽ뻾紐⑺몴濡??꾪솚?⑸땲??</p></article>
-        <article><b>?ъ뾽 ?깃낵 怨좊룄??/b><p>遺?쒖꽦怨??ъ뾽?깃낵 泥닿퀎瑜??ъ꽕怨꾪빐 ?됯? ?섏슜?깆쓣 ?믪엯?덈떎.</p></article>
-        <article><b>臾몄젣 吏꾨떒 由ы룷??/b><p>吏꾨떒 寃곌낵瑜?以묒떖?쇰줈 媛?ㅺ낵 ?ㅻТ ?≪뀡??利됱떆 ?쒖떆?⑸땲??</p></article>
+        <article><b>문제 진단</b><p>리포트 이상의 실행 중심 진단을 통해 병목 요인을 압축합니다.</p></article>
+        <article><b>전략 수립</b><p>KPI, 사업, 조직, 보상 체계를 연결해 실행 가능성을 높입니다.</p></article>
+        <article><b>조직 설계</b><p>조직 설계를 통해 역할 충돌을 정리하고 협업 속도를 올립니다.</p></article>
+        <article><b>전환 전략</b><p>AI/ESG 전략은 결과가 아닌 실행 시나리오로 연결합니다.</p></article>
+        <article><b>HR 시스템</b><p>직무와 역량·보상 기준을 매칭해 인력운영 설계를 정착시킵니다.</p></article>
+        <article><b>성과관리</b><p>성과 평가와 조직 성과지표를 전략 변화에 맞춰 고도화합니다.</p></article>
       </div>
     </section>
 
     <section class="section alt" id="company">
       <div class="section-head">
         <p class="kicker">Company</p>
-        <h2>?ㅽ뻾 媛?ν븳 ?꾨왂??留뚮뱶??而⑥꽕??議곗쭅?낅땲??</h2>
-        <p>strategy??Sein(?꾩옱??吏꾩떎), Sollen(紐⑺몴 ?곹깭), Fermat Point(理쒖쟻 寃쎈줈)瑜??곌껐??臾몄젣瑜??뺣━?⑸땲??</p>
+        <h2>실행 우선의 전략 파트너</h2>
+        <p>Sein(사실적 진단), Sollen(목표 기준), Fermat Point(최소 리스크 경로)로 문제를 구조화해 즉시 실행까지 연결합니다.</p>
       </div>
       <div class="grid process">
-        <article><b>Sein</b><p>臾몄젣???듭떖 議곌굔??紐낇솗???뺤쓽???꾩븞??援ъ“?뷀빀?덈떎.</p></article>
-        <article><b>Sollen</b><p>紐⑺몴 ?곹깭瑜?痢≪젙 媛?ν븳 ?깃낵吏?쒕줈 ?뺥빀?⑸땲??</p></article>
-        <article><b>Fermat</b><p>?щ윭 ?댄빐愿怨꾨? ?뉖뒗 理쒕떒 寃쎈줈瑜?李얠븘 ?ㅽ뻾 ?곗꽑?쒖쐞瑜??뺥빀?덈떎.</p></article>
-        <article><b>Execution</b><p>臾몄꽌媛 ?꾨땲???쒖뒪?쒓낵 ?듦??쇰줈 ?뺤갑?섎룄濡?留덇컧源뚯? 愿由ы빀?덈떎.</p></article>
+        <article><b>Sein</b><p>문제의 실체를 먼저 수렴해 혼선을 줄이고 핵심 진단을 만듭니다.</p></article>
+        <article><b>Sollen</b><p>목표 수준별로 우선순위를 재설정해 실행 단계를 정렬합니다.</p></article>
+        <article><b>Fermat</b><p>충돌 비용과 리스크를 함께 줄이는 최적 경로를 설계합니다.</p></article>
+        <article><b>Execution</b><p>문제 정렬 결과를 운영체계로 바로 내리는 실행 매뉴얼을 만듭니다.</p></article>
       </div>
     </section>
 
     <section class="section" id="people">
       <div class="section-head">
         <p class="kicker">People</p>
-        <h2>Sheer Excellence. ?듭떖? 臾몄젣 ?닿껐 ?듦??낅땲??</h2>
-        <p>?꾨Ц遺꾩빞蹂꾨줈 遺꾧린??吏?앹씠 ?꾨땲?? 臾몄젣 ?좏삎蹂꾨줈 鍮좊Ⅴ寃?議고빀?섎뒗 ?ㅽ뻾?μ쓣 蹂댁옣?⑸땲??</p>
+        <h2>Sheer Excellence. 실제 실행을 만들던 사람들의 기록</h2>
+        <p>대표 리더십과 내부 코어 팀이 전략·조직·성과의 병목을 함께 해결하는 방식을 중심으로 운영합니다.</p>
       </div>
       <div class="grid people-grid">
         <article>
-          <b>源?뺤꽦</b>
-          <p>援?났由쎄린愿 ?꾨왂 ?꾨줈?앺듃瑜?以묒떖?쇰줈 ?꾨왂 ?섎┰쨌議곗쭅 ?ъ꽕怨꽷룹꽦怨쇨꼍??泥닿퀎瑜??ㅺ퀎?댁솕?듬땲??</p>
-          <p><a href="https://www.linkedin.com/in/stratgy" target="_blank" rel="noreferrer">LinkedIn 蹂닿린</a></p>
+          <b>대표</b>
+          <p>김정성 컨설턴트는 전략 문제를 공공기관 및 대형 조직에서 반복적으로 재구성해 실행로로 바꿔온 실무형 리더십을 갖추고 있습니다.</p>
+          <p><a href="https://www.linkedin.com/in/stratgy" target="_blank" rel="noreferrer">LinkedIn 바로가기</a></p>
         </article>
         <article>
           <b>Core Team</b>
-          <p>?꾨Ц ?뚰듃?덈줈 援ъ꽦?섏뼱 ??怨듭젙?먯꽌 ?꾨왂쨌議곗쭅쨌?깃낵 愿由??곸뿭???곌퀎?⑸땲??</p>
+          <p>리서치부터 설계, 운영 코치까지 한 팀으로 동일한 방식의 문제 분석과 실행 체계화를 반복합니다.</p>
         </article>
         <article>
           <b>Delivery</b>
-          <p>而⑥꽕???곗텧臾쇱쓣 ?ㅽ뻾 媛?ν븳 ?뚰겕?뚮줈?곕줈 ?꾪솚?? ?낅Т?섍꼍??留욊쾶 ?뺤갑??吏?먰빀?덈떎.</p>
+          <p>실행 단계별로 누가 무엇을 하는지, 어떤 순서로 옮기는지까지 제안해 성과로 연결합니다.</p>
         </article>
       </div>
     </section>
@@ -164,10 +170,10 @@
     <section class="section alt" id="track-record">
       <div class="section-head">
         <p class="kicker">Track Record</p>
-        <h2>?듭떖 ?ㅼ쟻? ?뺣젹 媛?ν븳 ?깃낵?뺥깭濡??뺣━?⑸땲??</h2>
+        <h2>실적이 바로 증명하는 문제해결 사례</h2>
       </div>
       <div class="track-toolbar">
-        <button class="btn secondary active" data-theme-filter="all">?꾩껜</button>
+        <button class="btn secondary active" data-theme-filter="all">전체</button>
         <button class="btn secondary" data-theme-filter="Strategy">Strategy</button>
         <button class="btn secondary" data-theme-filter="Organization &amp; Personnel">Organization</button>
         <button class="btn secondary" data-theme-filter="Performance Management">Performance Management</button>
@@ -179,7 +185,7 @@
     <section class="section alt">
       <div class="section-head">
         <p class="kicker">Key Slides</p>
-        <h2>?듭떖 ?꾨젅?꾩쓣 移대뱶?뷀븳 ?먮즺吏?/h2>
+        <h2>대표 성과 보고서 미리보기</h2>
       </div>
       <div class="grid slide-grid" id="slideGrid"></div>
     </section>
@@ -187,15 +193,15 @@
     <section class="section" id="signup">
       <div class="section-head">
         <p class="kicker">Membership</p>
-        <h2>?먮즺瑜?諛쏆븘蹂대뒗 ??? 癒쇱? 臾몄젣瑜??↔퀬 ?댁빞湲고빀?쒕떎.</h2>
+        <h2>기존 고객/신규 고객 모두 성과형 업데이트를 받아볼 수 있습니다.</h2>
       </div>
       <form class="form" id="signupForm">
-        <input name="name" placeholder="?깊븿" required>
-        <input name="organization" placeholder="?뚯냽 湲곌?/?뚯궗" required>
-        <input name="phone" placeholder="?곕씫泥?>
-        <input name="email" type="email" placeholder="?대찓?? required>
-        <label class="check"><input name="consent" type="checkbox" checked> ?쒖슜 ?숈쓽</label>
-        <button class="btn primary" type="submit">?뚯썝 ?깅줉</button>
+        <input name="name" placeholder="이름" required>
+        <input name="organization" placeholder="기관/회사/부서" required>
+        <input name="phone" placeholder="전화번호" required>
+        <input name="email" type="email" placeholder="이메일" required>
+        <label class="check"><input name="consent" type="checkbox" checked> 개인정보 동의</label>
+        <button class="btn primary" type="submit">회원 등록</button>
         <p class="form-note" id="signupNote"></p>
       </form>
     </section>
@@ -203,15 +209,15 @@
     <section class="section alt" id="qa">
       <div class="section-head">
         <p class="kicker">QA Board</p>
-        <h2>吏湲?媛??留롮씠 諛쏅뒗 吏덈Ц??鍮좊Ⅴ寃??듯빐?쒕┰?덈떎.</h2>
+        <h2>질문이 있다면 24시간 내 답변을 받으실 수 있습니다.</h2>
       </div>
       <form class="form" id="qaForm">
-        <input name="name" placeholder="?깊븿" required>
-        <input name="organization" placeholder="?뚯냽 湲곌?/?뚯궗">
-        <input name="email" type="email" placeholder="?대찓?? required>
-        <input name="title" placeholder="吏덈Ц ?쒕ぉ" required>
-        <textarea name="question" placeholder="吏덈Ц ?댁슜" required></textarea>
-        <button class="btn primary" type="submit">QA ?깅줉</button>
+        <input name="name" placeholder="이름" required>
+        <input name="organization" placeholder="기관/회사/부서">
+        <input name="email" type="email" placeholder="이메일" required>
+        <input name="title" placeholder="질문 제목" required>
+        <textarea name="question" placeholder="질문 내용" required></textarea>
+        <button class="btn primary" type="submit">QA 등록</button>
         <p class="form-note" id="qaNote"></p>
       </form>
     </section>
@@ -219,28 +225,28 @@
     <section class="section contact" id="contact">
       <div>
         <p class="kicker">Contact</p>
-        <h2>臾몄젣???ш린??留덈Т由ы븯吏 留먭퀬, ?ㅼ쓬 ?④퀎濡??댁뼱媛?몄슂.</h2>
-        <p>臾몄젣 吏꾨떒??諛뷀깢?쇰줈 1李?吏꾩엯 媛?ㅼ쓣 ?↔퀬, ?ㅻТ ?ㅼ?以꾩쓣 怨듭쑀?대뱶由쎈땲??</p>
-        <p>02-6083-0330 / ?됱씪 09:00-18:00 / <a href="https://www.linkedin.com/in/stratgy" target="_blank" rel="noreferrer">LinkedIn</a></p>
+        <h2>문제가 맞는지, 지금 바로 점검해 보겠습니다.</h2>
+        <p>컨설팅 제안은 1회 진단 후 문제 맥락에 맞춘 액션플랜으로 시작합니다.</p>
+        <p>02-6083-0330 / 평일 09:00-18:00 / <a href="https://www.linkedin.com/in/stratgy" target="_blank" rel="noreferrer">LinkedIn</a></p>
       </div>
       <form class="form dark" id="inquiryForm">
-        <input name="name" placeholder="?깊븿" required>
-        <input name="organization" placeholder="?뚯냽 湲곌?/?뚯궗">
-        <input name="phone" placeholder="?곕씫泥?>
-        <input name="email" type="email" placeholder="?대찓?? required>
-        <textarea name="message" placeholder="臾몄쓽 ?댁슜" required></textarea>
+        <input name="name" placeholder="이름" required>
+        <input name="organization" placeholder="기관/회사/부서">
+        <input name="phone" placeholder="전화번호" required>
+        <input name="email" type="email" placeholder="이메일" required>
+        <textarea name="message" placeholder="문의 내용" required></textarea>
         <input type="hidden" name="inquiry_source" id="inquirySource">
         <input type="hidden" name="inquiry_case_title" id="inquiryCaseTitle">
         <input type="hidden" name="inquiry_route" id="inquiryRoute">
         <input type="hidden" name="inquiry_inferred_type" id="inquiryInferredType">
         <p class="form-intent-note" id="inquiryIntentNotice" hidden></p>
-        <button class="btn primary" type="submit" data-event="hero_cta_click">臾몄쓽 ?붿껌</button>
+        <button class="btn primary" type="submit" data-event="hero_cta_click">문의 제출</button>
         <p class="form-note" id="inquiryNote"></p>
       </form>
     </section>
   </main>
 
-  <a class="mobile-cta btn primary" href="#finder" data-event="hero_cta_click">吏꾨떒 ?쒖옉</a>
+  <a class="mobile-cta btn primary" href="#finder" data-event="hero_cta_click">문진 시작</a>
   <script src="/app.js?v=20260702-sprint06"></script>
 </body>
 </html>

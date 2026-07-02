@@ -72,13 +72,16 @@ function setInquiryContext(next = {}) {
       return;
     }
     const labels = {
-      issue_result: "문진 결과 기반 문의입니다.",
-      flagship_case: "대표 실적 기반 문의입니다.",
-      nav_contact: "상단 메뉴에서 넘어온 문의입니다.",
-      contact_nav: "상단 메뉴에서 넘어온 문의입니다.",
+      issue_result: "진단 결과 기반 문의 유도",
+      flagship_case: "대표 실적 기반 문의 유도",
+      nav_contact: "상단 메뉴에서 유입된 문의",
+      contact_nav: "상단 메뉴에서 유입된 문의",
+      direct: "문의 유도",
+      hero: "히어로 문진 유도",
+      contact_form: "문의 폼 시작",
     };
     notice.hidden = false;
-    notice.textContent = `${labels[route] || "진단 기반 문의입니다."} (${sourceId || sourceTitle || "타입 미확정"} · ${inferredType || "추론 미확정"})`;
+    notice.textContent = `${labels[route] || "문의 유도"} (${sourceId || sourceTitle || "입력 컨텍스트"} · ${inferredType || "진단 전"})`;
   }
 }
 
@@ -97,39 +100,39 @@ const steps = [
   {
     key: "symptom",
     label: "STEP 1 / 3",
-    question: "현재 가장 먼저 해결해야 할 조직 이슈는?",
+    question: "현재 조직에서 가장 먼저 느끼는 병목은 무엇인가요?",
     options: [
-      ["report_no_execution", "집행률은 낮고 실제 실행은 지연된다"],
-      ["unclear_owner", "책임자·결재선이 불명확하다"],
-      ["too_many_kpi", "KPI가 많아 핵심이 안 보인다"],
-      ["evaluation_not_accepted", "평가결과가 현업에서 저항을 받는다"],
-      ["reorg_no_standard", "개편 후에도 역할 정의가 흐려진다"],
-      ["transformation_not_actionable", "AI/ESG 전략은 있으나 실행이 약하다"],
+      ["report_no_execution", "보고가 있어도 실행이 지연되고 있다"],
+      ["unclear_owner", "의사결정권자와 책임자가 분명하지 않다"],
+      ["too_many_kpi", "KPI가 너무 많아 우선순위를 정하기 어렵다"],
+      ["evaluation_not_accepted", "성과 결과가 부서 간 합의 없이 내려온다"],
+      ["reorg_no_standard", "조직변경만 반복되고 운영 기준은 없다"],
+      ["transformation_not_actionable", "AI/ESG 전략은 있는데 실행 가설이 없다"],
     ],
   },
   {
     key: "scene",
     label: "STEP 2 / 3",
-    question: "문제는 어떤 상황에서 더 자주 발생하나요?",
+    question: "이 문제를 해결하려면 가장 먼저 바꿔야 할 장면은 무엇인가요?",
     options: [
-      ["decision_meeting", "의사결정/회의체계가 분절된다"],
-      ["cross_team", "부서 간 협업이 고립되어 있다"],
-      ["kpi_evaluation", "KPI와 평가가 동기와 맞지 않는다"],
-      ["org_role", "조직 역할·권한이 겹치거나 비어 있다"],
-      ["hr_capability", "인력 역량과 임무가 맞지 않는다"],
-      ["external_policy", "외부 정책 변화가 즉시 반영되지 않는다"],
+      ["decision_meeting", "전략회의와 집행회의의 연결이 느슨하다"],
+      ["cross_team", "부서 협업이 단기 이슈 중심으로만 흘러간다"],
+      ["kpi_evaluation", "KPI와 평가 주기가 서로 맞물리지 않는다"],
+      ["org_role", "조직 구조와 직무 체계가 중복/누락된다"],
+      ["hr_capability", "인사 제도와 역량 지도가 연동되지 않는다"],
+      ["external_policy", "외부 규제와 정책 변화가 판단을 흔들어준다"],
     ],
   },
   {
     key: "need",
     label: "STEP 3 / 3",
-    question: "원하는 결과는 무엇인가요?",
+    question: "최종적으로 원하는 결과는 어디인가요?",
     options: [
-      ["internal_logic", "전략-기획-집행 흐름을 정렬하고 싶다"],
-      ["scope_before_project", "사업 범위를 현실적으로 조정하고 싶다"],
-      ["strategy_to_execution", "좋은 전략을 실행 가능한 형태로 바꾸고 싶다"],
-      ["org_kpi_alignment", "전략과 성과지표를 맞추고 싶다"],
-      ["not_sure", "상황을 먼저 정확히 진단받고 싶다"],
+      ["internal_logic", "전략-실행 연결 논리를 먼저 정리하고 싶다"],
+      ["scope_before_project", "프로젝트 전에 범위를 정확히 고정하고 싶다"],
+      ["strategy_to_execution", "실행 가능한 전략 산출물을 원한다"],
+      ["org_kpi_alignment", "조직 목표와 KPI 정렬이 필요하다"],
+      ["not_sure", "정확히 모르니 진단을 통해 정하고 싶다"],
     ],
   },
 ];
@@ -158,7 +161,7 @@ const inferenceNarrative = {
     why: "전략 수립과 집행 체계가 분리되어, 기획은 좋지만 성과가 현장으로 전달되지 못합니다.",
     hypothesis: [
       "우선 의사결정→전략→실행의 연결을 하나의 지도에서 설계합니다.",
-      "KPI와 평가를 실행동선별로 재정렬해 성과 수용성을 끌어올립니다.",
+      "KPI와 평가를 실행 동선별로 재정렬해 성과 수용성을 끌어올립니다.",
     ],
     proofHint: "대규모 공기업·공공기관 전략 수립 프로젝트의 증거 기반 운영 방식으로 해결했습니다.",
     outcomeHint: "우선순위가 분명해지고 실행 지연이 줄어드는지 1회 점검 주기로 확인됩니다.",
@@ -194,7 +197,7 @@ const inferenceNarrative = {
       "우선순위-책임-자원 배치까지 함께 바꿔 실행 실패 가능성을 낮춥니다.",
     ],
     proofHint: "AI·ESG 연계 운영전략화와 UAM, 원전 등 변환 과제에서 실무형 프레임으로 연결해온 사례가 있습니다.",
-    outcomeHint: "도입·학습·운영이 한 흐름으로 합쳐져 과업의 ‘실행 마찰’을 낮춥니다.",
+    outcomeHint: "도입·학습·운영이 한 흐름으로 합쳐져 과업의 실행 마찰을 낮춥니다.",
     cta: "변환 실행 진단 요청하기",
   },
 };
@@ -202,7 +205,7 @@ const inferenceNarrative = {
 const flagshipProofByType = {
   strategy_org_performance_gap: {
     id: "proof-1",
-    title: "한국도로공사 - 미래사업과제·중장기 전략재설정",
+    title: "신용보증기금 - NEW 비전 수립",
     label: "전략-실행 정렬 사례",
   },
   rr_role_confusion: {
@@ -212,7 +215,7 @@ const flagshipProofByType = {
   },
   performance_system_failure: {
     id: "proof-3",
-    title: "한국주택금융공사/해양진흥공사 - 성과관리 고도화",
+    title: "주택도시보증공사/해양진흥공사 - 성과관리 고도화",
     label: "성과체계 설계 사례",
   },
   transformation_execution_gap: {
@@ -258,8 +261,8 @@ const defaultProofs = [
     id: 1003,
   },
   {
-    title: "한국디자인진흥원 - 조직성과 및 평가 체계 개선",
-    client_type: "Design Sector",
+    title: "서울산업진흥원 - 직무분석 기반 인력운영계획 수립",
+    client_type: "Organization & Personnel",
     problem: "역할 중첩과 평가 저항",
     solution_cluster: "조직진단·성과체계 고도화",
     approach: "R&R 재정렬, 성과지표 간 종속관계 분석, 운영 규범 정비",
@@ -439,35 +442,58 @@ async function showResult() {
 
   const headline = result.headline || `${diagnosis.title} 진단`;
   const why = result.interpretation || diagnosis.why;
-  const cta = result.cta || diagnosis.cta;
+  const hypothesis = result.hypothesis || diagnosis.hypothesis || [];
+  const relatedProblem = result.problem_name || diagnosis.title;
+  const outcome = result.outcome_hint || diagnosis.outcomeHint || "해당 진단 기준으로 다음 단계에서 우선순위를 압축해 제안할 수 있습니다.";
+  const nextAction = result.next_action || diagnosis.cta || "진단 후 미팅 신청";
+  const relatedProjects = buildRelatedProjects(result.related_projects || []);
+  const proofHint = result.proof_hint || diagnosis.proofHint || "유사 조직에서 검증된 방식으로 실천해온 레퍼런스를 사용했습니다.";
+  const visitorMatch = result.matching_context || "현재 체크인한 항목의 속성이 가장 강하게 드러난 유형입니다.";
+
+  const hypothesisList = (hypothesis.length ? hypothesis : ["운영·지표·조직 중 한 축이 약화되면 실행 리스크가 커집니다."]).map((item) => `<li>${item}</li>`).join("");
 
   $("#result").hidden = false;
   $("#result").innerHTML = `
     <div class="diagnosis-block">
       <p class="kicker">Diagnosis Report</p>
+      <p class="result-meta">
+        <span>추정 문제 유형: ${state.inferredType}</span>
+        <span>현재 단계: Step 3/3</span>
+      </p>
       <h3>${headline}</h3>
       <p>${why}</p>
     </div>
     <div class="diagnosis-block">
-      <p><b>내 문제 유형</b></p>
-      <p>${result.problem_name || diagnosis.title}</p>
+      <p><b>현재 진단 문제</b></p>
+      <p>${relatedProblem}</p>
+    </div>
+    <div class="diagnosis-grid">
+      <div class="diagnosis-sub">
+        <p><b>왜 이런지 추론</b></p>
+        <ul>${hypothesisList}</ul>
+      </div>
+      <div class="diagnosis-sub">
+        <p><b>실적 근거 연결</b></p>
+        <p>${proofHint}</p>
+      </div>
     </div>
     <div class="proof-jump">
       <span>${proof.label}</span>
       <b>${proof.title}</b>
-      <p>${diagnosis.proofHint}</p>
+      <p>${visitorMatch}</p>
       <a class="btn secondary" href="#${proof.id}" data-proof-jump="${proof.id}">이 실적에서 관련 맥락 보기</a>
     </div>
-    ${buildRelatedProjects(result.related_projects || [])}
-    ${buildChips(diagnosis.hypothesis || [])}
+    ${relatedProjects}
     <div class="diagnosis-block">
-      <p><b>예상 성과</b> ${diagnosis.outcomeHint}</p>
+      <p><b>예상 다음 액션</b></p>
+      <p>${outcome}</p>
     </div>
-    <p class=\"note\">다음 단계는 진단 결과를 바탕으로 30분 간담형 진입 진단을 제안합니다.</p>
-    <a class=\"btn primary\" href=\"#contact\" data-inquiry-cta=\"result\" data-inquiry-source=\"issue_result\" data-inquiry-route=\"issue_result\" data-inquiry-case-title=\"${proof.title}\" data-inquiry-case-id=\"${proof.id}\" data-event=\"hero_cta_click\">${cta}</a>
+    <p class="note">진단은 즉시 제안의 출발점입니다. 다음 단계로 1회 진단형 미팅을 제안합니다.</p>
+    <a class="btn primary" href="#contact" data-inquiry-cta="result" data-inquiry-source="issue_result" data-inquiry-route="issue_result" data-inquiry-case-title="${proof.title}" data-inquiry-case-id="${proof.id}" data-event="hero_cta_click">${nextAction}</a>
   `;
   $("#result").scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
+
 
 $("#nextBtn").addEventListener("click", async () => {
   const step = steps[state.step];
@@ -508,9 +534,9 @@ $("#signupForm").addEventListener("submit", async (event) => {
     state.userId = response.user_id;
     localStorage.setItem("strat_user_id", response.user_id);
     track("contact_start", { source_section: "signup" });
-    $("#signupNote").textContent = "회원 등록이 완료됐습니다. 이후 문의 시 더 정확한 맥락을 반영할 수 있어요.";
+    $("#signupNote").textContent = "회원 등록이 완료됐습니다. 이후 문의 시 더 정교한 맥락 반영이 가능합니다.";
   } else {
-    $("#signupNote").textContent = response.error || "회원 등록에 실패했습니다. 잠시 후 다시 시도해주세요.";
+    $("#signupNote").textContent = response.error || "회원 등록 실패. 잠시 후 다시 시도해주세요.";
   }
 });
 
@@ -541,7 +567,7 @@ $("#inquiryForm").addEventListener("submit", async (event) => {
     });
     $("#inquiryNote").textContent = "문의가 접수됐습니다. 빠르게 답변드리겠습니다.";
   } else {
-    $("#inquiryNote").textContent = response.error || "문의 접수에 실패했습니다. 잠시 후 다시 시도해주세요.";
+    $("#inquiryNote").textContent = response.error || "문의 접수 실패. 잠시 후 다시 시도해주세요.";
   }
 });
 
@@ -554,7 +580,7 @@ $("#qaForm").addEventListener("submit", async (event) => {
     track("qa_submit", { source_section: "qa" });
     $("#qaNote").textContent = "질문이 등록되었습니다.";
   } else {
-    $("#qaNote").textContent = response.error || "질문 등록에 실패했습니다. 잠시 후 다시 시도해주세요.";
+    $("#qaNote").textContent = response.error || "질문 등록이 실패했습니다. 잠시 후 다시 시도해주세요.";
   }
 });
 
@@ -576,8 +602,8 @@ async function loadContent() {
       <span class=\"tag\">${toText(item.customer_type) || "Strategy Case"}</span>
       <b>${toText(item.title)}</b>
       <p><b>문제</b><br>${toText(item.problem)}</p>
-      <p><b>접근</b><br>${toText(item.approach)}</p>
-      <p><b>산출물</b><br>${toText(item.deliverables)}</p>
+      <p><b>방식</b><br>${toText(item.approach)}</p>
+      <p><b>성과</b><br>${toText(item.deliverables)}</p>
     </article>
   `).join("");
   $("#slideGrid").innerHTML = response.slides.map((item) => `
@@ -604,39 +630,40 @@ function renderFlagshipProof(items) {
     "디자인/성과 프레임을 반복 운용해 보고서가 아닌 실행체계로 정착했습니다.",
     "신규 과제의 규제·기술 변수까지 반영해 실행 가능한 경로를 제시했습니다.",
   ];
+
   proof.innerHTML = entries.map((item, index) => `
-    <article class=\"proof-panel\" id=\"proof-${index + 1}\" data-proof-index=\"${index + 1}\" data-proof-title=\"${toText(item.title)}\">
-      <div class=\"proof-number\">${String(index + 1).padStart(2, "0")}</div>
-      <div class=\"proof-copy\">
-        <span class=\"tag\">${toText(item.customer_type) || "Flagship Case"}</span>
-        <h3>${toText(item.title)}</h3>
-        <p class=\"proof-line\">${proofLines[index] || toText(item.problem)}</p>
+    <article class="proof-panel" id="proof-${index + 1}" data-proof-index="${index + 1}" data-proof-title="${toText(entries[index].title)}">
+      <div class="proof-number">${String(index + 1).padStart(2, "0")}</div>
+      <div class="proof-copy">
+        <span class="tag">${toText(entries[index].customer_type) || "Flagship Case"}</span>
+        <h3>${toText(entries[index].title)}</h3>
+        <p class="proof-line">${proofLines[index] || "전략, 조직, 성과가 한 번에 수렴된 실적입니다."}</p>
         <dl>
           <div>
             <dt>문제</dt>
-            <dd>${toText(item.problem) || "조직 목표와 실행의 간격이 컸던 과제입니다."}</dd>
+            <dd>${toText(entries[index].problem) || "조직 목표와 실행 간 간극이 컸던 과제입니다."}</dd>
           </div>
           <div>
             <dt>접근</dt>
-            <dd>${toText(item.approach) || "전략-조직-성과 체계를 동시에 정렬했습니다."}</dd>
+            <dd>${toText(entries[index].approach) || "전략-조직-성과 체계를 동시에 정렬했습니다."}</dd>
           </div>
           <div>
             <dt>방법</dt>
-            <dd>${toText(item.solution_cluster) || "핵심 가설 수립 후 실행 프로토콜로 연결했습니다."}</dd>
+            <dd>${toText(entries[index].solution_cluster) || "핵심 가설 수립 후 실행 프로토콜로 연결했습니다."}</dd>
           </div>
           <div>
             <dt>산출물</dt>
-            <dd>${toText(item.deliverables) || "전략 문서, 실행 지침, 운영체계."}</dd>
+            <dd>${toText(entries[index].deliverables) || "전략 문서, 실행 지침, 운영체계."}</dd>
           </div>
           <div>
             <dt>실적 연계</dt>
-            <dd>현재 방문자 유형과 가장 가까운 유형의 실적입니다.</dd>
+            <dd>현재 입력한 문제 유형과 가장 가까운 유형의 실적입니다.</dd>
           </div>
         </dl>
-        <a class=\"btn secondary\" href=\"#contact\" data-case-cta=\"${toText(item.title)}\" data-case-id=\"proof-${index + 1}\" data-case-source=\"flagship_case\" data-inquiry-source=\"flagship_case\" data-inquiry-route=\"flagship_case\" data-inquiry-case-title=\"${toText(item.title)}\" data-inquiry-case-id=\"proof-${index + 1}\" data-event=\"case_cta_click\">이 실적으로 진입 진단하기</a>
+        <a class="btn secondary" href="#contact" data-case-cta="${toText(entries[index].title)}" data-case-id="proof-${index + 1}" data-case-source="flagship_case" data-inquiry-source="flagship_case" data-inquiry-route="flagship_case" data-inquiry-case-title="${toText(entries[index].title)}" data-inquiry-case-id="proof-${index + 1}" data-event="case_cta_click">이 실적으로 진입 진단하기</a>
       </div>
-      <div class=\"proof-visual\" aria-hidden=\"true\">
-        <span>${toText(item.solution_cluster) || "Strategy Map"}</span>
+      <div class="proof-visual" aria-hidden="true">
+        <span>${toText(entries[index].solution_cluster) || "Strategy Map"}</span>
         <i></i><i></i><i></i>
       </div>
     </article>
