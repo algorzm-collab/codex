@@ -17,14 +17,23 @@
     .record b { display: block; margin-bottom: 4px; }
     .record p { margin: 4px 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
     .analytics-summary { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 14px; }
-    .analytics-total, .analytics-rank { border: 1px solid var(--line); border-radius: 8px; background: #fbfcfa; padding: 14px; }
+    .analytics-total, .analytics-rank, .journey-summary { border: 1px solid var(--line); border-radius: 8px; background: #fbfcfa; padding: 14px; }
     .analytics-total span { display: block; color: var(--muted); font-size: 12px; font-weight: 800; }
-    .analytics-total b { display: block; margin-top: 6px; font-size: 42px; line-height: 1; }
+    .analytics-total b { display: block; margin: 6px 0; font-size: 42px; line-height: 1; }
     .analytics-rank h3 { margin: 0 0 8px; font-size: 15px; }
     .analytics-rank ol { margin: 0; padding: 0; display: grid; gap: 6px; list-style: none; }
     .analytics-rank li { display: flex; justify-content: space-between; gap: 10px; color: var(--muted); font-size: 13px; }
     .analytics-rank li span { overflow-wrap: anywhere; }
     .analytics-rank li b { color: var(--ink); }
+    .journey-summary { margin-bottom: 12px; }
+    .journey-summary .analytics-total small { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; }
+    .journey-list { margin: 0; padding: 0; display: grid; gap: 10px; list-style: none; }
+    .journey-item { border: 1px dashed var(--line); border-radius: 8px; background: #fff; padding: 10px; }
+    .journey-item p { margin: 4px 0; color: var(--muted); font-size: 13px; word-break: break-word; }
+    .journey-head { display: flex; justify-content: space-between; gap: 12px; }
+    .journey-head b { color: var(--ink); font-size: 13px; }
+    .journey-head span { color: var(--muted); font-size: 12px; text-align: right; }
+    .journey-path { font-size: 12px; color: var(--ink); }
     .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
     .tabs button { border: 1px solid var(--line); background: white; border-radius: 999px; padding: 8px 10px; cursor: pointer; }
     .tabs button.active { border-color: var(--teal); background: var(--teal-soft); font-weight: 800; }
@@ -34,7 +43,7 @@
 <body>
   <header class="topbar">
     <a class="brand" href="/"><span>ST</span> strategy Admin</a>
-    <nav><a href="/">홈페이지</a></nav>
+    <nav><a href="/">Home</a></nav>
     <div class="actions" style="margin:0">
       <button class="btn secondary" id="logoutBtn">로그아웃</button>
       <button class="btn primary" id="reloadBtn">새로고침</button>
@@ -43,71 +52,71 @@
   <main class="admin-wrap">
     <div class="section-head">
       <p class="kicker">Admin Console</p>
-      <h1>실적과 핵심장표를 직접 업데이트하고 기록을 확인합니다.</h1>
-      <p>현재 MVP는 로컬 SQLite에 저장됩니다. 운영 배포 시 관리자 인증을 반드시 추가해야 합니다.</p>
+      <h1>전략사이트 운영 콘솔</h1>
+      <p>기초형 MVP이지만 실무형 콘텐츠와 성과 로그를 같이 확인할 수 있습니다.</p>
     </div>
 
     <div class="admin-grid">
       <section class="admin-panel">
-        <h2>실적 업데이트</h2>
+        <h2>사례 입력</h2>
         <form class="form" id="caseForm">
-          <input name="id" placeholder="수정할 ID, 신규는 비움">
-          <input name="title" placeholder="실적 제목" required>
+          <input name="id" placeholder="기존 ID(옵션)">
+          <input name="title" placeholder="사례 제목" required>
           <input name="customer_type" placeholder="고객 유형" required>
           <textarea name="problem" placeholder="고객 문제" required></textarea>
-          <textarea name="approach" placeholder="STRAT 접근" required></textarea>
-          <textarea name="deliverables" placeholder="주요 산출물" required></textarea>
+          <textarea name="approach" placeholder="Strategy 접근" required></textarea>
+          <textarea name="deliverables" placeholder="핵심 산출물" required></textarea>
           <input name="solution_cluster" placeholder="솔루션 클러스터" required>
           <input name="display_order" type="number" placeholder="정렬 순서" value="100">
-          <label class="check"><input name="is_published" type="checkbox" checked> 공개</label>
-          <button class="btn primary" type="submit">실적 저장</button>
+          <label class="check"><input name="is_published" type="checkbox" checked> 게시</label>
+          <button class="btn primary" type="submit">사례 저장</button>
           <p class="form-note" id="caseNote"></p>
         </form>
 
-        <h2>핵심장표 업데이트</h2>
+        <h2>슬라이드 입력</h2>
         <form class="form" id="slideForm">
-          <input name="id" placeholder="수정할 ID, 신규는 비움">
-          <input name="title" placeholder="장표 제목" required>
-          <textarea name="summary" placeholder="장표 설명" required></textarea>
+          <input name="id" placeholder="기존 ID(옵션)">
+          <input name="title" placeholder="슬라이드 제목" required>
+          <textarea name="summary" placeholder="슬라이드 요약" required></textarea>
           <input name="image_url" placeholder="이미지 URL 또는 경로">
-          <input name="link_url" placeholder="자료 링크 URL">
+          <input name="link_url" placeholder="이동 URL">
           <input name="display_order" type="number" placeholder="정렬 순서" value="100">
-          <label class="check"><input name="is_published" type="checkbox" checked> 공개</label>
-          <button class="btn primary" type="submit">장표 저장</button>
+          <label class="check"><input name="is_published" type="checkbox" checked> 게시</label>
+          <button class="btn primary" type="submit">슬라이드 저장</button>
           <p class="form-note" id="slideNote"></p>
         </form>
 
-        <h2>전체 실적 업데이트</h2>
+        <h2>프로젝트 기록 입력</h2>
         <form class="form" id="projectForm">
-          <input name="id" placeholder="수정할 ID, 신규는 비움">
-          <input name="theme" placeholder="테마 예: Strategy 전략수립" required>
-          <input name="sector" placeholder="산업 예: Infrastructure" required>
-          <input name="client" placeholder="고객명" required>
+          <input name="id" placeholder="기존 ID(옵션)">
+          <input name="theme" placeholder="테마(예: Strategy)" required>
+          <input name="sector" placeholder="부문" required>
+          <input name="client" placeholder="고객사명" required>
           <textarea name="project_title" placeholder="프로젝트명" required></textarea>
-          <input name="year_note" placeholder="연도/메모 예: 2023, 2024">
+          <input name="year_note" placeholder="연도 메모 2024, 2025">
           <input name="display_order" type="number" placeholder="정렬 순서" value="100">
-          <label class="check"><input name="is_published" type="checkbox" checked> 공개</label>
-          <button class="btn primary" type="submit">전체 실적 저장</button>
+          <label class="check"><input name="is_published" type="checkbox" checked> 게시</label>
+          <button class="btn primary" type="submit">프로젝트 저장</button>
           <p class="form-note" id="projectNote"></p>
         </form>
       </section>
 
       <section class="admin-panel">
         <div class="tabs" id="tabs">
-          <button data-tab="cases" class="active">실적</button>
-          <button data-tab="slides">장표</button>
-          <button data-tab="users">회원</button>
-          <button data-tab="mailing">메일링</button>
-          <button data-tab="project_records">전체 실적</button>
-          <button data-tab="issues">설문/추론기록</button>
-          <button data-tab="events">이벤트</button>
-          <button data-tab="inquiries">문의</button>
+          <button data-tab="cases" class="active">Cases</button>
+          <button data-tab="slides">Slides</button>
+          <button data-tab="users">Users</button>
+          <button data-tab="mailing">Mailing</button>
+          <button data-tab="project_records">Projects</button>
+          <button data-tab="issues">Issues</button>
+          <button data-tab="events">Events</button>
+          <button data-tab="inquiries">Inquiries</button>
           <button data-tab="qa">QA</button>
         </div>
         <div class="admin-list" id="records"></div>
       </section>
     </div>
   </main>
-  <script src="/admin.js?v=20260701-sprint04"></script>
+  <script src="/admin.js?v=20260701-sprint05"></script>
 </body>
 </html>

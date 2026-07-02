@@ -30,8 +30,76 @@ async function loadRecords() {
 
 function renderRecords() {
   const items = adminData[activeTab] || [];
+  if (activeTab === "events") {
+    const html = items.map(renderItem).join("") || "<p>No records.</p>";
+    const journeyHtml = renderJourneyView(buildJourneyGroups(items));
+    $("#records").innerHTML = `${renderEventSummary()}${journeyHtml}${html}`;
+    return;
+  }
+
   const html = items.map(renderItem).join("") || "<p>기록이 없습니다.</p>";
-  $("#records").innerHTML = activeTab === "events" ? `${renderEventSummary()}${html}` : html;
+  $("#records").innerHTML = html;
+}
+
+function buildJourneyGroups(events = []) {
+  const bySession = {};
+  events.forEach((event) => {
+    const sessionId = event.session_id || "no_session_id";
+    if (!bySession[sessionId]) bySession[sessionId] = [];
+    bySession[sessionId].push(event);
+  });
+
+  return Object.entries(bySession)
+    .map(([sessionId, history]) => {
+      const sorted = history.slice().sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
+      const first = sorted[0];
+      const last = sorted[sorted.length - 1];
+      const converted = sorted.some((item) => {
+        const eventName = String(item.event_name || "").toLowerCase();
+        return eventName.includes("inquiry") || eventName.includes("contact") || eventName.includes("submit");
+      });
+      return {
+        sessionId,
+        count: sorted.length,
+        converted,
+        startAt: first?.created_at || "-",
+        endAt: last?.created_at || "-",
+        lastEvent: last?.event_name || "-",
+        lastTarget: last?.target_title || last?.target_id || "-",
+        path: sorted.map((item) => item.event_name || "unknown"),
+      };
+    })
+    .sort((a, b) => new Date(b.endAt) - new Date(a.endAt));
+}
+
+function renderJourneyView(journeys = []) {
+  const converted = journeys.filter((item) => item.converted).length;
+  const items = journeys
+    .map(
+      (journey) => `
+        <li class="journey-item">
+          <div class="journey-head">
+            <b>${journey.sessionId}</b>
+            <span>${journey.count} steps • ${journey.converted ? "Converted" : "In progress"}</span>
+          </div>
+          <p>start ${journey.startAt} → end ${journey.endAt}</p>
+          <p>last: ${journey.lastEvent} / ${journey.lastTarget}</p>
+          <p class="journey-path">${journey.path.join(" → ") || "-"}</p>
+        </li>
+      `
+    )
+    .join("");
+
+  return `
+    <section class="journey-summary">
+      <div class="analytics-total">
+        <span>Conversion Journeys</span>
+        <b>${journeys.length}</b>
+        <small>Converted ${converted}</small>
+      </div>
+      <ol class="journey-list">${items || "<li class='journey-item'>No events yet.</li>"}</ol>
+    </section>
+  `;
 }
 
 function renderRank(title, items = []) {
@@ -58,31 +126,31 @@ function renderEventSummary() {
 
 function renderItem(item) {
   if (activeTab === "cases") {
-    return `<div class="record"><b>#${item.id} ${item.title}</b><p>${item.customer_type} · ${item.solution_cluster}</p><p>${item.problem}</p><p>정렬 ${item.display_order} · 공개 ${item.is_published}</p><button class="btn secondary" data-delete-table="cases" data-delete-id="${item.id}">비공개</button></div>`;
+    return `<div class="record"><b>#${item.id} ${item.title}</b><p>${item.customer_type} | ${item.solution_cluster}</p><p>${item.problem}</p><p>order ${item.display_order} | published ${item.is_published}</p><button class="btn secondary" data-delete-table="cases" data-delete-id="${item.id}">삭제</button></div>`;
   }
   if (activeTab === "slides") {
-    return `<div class="record"><b>#${item.id} ${item.title}</b><p>${item.summary}</p><p>정렬 ${item.display_order} · 공개 ${item.is_published}</p><button class="btn secondary" data-delete-table="key_slides" data-delete-id="${item.id}">비공개</button></div>`;
+    return `<div class="record"><b>#${item.id} ${item.title}</b><p>${item.summary}</p><p>order ${item.display_order} | published ${item.is_published}</p><button class="btn secondary" data-delete-table="key_slides" data-delete-id="${item.id}">삭제</button></div>`;
   }
   if (activeTab === "users") {
     return `<div class="record"><b>#${item.id} ${item.name}</b><p>${item.organization}</p><p>${item.phone || ""} ${item.email || ""}</p><p>${item.created_at}</p></div>`;
   }
   if (activeTab === "mailing") {
-    return `<div class="record"><b>#${item.id} ${item.email}</b><p>${item.name} · ${item.organization || ""}</p><p>${item.phone || ""} · source: ${item.source} · active: ${item.is_active}</p><p>${item.created_at}</p></div>`;
+    return `<div class="record"><b>#${item.id} ${item.email}</b><p>${item.name} | ${item.organization || ""}</p><p>${item.phone || ""} | source: ${item.source} | active: ${item.is_active}</p><p>${item.created_at}</p></div>`;
   }
   if (activeTab === "project_records") {
-    return `<div class="record"><b>#${item.id} ${item.client}</b><p>${item.theme} · ${item.sector}</p><p>${item.project_title}${item.year_note ? ` · ${item.year_note}` : ""}</p><p>정렬 ${item.display_order} · 공개 ${item.is_published}</p><button class="btn secondary" data-delete-table="project_records" data-delete-id="${item.id}">비공개</button></div>`;
+    return `<div class="record"><b>#${item.id} ${item.client}</b><p>${item.theme} | ${item.sector}</p><p>${item.project_title}${item.year_note ? ` | ${item.year_note}` : ""}</p><p>order ${item.display_order} | published ${item.is_published}</p><button class="btn secondary" data-delete-table="project_records" data-delete-id="${item.id}">삭제</button></div>`;
   }
   if (activeTab === "issues") {
     return `<div class="record"><b>#${item.id} ${item.inferred_type}</b><p>symptom: ${item.symptom || "-"}</p><p>scene: ${item.scene || "-"} / need: ${item.need || "-"}</p><p>${item.created_at}</p></div>`;
   }
   if (activeTab === "events") {
-    return `<div class="record"><b>#${item.id} ${item.event_name}</b><p>${item.source_section || "-"} · ${item.inferred_type || "-"}</p><p>target: ${item.target_title || item.target_id || "-"}</p><p>session: ${item.session_id || "-"} · ${item.created_at}</p></div>`;
+    return `<div class="record"><b>#${item.id} ${item.event_name}</b><p>${item.source_section || "-"} | ${item.inferred_type || "-"}</p><p>target: ${item.target_title || item.target_id || "-"}</p><p>session: ${item.session_id || "-"}</p><p>${item.created_at}</p></div>`;
   }
   if (activeTab === "inquiries") {
-    return `<div class="record"><b>#${item.id} ${item.name}</b><p>${item.organization || ""} · ${item.email || ""} · ${item.phone || ""}</p><p>${item.message}</p><p>${item.created_at}</p></div>`;
+    return `<div class="record"><b>#${item.id} ${item.name}</b><p>${item.organization || ""} | ${item.email || ""} | ${item.phone || ""}</p><p>${item.message}</p><p>${item.created_at}</p></div>`;
   }
   if (activeTab === "qa") {
-    return `<div class="record"><b>#${item.id} ${item.title}</b><p>${item.name} · ${item.organization || ""}</p><p>${item.question}</p><p>상태: ${item.status} · ${item.created_at}</p></div>`;
+    return `<div class="record"><b>#${item.id} ${item.title}</b><p>${item.name} | ${item.organization || ""}</p><p>${item.question}</p><p>status: ${item.status} | ${item.created_at}</p></div>`;
   }
   return `<div class="record"><pre>${JSON.stringify(item, null, 2)}</pre></div>`;
 }
@@ -98,7 +166,7 @@ $("#tabs").addEventListener("click", (event) => {
 $("#records").addEventListener("click", async (event) => {
   const button = event.target.closest("button[data-delete-table]");
   if (!button) return;
-  const ok = confirm("이 항목을 비공개 처리할까요?");
+  const ok = confirm("삭제할까요?");
   if (!ok) return;
   const response = await postJSON("/api/admin/delete", {
     table: button.dataset.deleteTable,
@@ -117,7 +185,7 @@ $("#logoutBtn").addEventListener("click", async () => {
 $("#caseForm").addEventListener("submit", async (event) => {
   event.preventDefault();
   const response = await postJSON("/api/admin/case", formPayload(event.currentTarget));
-  $("#caseNote").textContent = response.ok ? `실적이 저장되었습니다. ID ${response.id}` : (response.error || "저장 실패");
+  $("#caseNote").textContent = response.ok ? `성공적으로 저장됐습니다. ID ${response.id}` : (response.error || "저장 실패");
   if (response.ok) {
     event.currentTarget.reset();
     event.currentTarget.elements.is_published.checked = true;
@@ -128,7 +196,7 @@ $("#caseForm").addEventListener("submit", async (event) => {
 $("#slideForm").addEventListener("submit", async (event) => {
   event.preventDefault();
   const response = await postJSON("/api/admin/slide", formPayload(event.currentTarget));
-  $("#slideNote").textContent = response.ok ? `장표가 저장되었습니다. ID ${response.id}` : (response.error || "저장 실패");
+  $("#slideNote").textContent = response.ok ? `슬라이드가 저장됐습니다. ID ${response.id}` : (response.error || "저장 실패");
   if (response.ok) {
     event.currentTarget.reset();
     event.currentTarget.elements.is_published.checked = true;
@@ -139,7 +207,7 @@ $("#slideForm").addEventListener("submit", async (event) => {
 $("#projectForm").addEventListener("submit", async (event) => {
   event.preventDefault();
   const response = await postJSON("/api/admin/project-record", formPayload(event.currentTarget));
-  $("#projectNote").textContent = response.ok ? `전체 실적이 저장되었습니다. ID ${response.id}` : (response.error || "저장 실패");
+  $("#projectNote").textContent = response.ok ? `프로젝트가 저장됐습니다. ID ${response.id}` : (response.error || "저장 실패");
   if (response.ok) {
     event.currentTarget.reset();
     event.currentTarget.elements.is_published.checked = true;
