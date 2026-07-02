@@ -30,8 +30,68 @@ const state = {
   step: 0,
   answers: {},
   inferredType: "",
+  inquiryContext: {
+    source: "direct",
+    route: "",
+    sourceTitle: "",
+    sourceId: "",
+    inferredType: "",
+  },
 };
 localStorage.setItem("strat_session_id", state.sessionId);
+
+function setInquiryContext(next = {}) {
+  state.inquiryContext = {
+    ...state.inquiryContext,
+    ...next,
+    inferredType: next.inferredType || state.inferredType || state.inquiryContext.inferredType || "",
+    source: next.source || state.inquiryContext.source || "direct",
+  };
+
+  const route = state.inquiryContext.route || "";
+  const source = state.inquiryContext.source || "";
+  const sourceTitle = state.inquiryContext.sourceTitle || "";
+  const sourceId = state.inquiryContext.sourceId || "";
+  const inferredType = state.inquiryContext.inferredType || "";
+
+  const inquirySource = $("#inquirySource");
+  const inquiryCaseTitle = $("#inquiryCaseTitle");
+  const inquiryRoute = $("#inquiryRoute");
+  const inquiryInferredType = $("#inquiryInferredType");
+  const notice = $("#inquiryIntentNotice");
+
+  if (inquirySource) inquirySource.value = source;
+  if (inquiryCaseTitle) inquiryCaseTitle.value = sourceTitle;
+  if (inquiryRoute) inquiryRoute.value = route;
+  if (inquiryInferredType) inquiryInferredType.value = inferredType;
+
+  if (notice) {
+    if (!route || route === "direct") {
+      notice.hidden = true;
+      notice.textContent = "";
+      return;
+    }
+    const labels = {
+      issue_result: "문진 결과 기반 문의입니다.",
+      flagship_case: "대표 실적 기반 문의입니다.",
+      nav_contact: "상단 메뉴에서 넘어온 문의입니다.",
+      contact_nav: "상단 메뉴에서 넘어온 문의입니다.",
+    };
+    notice.hidden = false;
+    notice.textContent = `${labels[route] || "진단 기반 문의입니다."} (${sourceId || sourceTitle || "타입 미확정"} · ${inferredType || "추론 미확정"})`;
+  }
+}
+
+function setInquiryContextFromElement(element = null, fallback = {}) {
+  if (!element) return;
+  setInquiryContext({
+    source: element.dataset.inquirySource || element.dataset.source || fallback.source || "direct",
+    route: element.dataset.inquiryRoute || element.dataset.route || fallback.route || "direct",
+    sourceTitle: element.dataset.inquiryCaseTitle || element.textContent?.trim() || "",
+    sourceId: element.dataset.inquiryCaseId || element.dataset.caseId || "",
+    inferredType: state.inquiryContext.inferredType || state.inferredType || "",
+  });
+}
 
 const steps = [
   {
@@ -369,6 +429,13 @@ async function showResult() {
     target_title: proof.title,
     inferred_type: state.inferredType,
   });
+  setInquiryContext({
+    source: "issue_result",
+    route: "issue_result",
+    sourceTitle: proof.title,
+    sourceId: proof.id,
+    inferredType: state.inferredType,
+  });
 
   const headline = result.headline || `${diagnosis.title} 진단`;
   const why = result.interpretation || diagnosis.why;
@@ -397,7 +464,7 @@ async function showResult() {
       <p><b>예상 성과</b> ${diagnosis.outcomeHint}</p>
     </div>
     <p class=\"note\">다음 단계는 진단 결과를 바탕으로 30분 간담형 진입 진단을 제안합니다.</p>
-    <a class=\"btn primary\" href=\"#contact\" data-inquiry-cta=\"result\" data-event=\"hero_cta_click\">${cta}</a>
+    <a class=\"btn primary\" href=\"#contact\" data-inquiry-cta=\"result\" data-inquiry-source=\"issue_result\" data-inquiry-route=\"issue_result\" data-inquiry-case-title=\"${proof.title}\" data-inquiry-case-id=\"${proof.id}\" data-event=\"hero_cta_click\">${cta}</a>
   `;
   $("#result").scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
@@ -452,10 +519,26 @@ $("#inquiryForm").addEventListener("submit", async (event) => {
   const data = formPayload(event.currentTarget);
   data.user_id = state.userId;
   data.inferred_type = state.inferredType;
-  track("contact_start", { source_section: "contact_submit", has_inferred_type: !!state.inferredType });
+  data.inquiry_source = state.inquiryContext.source;
+  data.inquiry_case_title = state.inquiryContext.sourceTitle;
+  data.inquiry_route = state.inquiryContext.route;
+  data.inquiry_inferred_type = state.inquiryContext.inferredType;
+  track("contact_start", {
+    source_section: "contact_submit",
+    source: state.inquiryContext.source || "direct",
+    route: state.inquiryContext.route || "direct",
+    route_id: state.inquiryContext.sourceId || "",
+    has_inferred_type: !!state.inferredType,
+  });
   const response = await postJSON("/api/inquiry", data);
   if (response.ok) {
-    track("inquiry_submit", { source_section: "contact", has_inferred_type: !!state.inferredType });
+    track("inquiry_submit", {
+      source_section: "contact",
+      source: state.inquiryContext.source || "direct",
+      route: state.inquiryContext.route || "direct",
+      route_id: state.inquiryContext.sourceId || "",
+      has_inferred_type: !!state.inferredType,
+    });
     $("#inquiryNote").textContent = "문의가 접수됐습니다. 빠르게 답변드리겠습니다.";
   } else {
     $("#inquiryNote").textContent = response.error || "문의 접수에 실패했습니다. 잠시 후 다시 시도해주세요.";
@@ -550,7 +633,7 @@ function renderFlagshipProof(items) {
             <dd>현재 방문자 유형과 가장 가까운 유형의 실적입니다.</dd>
           </div>
         </dl>
-        <a class=\"btn secondary\" href=\"#contact\" data-case-cta=\"${toText(item.title)}\" data-event=\"case_cta_click\">이 실적으로 진입 진단하기</a>
+        <a class=\"btn secondary\" href=\"#contact\" data-case-cta=\"${toText(item.title)}\" data-case-id=\"proof-${index + 1}\" data-case-source=\"flagship_case\" data-inquiry-source=\"flagship_case\" data-inquiry-route=\"flagship_case\" data-inquiry-case-title=\"${toText(item.title)}\" data-inquiry-case-id=\"proof-${index + 1}\" data-event=\"case_cta_click\">이 실적으로 진입 진단하기</a>
       </div>
       <div class=\"proof-visual\" aria-hidden=\"true\">
         <span>${toText(item.solution_cluster) || "Strategy Map"}</span>
@@ -616,6 +699,14 @@ document.querySelectorAll("[data-theme-filter]").forEach((button) => {
 });
 
 document.addEventListener("click", (event) => {
+  const target = event.target.closest("a[href='#contact'], [data-inquiry-cta], [data-case-cta], [data-event='hero_cta_click']");
+  if (target && target.getAttribute("href") === "#contact" && !target.hasAttribute("data-case-cta") && !target.hasAttribute("data-inquiry-cta") && target.dataset.event !== "hero_cta_click") {
+    setInquiryContextFromElement(target, {
+      source: "contact_nav",
+      route: target.dataset.inquiryRoute || "direct",
+    });
+  }
+
   const proofJump = event.target.closest("[data-proof-jump]");
   if (proofJump) {
     track("proof_jump_click", {
@@ -628,16 +719,18 @@ document.addEventListener("click", (event) => {
 
   const caseCta = event.target.closest("[data-case-cta]");
   if (caseCta) {
+    setInquiryContextFromElement(caseCta);
     track("case_cta_click", {
       source_section: "flagship_proof",
-      target_title: caseCta.dataset.caseCta || "",
-      target_id: caseCta.closest(".proof-panel")?.getAttribute("id") || "",
+      target_title: caseCta.dataset.caseCta || caseCta.dataset.inquiryCaseTitle || "",
+      target_id: caseCta.dataset.caseId || caseCta.closest(".proof-panel")?.getAttribute("id") || "",
     });
     return;
   }
 
   const inquiryCta = event.target.closest("[data-inquiry-cta]");
   if (inquiryCta) {
+    setInquiryContextFromElement(inquiryCta);
     track("case_cta_click", {
       source_section: "issue_result",
       target_title: "result_inquiry",
@@ -647,6 +740,7 @@ document.addEventListener("click", (event) => {
 
   const heroCta = event.target.closest("[data-event='hero_cta_click']");
   if (heroCta && heroCta instanceof HTMLAnchorElement) {
+    setInquiryContextFromElement(heroCta, { source: "hero", route: "direct" });
     track("hero_cta_click", {
       source_section: "hero_or_mobile_cta",
       metadata: { text: heroCta.textContent.trim() },
@@ -658,7 +752,11 @@ let contactStarted = false;
 $("#inquiryForm").addEventListener("focusin", () => {
   if (contactStarted) return;
   contactStarted = true;
-  track("contact_start", { source_section: "contact_form" });
+  track("contact_start", {
+    source_section: "contact_form",
+    source: state.inquiryContext.source || "direct",
+    route: state.inquiryContext.route || "direct",
+  });
 });
 
 $("#finder").addEventListener("click", () => {
@@ -819,3 +917,10 @@ function initPublishingLayer() {
 renderStep();
 initStrategyCanvas();
 loadContent().then(initPublishingLayer).catch(() => initPublishingLayer());
+setInquiryContext({
+  source: "direct",
+  route: "direct",
+  sourceTitle: "직접 접촉",
+  sourceId: "homepage",
+  inferredType: state.inferredType || "",
+});

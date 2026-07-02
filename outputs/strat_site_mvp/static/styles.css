@@ -633,6 +633,20 @@ article p, .case-card p { margin: 0; color: var(--muted); line-height: 1.62; fon
 .form textarea { min-height: 104px; resize: vertical; }
 .check { color: var(--muted); font-size: 14px; }
 .form-note { color: var(--teal); font-weight: 800; min-height: 20px; }
+.form-intent-note {
+  margin: 0 0 12px;
+  padding: 10px 12px;
+  border-left: 3px solid rgba(15, 118, 110, 0.7);
+  color: #18403a;
+  background: rgba(15, 118, 110, 0.06);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.form.dark .form-intent-note {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.84);
+  background: rgba(255, 255, 255, 0.07);
+}
 .contact {
   max-width: none;
   background: var(--ink);
