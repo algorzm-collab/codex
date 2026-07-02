@@ -3,53 +3,61 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>STRATEGY | 문제를 짚고 실행체계로 연결합니다</title>
-  <link rel="stylesheet" href="/styles.css?v=20260701-sprint03">
+  <title>STRATEGY | 문제해결형 전략 컨설팅</title>
+  <link rel="stylesheet" href="/styles.css?v=20260702-sprint06">
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
   <header class="topbar">
     <a class="brand" href="#home"><span>ST</span> STRATEGY</a>
     <nav>
-      <a href="#finder">문제 짚어보기</a>
-      <a href="#cases">실적</a>
+      <a href="#finder">진단</a>
+      <a href="#cases">사례</a>
       <a href="#services">서비스</a>
       <a href="#company">회사소개</a>
       <a href="#people">구성원</a>
+      <a href="#track-record">실적</a>
       <a href="#qa">QA</a>
-      <a href="#contact">문의하기</a>
+      <a href="#contact">문의</a>
     </nav>
-    <a class="btn primary" href="#finder">우리 문제 짚어보기</a>
+    <a class="btn primary" href="#finder" data-event="hero_cta_click">진단 시작</a>
   </header>
 
   <main id="home">
     <section class="hero">
       <canvas class="strategy-canvas" id="strategyCanvas" aria-hidden="true"></canvas>
+
       <div class="hero-copy">
-        <p class="kicker">1st Advisory Group</p>
-        <h1>보고서는 있는데 실행이 안 되나요? 몇 가지 선택으로 조직의 진짜 병목을 짚어드립니다.</h1>
-        <p>strategy는 짧은 선택을 바탕으로 현재 문제가 전략, 조직, KPI, 성과평가, 인사, ESG/AI 중 어디에 가까운지 추론하고, 유사 실적과 가설적 접근을 제시합니다.</p>
+        <p class="kicker">Problem-first advisory</p>
+        <h1>문제를 먼저 정확히 정의하고, 실행으로 끝내는 전략 컨설팅</h1>
+        <p>
+          strategy는 브리프·보고서 중심의 영업이 아닙니다.
+          방문자는 내 문제를 진단받고 바로 다음 단계로 가야 합니다.
+          60초 안에 내가 맞는 문제 유형을 파악하고, 증거 기반 실적으로 바로 연결됩니다.
+        </p>
         <div class="actions">
-          <a class="btn primary" href="#finder">우리 문제 짚어보기</a>
-          <a class="btn secondary" href="#cases">관련 실적 보기</a>
+          <a class="btn primary" href="#finder" data-event="hero_cta_click">내 문제 진단하기</a>
+          <a class="btn secondary" href="#cases">대표 실적 보러 가기</a>
         </div>
         <div class="hero-proof">
-          <span>Sein</span>
-          <span>Sollen</span>
+          <span>Sein &amp; Sollen</span>
           <span>Fermat Point</span>
-          <span>160+ Projects</span>
+          <span>6개 Flagship</span>
+          <span>진단형 CTA 흐름</span>
+          <span>실행형 제안</span>
         </div>
       </div>
 
       <aside class="panel finder" id="finder">
         <div class="panel-head">
-          <strong>strategy Issue Finder</strong>
-          <span>약 1분</span>
+          <strong>Issue Finder</strong>
+          <span>3단계</span>
         </div>
         <div class="progress"><i id="progress"></i></div>
         <div class="finder-body">
           <p class="step" id="stepLabel">STEP 1 / 3</p>
-          <h2 id="question">요즘 조직에서 가장 자주 들리는 말은 무엇인가요?</h2>
+          <h2 id="question">현재 조직에서 가장 먼저 해결해야 할 문제는 무엇인가요?</h2>
           <div class="options" id="options"></div>
           <button class="btn primary" id="nextBtn" type="button">다음</button>
         </div>
@@ -58,103 +66,112 @@
     </section>
 
     <section class="strip">
-      <div class="metric"><b>Strategy</b><span>전략체계·사업전략·로드맵</span></div>
-      <div class="metric"><b>Organization</b><span>조직구조·R&R·위임전결</span></div>
-      <div class="metric"><b>Performance</b><span>KPI·성과평가·모니터링</span></div>
+      <div class="metric"><b>Strategy</b><span>전략 수립·재설계</span></div>
+      <div class="metric"><b>Organization</b><span>R&amp;R·역할체계 정렬</span></div>
+      <div class="metric"><b>Performance</b><span>KPI·평가·실행 연결</span></div>
     </section>
 
-    <section class="method-marquee" aria-label="strategy methodology">
+    <section class="method-marquee" aria-label="method chips">
       <div>
-        <span>Sein & Sollen</span>
+        <span>Sein &amp; Sollen</span>
         <span>Issue Framing</span>
         <span>Fermat Point</span>
         <span>Strategy-KPI Map</span>
-        <span>R&R Matrix</span>
+        <span>R&amp;R Matrix</span>
         <span>Execution Roadmap</span>
         <span>Performance System</span>
         <span>Sheer Excellence</span>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" id="mirror">
       <div class="section-head">
         <p class="kicker">Problem Mirror</p>
-        <h2>이런 말이 반복된다면, 문제는 전략 자체가 아닐 수 있습니다.</h2>
+        <h2>당신의 진짜 문제를 먼저 비춰봅니다.</h2>
       </div>
       <div class="grid cards">
-        <button data-symptom="report_no_execution">보고서는 있는데 실행이 안 된다.</button>
-        <button data-symptom="unclear_owner">이 일이 어느 부서 책임인지 애매하다.</button>
-        <button data-symptom="too_many_kpi">KPI는 많은데 무엇을 바꿔야 할지 모르겠다.</button>
-        <button data-symptom="evaluation_not_accepted">평가제도는 있는데 구성원들이 납득하지 못한다.</button>
-        <button data-symptom="reorg_no_standard">조직개편 이야기는 많은데 기준이 없다.</button>
-        <button data-symptom="transformation_not_actionable">AI/ESG 과제가 생겼는데 실행과제로 정리되지 않았다.</button>
+        <button data-symptom="report_no_execution">집행률은 낮고 실행은 느리다</button>
+        <button data-symptom="unclear_owner">책임자와 의사결정 권한이 흐려졌다</button>
+        <button data-symptom="too_many_kpi">KPI가 많지만 성과가 잘 나오지 않는다</button>
+        <button data-symptom="evaluation_not_accepted">평가 결과가 현업에서 받아들여지지 않는다</button>
+        <button data-symptom="reorg_no_standard">재편했는데도 역할체계가 정돈되지 않는다</button>
+        <button data-symptom="transformation_not_actionable">AI/ESG 전략은 있는데 실행계획이 약하다</button>
       </div>
     </section>
 
     <section class="section alt" id="cases">
       <div class="section-head">
         <p class="kicker">Cases</p>
-        <h2>비슷한 문제를 해결해본 경험이 신뢰의 시작입니다.</h2>
-        <p>대표 6개 실적은 단순 이력보다 강한 증거입니다. 문제, 접근, 산출물이 어떻게 연결되었는지 먼저 확인해보세요.</p>
+        <h2>6개 대표 실적 중심으로, 내 문제와 연결되는 증거를 보여드립니다.</h2>
+        <p>문제 정의 → 접근 방식 → 실행 프레임워크 → 성과 정착까지, 실제 프로젝트 로그를 근거로 제시합니다.</p>
       </div>
-      <div class="proof-stage" id="flagshipProof" aria-label="대표 실적 증거 패널"></div>
+      <div class="proof-stage" id="flagshipProof" aria-label="flagship case proofs"></div>
       <div class="grid case-grid" id="caseGrid"></div>
     </section>
 
     <section class="section" id="services">
       <div class="section-head">
         <p class="kicker">Services</p>
-        <h2>strategy는 문제를 7개 솔루션 체계로 좁혀갑니다.</h2>
+        <h2>strategy는 문제별로 다르게 설계합니다.</h2>
       </div>
       <div class="grid service-grid">
-        <article><b>전략체계 정렬</b><p>미션, 비전, 전략방향, 사업계획, 실행과제가 따로 움직일 때.</p></article>
-        <article><b>KPI 및 성과관리체계</b><p>KPI와 평가제도가 전략 및 실제 성과 향상과 연결되지 않을 때.</p></article>
-        <article><b>조직구조 및 R&R</b><p>조직구조, 역할, 권한, 책임이 전략 변화와 맞지 않을 때.</p></article>
-        <article><b>업무프로세스 및 협업</b><p>부서 간 협업과 업무 방식이 성과 확산을 막고 있을 때.</p></article>
-        <article><b>인사·직무·역량</b><p>직무, 역량, 배치, 승진, 경력개발 기준이 연결되지 않을 때.</p></article>
-        <article><b>ESG 및 AI/DT 전환</b><p>전환 과제가 업무혁신과 지표, 운영체계로 연결되지 않을 때.</p></article>
+        <article><b>전략 컨설팅</b><p>비전, 정책 변화, 환경요소를 반영해 전략을 재설계합니다.</p></article>
+        <article><b>성과관리 시스템</b><p>KPI, 보상, 평가, 사업성과를 연결해 실행력을 만듭니다.</p></article>
+        <article><b>조직·인사 제도</b><p>조직 구조와 역할을 정렬해 책임·권한 문제를 해소합니다.</p></article>
+        <article><b>혁신 전략</b><p>AI/ESG 도입을 추진목표가 아닌 실행목표로 전환합니다.</p></article>
+        <article><b>사업 성과 고도화</b><p>부서성과/사업성과 체계를 재설계해 평가 수용성을 높입니다.</p></article>
+        <article><b>문제 진단 리포트</b><p>진단 결과를 중심으로 가설과 실무 액션을 즉시 제시합니다.</p></article>
       </div>
     </section>
 
     <section class="section alt" id="company">
       <div class="section-head">
         <p class="kicker">Company</p>
-        <h2>strategy는 전략을 보고서로 끝내지 않고 실행체계로 연결합니다.</h2>
-        <p>strategy는 공공기관과 기업 경영을 위한 1st Advisory 그룹입니다. Sein, 즉 현재의 문제 인식에서 출발해 Sollen, 즉 바람직한 미래상과 성과평가까지 연결하는 전략자문을 지향합니다.</p>
+        <h2>실행 가능한 전략을 만드는 컨설팅 조직입니다.</h2>
+        <p>strategy는 Sein(현재의 진실), Sollen(목표 상태), Fermat Point(최적 경로)를 연결해 문제를 정리합니다.</p>
       </div>
       <div class="grid process">
-        <article><b>Sein</b><p>현재 상태와 문제 인식을 명확히 구조화합니다.</p></article>
-        <article><b>Sollen</b><p>조직이 도달해야 할 미래상과 전략 방향을 설계합니다.</p></article>
-        <article><b>Fermat Point</b><p>현실과 목표가 만나는 최적 수렴점을 찾습니다.</p></article>
-        <article><b>Execution</b><p>전략을 조직, R&R, KPI, 로드맵으로 내려보냅니다.</p></article>
+        <article><b>Sein</b><p>문제의 핵심 조건을 명확히 정의해 현안을 구조화합니다.</p></article>
+        <article><b>Sollen</b><p>목표 상태를 측정 가능한 성과지표로 정합합니다.</p></article>
+        <article><b>Fermat</b><p>여러 이해관계를 잇는 최단 경로를 찾아 실행 우선순위를 정합니다.</p></article>
+        <article><b>Execution</b><p>문서가 아니라 시스템과 습관으로 정착되도록 마감까지 관리합니다.</p></article>
       </div>
     </section>
 
     <section class="section" id="people">
       <div class="section-head">
         <p class="kicker">People</p>
-        <h2>Sheer Excellence. 문제해결 전략 컨설턴트 김정성입니다.</h2>
-        <p>좋은 컨설턴트는 Sein과 Sollen을 함께 설계할 줄 알아야 한다고 믿습니다. 현재의 문제를 정확히 인식하고, 조직이 도달해야 할 미래상을 실행 가능한 전략과 제도로 연결하는 것이 strategy의 일입니다.</p>
+        <h2>Sheer Excellence. 핵심은 문제 해결 습관입니다.</h2>
+        <p>전문분야별로 분기된 지식이 아니라, 문제 유형별로 빠르게 조합되는 실행력을 보장합니다.</p>
       </div>
       <div class="grid people-grid">
-        <article><b>김정성 대표이사</b><p>공공기관과 기업의 중장기전략, 경영진단, 성과체계 고도화를 중심으로 프로젝트를 이끕니다.</p><p><a href="https://www.linkedin.com/in/stratgy" target="_blank" rel="noreferrer">LinkedIn 프로필 보기</a></p></article>
-        <article><b>연구본부</b><p>경영전략, 조직·인사, 성과관리, ESG/사회적가치, DT 분야의 컨설턴트와 연구위원이 과제를 수행합니다.</p></article>
-        <article><b>전문위원 네트워크</b><p>분야별 전문위원과 함께 금융, 환경, 해양, 에너지, 도시·인프라 등 공공 섹터 과제를 다룹니다.</p></article>
+        <article>
+          <b>김정성</b>
+          <p>국공립기관 전략 프로젝트를 중심으로 전략 수립·조직 재설계·성과경영 체계를 설계해왔습니다.</p>
+          <p><a href="https://www.linkedin.com/in/stratgy" target="_blank" rel="noreferrer">LinkedIn 보기</a></p>
+        </article>
+        <article>
+          <b>Core Team</b>
+          <p>전문 파트너로 구성되어 전 공정에서 전략·조직·성과 관리 영역을 연계합니다.</p>
+        </article>
+        <article>
+          <b>Delivery</b>
+          <p>컨설팅 산출물을 실행 가능한 워크플로우로 전환해, 업무환경에 맞게 정착을 지원합니다.</p>
+        </article>
       </div>
     </section>
 
     <section class="section alt" id="track-record">
       <div class="section-head">
         <p class="kicker">Track Record</p>
-        <h2>수행 테마, 산업, 프로젝트로 보는 strategy의 문제해결 경험</h2>
-        <p>전략수립, 조직재설계, 성과관리, 인사관리까지 김정성 대표가 수행해온 프로젝트 경험을 테마와 산업별로 정리했습니다.</p>
+        <h2>핵심 실적은 정렬 가능한 성과형태로 정리됩니다.</h2>
       </div>
       <div class="track-toolbar">
         <button class="btn secondary active" data-theme-filter="all">전체</button>
-        <button class="btn secondary" data-theme-filter="Strategy 전략수립">전략수립</button>
-        <button class="btn secondary" data-theme-filter="Organization & Personnel 조직재설계">조직재설계</button>
-        <button class="btn secondary" data-theme-filter="Performance Management 성과관리">성과관리</button>
-        <button class="btn secondary" data-theme-filter="HR System 인사관리">인사관리</button>
+        <button class="btn secondary" data-theme-filter="Strategy">Strategy</button>
+        <button class="btn secondary" data-theme-filter="Organization &amp; Personnel">Organization</button>
+        <button class="btn secondary" data-theme-filter="Performance Management">Performance Management</button>
+        <button class="btn secondary" data-theme-filter="HR System">HR System</button>
       </div>
       <div class="track-list" id="trackList"></div>
     </section>
@@ -162,7 +179,7 @@
     <section class="section alt">
       <div class="section-head">
         <p class="kicker">Key Slides</p>
-        <h2>핵심 장표는 계속 업데이트할 수 있습니다.</h2>
+        <h2>핵심 프레임을 카드화한 자료집</h2>
       </div>
       <div class="grid slide-grid" id="slideGrid"></div>
     </section>
@@ -170,15 +187,15 @@
     <section class="section" id="signup">
       <div class="section-head">
         <p class="kicker">Membership</p>
-        <h2>소속과 연락처를 남기면 이후 상담과 QA 기록을 연결할 수 있습니다.</h2>
+        <h2>자료를 받아보는 대신, 먼저 문제를 잡고 이야기합시다.</h2>
       </div>
       <form class="form" id="signupForm">
-        <input name="name" placeholder="이름" required>
-        <input name="organization" placeholder="소속/기관명" required>
-        <input name="phone" placeholder="전화번호">
+        <input name="name" placeholder="성함" required>
+        <input name="organization" placeholder="소속 기관/회사" required>
+        <input name="phone" placeholder="연락처">
         <input name="email" type="email" placeholder="이메일" required>
-        <label class="check"><input name="consent" type="checkbox" checked> 상담 및 답변을 위한 연락에 동의합니다.</label>
-        <button class="btn primary" type="submit">회원 정보 저장</button>
+        <label class="check"><input name="consent" type="checkbox" checked> 활용 동의</label>
+        <button class="btn primary" type="submit">회원 등록</button>
         <p class="form-note" id="signupNote"></p>
       </form>
     </section>
@@ -186,12 +203,12 @@
     <section class="section alt" id="qa">
       <div class="section-head">
         <p class="kicker">QA Board</p>
-        <h2>질문을 남기면 QA 게시판 기록으로 저장됩니다.</h2>
+        <h2>지금 가장 많이 받는 질문을 빠르게 답해드립니다.</h2>
       </div>
       <form class="form" id="qaForm">
-        <input name="name" placeholder="이름" required>
-        <input name="organization" placeholder="소속/기관명">
-        <input name="email" type="email" placeholder="이메일">
+        <input name="name" placeholder="성함" required>
+        <input name="organization" placeholder="소속 기관/회사">
+        <input name="email" type="email" placeholder="이메일" required>
         <input name="title" placeholder="질문 제목" required>
         <textarea name="question" placeholder="질문 내용" required></textarea>
         <button class="btn primary" type="submit">QA 등록</button>
@@ -202,23 +219,23 @@
     <section class="section contact" id="contact">
       <div>
         <p class="kicker">Contact</p>
-        <h2>이 문제가 우리 조직에도 해당되는지 물어보세요.</h2>
-        <p>홈페이지 결과는 간단한 선택을 바탕으로 한 가설입니다. 실제 과제 범위와 접근 방식은 strategy와의 상담에서 구체화합니다.</p>
-        <p>전화 02-6083-0330 · 평일 09:00-18:00 · <a href="https://www.linkedin.com/in/stratgy" target="_blank" rel="noreferrer">LinkedIn</a></p>
+        <h2>문제는 여기서 마무리하지 말고, 다음 단계로 이어가세요.</h2>
+        <p>문제 진단을 바탕으로 1차 진입 가설을 잡고, 실무 스케줄을 공유해드립니다.</p>
+        <p>02-6083-0330 / 평일 09:00-18:00 / <a href="https://www.linkedin.com/in/stratgy" target="_blank" rel="noreferrer">LinkedIn</a></p>
       </div>
       <form class="form dark" id="inquiryForm">
-        <input name="name" placeholder="이름" required>
-        <input name="organization" placeholder="기관/회사명">
+        <input name="name" placeholder="성함" required>
+        <input name="organization" placeholder="소속 기관/회사">
         <input name="phone" placeholder="연락처">
-        <input name="email" type="email" placeholder="이메일">
-        <textarea name="message" placeholder="상담하고 싶은 문제" required></textarea>
-        <button class="btn primary" type="submit">strategy에 문의하기</button>
+        <input name="email" type="email" placeholder="이메일" required>
+        <textarea name="message" placeholder="문의 내용" required></textarea>
+        <button class="btn primary" type="submit" data-event="hero_cta_click">문의 요청</button>
         <p class="form-note" id="inquiryNote"></p>
       </form>
     </section>
   </main>
 
-  <a class="mobile-cta btn primary" href="#finder">우리 문제 짚어보기</a>
-  <script src="/app.js?v=20260701-sprint03"></script>
+  <a class="mobile-cta btn primary" href="#finder" data-event="hero_cta_click">진단 시작</a>
+  <script src="/app.js?v=20260702-sprint06"></script>
 </body>
 </html>

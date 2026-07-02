@@ -256,8 +256,23 @@ h1, h2 { text-wrap: balance; }
 }
 .result h3 { margin: 0 0 10px; font-size: 22px; line-height: 1.35; }
 .result p { color: var(--graphite); line-height: 1.7; }
+.diagnosis-block {
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--line);
+}
+.diagnosis-block:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
 .chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 16px 0; }
 .chip { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px; background: white; font-weight: 800; font-size: 13px; }
+.chip:hover {
+  transform: translateY(-1px);
+  border-color: rgba(15, 118, 110, .36);
+  box-shadow: 0 12px 28px rgba(21,23,26,.08);
+}
 .note { border-left: 3px solid var(--amber); background: var(--amber-soft); color: #5f3b08; padding: 12px 14px; font-size: 13px; line-height: 1.6; margin: 16px 0; }
 .proof-jump {
   margin: 18px 0;
@@ -542,6 +557,9 @@ article p, .case-card p { margin: 0; color: var(--muted); line-height: 1.62; fon
   transform: none;
   border-color: rgba(21, 23, 26, .14);
   box-shadow: 0 36px 90px rgba(21,23,26,.1);
+}
+.proof-stage .proof-panel .btn {
+  align-self: start;
 }
 .form {
   max-width: 720px;
