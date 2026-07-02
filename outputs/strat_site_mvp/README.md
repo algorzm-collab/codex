@@ -75,6 +75,20 @@ Success metrics:
 - Contact form start
 - Qualified inquiry count
 
+## Reusable Learning Skill
+
+The homepage implementation lessons are captured as a reusable skill:
+
+```text
+skills/strategy-homepage-growth/SKILL.md
+```
+
+Success/failure learning log:
+
+```text
+outputs/STRATEGY_Homepage_Success_Failure_Learning_v1.md
+```
+
 ## 1. 실행
 
 ```powershell
