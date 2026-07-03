@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import argparse
+import sys
 
+from alos.github_evidence import GitHubEvidenceDashboard
 from alos.models import Mission
 from alos.pipeline import ALOSPipeline
 from alos.runtime import ALOSRuntime
@@ -9,6 +11,19 @@ from alos.work_window import WorkWindowPlanner
 
 
 def main() -> None:
+    if len(sys.argv) > 1 and sys.argv[1] == "dashboard-from-issues":
+        dashboard_parser = argparse.ArgumentParser(description="write site data from saved GitHub issue JSON")
+        dashboard_parser.add_argument("command")
+        dashboard_parser.add_argument("issues_json")
+        dashboard_parser.add_argument("--out", default="site/data.json")
+        dashboard_args = dashboard_parser.parse_args()
+        target = GitHubEvidenceDashboard().write_site_data_from_issues(
+            dashboard_args.issues_json,
+            dashboard_args.out,
+        )
+        print(f"Wrote dashboard data: {target}")
+        return
+
     parser = argparse.ArgumentParser(description="ALOS mission compiler")
     parser.add_argument("title", nargs="?", default="")
     parser.add_argument("objective", nargs="?", default="")

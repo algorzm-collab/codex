@@ -1,1 +1,4 @@
-Portfolio cockpit placeholder.
+Mission Control cockpit.
+
+Decision: continue, but simplify.
+Rule: GitHub remains the durable source of truth; the dashboard only visualizes it.

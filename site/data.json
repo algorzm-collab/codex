@@ -1,13 +1,20 @@
 {
   "brief": {
-    "headline": "ALOS build",
-    "progress": 94,
-    "current_owner": "chatgpt_cto",
-    "next_action": "Connect short execution tasks",
-    "attention_needed": "none",
-    "critique": "Static view is ready. Live deployment and Telegram bridge remain."
+    "headline": "Dashboard viability review",
+    "progress": 72,
+    "current_owner": "codex_implementer",
+    "next_action": "Keep the dashboard static and evidence-backed before attempting live orchestration.",
+    "attention_needed": "Do not build live remote control before GitHub queue handoff is reliable.",
+    "decision": "continue, but simplify",
+    "critique": "A dashboard is still worth keeping as Mission Control, but only as a thin read-only cockpit. Full live orchestration is premature until GitHub comments, issue queues, and branch handoffs are consistently reliable."
   },
+  "failure_lessons": [
+    "The dashboard should not become the source of truth; GitHub issues, commits, and comments must remain durable state.",
+    "A cockpit fails when it requires the CEO to update the same status in multiple places.",
+    "Remote approval/control should be deferred until the read-only monitoring loop is boring and reliable."
+  ],
   "next_prompts": [
-    "Improve site/app.js to load generated status when available. Scope: site/app.js only."
+    "Update site/data.json from the latest GitHub queue evidence. Scope: site/data.json only.",
+    "Only add live sync after proving one read-only sync path from GitHub evidence."
   ]
 }

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Dashboard Viability Review"
+  short_description: "Decide whether to continue or stop dashboard work."
+  default_prompt: "Review the dashboard objectively, identify failure factors, and recommend continue, simplify, or stop."

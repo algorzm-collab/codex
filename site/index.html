@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ALOS Status</title>
+  <title>ALOS Mission Control</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,8 +11,8 @@
     <header class="top">
       <div>
         <p class="kicker">ALOS</p>
-        <h1>상태 보드</h1>
-        <p class="desc">작업 흐름, 다음 액션, 진행률을 한 화면에서 봅니다.</p>
+        <h1>Mission Control</h1>
+        <p class="desc">작업 흐름, 다음 액션, 리스크, 포기/지속 판단을 한 화면에서 봅니다.</p>
       </div>
       <div class="score"><span id="score">--</span><small>%</small></div>
     </header>
@@ -34,6 +34,16 @@
         <h2>주의</h2>
         <p id="attention">-</p>
       </article>
+    </section>
+
+    <section class="panel">
+      <h2>판단</h2>
+      <p id="decision">-</p>
+    </section>
+
+    <section class="panel">
+      <h2>실패요인 학습</h2>
+      <ul id="lessons" class="lessons"></ul>
     </section>
 
     <section class="panel">

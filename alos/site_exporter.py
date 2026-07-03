@@ -9,8 +9,12 @@ from typing import Any
 class SiteExporter:
     def to_payload(self, plan: dict[str, object]) -> dict[str, Any]:
         brief = plan.get("brief")
+        brief_payload = asdict(brief) if brief else {}
+        if "decision" in plan:
+            brief_payload["decision"] = plan["decision"]
         return {
-            "brief": asdict(brief) if brief else {},
+            "brief": brief_payload,
+            "failure_lessons": plan.get("failure_lessons", []),
             "next_prompts": plan.get("prompts", []),
         }
 
