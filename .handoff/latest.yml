@@ -7,7 +7,7 @@ current_context:
   issue: "No single issue assigned in this thread; work follows CEO instruction to continue the next dashboard step."
   branch: "codex/dashboard-viability-skill-capture"
   pull_request: ""
-  last_commit: "e8a8a10 mission-control: add Codex dispatch layer correction"
+last_commit: "6222cc6 Add mission-control viability cockpit evidence sync"
 
 completed_work:
   - "Recovered the static Mission Control dashboard from mojibake Korean text."
