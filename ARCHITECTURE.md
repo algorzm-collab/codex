@@ -162,6 +162,7 @@ Mission Control handles:
 - shift state tracking
 - handoff package generation
 - next-agent routing
+- token-minimal execution routing across browser ChatGPT, Codex, Hermes local, and optional IDE-grade surfaces
 
 Mission Control owns continuity.
 

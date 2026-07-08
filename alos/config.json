@@ -6,7 +6,8 @@
   "default_agents": [
     "chatgpt_cto",
     "codex",
-    "hermes_local"
+    "hermes_local",
+    "antigravity"
   ],
   "principles": [
     "ceo_first",
@@ -16,6 +17,13 @@
     "cross_agent_continuity",
     "leverage_radar",
     "copy_adapt_break_create"
+  ],
+  "execution_surfaces": [
+    "browser_chatgpt",
+    "github_local_repo",
+    "codex",
+    "hermes_local",
+    "antigravity_optional"
   ],
   "radar_sources": [
     "gitbap",

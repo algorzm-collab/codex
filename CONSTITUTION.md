@@ -53,6 +53,24 @@ The goal is leverage.
 
 ---
 
+# Token-Minimal Maximum Performance
+
+Context is a scarce operating resource.
+
+Use the least chat context that can safely achieve the highest-quality outcome.
+
+Prefer durable repository memory, structured handoff, local deterministic execution, and reusable skills over repeated chat narration.
+
+Browser ChatGPT should carry CEO intent and status interpretation.
+
+Hermes local should carry repeatable local execution when safe.
+
+Codex should carry bounded implementation from repository state.
+
+The CEO should state goals; the operating system should choose the means.
+
+---
+
 # Technology Agnostic
 
 The operating system must never depend on a single AI model, vendor, framework, programming language, workflow, or tool.

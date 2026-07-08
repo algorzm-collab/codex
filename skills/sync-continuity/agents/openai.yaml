@@ -1,0 +1,4 @@
+interface:
+  display_name: "Sync Continuity"
+  short_description: "Keep repo memory synced across short agent shifts."
+  default_prompt: "Audit this repo's project-cell sync and update continuity artifacts."

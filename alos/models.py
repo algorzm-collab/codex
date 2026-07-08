@@ -21,6 +21,7 @@ class AgentType(str, Enum):
     CLAUDE = "claude"
     GEMINI = "gemini"
     HERMES = "hermes_local"
+    ANTIGRAVITY = "antigravity"
     HUMAN = "human"
 
 

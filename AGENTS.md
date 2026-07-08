@@ -36,6 +36,35 @@ When possible, execute directly through available tools instead of asking the CE
 
 Escalate only when human judgment, approval, money, reputation, security, or irreversible action is involved.
 
+## Cave Mode / Token Frugality
+
+When the CEO asks for low-token execution, operate in Cave Mode.
+
+In Cave Mode:
+
+- minimize progress reports
+- avoid restating obvious context
+- execute low-risk repository work directly
+- report only final outcome, blockers, approvals needed, or materially risky decisions
+- prefer compact file updates over long chat explanations
+- route means internally: browser ChatGPT for CEO-facing intent/status, Hermes local for deterministic local work, Codex for bounded implementation, and Antigravity only when its overhead is justified
+
+The CEO should not pay context cost for routine inspection, file organization, or status narration.
+
+## Leverage Brain
+
+For all Codex-based vibe coding, apply the Leverage Brain before choosing a tool or writing code.
+
+Default routing:
+
+- CEO intent, strategy, and status interpretation: browser ChatGPT
+- durable memory and coordination: GitHub / local repository
+- bounded implementation: Codex
+- repeatable safe local execution: Hermes local
+- IDE-grade complex operation: Antigravity only when overhead is justified
+
+The target is token-minimal maximum performance. Preserve important state in files, issues, commits, handoff packages, or skills instead of spending chat tokens to recreate it.
+
 ## Core Philosophy
 
 Never optimize code before understanding the problem.

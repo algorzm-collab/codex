@@ -1,0 +1,54 @@
+mission: "Structure the 10 ChatGPT Projects into local/GitHub-recoverable Project Cells"
+current_objective: "Create stable folder paths and minimum continuity docs for each Project Cell"
+status: "NORMAL"
+progress_estimate: "80%"
+
+current_context:
+  issue: ""
+  branch: "codex/issue-39-d3hr-definition"
+  pull_request: ""
+  last_commit: ""
+
+completed_work:
+  - "Inspected core AI OS documents and portfolio registry."
+  - "Created portfolio/project_cells/ with 10 stable Project Cell folders."
+  - "Added a README recovery protocol and minimal PROJECT_CELL.md files."
+
+modified_files:
+  - path: "portfolio/project_cells/README.md"
+    reason: "Project Cell index and recovery protocol."
+  - path: "portfolio/project_cells/*/PROJECT_CELL.md"
+    reason: "Stable per-project continuity files."
+  - path: ".handoff/latest.yml"
+    reason: "Shift continuity for future chats/agents."
+
+important_decisions:
+  - decision: "Use ASCII slugs for folder names."
+    reason: "Existing registry text has encoding corruption, and stable paths matter more than display names."
+  - decision: "Do not move existing source files yet."
+    reason: "User asked for path organization with minimal token use; moving code without explicit mapping risks damage."
+
+rejected_options:
+  - option: "Create or push GitHub issues immediately."
+    reason: "Network/GitHub write actions need approval and are outside the requested path cleanup."
+
+risks:
+  - "Some Korean project names in registry.json are mojibake; display names should be corrected later from CEO/source context."
+
+blockers:
+  - "Need GitHub write approval before pushing or creating Project Cell issues."
+
+next_recommended_action:
+  - "Review changed files."
+  - "Commit and push once approved."
+  - "Optionally create one long-lived GitHub issue per Project Cell."
+
+recommended_next_agent: "Codex"
+
+approval_needed:
+  required: true
+  reason: "Pushing to GitHub or creating issues changes remote state."
+  approval_owner: "CEO"
+
+continuity_notes: "New chats should start from portfolio/project_cells/README.md and the relevant PROJECT_CELL.md rather than relying on chat history."
+

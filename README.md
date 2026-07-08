@@ -37,41 +37,30 @@ Important feedback is absorbed into the system.
 
 ## Repository Structure
 
-- `CONSTITUTION.md`  
-  Highest-level philosophy and permanent principles.
+Start with:
 
-- `ARCHITECTURE.md`  
-  Hierarchy, authority levels, lifecycle, and system design.
+- `START_HERE.md`  
+  First stop for humans and new AI worker shifts.
 
-- `AGENTS.md`  
-  Runtime behavior rules for AI agents.
+- `REPOSITORY_MAP.md`  
+  Human-readable GitHub hierarchy and reading order.
 
-- `governance/`  
-  Rules for how principles, technologies, tools, and workflows are evaluated and promoted.
+- `portfolio/project_cells/README.md`  
+  Index of the 10 ChatGPT Projects converted into stable Project Cells.
 
-- `mission-control/`  
-  CEO-facing automation model, permission model, and remote-control architecture for agentic execution.
+Core hierarchy:
 
-- `.github/ISSUE_TEMPLATE/`  
-  Structured mission intake templates.
-
-- `.github/workflows/`  
-  Automation scaffolding for future agentic runners.
-
-- `rules/`  
-  Validated reusable operating rules.
-
-- `playbooks/`  
-  Repeatable workflows for recurring work.
-
-- `skills/`  
-  Portable packaged capabilities.
-
-- `memory/`  
-  Distilled long-term preferences, mistakes, patterns, and lessons.
-
-- `feedback/`  
-  Raw feedback only when it cannot yet be absorbed into existing system documents.
+| Layer | Path | Purpose |
+| --- | --- | --- |
+| Constitution | `CONSTITUTION.md` | Highest-level mission and principles. |
+| Architecture | `ARCHITECTURE.md` | System hierarchy, authority, lifecycle, and design. |
+| Agent Runtime | `AGENTS.md` | Runtime behavior rules for AI workers. |
+| Governance | `governance/` | Rules for evaluating and promoting tools, workflows, and lessons. |
+| Mission Control | `mission-control/`, `.handoff/` | Shift management, handoff, permission, dispatch, and continuity. |
+| Portfolio | `portfolio/` | Project registry, CEO view, and Project Cells. |
+| Execution | `alos/`, `checks/` | AI OS implementation and validation scripts. |
+| Interfaces | `site/`, `outputs/`, `platforms/` | Dashboards, generated artifacts, and platform notes. |
+| Learning | `feedback/` | Raw feedback before it is absorbed into the system. |
 
 ## CEO Role
 
