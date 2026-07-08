@@ -1,0 +1,20 @@
+{
+  "version": "v10-public",
+  "forbidden_claims": [
+    {
+      "claim": "evidence boundary overreach",
+      "reason": "company records and person-level PM experience use different evidence layers",
+      "safe_alternative": "show the evidence layer beside each case"
+    },
+    {
+      "claim": "private career or contract metadata exposure",
+      "reason": "the homepage is a public conversion surface",
+      "safe_alternative": "use institution-group and problem-type labels"
+    },
+    {
+      "claim": "causal impact assertion",
+      "reason": "public-sector changes have multiple causes",
+      "safe_alternative": "describe the consulting scope and operating system designed"
+    }
+  ]
+}

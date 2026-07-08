@@ -1,0 +1,45 @@
+{
+  "version": "v10",
+  "people": [
+    {
+      "person_id": "kim_jungsung",
+      "public_name": "김정성",
+      "public_role": "대표컨설턴트/ 총괄 PM",
+      "current_affiliation": "㈜STRATEGY",
+      "positioning": [
+        "공공기관 문제해결 전략 컨설턴트",
+        "전략·조직·성과·HR 통합 설계자",
+        "Sein & Sollen을 함께 설계하는 컨설턴트"
+      ],
+      "expertise_domains": [
+        "공공기관 중장기전략",
+        "조직진단·조직재설계",
+        "성과관리·내부평가",
+        "직무중심 HR·보수체계",
+        "정책금융",
+        "국토·SOC",
+        "도시개발·지방공기업",
+        "원자력·에너지·산업안전",
+        "보건복지·사회서비스",
+        "콘텐츠·문화·체육",
+        "중소벤처·창업·산업진흥",
+        "국방·R&D"
+      ],
+      "experience_claim_public": "누적 210+ 프로젝트 수주·수행 경험",
+      "evidence_scope": [
+        "㈜STRATEGY 회사·핵심인력 증빙 가능 실적",
+        "개인 실적증명 가능 PM 수행경험",
+        "前 대표이사 재직 시 수행경험",
+        "내부 참고용 맥락 경험"
+      ],
+      "profile_card_policy": {
+        "hide_year": true,
+        "hide_amount": true,
+        "hide_previous_company": true,
+        "show_proof_layer_when_needed": true,
+        "do_not_claim_all_records_as_company_records": true
+      },
+      "trust_message": "현재 회사 수행실적과 대표 컨설턴트의 공식 PM 수행경험을 구분해, 과업별로 증빙 가능한 범위 안에서 유사성을 설명합니다."
+    }
+  ]
+}

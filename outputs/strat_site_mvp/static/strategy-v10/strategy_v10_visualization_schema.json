@@ -1,0 +1,64 @@
+{
+  "version": "v10",
+  "homepage_visuals_keep_six": [
+    {
+      "id": "ministry_theme_heatmap",
+      "priority": 1,
+      "message": "여러 정책영역에서 전략·조직·성과·HR 문제를 반복적으로 풀었다.",
+      "data_source": "strategy_v9_heatmap_ministry_theme.json"
+    },
+    {
+      "id": "similarity_constellation",
+      "priority": 2,
+      "message": "고객과 가까운 기관/문제를 이미 다뤘다.",
+      "data_source": "strategy_v10_sample_gijang_output.json or dynamic retrieval"
+    },
+    {
+      "id": "problem_solving_value_chain",
+      "priority": 3,
+      "message": "전략 보고서가 아니라 기관 운영체계를 설계한다.",
+      "data_source": "strategy_v10_visualization_schema.json"
+    },
+    {
+      "id": "evidence_pyramid",
+      "priority": 4,
+      "message": "회사실적과 PM실적을 정직하게 구분한다.",
+      "data_source": "strategy_v10_evidence_layers.json"
+    },
+    {
+      "id": "anchor_case_map",
+      "priority": 5,
+      "message": "강한 도메인 앵커가 있다.",
+      "data_source": "strategy_v10_master_db.json"
+    },
+    {
+      "id": "person_evidence_card",
+      "priority": 6,
+      "message": "실제로 누가 풀 것인지 보인다.",
+      "data_source": "strategy_v10_people.json"
+    }
+  ],
+  "secondary_visuals": [
+    {
+      "id": "korea_map_view",
+      "message": "전국성/지방공기업 경험 보조 증거. 메인보다 하단 배치."
+    }
+  ],
+  "avoid_or_limit": [
+    {
+      "id": "radar_chart",
+      "reason": "근거가 약하면 마케팅 냄새가 나므로 사람별 전문성 요약에만 제한 사용."
+    }
+  ],
+  "value_chain": [
+    "환경·정책 진단",
+    "비전·전략체계",
+    "사업포트폴리오·신사업",
+    "조직진단·조직재설계",
+    "직무·정원·인력운영",
+    "성과관리·평가체계",
+    "HR·보수체계",
+    "경영평가·실행관리"
+  ],
+  "ux_rule": "검색창/카드/배지/동심원 그래프를 표보다 우선한다. 긴 실적목록은 접기 영역으로 둔다."
+}

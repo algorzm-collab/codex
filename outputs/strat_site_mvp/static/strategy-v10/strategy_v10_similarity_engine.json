@@ -1,0 +1,85 @@
+{
+  "version": "v10",
+  "name": "Direct-Adjacent-Indirect Similarity Engine",
+  "input_fields": [
+    "target_institution_name",
+    "target_institution_type",
+    "target_ministry_or_parent",
+    "target_region",
+    "evaluation_group",
+    "rfp_title",
+    "rfp_keywords",
+    "required_outputs",
+    "known_constraints"
+  ],
+  "similarity_dimensions": [
+    {
+      "id": "institution_similarity",
+      "weight_within_tier": 30,
+      "examples": [
+        "동일기관",
+        "동일 기관유형",
+        "지방공기업/준정부기관/기타공공기관",
+        "시설관리/도시개발/SOC/산업진흥"
+      ]
+    },
+    {
+      "id": "topic_similarity",
+      "weight_within_tier": 30,
+      "examples": [
+        "전략수립",
+        "조직진단",
+        "성과평가체계",
+        "직무·보수",
+        "적정인력",
+        "경영평가"
+      ]
+    },
+    {
+      "id": "parent_policy_similarity",
+      "weight_within_tier": 15,
+      "examples": [
+        "주무부처",
+        "상급기관",
+        "정책영역",
+        "경영평가군"
+      ]
+    },
+    {
+      "id": "function_model_similarity",
+      "weight_within_tier": 15,
+      "examples": [
+        "공공시설 운영",
+        "보증/금융",
+        "R&D 전문기관",
+        "산업진흥",
+        "지역개발"
+      ]
+    },
+    {
+      "id": "evidence_score",
+      "weight_within_tier": 10,
+      "examples": [
+        "회사·핵심인력 증빙",
+        "개인 PM 실적증명",
+        "前 대표이사 경험"
+      ]
+    }
+  ],
+  "tier_rules": {
+    "direct": "동일기관 또는 동일 기관유형 + 동일/매우 유사 과업주제 + 유사 산출물이 동시에 맞는 경우",
+    "adjacent": "기관은 다르지만 기관계급·기능모델·정책영역·운영문제가 가까운 경우",
+    "indirect": "기관유형은 다르지만 문제해결 방법론 또는 과업 모듈이 같은 경우"
+  },
+  "scoring_formula": "tier_base(direct=300, adjacent=200, indirect=100) + institution_similarity + topic_similarity + parent_policy_similarity + function_model_similarity + evidence_score*0.1 + representative_score_base*0.1",
+  "ordering_policy": "direct > adjacent > indirect 고정. 증빙력과 현재 회사실적 여부는 동일 tier 내부 정렬에만 반영.",
+  "output_required_fields": [
+    "case",
+    "tier",
+    "why_similar",
+    "evidence_layer",
+    "safe_public_label",
+    "proposal_copy",
+    "do_not_say"
+  ]
+}
