@@ -26,17 +26,12 @@
   <header class="topbar">
       <a class="brand" href="#home"><span>ST</span> STRATEGY</a>
     <nav>
-      <a href="#finder">문제진단</a>
-      <a href="#cases">사례</a>
-      <a href="#case-radar">사례지도</a>
-      <a href="#evidence-os">Evidence OS</a>
-      <a href="#credential-stack">증명</a>
-      <a href="#method-lab">방법론</a>
+      <a href="#finder">문제 짚어보기</a>
+      <a href="#evidence-os">유사 실적</a>
       <a href="#services">서비스</a>
       <a href="#company">회사소개</a>
       <a href="#people">구성원</a>
-      <a href="#track-record">실적</a>
-      <a href="#qa">QA</a>
+      <a href="#method-lab">방법론</a>
       <a href="#contact" data-inquiry-source="contact_nav" data-inquiry-route="contact_nav" data-inquiry-case-title="문의 진입" data-inquiry-case-id="topnav_contact">문의</a>
     </nav>
     <a class="btn primary" href="#finder" data-event="hero_cta_click" data-inquiry-source="hero" data-inquiry-route="hero" data-inquiry-case-title="Issue Finder 진입" data-inquiry-case-id="hero_dock">진단 시작</a>
@@ -52,36 +47,34 @@
   <main id="home">
     <section class="hero">
       <canvas class="strategy-canvas" id="strategyCanvas" aria-hidden="true"></canvas>
+      <div class="impact-frame" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
 
       <div class="hero-copy">
-        <p class="kicker">Problem-first advisory</p>
-        <h1>문제 해결이 안 되는 순간을, 3문항으로 90초 안에 정렬합니다</h1>
+        <p class="kicker">Evidence-first strategy advisory</p>
+        <h1>보고서는 있는데 실행이 안 되나요?</h1>
         <p class="landing-statement">
-          보고서형 설명이 아니라, 진단 맥락 → 실적 정렬 → 미팅 의제까지 연결합니다.
-          보고서 제안이 아니라 “다음 1회 진단 미팅”까지 이어지는 구조를 만듭니다.
+          <span>몇 가지 선택으로 조직의 진짜 병목을 짚고, 유사 실적과 접근 가설을 정렬합니다.</span>
+          <span>전략은 조직·R&amp;R·KPI·실행 로드맵으로 연결합니다.</span>
         </p>
         <div class="actions">
           <a class="btn primary" href="#finder" data-event="hero_cta_click" data-inquiry-source="hero" data-inquiry-route="hero" data-inquiry-case-title="Issue Finder 진입" data-inquiry-case-id="hero_finder">3문항 진단 시작</a>
-          <a class="btn secondary" href="#cases" data-inquiry-source="hero" data-inquiry-route="cases_overview" data-inquiry-case-title="핵심 실적 6건 보기" data-inquiry-case-id="hero_cases_overview">핵심 실적 6건 보기</a>
+          <a class="btn secondary" href="#evidence-os" data-inquiry-source="hero" data-inquiry-route="evidence_os" data-inquiry-case-title="Evidence OS 보기" data-inquiry-case-id="hero_evidence_os">유사 실적 검색</a>
         </div>
-        <div class="hero-proofline">
-          <strong>전환 핵심 3단계</strong>
-          <span>1) 유형 추론: 현재 병목 지점을 문제 축으로 분해</span>
-          <span>2) 실적 매칭: 유사 과제의 실행 구조를 우선 매칭</span>
-          <span>3) 미팅 연결: 15분 진단으로 실행 의사결정 확정</span>
+        <div class="hero-signals" aria-label="STRATEGY proof signals">
+          <div><b>210+</b><span>수주·수행 경험</span></div>
+          <div><b>4L</b><span>증거 레이어 분리</span></div>
+          <div><b>3</b><span>문항 후킹 진단</span></div>
         </div>
-        <div class="hero-journey">
-          <span>0. 증상 진단</span>
-          <span>→</span>
-          <span>1. 문제 유형 추론</span>
-          <span>→</span>
-          <span>2. 문의 제안</span>
+        <div class="landing-proofline">
+          <strong>방문자가 즉시 확인하는 것</strong>
+          <span>1) 우리 문제가 전략·조직·성과·HR 중 어디에서 터지는지</span>
+          <span>2) 직접·인접·간접 유사경험이 어떤 증거 레이어에 있는지</span>
+          <span>3) 첫 미팅에서 확인해야 할 의사결정 질문이 무엇인지</span>
         </div>
-        <div class="hero-proof-ticker">
-          <span><b>Sein</b>현실 진단 + 병목 구조 추출</span>
-          <span><b>Sollen</b>실행 목표 설정 + 책임 축 정렬</span>
-          <span><b>Proof</b>핵심 실적 6건 즉시 비교</span>
-          <span><b>Contact</b>의사결정 전용 진단 미팅 유도</span>
+        <div class="command-deck" aria-label="diagnostic command deck">
+          <div><span>Sein</span><b>현실 진단과 병목 구조 추출</b></div>
+          <div><span>Sollen</span><b>되어야 할 운영체계 기준 설정</b></div>
+          <div><span>Proof</span><b>실적·산출물·PM 경험 레이어 매칭</b></div>
         </div>
       </div>
 
@@ -106,14 +99,14 @@
       <aside class="panel finder" id="finder">
         <div class="panel-head">
           <strong>Issue Finder</strong>
-          <span>3단계</span>
+          <span>약 1분 · 연락처 없음</span>
         </div>
         <div class="progress"><i id="progress"></i></div>
         <div class="finder-body">
           <p class="step" id="stepLabel">STEP 1 / 3</p>
           <h2 id="question">지금 가장 느끼는 조직 이슈를 골라주세요</h2>
           <div class="options" id="options"></div>
-          <button class="btn primary" id="nextBtn" type="button">다음</button>
+          <button class="btn primary" id="nextBtn" type="button" disabled>선택 후 다음</button>
         </div>
         <div class="result" id="result" hidden></div>
       </aside>
@@ -141,12 +134,16 @@
     <section class="section evidence-os" id="evidence-os">
       <div class="section-head">
         <p class="kicker">Evidence OS v10</p>
-        <h2>기관명과 RFP 키워드로 유사 실적을 직접·인접·간접으로 정렬합니다</h2>
-        <p>회사 실적과 대표 PM 수행경험을 증거 레이어로 분리하고, 공개 화면에서는 연도·금액·이전 회사명을 숨깁니다.</p>
+        <h2>기관명과 과업명을 넣으면 유사경험과 증빙 가능성을 정렬합니다</h2>
+        <p>직접·인접·간접 실적을 분리하고, 회사 공식 수행경험과 대표 PM 수행경험을 별도 레이어로 보여줍니다.</p>
       </div>
 
       <div class="evidence-command">
         <form class="evidence-form" id="v10SearchForm">
+          <div class="evidence-form-head">
+            <span>Interactive Evidence Search</span>
+            <b>RFP 전 단계에서 증거 가능성을 먼저 점검합니다</b>
+          </div>
           <div class="field-pair">
             <label>
               <span>대상 기관</span>
@@ -171,6 +168,13 @@
             <span>필요 산출물</span>
             <input name="outputs" value="조직진단, 성과평가체계, 실행 로드맵" placeholder="전략체계, 성과지표, 조직설계">
           </label>
+          <div class="evidence-examples" aria-label="검색 예시">
+            <button type="button" data-v10-example="기장도시관리공단|local_facility_management_corporation|조직진단 성과평가 적정인력 시설관리 지방공기업|조직진단, 성과평가체계, 실행 로드맵">기장도시관리공단</button>
+            <button type="button" data-v10-example="농업기술진흥원|industry_promotion_agency|농업기술 진흥 성과관리 사업포트폴리오|전략체계, 사업 포트폴리오, 성과지표">농업기술진흥원</button>
+            <button type="button" data-v10-example="한국가스안전공사|central_quasi_government_or_public_agency_group|안전관리 경영평가 조직 역할 성과|경영평가 대응, 조직 역할, KPI 맵">한국가스안전공사</button>
+            <button type="button" data-v10-example="중장기 경영전략|central_quasi_government_or_public_agency_group|중장기 경영전략 비전 전략체계 실행과제|비전 체계, 전략과제, 실행 로드맵">중장기 경영전략</button>
+            <button type="button" data-v10-example="직무중심 인사제도|central_quasi_government_or_public_agency_group|직무중심 인사제도 직무급 보수체계 역량|직무체계, 보수체계, 인력운영안">직무중심 인사제도</button>
+          </div>
           <button class="btn primary" type="submit">유사 실적 검색</button>
         </form>
 
@@ -464,15 +468,28 @@
     <section class="section contact" id="contact">
       <div>
         <p class="kicker">Contact</p>
-        <h2>문제가 맞는지, 지금 바로 점검해 보겠습니다.</h2>
-        <p>컨설팅 제안은 1회 진단 후 문제 맥락에 맞춘 액션플랜으로 시작합니다.</p>
+        <h2>이 문제가 우리 조직에도 해당되는지 물어보세요.</h2>
+        <p>홈페이지 결과는 간단한 선택을 바탕으로 한 가설입니다. 실제 과제 범위와 접근 방식은 STRATEGY와의 상담에서 구체화합니다.</p>
         <p>02-6083-0330 / 평일 09:00-18:00 / <a href="https://www.linkedin.com/in/stratgy" target="_blank" rel="noreferrer">LinkedIn</a></p>
+        <div class="contact-proof-strip" aria-label="contact proof context">
+          <div><b>문제 우선</b><span>회사 소개보다 현재 병목을 먼저 정의합니다.</span></div>
+          <div><b>증거 분리</b><span>회사 실적, PM 실적, 참고 경험을 혼합하지 않습니다.</span></div>
+          <div><b>산출물 중심</b><span>상담 전환은 영업 압박이 아니라 의사결정 질문 정리로 시작합니다.</span></div>
+        </div>
       </div>
       <form class="form dark" id="inquiryForm">
         <input name="name" placeholder="이름" required>
         <input name="organization" placeholder="기관/회사/부서">
         <input name="phone" placeholder="전화번호" required>
         <input name="email" type="email" placeholder="이메일" required>
+        <select name="priority_context" aria-label="우선 진단 영역">
+          <option value="">우선 진단 영역 선택</option>
+          <option>전략-실행 단절</option>
+          <option>조직 R&amp;R 혼선</option>
+          <option>성과체계 불일치</option>
+          <option>AI/ESG/UAM 실행 전환</option>
+          <option>인력·직무 정렬 미흡</option>
+        </select>
         <textarea name="message" placeholder="문의 내용" required></textarea>
         <input type="hidden" name="inquiry_source" id="inquirySource">
         <input type="hidden" name="inquiry_case_title" id="inquiryCaseTitle">

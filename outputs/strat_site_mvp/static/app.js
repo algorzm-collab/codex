@@ -961,6 +961,25 @@ async function initV10EvidenceOS() {
   };
   if (!form.dataset.bound) {
     form.dataset.bound = "true";
+    document.querySelectorAll("[data-v10-example]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const [institution, institutionType, keywords, outputs] = toText(button.dataset.v10Example).split("|");
+        if (form.elements.institution) form.elements.institution.value = institution || "";
+        if (form.elements.institution_type) form.elements.institution_type.value = institutionType || "";
+        if (form.elements.keywords) form.elements.keywords.value = keywords || "";
+        if (form.elements.outputs) form.elements.outputs.value = outputs || "";
+        document.querySelectorAll("[data-v10-example]").forEach((item) => item.classList.toggle("active", item === button));
+        run();
+        setInquiryContext({
+          source: "evidence_os_example",
+          route: "evidence_os",
+          sourceTitle: institution || "Evidence OS 예시 검색",
+          sourceId: "v10_example",
+          inferredType: state.inferredType || "rr_role_confusion",
+          caseContext: keywords || "",
+        });
+      });
+    });
     form.addEventListener("submit", (event) => {
       event.preventDefault();
       run();
@@ -1122,9 +1141,15 @@ function inferTypeWithDetails() {
 
 function renderStep() {
   const step = steps[state.step];
+  const nextButton = $("#nextBtn");
   $("#stepLabel").textContent = step.label;
   $("#question").textContent = step.question;
   $("#progress").style.width = `${((state.step + 1) / steps.length) * 100}%`;
+  if (nextButton) {
+    const hasAnswer = !!state.answers[step.key];
+    nextButton.disabled = !hasAnswer;
+    nextButton.textContent = hasAnswer ? (state.step < steps.length - 1 ? "다음 질문" : "진단 결과 보기") : "선택 후 다음";
+  }
   const options = $("#options");
   options.innerHTML = "";
   step.options.forEach(([value, label]) => {
@@ -1137,6 +1162,10 @@ function renderStep() {
       updateDiagnosisDock({ label: "Issue Selected", title: label, route: "issue_finder" });
       [...options.children].forEach((child) => child.classList.remove("active"));
       button.classList.add("active");
+      if (nextButton) {
+        nextButton.disabled = false;
+        nextButton.textContent = state.step < steps.length - 1 ? "다음 질문" : "진단 결과 보기";
+      }
       track("issue_step_select", {
         source_section: "issue_finder",
         step: state.step + 1,
@@ -2593,11 +2622,11 @@ function initAwardMotion() {
   gsap.registerPlugin(ScrollTrigger);
   document.documentElement.classList.add("gsap-ready");
 
-  gsap.set(".hero-copy > *", { y: 28, autoAlpha: 0 });
-  gsap.set(".finder", { y: 34, rotateX: 3, autoAlpha: 0, transformOrigin: "50% 50%" });
+  gsap.set(".hero-copy > *", { y: 18 });
+  gsap.set(".finder", { y: 20, rotateX: 2, transformOrigin: "50% 50%" });
   gsap.timeline({ defaults: { ease: "power3.out" } })
-    .to(".hero-copy > *", { y: 0, autoAlpha: 1, duration: 0.9, stagger: 0.075 })
-    .to(".finder", { y: 0, rotateX: 0, autoAlpha: 1, duration: 0.95 }, "-=0.55");
+    .to(".hero-copy > *", { y: 0, duration: 0.72, stagger: 0.055 })
+    .to(".finder", { y: 0, rotateX: 0, duration: 0.75 }, "-=0.45");
 
   gsap.to(".strategy-canvas", {
     yPercent: 8,
@@ -2612,7 +2641,7 @@ function initAwardMotion() {
     scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: 0.8 },
   });
 
-  gsap.utils.toArray(".route-stage .journey-step, .hero-signals div, .command-deck div, .radar-lens button, .radar-stats div").forEach((item, index) => {
+  gsap.utils.toArray(".route-stage .journey-step").forEach((item, index) => {
     gsap.fromTo(item,
       { y: 26, autoAlpha: 0, scale: 0.96 },
       {
@@ -2627,8 +2656,8 @@ function initAwardMotion() {
   });
 
   gsap.fromTo(".case-radar",
-    { y: 44, autoAlpha: 0, scale: 0.96 },
-    { y: 0, autoAlpha: 1, scale: 1, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: ".case-radar", start: "top 82%", once: true } });
+    { y: 30, scale: 0.98 },
+    { y: 0, scale: 1, duration: 0.78, ease: "power3.out", scrollTrigger: { trigger: ".case-radar", start: "top 82%", once: true } });
   gsap.to(".case-universe-graph, .case-universe-fallback",
     { yPercent: -7, scale: 1.08, ease: "none", scrollTrigger: { trigger: ".case-radar", start: "top bottom", end: "bottom top", scrub: 1 } });
 
