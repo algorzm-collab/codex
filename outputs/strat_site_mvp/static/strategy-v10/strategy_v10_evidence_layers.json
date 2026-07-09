@@ -1,0 +1,57 @@
+{
+  "version": "v10",
+  "purpose": "회사실적·핵심인력 PM실적·대표이사 재직경험·내부 참고경험을 분리해 신뢰를 만들고 과장 리스크를 차단한다.",
+  "layers": [
+    {
+      "id": "L1_COMPANY_OFFICIAL",
+      "score": 100,
+      "label": "㈜STRATEGY 공식 회사실적",
+      "public_expression": "㈜STRATEGY 수행/ 회사·핵심인력 증빙 가능",
+      "allowed_uses": [
+        "홈페이지 대표실적",
+        "제안서 회사실적",
+        "핵심인력 실적",
+        "대표자 프로필"
+      ]
+    },
+    {
+      "id": "L2_KEY_PERSON_PM_OFFICIAL",
+      "score": 85,
+      "label": "대표 컨설턴트 PM 실적",
+      "public_expression": "대표 컨설턴트 PM 수행경험/ 개인 실적증명 가능",
+      "allowed_uses": [
+        "제안서 핵심인력 유사실적",
+        "대표자 전문성 카드",
+        "문제해결 역량 증거"
+      ]
+    },
+    {
+      "id": "L3_FORMER_CEO_PERIOD",
+      "score": 70,
+      "label": "前 대표이사 재직 시 수행경험",
+      "public_expression": "前 대표이사 재직 시 수행경험",
+      "allowed_uses": [
+        "대표자 리더십/수주·수행 경험",
+        "도메인 경험 보강"
+      ]
+    },
+    {
+      "id": "L4_CONTEXTUAL_PRIVATE_OR_LIMITED",
+      "score": 30,
+      "label": "비공개/제한적 맥락경험",
+      "public_expression": "공개 노출 금지",
+      "allowed_uses": [
+        "내부 방법론 참고",
+        "도메인 이해 참고"
+      ]
+    }
+  ],
+  "rank_rule": "relevance tier/direct-adjacent-indirect가 evidence score보다 우선한다. evidence score는 같은 tier 안에서 정렬 보정으로만 사용한다.",
+  "hard_rules": [
+    "이전 회사명 노출 금지",
+    "회사실적과 개인 PM 실적 혼용 금지",
+    "연도/금액 기본 비노출",
+    "실적증명 별첨 요구 시에만 원문 기준 표시",
+    "예산·정원 변화 인과 단정 금지"
+  ]
+}

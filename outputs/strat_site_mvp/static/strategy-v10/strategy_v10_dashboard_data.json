@@ -1,0 +1,33 @@
+{
+  "version": "v10-public",
+  "os_name": "STRATEGY Evidence-to-Decision Engine",
+  "core_question": "Does the buyer feel that STRATEGY has solved a structurally similar problem?",
+  "primary_capabilities": [
+    "RFP retrieval",
+    "direct-adjacent-indirect sorting",
+    "evidence layer safe copy",
+    "interactive homepage search",
+    "person evidence card",
+    "public guardrail"
+  ],
+  "homepage_metrics": [
+    "classified project records",
+    "policy-domain breadth",
+    "strategy-organization-performance-HR integration"
+  ],
+  "do_not_show_as_primary_metrics": [
+    "unverified aggregate scale",
+    "causal impact claims",
+    "private contract metadata"
+  ],
+  "visual_priority": [
+    "similarity_constellation",
+    "ministry_theme_heatmap",
+    "value_chain",
+    "anchor_case_map",
+    "person_evidence_card",
+    "evidence_pyramid",
+    "korea_map_secondary"
+  ],
+  "sample_target": "public facility-management type institution"
+}

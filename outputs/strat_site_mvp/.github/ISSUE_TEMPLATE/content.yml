@@ -1,0 +1,43 @@
+name: Content update
+description: Case, people, method, slide, or copy update
+title: "[Content] "
+labels: ["type:content", "stage:draft"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: Content area
+      options:
+        - flagship case
+        - full track record
+        - people profile
+        - method
+        - key slide
+        - hero copy
+        - service copy
+        - insight
+    validations:
+      required: true
+  - type: textarea
+    id: content
+    attributes:
+      label: Proposed content
+      description: Paste the draft content or summarize the needed update.
+    validations:
+      required: true
+  - type: textarea
+    id: proof
+    attributes:
+      label: Evidence or source
+      description: Where does this content come from? Existing strat.kr, LinkedIn, project list, internal record, etc.
+    validations:
+      required: true
+  - type: checkboxes
+    id: review
+    attributes:
+      label: Review checklist
+      options:
+        - label: No confidential client detail is exposed.
+        - label: Claims are phrased conservatively and can be supported.
+        - label: The content strengthens inquiry conversion, not just company explanation.
+

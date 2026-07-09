@@ -1,0 +1,56 @@
+name: Growth experiment
+description: STRATEGY homepage growth or conversion experiment
+title: "[Experiment] "
+labels: ["type:experiment", "stage:idea"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What visitor, trust, conversion, or admin problem are we solving?
+      placeholder: "Visitors see the case list but do not understand why these projects prove STRATEGY's capability."
+    validations:
+      required: true
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: Hypothesis
+      description: What change do we believe will improve behavior?
+      placeholder: "If flagship cases are shown as cinematic proof panels, case-to-contact CTA clicks will increase."
+    validations:
+      required: true
+  - type: dropdown
+    id: metric
+    attributes:
+      label: Primary metric
+      options:
+        - activation
+        - engagement
+        - trust
+        - conversion
+        - admin-ops
+        - performance
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Change scope
+      description: What pages, components, copy, API, or admin screens are affected?
+    validations:
+      required: true
+  - type: textarea
+    id: success
+    attributes:
+      label: Success criteria
+      placeholder: "case section reach +15%, case CTA click +20%, no mobile layout regression"
+    validations:
+      required: true
+  - type: textarea
+    id: measurement
+    attributes:
+      label: Measurement plan
+      description: Events, properties, screenshots, or admin records to inspect after release.
+    validations:
+      required: true
+

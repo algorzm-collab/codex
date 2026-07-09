@@ -1,0 +1,40 @@
+name: Bug or QA issue
+description: Layout, behavior, backend, admin, or data issue
+title: "[Bug] "
+labels: ["type:bug", "stage:reported"]
+body:
+  - type: textarea
+    id: observed
+    attributes:
+      label: What happened?
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should happen?
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - hero
+        - issue finder
+        - cases
+        - track record
+        - contact
+        - admin
+        - backend
+        - mobile
+        - performance
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+
