@@ -1,54 +1,35 @@
-mission: "Structure the 10 ChatGPT Projects into local/GitHub-recoverable Project Cells"
-current_objective: "Create stable folder paths and minimum continuity docs for each Project Cell"
-status: "NORMAL"
-progress_estimate: "80%"
+handoff:
+  date: 2026-07-09
+  from: claude-code-cto (세션 1일차 — 환경구축·롤확정·G2B재가동·MC가동)
+  resume_time_target: 3분
 
-current_context:
-  issue: ""
-  branch: "codex/issue-39-d3hr-definition"
-  pull_request: ""
-  last_commit: ""
+읽기_순서:
+  1: 이 파일
+  2: portfolio/registry.json (v0.3 — 활성 3, 워크스페이스 매핑 포함)
+  3: governance/ROLES.md (CTO=Claude, 책임개발자=Codex, 교차검증 구속)
+  4: mission-control/CEO_PROFILE.md
 
-completed_work:
-  - "Inspected core AI OS documents and portfolio registry."
-  - "Created portfolio/project_cells/ with 10 stable Project Cell folders."
-  - "Added a README recovery protocol and minimal PROJECT_CELL.md files."
+가동_중_시스템:
+  - Strategy-G2B-Daily 스케줄러 (매일 09:00, 본시트 무기록, 갭지표 포함 브리프 생성)
+  - Mission Control http://127.0.0.1:3777 (에이전트 3레인 도킹, 태스크 4건, 시작프로그램 자동시작)
+  - 사용량 관측: ccusage + tokscale (3레인)
 
-modified_files:
-  - path: "portfolio/project_cells/README.md"
-    reason: "Project Cell index and recovery protocol."
-  - path: "portfolio/project_cells/*/PROJECT_CELL.md"
-    reason: "Stable per-project continuity files."
-  - path: ".handoff/latest.yml"
-    reason: "Shift continuity for future chats/agents."
+CEO_게이트_대기:
+  - KNF 장표 채점 (slide-forge/out/knf_generational.pptx, 2/3회차)
+  - 장표 아카이브 물리 위치 (외장하드/구글드라이브/NAS?)
+  - G2B 공고 체크는 배제규칙 적용 후로 보류 권고됨
 
-important_decisions:
-  - decision: "Use ASCII slugs for folder names."
-    reason: "Existing registry text has encoding corruption, and stable paths matter more than display names."
-  - decision: "Do not move existing source files yet."
-    reason: "User asked for path organization with minimal token use; moving code without explicit mapping risks damage."
+다음_착수:
+  1: G2B 배제규칙 구현+기간정합 재현율 (Codex 태스크, docs/SCORING_CALIBRATION_PROPOSAL.md CTO검수노트 참조)
+  2: 장표머신 레거시 2건 감사 (Documents/Codex/2026-06-30/entj-ppt-z + new-chat-3)
+  3: MC 데이터 연동 심화 (디스패치→태스크 자동 갱신)
 
-rejected_options:
-  - option: "Create or push GitHub issues immediately."
-    reason: "Network/GitHub write actions need approval and are outside the requested path cleanup."
+기준선_지표:
+  g2b_상위10_정밀도: 10%
+  g2b_재현율: 1.6% (기간불일치 결함 — 교정 필요)
+  장표_파일럿: 4069장 인덱싱, 지문 1946종
 
-risks:
-  - "Some Korean project names in registry.json are mojibake; display names should be corrected later from CEO/source context."
-
-blockers:
-  - "Need GitHub write approval before pushing or creating Project Cell issues."
-
-next_recommended_action:
-  - "Review changed files."
-  - "Commit and push once approved."
-  - "Optionally create one long-lived GitHub issue per Project Cell."
-
-recommended_next_agent: "Codex"
-
-approval_needed:
-  required: true
-  reason: "Pushing to GitHub or creating issues changes remote state."
-  approval_owner: "CEO"
-
-continuity_notes: "New chats should start from portfolio/project_cells/README.md and the relevant PROJECT_CELL.md rather than relying on chat history."
-
+주의:
+  - 작업 전 git fetch 필수 (G2B 원격이 122커밋 앞서 있던 사고)
+  - 만들기 전 레거시 전수검색 필수 (중복제작 사고 2회)
+  - Codex 디스패치: cd 후 codex exec --skip-git-repo-check --full-auto, 커밋은 CTO가
