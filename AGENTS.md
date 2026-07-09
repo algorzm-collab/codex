@@ -29,7 +29,9 @@ Canonical telemetry sources (identical for CLI and desktop client):
 - Codex jobs: `C:\Users\USER\.claude\plugins\data\codex-inline\state\<workspace>\jobs\*.log|*.json`.
 
 Rules:
-- **Hermes mines skills from these transcript/log files, not from console output.** A repeated CEO correction or repeated manual sequence appearing in transcripts is a skill candidate → propose through the governance promotion pipeline.
+- **Skill creation is dual-track (CEO directive 2026-07-09).** Track 1 — the CTO is the primary skill author: CEO feedback and hard-won techniques are turned into skills immediately during work. Track 2 — Hermes is the RPA-style miner: its weekly cron job (`transcript-skill-mining`) scans transcript/log files for repeated corrections and manual sequences that slipped through, and stages skill proposals. The tracks review each other: Hermes-staged skills need CTO/CEO approval (`skills.write_approval: true`); CTO-authored skills are exposed to Hermes for in-use improvement.
+- **Shared skills surface:** `C:\Users\USER\.claude\skills` is registered in Hermes `skills.external_dirs` — both agents read and improve the same skill files. Hermes-native skills live in `C:\Users\USER\AppData\Local\hermes\skills`.
+- **Hermes mines from transcript/log files, never console scraping.** Hermes runs unattended: its gateway is a Windows Scheduled Task (`Hermes_Gateway`) started at logon — nobody launches it manually.
 - Mission-control dashboards monitor by tailing the same files. Because telemetry is filesystem-based, client vs CLI makes no difference.
 - Feedback the CEO gives in chat is captured by the CTO into the appropriate layer immediately (Continuous Learning below); Hermes mining is the safety net for what slips through.
 
