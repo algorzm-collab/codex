@@ -1,0 +1,34 @@
+{
+  "version": "v10",
+  "os_name": "STRATEGY Evidence-to-Decision Engine",
+  "core_question": "고객이 우리 기관과 닮은 문제를 이미 풀어본 팀이라고 느끼는가?",
+  "primary_capabilities": [
+    "RFP retrieval",
+    "direct-adjacent-indirect sorting",
+    "evidence layer safe copy",
+    "interactive homepage search",
+    "person evidence card",
+    "forbidden claim guardrail"
+  ],
+  "homepage_metrics": [
+    "210+ projects experience claim",
+    "policy-domain breadth",
+    "strategy-organization-performance-HR integration"
+  ],
+  "do_not_show_as_primary_metrics": [
+    "contract amount sum",
+    "client budget sum",
+    "budget increase",
+    "headcount increase"
+  ],
+  "visual_priority": [
+    "similarity_constellation",
+    "ministry_theme_heatmap",
+    "value_chain",
+    "anchor_case_map",
+    "person_evidence_card",
+    "evidence_pyramid",
+    "korea_map_secondary"
+  ],
+  "sample_target": "기장도시관리공단"
+}

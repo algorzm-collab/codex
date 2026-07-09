@@ -1,0 +1,41 @@
+{
+  "version": "v10",
+  "name": "STRATEGY Evidence OS v10",
+  "subtitle": "기관명과 과업명을 입력하면 직접·인접·간접 유사경험과 증빙 가능한 문제해결 역량을 자동으로 정렬하는 공공컨설팅 Evidence Engine",
+  "status": "planning_draft_starting_point_not_sufficient_condition",
+  "source_basis": {
+    "base_record_count": 103,
+    "base_record_source": "사용자 제공 실적표 103건 + v7 multisort DB",
+    "meta_experience_claim": "누적 210+ 프로젝트 수주·수행 경험",
+    "caution": "210+ 전체를 회사실적으로 표현하지 않는다. 증빙 레이어별로 분리한다."
+  },
+  "people_file": "strategy_v10_people.json",
+  "records_file": "strategy_v10_records.jsonl",
+  "evidence_layers_file": "strategy_v10_evidence_layers.json",
+  "similarity_engine_file": "strategy_v10_similarity_engine.json",
+  "rfp_schema_file": "strategy_v10_rfp_retrieval_schema.json",
+  "visualization_schema_file": "strategy_v10_visualization_schema.json",
+  "homepage_sections_file": "strategy_v10_homepage_sections.md",
+  "proposal_copy_file": "strategy_v10_proposal_copy_blocks.md",
+  "forbidden_claims_file": "strategy_v10_forbidden_claims.json",
+  "impact_tracker_file": "strategy_v10_impact_tracker.csv",
+  "sample_output_file": "strategy_v10_sample_gijang_output.json",
+  "core_policies": {
+    "relevance_order": "direct > adjacent > indirect",
+    "evidence_order": "company official > key person official PM > former CEO period > internal context",
+    "public_defaults": [
+      "hide year",
+      "hide amount",
+      "hide previous company",
+      "do not aggregate money",
+      "do not claim causality"
+    ]
+  },
+  "v9_assets_embedded_reference": [
+    "strategy_v9_heatmap_ministry_theme.json",
+    "strategy_v9_korea_map_view.json",
+    "strategy_v9_anchor_cases.json",
+    "strategy_v9_evidence_pyramid.json",
+    "strategy_v9_value_chain.json"
+  ]
+}

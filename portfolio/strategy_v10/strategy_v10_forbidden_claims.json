@@ -1,0 +1,40 @@
+{
+  "version": "v10",
+  "forbidden_claims": [
+    {
+      "claim": "모든 210+ 프로젝트를 ㈜STRATEGY 회사실적으로 표현",
+      "reason": "회사실적/대표 PM실적/前 대표이사 실적/내부참고 경험이 혼재되어 있음",
+      "safe_alternative": "대표 컨설턴트 누적 210+ 프로젝트 수주·수행 경험과 ㈜STRATEGY 공식 수행실적을 증빙 레이어별로 구분합니다."
+    },
+    {
+      "claim": "이전 회사명 노출",
+      "reason": "공개 마스킹 필요",
+      "safe_alternative": "前 소속 컨설팅사 PM 수행경험 또는 대표 컨설턴트 PM 수행경험"
+    },
+    {
+      "claim": "누적 계약금액 합산",
+      "reason": "금액 누락/혼재/왜곡 가능성",
+      "safe_alternative": "정책금융·국토SOC·원자력·보건복지 등 대형 공공운영체계 경험"
+    },
+    {
+      "claim": "누적 고객기관 예산 합산",
+      "reason": "과장 리스크",
+      "safe_alternative": "Anchor Scale Badge로 개별 사용: 75조 보증기관, 10조 해운금융 플랫폼 등. 단, 공개자료 검증 후 사용."
+    },
+    {
+      "claim": "컨설팅으로 예산/정원 증가",
+      "reason": "인과관계 단정 위험",
+      "safe_alternative": "수행 이후 공개자료상 변화가 확인된 사례는 내부 Impact Tracker로 별도 추적"
+    },
+    {
+      "claim": "경영평가 등급 상승 달성 단정",
+      "reason": "외부 요인이 큼",
+      "safe_alternative": "경영평가 대응 및 성과관리체계 고도화 경험"
+    },
+    {
+      "claim": "연도/금액을 기본 노출",
+      "reason": "PM 실적과 회사실적 구분이 흐려지고 오래된 실적처럼 보일 수 있음",
+      "safe_alternative": "홈페이지/제안서 본문에서는 연도·금액 기본 비노출, 별첨 증빙에만 표시"
+    }
+  ]
+}

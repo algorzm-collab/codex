@@ -1,0 +1,298 @@
+{
+  "version": "v10",
+  "target_profile": {
+    "target_institution": "기장도시관리공단",
+    "assumed_institution_type": [
+      "지방공기업",
+      "시설관리공단",
+      "도시·공공시설 운영기관"
+    ],
+    "likely_needs": [
+      "조직진단",
+      "성과평가체계",
+      "적정인력",
+      "공공시설 운영효율화",
+      "지방공기업 경영평가 맥락"
+    ],
+    "retrieval_policy": "직접 > 인접 > 간접. STR 회사실적 가산점은 같은 tier 내에서만 적용."
+  },
+  "direct_cases": [
+    {
+      "record_id": "TR-024",
+      "client_public": "기장군도시관리공단",
+      "project_title_public": "기장군도시관리공단 조직진단 및 성과평가체계 구축 연구 용역",
+      "tier": "direct",
+      "why_similar": "동일 또는 매우 가까운 시설관리/공공시설 운영기관이며 조직진단·성과평가체계 과업과 직접 연결됨",
+      "evidence_layer": "L2_KEY_PERSON_PM_OFFICIAL",
+      "proof_public_label": "대표 컨설턴트 PM 수행경험 / 개인 실적증명 가능",
+      "safe_public_copy": "기장군도시관리공단 관련 성과관리·내부평가 수행경험",
+      "do_not_say": [
+        "㈜STRATEGY 회사실적으로 단정",
+        "이전 회사명 노출",
+        "연도/금액 기본 노출",
+        "예산증가/정원증가 인과 단정"
+      ]
+    },
+    {
+      "record_id": "TR-083",
+      "client_public": "경상북도 안동시",
+      "project_title_public": "안동시 시설관리공단 조직진단 연구용역",
+      "tier": "direct",
+      "why_similar": "동일 또는 매우 가까운 시설관리/공공시설 운영기관이며 조직진단·성과평가체계 과업과 직접 연결됨",
+      "evidence_layer": "L3_FORMER_CEO_PERIOD",
+      "proof_public_label": "前 대표이사 재직 시 수행경험",
+      "safe_public_copy": "경상북도 안동시 관련 기타 수행경험",
+      "do_not_say": [
+        "㈜STRATEGY 회사실적으로 단정",
+        "이전 회사명 노출",
+        "연도/금액 기본 노출",
+        "예산증가/정원증가 인과 단정"
+      ]
+    },
+    {
+      "record_id": "TR-084",
+      "client_public": "서울물재생시설공단",
+      "project_title_public": "중장기 경영전략 수립 및 종합성과평가체계 구축 용역",
+      "tier": "direct",
+      "why_similar": "동일 또는 매우 가까운 시설관리/공공시설 운영기관이며 조직진단·성과평가체계 과업과 직접 연결됨",
+      "evidence_layer": "L3_FORMER_CEO_PERIOD",
+      "proof_public_label": "前 대표이사 재직 시 수행경험",
+      "safe_public_copy": "서울물재생시설공단 관련 경영평가·PCSI 수행경험",
+      "do_not_say": [
+        "㈜STRATEGY 회사실적으로 단정",
+        "이전 회사명 노출",
+        "연도/금액 기본 노출",
+        "예산증가/정원증가 인과 단정"
+      ]
+    }
+  ],
+  "adjacent_cases": [
+    {
+      "record_id": "TR-052",
+      "client_public": "인천광역시",
+      "project_title_public": "2021년 인천광역시 공사·공단 인력 및 조직진단 용역",
+      "tier": "adjacent",
+      "why_similar": "지방공기업·도시개발·공사공단 운영체계 또는 지역 공공기관 조직/전략 문제와 인접함",
+      "evidence_layer": "L2_KEY_PERSON_PM_OFFICIAL",
+      "proof_public_label": "대표 컨설턴트 PM 수행경험 / 개인 실적증명 가능",
+      "safe_public_copy": "인천광역시 관련 조직진단·조직재설계 수행경험",
+      "do_not_say": [
+        "㈜STRATEGY 회사실적으로 단정",
+        "이전 회사명 노출",
+        "연도/금액 기본 노출",
+        "예산증가/정원증가 인과 단정"
+      ]
+    },
+    {
+      "record_id": "TR-090",
+      "client_public": "울산광역시도시공사",
+      "project_title_public": "중장기경영계획(변경) 수립 용역",
+      "tier": "adjacent",
+      "why_similar": "지방공기업·도시개발·공사공단 운영체계 또는 지역 공공기관 조직/전략 문제와 인접함",
+      "evidence_layer": "L1_COMPANY_OFFICIAL",
+      "proof_public_label": "㈜STRATEGY 수행 / 회사·핵심인력 증빙 가능",
+      "safe_public_copy": "울산광역시도시공사 관련 전략수립 수행경험",
+      "do_not_say": [
+        "이전 회사명 노출",
+        "연도/금액 기본 노출",
+        "예산증가/정원증가 인과 단정"
+      ]
+    },
+    {
+      "record_id": "TR-097",
+      "client_public": "울산광역시도시공사",
+      "project_title_public": "중장기경영계획(변경) 수립 용역",
+      "tier": "adjacent",
+      "why_similar": "지방공기업·도시개발·공사공단 운영체계 또는 지역 공공기관 조직/전략 문제와 인접함",
+      "evidence_layer": "L1_COMPANY_OFFICIAL",
+      "proof_public_label": "㈜STRATEGY 수행 / 회사·핵심인력 증빙 가능",
+      "safe_public_copy": "울산광역시도시공사 관련 전략수립 수행경험",
+      "do_not_say": [
+        "이전 회사명 노출",
+        "연도/금액 기본 노출",
+        "예산증가/정원증가 인과 단정"
+      ]
+    },
+    {
+      "record_id": "TR-103",
+      "client_public": "울산광역시도시공사",
+      "project_title_public": "중장기경영계획(변경) 수립 용역",
+      "tier": "adjacent",
+      "why_similar": "지방공기업·도시개발·공사공단 운영체계 또는 지역 공공기관 조직/전략 문제와 인접함",
+      "evidence_layer": "L1_COMPANY_OFFICIAL",
+      "proof_public_label": "㈜STRATEGY 수행 / 회사·핵심인력 증빙 가능",
+      "safe_public_copy": "울산광역시도시공사 관련 전략수립 수행경험",
+      "do_not_say": [
+        "이전 회사명 노출",
+        "연도/금액 기본 노출",
+        "예산증가/정원증가 인과 단정"
+      ]
+    },
+    {
+      "record_id": "TR-001",
+      "client_public": "강원도개발공사",
+      "project_title_public": "2022 중장기 경영전략 및 조직진단 용역",
+      "tier": "adjacent",
+      "why_similar": "지방공기업·도시개발·공사공단 운영체계 또는 지역 공공기관 조직/전략 문제와 인접함",
+      "evidence_layer": "L2_KEY_PERSON_PM_OFFICIAL",
+      "proof_public_label": "대표 컨설턴트 PM 수행경험 / 개인 실적증명 가능",
+      "safe_public_copy": "강원도개발공사 관련 전략수립 수행경험",
+      "do_not_say": [
+        "㈜STRATEGY 회사실적으로 단정",
+        "이전 회사명 노출",
+        "연도/금액 기본 노출",
+        "예산증가/정원증가 인과 단정"
+      ]
+    },
+    {
+      "record_id": "TR-009",
+      "client_public": "충북개발공사",
+      "project_title_public": "충북개발공사 중장기 경영전략 수립 용역",
+      "tier": "adjacent",
+      "why_similar": "지방공기업·도시개발·공사공단 운영체계 또는 지역 공공기관 조직/전략 문제와 인접함",
+      "evidence_layer": "L2_KEY_PERSON_PM_OFFICIAL",
+      "proof_public_label": "대표 컨설턴트 PM 수행경험 / 개인 실적증명 가능",
+      "safe_public_copy": "충북개발공사 관련 전략수립 수행경험",
+      "do_not_say": [
+        "㈜STRATEGY 회사실적으로 단정",
+        "이전 회사명 노출",
+        "연도/금액 기본 노출",
+        "예산증가/정원증가 인과 단정"
+      ]
+    },
+    {
+      "record_id": "TR-017",
+      "client_public": "경북개발공사",
+      "project_title_public": "경북개발공사 `중장기 마스터플랜 수립`",
+      "tier": "adjacent",
+      "why_similar": "지방공기업·도시개발·공사공단 운영체계 또는 지역 공공기관 조직/전략 문제와 인접함",
+      "evidence_layer": "L2_KEY_PERSON_PM_OFFICIAL",
+      "proof_public_label": "대표 컨설턴트 PM 수행경험 / 개인 실적증명 가능",
+      "safe_public_copy": "경북개발공사 관련 전략수립 수행경험",
+      "do_not_say": [
+        "㈜STRATEGY 회사실적으로 단정",
+        "이전 회사명 노출",
+        "연도/금액 기본 노출",
+        "예산증가/정원증가 인과 단정"
+      ]
+    },
+    {
+      "record_id": "TR-028",
+      "client_public": "경기주택도시공사",
+      "project_title_public": "경기도 도시 주거 문제 주도를 위한 2025 중기 경영전략 수립용역",
+      "tier": "adjacent",
+      "why_similar": "지방공기업·도시개발·공사공단 운영체계 또는 지역 공공기관 조직/전략 문제와 인접함",
+      "evidence_layer": "L2_KEY_PERSON_PM_OFFICIAL",
+      "proof_public_label": "대표 컨설턴트 PM 수행경험 / 개인 실적증명 가능",
+      "safe_public_copy": "경기주택도시공사 관련 전략수립 수행경험",
+      "do_not_say": [
+        "㈜STRATEGY 회사실적으로 단정",
+        "이전 회사명 노출",
+        "연도/금액 기본 노출",
+        "예산증가/정원증가 인과 단정"
+      ]
+    }
+  ],
+  "indirect_cases": [
+    {
+      "record_id": "TR-046",
+      "client_public": "한국국토정보공사",
+      "project_title_public": "LX 내부 성과평가체계 개선 컨설팅 용역",
+      "tier": "indirect",
+      "why_similar": "기관유형은 다르지만 성과평가체계·직무·조직운영 방법론이 유사함",
+      "evidence_layer": "L2_KEY_PERSON_PM_OFFICIAL",
+      "proof_public_label": "대표 컨설턴트 PM 수행경험 / 개인 실적증명 가능",
+      "safe_public_copy": "한국국토정보공사 관련 성과관리·내부평가 수행경험",
+      "do_not_say": [
+        "㈜STRATEGY 회사실적으로 단정",
+        "이전 회사명 노출",
+        "연도/금액 기본 노출",
+        "예산증가/정원증가 인과 단정"
+      ]
+    },
+    {
+      "record_id": "TR-026",
+      "client_public": "서울디자인재단",
+      "project_title_public": "조직업적평가 지표 개발 및 사업평가체계 개선",
+      "tier": "indirect",
+      "why_similar": "기관유형은 다르지만 성과평가체계·직무·조직운영 방법론이 유사함",
+      "evidence_layer": "L2_KEY_PERSON_PM_OFFICIAL",
+      "proof_public_label": "대표 컨설턴트 PM 수행경험 / 개인 실적증명 가능",
+      "safe_public_copy": "서울디자인재단 관련 조직진단·조직재설계 수행경험",
+      "do_not_say": [
+        "㈜STRATEGY 회사실적으로 단정",
+        "이전 회사명 노출",
+        "연도/금액 기본 노출",
+        "예산증가/정원증가 인과 단정"
+      ]
+    },
+    {
+      "record_id": "TR-060",
+      "client_public": "서울디자인재단",
+      "project_title_public": "2021 부서업적평가(MBO) 운영",
+      "tier": "indirect",
+      "why_similar": "기관유형은 다르지만 성과평가체계·직무·조직운영 방법론이 유사함",
+      "evidence_layer": "L2_KEY_PERSON_PM_OFFICIAL",
+      "proof_public_label": "대표 컨설턴트 PM 수행경험 / 개인 실적증명 가능",
+      "safe_public_copy": "서울디자인재단 관련 성과관리·내부평가 수행경험",
+      "do_not_say": [
+        "㈜STRATEGY 회사실적으로 단정",
+        "이전 회사명 노출",
+        "연도/금액 기본 노출",
+        "예산증가/정원증가 인과 단정"
+      ]
+    },
+    {
+      "record_id": "TR-082",
+      "client_public": "한국콘텐츠진흥원",
+      "project_title_public": "직무중심 인사운영을 위한 직무평가 및 고도화 위탁용역",
+      "tier": "indirect",
+      "why_similar": "기관유형은 다르지만 성과평가체계·직무·조직운영 방법론이 유사함",
+      "evidence_layer": "L3_FORMER_CEO_PERIOD",
+      "proof_public_label": "前 대표이사 재직 시 수행경험",
+      "safe_public_copy": "한국콘텐츠진흥원 관련 직무·HR·보수체계 수행경험",
+      "do_not_say": [
+        "㈜STRATEGY 회사실적으로 단정",
+        "이전 회사명 노출",
+        "연도/금액 기본 노출",
+        "예산증가/정원증가 인과 단정"
+      ]
+    },
+    {
+      "record_id": "TR-098",
+      "client_public": "한국콘텐츠진흥원",
+      "project_title_public": "2024 직무중심 보수체계 설계 및 효율적 조직체계 구성 위탁용역",
+      "tier": "indirect",
+      "why_similar": "기관유형은 다르지만 성과평가체계·직무·조직운영 방법론이 유사함",
+      "evidence_layer": "L1_COMPANY_OFFICIAL",
+      "proof_public_label": "㈜STRATEGY 수행 / 회사·핵심인력 증빙 가능",
+      "safe_public_copy": "한국콘텐츠진흥원 관련 조직진단·조직재설계 수행경험",
+      "do_not_say": [
+        "이전 회사명 노출",
+        "연도/금액 기본 노출",
+        "예산증가/정원증가 인과 단정"
+      ]
+    },
+    {
+      "record_id": "TR-099",
+      "client_public": "한국콘텐츠진흥원",
+      "project_title_public": "K-콘텐츠 수출지원 기능강화를 위한 인사제도 개선 컨설팅 위탁용역",
+      "tier": "indirect",
+      "why_similar": "기관유형은 다르지만 성과평가체계·직무·조직운영 방법론이 유사함",
+      "evidence_layer": "L1_COMPANY_OFFICIAL",
+      "proof_public_label": "㈜STRATEGY 수행 / 회사·핵심인력 증빙 가능",
+      "safe_public_copy": "한국콘텐츠진흥원 관련 직무·HR·보수체계 수행경험",
+      "do_not_say": [
+        "이전 회사명 노출",
+        "연도/금액 기본 노출",
+        "예산증가/정원증가 인과 단정"
+      ]
+    }
+  ],
+  "recommended_visuals": [
+    "similarity_constellation",
+    "evidence_pyramid",
+    "value_chain"
+  ],
+  "proposal_message": "동일/인접 시설관리공단형 경험을 먼저 제시하고, 지방공기업·도시공사·성과관리 경험으로 보강한다. 회사실적과 대표 PM 실적은 증빙 레이어를 분리해 표기한다."
+}

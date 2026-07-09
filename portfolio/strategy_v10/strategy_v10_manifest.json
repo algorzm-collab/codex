@@ -1,0 +1,44 @@
+{
+  "version": "v10",
+  "bundle": "strategy_codex_v10_evidence_os_bundle.zip",
+  "created_for": "Codex ingestion, homepage planning, proposal retrieval, evidence-safe copy generation",
+  "status": "planning draft / starting point",
+  "files": [
+    "strategy_v10_codex_commands.md",
+    "strategy_v10_codex_prompt.md",
+    "strategy_v10_dashboard_data.json",
+    "strategy_v10_evidence_layers.json",
+    "strategy_v10_forbidden_claims.json",
+    "strategy_v10_homepage_sections.md",
+    "strategy_v10_impact_tracker.csv",
+    "strategy_v10_master_db.json",
+    "strategy_v10_people.json",
+    "strategy_v10_planning_draft.md",
+    "strategy_v10_proposal_copy_blocks.md",
+    "strategy_v10_records.csv",
+    "strategy_v10_records.jsonl",
+    "strategy_v10_rfp_retrieval_schema.json",
+    "strategy_v10_sample_gijang_output.json",
+    "strategy_v10_similarity_engine.json",
+    "strategy_v10_visualization_schema.json"
+  ],
+  "core_files": [
+    "strategy_v10_planning_draft.md",
+    "strategy_v10_codex_prompt.md",
+    "strategy_v10_codex_commands.md",
+    "strategy_v10_master_db.json",
+    "strategy_v10_records.jsonl",
+    "strategy_v10_similarity_engine.json",
+    "strategy_v10_rfp_retrieval_schema.json",
+    "strategy_v10_sample_gijang_output.json"
+  ],
+  "deprecated_previous_versions": [
+    "v3",
+    "v4",
+    "v5",
+    "v6",
+    "v7",
+    "v9"
+  ],
+  "source_base": "strategy_codex_records_v7_multisort.csv + v9 visualization/impact planning + user requirements"
+}
