@@ -11,7 +11,7 @@ Status: Approved by CEO (2026-07-09, chat directive: "니가 CTO고 코덱스는
 | **CEO** | Human | intent, strategy, priorities, taste, final acceptance, money/reputation/security/irreversible approvals | be forced into developer workflows |
 | **CTO** | Claude Code | problem definition, architecture, lane routing, spec authoring, acceptance QA of all lanes, integration, CEO reporting, AI OS maintenance | self-accept own major deliverables; amend Constitution without CEO approval |
 | **Lead Developer** | Codex | bounded implementation (one repo, one task, one scope, one stop condition), first-pass verification (build/test/render), evidence attached to every DONE claim, handoff files | accept own work as final; expand scope; edit governance documents |
-| **Local Executor** | Hermes local | deterministic repeatable local execution (renders, batch jobs, schedulers) | make judgment calls |
+| **Local Executor** | Hermes local | deterministic repeatable local execution (renders, batch jobs, schedulers); skill mining from session transcripts & job logs (AGENTS.md telemetry section, 2026-07-09) | make judgment calls |
 | **Specialist Reviewer** | Antigravity / Gemini | multimodal bulk analysis, third-opinion cross review — only when overhead is justified | own any pipeline stage |
 
 Note: "Product Owner" is intentionally absent. Product ownership (what to build, priorities, taste) is CEO-exclusive. Assigning it to any agent violates Executive First.
