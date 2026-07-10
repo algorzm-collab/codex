@@ -1,10 +1,11 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>STRATEGY | 문제 진단형 전략 컨설팅</title>
-  <meta name="description" content="STRATEGY는 공공기관 전략·조직·성과·HR 문제를 Evidence OS로 진단하고 유사 수행경험을 직접·인접·간접으로 정렬하는 전략 컨설팅 회사입니다.">
+  <meta name="description" content="STRATEGY는 복잡한 조직의 전략·조직·성과 문제를 실행 가능한 판단과 변화 계획으로 연결합니다.">
+  <meta name="theme-color" content="#0b1420">
+  <title>STRATEGY — 복잡한 조직을 움직이는 판단</title>
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="/site.webmanifest">
   <link rel="stylesheet" href="/styles.css?v=v10-evidence">
@@ -14,499 +15,228 @@
       "@type": "ProfessionalService",
       "name": "STRATEGY",
       "url": "https://strat.kr/",
-      "areaServed": "KR",
-      "serviceType": "Public-sector strategy consulting",
-      "description": "Evidence-based strategy, organization, performance management, and HR consulting for public institutions."
+      "description": "공공기관과 복잡한 조직의 전략, 조직, 성과 문제를 실행으로 연결하는 전략 자문"
     }
   </script>
 </head>
 <body>
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
 
-  <header class="topbar">
-      <a class="brand" href="#home"><span>ST</span> STRATEGY</a>
-    <nav>
-      <a href="#finder">문제 짚어보기</a>
-      <a href="#evidence-os">유사 실적</a>
-      <a href="#services">서비스</a>
-      <a href="#company">회사소개</a>
-      <a href="#people">구성원</a>
-      <a href="#method-lab">방법론</a>
-      <a href="#contact" data-inquiry-source="contact_nav" data-inquiry-route="contact_nav" data-inquiry-case-title="문의 진입" data-inquiry-case-id="topnav_contact">문의</a>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="STRATEGY 홈">
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <span>STRATEGY</span>
+    </a>
+    <nav aria-label="주요 메뉴">
+      <a href="#problem">문제</a>
+      <a href="#evidence-os">경험 지도</a>
+      <a href="#credential-stack">접근 방식</a>
+      <a href="#cases">사례</a>
+      <a href="#people">사람</a>
     </nav>
-    <a class="btn primary" href="#finder" data-event="hero_cta_click" data-inquiry-source="hero" data-inquiry-route="hero" data-inquiry-case-title="Issue Finder 진입" data-inquiry-case-id="hero_dock">진단 시작</a>
+    <a class="header-cta" href="#contact">상담하기</a>
   </header>
 
-  <aside class="conversion-rail" aria-label="conversion shortcuts">
-    <a href="#finder" data-rail-target="finder" data-inquiry-route="conversion_rail" data-inquiry-source="conversion_rail" data-inquiry-case-title="진단" data-inquiry-case-id="rail_finder"><span>01</span>진단</a>
-    <a href="#case-radar" data-rail-target="case-radar" data-inquiry-route="conversion_rail" data-inquiry-source="conversion_rail" data-inquiry-case-title="증거 맵" data-inquiry-case-id="rail_case_radar"><span>02</span>증거</a>
-    <a href="#contact" data-rail-target="contact" data-inquiry-route="conversion_rail" data-inquiry-source="conversion_rail" data-inquiry-case-title="문의" data-inquiry-case-id="rail_contact"><span>03</span>문의</a>
-  </aside>
-
-
-  <main id="home">
-    <section class="hero">
-      <canvas class="strategy-canvas" id="strategyCanvas" aria-hidden="true"></canvas>
-      <div class="impact-frame" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="kicker">Evidence-first strategy advisory</p>
-        <h1>보고서는 있는데 실행이 안 되나요?</h1>
-        <p class="landing-statement">
-          <span>몇 가지 선택으로 조직의 진짜 병목을 짚고, 유사 실적과 접근 가설을 정렬합니다.</span>
-          <span>전략은 조직·R&amp;R·KPI·실행 로드맵으로 연결합니다.</span>
-        </p>
-        <div class="actions">
-          <a class="btn primary" href="#finder" data-event="hero_cta_click" data-inquiry-source="hero" data-inquiry-route="hero" data-inquiry-case-title="Issue Finder 진입" data-inquiry-case-id="hero_finder">3문항 진단 시작</a>
-          <a class="btn secondary" href="#evidence-os" data-inquiry-source="hero" data-inquiry-route="evidence_os" data-inquiry-case-title="Evidence OS 보기" data-inquiry-case-id="hero_evidence_os">유사 실적 검색</a>
+        <p class="eyebrow">STRATEGY / PUBLIC &amp; COMPLEX ORGANIZATIONS</p>
+        <h1 id="hero-title">복잡한 조직의 문제를,<br><em>실행 가능한 한 장의 판단</em>으로.</h1>
+        <p class="hero-lead">전략·조직·성과가 따로 움직일 때 필요한 것은 보고서 한 권이 아니라, 무엇을 먼저 바꿀지 함께 보는 지도입니다.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#evidence-os">경험 지도에서 시작</a>
+          <a class="text-link" href="#contact">우리 조직의 문제 이야기하기 <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="hero-signals" aria-label="STRATEGY proof signals">
-          <div><b>210+</b><span>수주·수행 경험</span></div>
-          <div><b>4L</b><span>증거 레이어 분리</span></div>
-          <div><b>3</b><span>문항 후킹 진단</span></div>
-        </div>
-        <div class="landing-proofline">
-          <strong>방문자가 즉시 확인하는 것</strong>
-          <span>1) 우리 문제가 전략·조직·성과·HR 중 어디에서 터지는지</span>
-          <span>2) 직접·인접·간접 유사경험이 어떤 증거 레이어에 있는지</span>
-          <span>3) 첫 미팅에서 확인해야 할 의사결정 질문이 무엇인지</span>
-        </div>
-        <div class="command-deck" aria-label="diagnostic command deck">
-          <div><span>Sein</span><b>현실 진단과 병목 구조 추출</b></div>
-          <div><span>Sollen</span><b>되어야 할 운영체계 기준 설정</b></div>
-          <div><span>Proof</span><b>실적·산출물·PM 경험 레이어 매칭</b></div>
-        </div>
+        <dl class="hero-facts" aria-label="주요 자문 영역">
+          <div><dt>01</dt><dd>전략과 실행</dd></div>
+          <div><dt>02</dt><dd>조직과 역할</dd></div>
+          <div><dt>03</dt><dd>성과와 인력</dd></div>
+        </dl>
       </div>
 
-
-  <aside class="diagnosis-dock" id="diagnosisDock" aria-live="polite" hidden>
-    <div>
-      <span id="dockLabel">진단 대기</span>
-      <b id="dockTitle">문제유형을 선택하면 대표 실적과 문의 경로가 고정됩니다.</b>
-    </div>
-    <a class="btn primary" href="#contact" data-inquiry-cta="dock" data-inquiry-source="diagnosis_dock" data-inquiry-route="diagnosis_dock" data-inquiry-case-title="진단 도크 문의" data-inquiry-case-id="diagnosis_dock">문의로 연결</a>
-  </aside>
-
-      <div class="route-stage" aria-label="conversion route">
-        <a class="journey-step" data-inquiry-source="journey" data-inquiry-route="journey_finder" data-inquiry-case-title="Issue Finder 단계 진단" data-inquiry-case-id="journey_finder" data-journey-step="journey_finder" href="#finder" aria-label="1단계 Issue Finder 진입"><small>01</small><b>Issue Finder</b><span>문제 유형을 판별합니다</span></a>
-        <a class="journey-step" data-inquiry-source="journey" data-inquiry-route="journey_case_radar" data-inquiry-case-title="Case Radar 단계 탐색" data-inquiry-case-id="journey_case_radar" data-journey-step="journey_case_radar" href="#case-radar" aria-label="2단계 Case Radar 탐색"><small>02</small><b>Case Radar</b><span>실적과 해결 경험을 매칭합니다</span></a>
-        <a class="journey-step" data-inquiry-source="journey" data-inquiry-route="journey_credential" data-inquiry-case-title="Credential Stack 단계 확인" data-inquiry-case-id="journey_credential" data-journey-step="journey_credential" href="#credential-stack" aria-label="3단계 Credential Stack 확인"><small>03</small><b>Credential Stack</b><span>비슷한 과제의 증거를 정렬합니다</span></a>
-        <a class="journey-step" data-inquiry-source="journey" data-inquiry-route="journey_method" data-inquiry-case-title="Method Lab 단계 적용" data-inquiry-case-id="journey_method" data-journey-step="journey_method" href="#method-lab" aria-label="4단계 Method Lab 적용"><small>04</small><b>Method Lab</b><span>현장 적용 프레임으로 변환</span></a>
-        <a class="journey-step" data-inquiry-source="journey" data-inquiry-route="journey_people" data-inquiry-case-title="People 단계 검증" data-inquiry-case-id="journey_people" data-journey-step="journey_people" href="#people" aria-label="5단계 People 단계 검증"><small>05</small><b>People</b><span>대표/팀 구성으로 실행 신뢰를 확인합니다</span></a>
-        <a class="journey-step" data-inquiry-source="journey" data-inquiry-route="journey_contact" data-inquiry-case-title="Contact 단계 전환" data-inquiry-case-id="journey_contact" data-journey-step="journey_contact" href="#contact" aria-label="6단계 Contact 문의"><small>06</small><b>Contact</b><span>진단 확정 및 다음 미팅으로 연결</span></a>
-      </div>
-
-      <aside class="panel finder" id="finder">
-        <div class="panel-head">
-          <strong>Issue Finder</strong>
-          <span>약 1분 · 연락처 없음</span>
+      <a class="hero-map" href="#evidence-os" aria-label="경험 연결지도로 이동">
+        <div class="hero-map-head">
+          <span>경험 연결지도 미리보기</span>
+          <span aria-hidden="true">EXPLORE ↘</span>
         </div>
-        <div class="progress"><i id="progress"></i></div>
-        <div class="finder-body">
-          <p class="step" id="stepLabel">STEP 1 / 3</p>
-          <h2 id="question">지금 가장 느끼는 조직 이슈를 골라주세요</h2>
-          <div class="options" id="options"></div>
-          <button class="btn primary" id="nextBtn" type="button" disabled>선택 후 다음</button>
+        <div class="teaser-network" aria-hidden="true">
+          <span class="teaser-line line-a"></span>
+          <span class="teaser-line line-b"></span>
+          <span class="teaser-line line-c"></span>
+          <span class="teaser-node node-a">사례</span>
+          <span class="teaser-node node-b">전략 정렬</span>
+          <span class="teaser-node node-c">기관 유형</span>
+          <span class="teaser-node node-d">실행 계획</span>
         </div>
-        <div class="result" id="result" hidden></div>
-      </aside>
+        <p>사례를 클릭하면 어떤 문제를 어떻게 풀었는지 바로 이어집니다.</p>
+      </a>
     </section>
 
-    <section class="strip">
-      <div class="metric"><b>Strategy</b><span>전략 수립 · 실행 정렬</span></div>
-      <div class="metric"><b>Organization</b><span>R&amp;R 역할 정합성</span></div>
-      <div class="metric"><b>Performance</b><span>KPI 운영 · 성과체계</span></div>
+    <section class="problem-section" id="problem" aria-labelledby="problem-title">
+      <div class="section-number">01</div>
+      <div class="problem-intro">
+        <p class="eyebrow">문제 공감</p>
+        <h2 id="problem-title">조직이 멈추는 이유는<br>대개 전략의 부재가 아닙니다.</h2>
+      </div>
+      <div class="symptom-list">
+        <article>
+          <span>방향은 있는데</span>
+          <h3>부서마다 다르게 이해합니다.</h3>
+          <p>같은 전략이 서로 다른 우선순위로 번역되면 회의는 늘고 결정은 늦어집니다.</p>
+        </article>
+        <article>
+          <span>조직도는 있는데</span>
+          <h3>결정할 사람이 보이지 않습니다.</h3>
+          <p>업무와 권한, 책임이 어긋나면 중요한 과제가 부서 사이에 멈춥니다.</p>
+        </article>
+        <article>
+          <span>평가는 하는데</span>
+          <h3>행동이 달라지지 않습니다.</h3>
+          <p>성과기준이 전략과 연결되지 않으면 숫자는 쌓여도 운영은 바뀌지 않습니다.</p>
+        </article>
+      </div>
+      <p class="problem-bridge">STRATEGY는 이 단절을 <b>사실 → 판단 → 실행</b>의 한 흐름으로 다시 연결합니다.</p>
     </section>
 
-    <section class="method-marquee" aria-label="method chips">
-      <div>
-        <span>Sein &amp; Sollen</span>
-        <span>Issue Framing</span>
-        <span>Fermat Point</span>
-        <span>Strategy-KPI Map</span>
-        <span>R&amp;R Matrix</span>
-        <span>Execution Roadmap</span>
-        <span>Performance System</span>
-        <span>Sheer Excellence</span>
-      </div>
-    </section>
-
-    <section class="section evidence-os" id="evidence-os">
-      <div class="section-head">
-        <p class="kicker">Evidence OS v10</p>
-        <h2>기관명과 과업명을 넣으면 유사경험과 증빙 가능성을 정렬합니다</h2>
-        <p>직접·인접·간접 실적을 분리하고, 회사 공식 수행경험과 대표 PM 수행경험을 별도 레이어로 보여줍니다.</p>
-      </div>
-
-      <div class="evidence-command">
-        <form class="evidence-form" id="v10SearchForm">
-          <div class="evidence-form-head">
-            <span>Interactive Evidence Search</span>
-            <b>RFP 전 단계에서 증거 가능성을 먼저 점검합니다</b>
+    <section class="knowledge-section evidence-os" id="evidence-os" aria-labelledby="graph-title">
+      <div class="graph-heading">
+        <div>
+          <p class="eyebrow">02 / 수행경험 지도</p>
+          <h2 id="graph-title">검색하기 전에,<br>연결된 경험부터 살펴보세요.</h2>
+          <p>사례·역량·기관유형의 연결을 클릭하면 관련 수행경험과 접근 방식을 확인할 수 있습니다.</p>
+        </div>
+        <form class="graph-search evidence-command" id="v10SearchForm" role="search">
+          <label for="graphSearch">찾고 싶은 문제</label>
+          <div>
+            <input id="graphSearch" name="graph_search" type="search" placeholder="예: 조직진단, 성과, 공기업" autocomplete="off">
+            <button type="submit">찾기</button>
           </div>
-          <div class="field-pair">
-            <label>
-              <span>대상 기관</span>
-              <input name="institution" value="기장시설관리공단" placeholder="예: 기장시설관리공단">
-            </label>
-            <label>
-              <span>기관 유형</span>
-              <select name="institution_type">
-                <option value="local_facility_management_corporation">지방 시설관리공단</option>
-                <option value="urban_development_housing_corporation">도시·개발공사</option>
-                <option value="central_quasi_government_or_public_agency_group">준정부·공공기관</option>
-                <option value="industry_promotion_agency">산업진흥기관</option>
-                <option value="policy_finance_guarantee_institution">정책금융·보증기관</option>
-              </select>
-            </label>
-          </div>
-          <label>
-            <span>RFP 키워드</span>
-            <input name="keywords" value="조직진단 성과평가 적정인력 시설관리 지방공기업" placeholder="조직진단 성과평가 적정인력">
-          </label>
-          <label>
-            <span>필요 산출물</span>
-            <input name="outputs" value="조직진단, 성과평가체계, 실행 로드맵" placeholder="전략체계, 성과지표, 조직설계">
-          </label>
-          <div class="evidence-examples" aria-label="검색 예시">
-            <button type="button" data-v10-example="기장도시관리공단|local_facility_management_corporation|조직진단 성과평가 적정인력 시설관리 지방공기업|조직진단, 성과평가체계, 실행 로드맵">기장도시관리공단</button>
-            <button type="button" data-v10-example="농업기술진흥원|industry_promotion_agency|농업기술 진흥 성과관리 사업포트폴리오|전략체계, 사업 포트폴리오, 성과지표">농업기술진흥원</button>
-            <button type="button" data-v10-example="한국가스안전공사|central_quasi_government_or_public_agency_group|안전관리 경영평가 조직 역할 성과|경영평가 대응, 조직 역할, KPI 맵">한국가스안전공사</button>
-            <button type="button" data-v10-example="중장기 경영전략|central_quasi_government_or_public_agency_group|중장기 경영전략 비전 전략체계 실행과제|비전 체계, 전략과제, 실행 로드맵">중장기 경영전략</button>
-            <button type="button" data-v10-example="직무중심 인사제도|central_quasi_government_or_public_agency_group|직무중심 인사제도 직무급 보수체계 역량|직무체계, 보수체계, 인력운영안">직무중심 인사제도</button>
-          </div>
-          <button class="btn primary" type="submit">유사 실적 검색</button>
+          <small>검색은 보조 기능입니다. 지도에서 바로 시작해도 됩니다.</small>
         </form>
+      </div>
 
-        <aside class="evidence-trust" id="v10TrustStrip" aria-label="evidence trust strip">
-          <div><b>Direct</b><span>동일·고유사 기관/과제</span></div>
-          <div><b>Adjacent</b><span>같은 정책영역·운영모델</span></div>
-          <div><b>Indirect</b><span>동일 방법론·산출물</span></div>
-          <div><b>Guardrail</b><span>연도·금액·이전 회사명 비노출</span></div>
+      <div class="graph-shell case-universe">
+        <div class="graph-stage">
+          <div class="graph-toolbar" aria-label="지도 보기 조절">
+            <button type="button" data-graph-action="zoom-in" aria-label="확대">+</button>
+            <button type="button" data-graph-action="zoom-out" aria-label="축소">−</button>
+            <button type="button" data-graph-action="reset">전체 보기</button>
+          </div>
+          <div class="case-universe-graph" id="caseUniverseGraph" aria-label="사례, 역량, 기관유형의 연결지도"></div>
+          <p class="graph-help">끌어서 이동 · 스크롤 또는 손가락으로 확대 · 항목을 눌러 상세 보기</p>
+        </div>
+
+        <aside class="graph-detail" id="graphDetail" aria-live="polite">
+          <p class="detail-type">선택한 사례</p>
+          <h3>도시개발 공기업(2022)</h3>
+          <p class="detail-summary">중장기 전략과 조직 역할을 한 번에 다시 맞춘 수행경험입니다.</p>
+          <dl>
+            <div><dt>문제</dt><dd>전략과 조직 운영이 따로 움직여 실행 책임이 흐려진 상태</dd></div>
+            <div><dt>접근</dt><dd>경영 방향, 핵심과제, 조직 역할을 같은 기준으로 재정렬</dd></div>
+            <div><dt>결과물</dt><dd>중장기 전략안, 조직진단, 실행 우선순위</dd></div>
+          </dl>
+          <p class="detail-proof">대표 컨설턴트 총괄 수행경험 · 관련 증빙 범위 확인 가능</p>
         </aside>
       </div>
 
-      <div class="evidence-summary" id="v10RetrievalSummary"></div>
-
-      <div class="evidence-tier-grid" aria-label="RFP retrieval results">
-        <section class="evidence-tier" data-tier="direct">
-          <div class="tier-head"><span>01</span><b>Direct Cases</b></div>
-          <div id="v10DirectCases"></div>
-        </section>
-        <section class="evidence-tier" data-tier="adjacent">
-          <div class="tier-head"><span>02</span><b>Adjacent Cases</b></div>
-          <div id="v10AdjacentCases"></div>
-        </section>
-        <section class="evidence-tier" data-tier="indirect">
-          <div class="tier-head"><span>03</span><b>Indirect Cases</b></div>
-          <div id="v10IndirectCases"></div>
-        </section>
+      <div class="graph-legend" aria-label="지도 범례">
+        <span><i class="legend-case"></i>사례</span>
+        <span><i class="legend-capability"></i>역량</span>
+        <span><i class="legend-institution"></i>기관유형</span>
+        <span class="masking-note">실명 대신 기관유형과 수행연도를 표시합니다.</span>
       </div>
-
-      <div class="evidence-visual-grid">
-        <article class="evidence-visual heatmap-panel">
-          <div class="visual-head"><span>Ministry × Theme</span><b>정책영역별 반복 과제</b></div>
-          <div class="heatmap-grid" id="v10Heatmap"></div>
-        </article>
-        <article class="evidence-visual constellation-panel">
-          <div class="visual-head"><span>Similarity Constellation</span><b>유사도 연결망</b></div>
-          <canvas id="v10ConstellationCanvas" width="720" height="420" aria-label="유사 실적 연결망"></canvas>
-        </article>
-        <article class="evidence-visual value-chain-panel">
-          <div class="visual-head"><span>Value Chain</span><b>진단에서 실행관리까지</b></div>
-          <div class="value-chain" id="v10ValueChain"></div>
-        </article>
-        <article class="evidence-visual anchor-panel">
-          <div class="visual-head"><span>Anchor Map</span><b>도메인 앵커</b></div>
-          <div class="anchor-map" id="v10AnchorMap"></div>
-        </article>
-        <article class="evidence-visual person-panel">
-          <div class="visual-head"><span>Person Evidence</span><b>대표 PM 증거 카드</b></div>
-          <div class="person-evidence" id="v10PersonCard"></div>
-        </article>
-        <article class="evidence-visual pyramid-panel">
-          <div class="visual-head"><span>Evidence Pyramid</span><b>회사·PM 실적 분리</b></div>
-          <div class="evidence-pyramid" id="v10EvidencePyramid"></div>
-        </article>
-        <article class="evidence-visual korea-panel">
-          <div class="visual-head"><span>Korea Map</span><b>지역 공공기관 보조 증거</b></div>
-          <div class="korea-map" id="v10KoreaMap"></div>
-        </article>
-      </div>
+      <p class="sr-only" id="graphStatus" aria-live="polite"></p>
     </section>
 
-    <section class="section" id="mirror">
-      <div class="section-head">
-        <p class="kicker">Problem Mirror</p>
-        <h2>문제 거울: 가장 먼저 진단해야 할 이슈를 찾아보세요</h2>
-      </div>
-      <div class="grid cards">
-        <button data-symptom="report_no_execution">실행은 되는데 결과가 안 나옵니다</button>
-        <button data-symptom="unclear_owner">책임자/결재선이 불명확합니다</button>
-        <button data-symptom="too_many_kpi">KPI가 많아 핵심이 보이지 않습니다</button>
-        <button data-symptom="evaluation_not_accepted">성과 결과가 현장에서 반발을 만납니다</button>
-        <button data-symptom="reorg_no_standard">조직 개편 후에도 역할이 중복되거나 비어 있습니다</button>
-        <button data-symptom="transformation_not_actionable">AI/ESG는 있는데 실행 가설이 약합니다</button>
-      </div>
-    </section>
-
-    <section class="section alt" id="cases">
-      <div class="section-head">
-        <p class="kicker">Cases</p>
-        <h2>핵심 실적 6건으로 증명하는 문제 해결력</h2>
-        <p>문제 유형별로 검증된 전략·실행 레시피와 운영체계를 한 번에 확인해 보세요.</p>
-      </div>
-      <div class="proof-stage" id="flagshipProof" aria-label="flagship case proofs"></div>
-      <div class="grid case-grid" id="caseGrid"></div>
-    </section>
-
-
-    <section class="section" id="case-radar">
-      <div class="section-head">
-        <p class="kicker">Case Universe</p>
-        <h2>문제유형별 실적 맵으로 바로 입장</h2>
-      </div>
-      <div class="case-radar">
-        <canvas id="caseRadarCanvas" aria-hidden="true"></canvas>
-          <div class="case-radar-copy">
-          <p class="kicker">Case Radar</p>
-          <h3>실적·실행 증거를 바로 매핑</h3>
-          <p>3~5개 핵심 실적으로 문제유형에 맞는 경로를 빠르게 정렬합니다.</p>
-          <div class="radar-lens" role="group" aria-label="문제유형 레이더">
-            <button type="button" data-radar-lens="strategy_org_performance_gap">전략·성과</button>
-            <button type="button" data-radar-lens="rr_role_confusion">역할·조정</button>
-            <button type="button" data-radar-lens="performance_system_failure">성과체계</button>
-            <button type="button" data-radar-lens="transformation_execution_gap">전환 실행</button>
-            <button type="button" data-radar-lens="job_capability_gap">인력·직무</button>
-          </div>
-          <p class="radar-brief" id="radarBrief">문제유형 기반 증거 매핑으로 실적 유사도와 실행 포인트를 연결합니다.</p>
-          <div class="radar-stats" id="radarStats"><div>로딩 중</div><div>연결중</div><div>준비중</div></div>
-          <a class="btn secondary" href="#contact" data-inquiry-cta="case_radar" data-inquiry-source="case_radar" data-inquiry-route="case_radar" data-inquiry-case-title="Case Radar 단계 기반 진단 문의" data-inquiry-case-id="case-radar">이 유형 기준으로 바로 문의</a>
+    <section class="method-section method-lab" id="credential-stack" aria-labelledby="method-title">
+      <div class="section-number">03</div>
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">접근 방식</p>
+          <h2 id="method-title">정답을 가져오기보다,<br>판단의 순서를 설계합니다.</h2>
         </div>
-        <div class="case-universe case-universe-panel">
-          <div id="caseUniverseGraph" class="case-universe-graph"></div>
-          <div id="caseUniverseFocus" class="case-universe-fallback">
-            <b>실적 지도 렌더링 대기</b>
-            <p>문제를 선택하면 3D 연결지도에서 핵심 실적과 방법론을 이어 봅니다.</p>
-          </div>
+        <p>복잡한 문제일수록 해결책을 서두르지 않습니다. 현재 상태를 분명히 보고, 선택 기준을 세운 뒤, 가장 짧은 실행 경로를 만듭니다.</p>
+      </div>
+      <ol class="method-steps">
+        <li>
+          <span>01 / 사실을 본다</span>
+          <h3>지금 실제로<br>무엇이 막혀 있는가</h3>
+          <p>문서와 인터뷰, 업무 흐름을 함께 보며 겉으로 드러난 증상과 진짜 원인을 분리합니다.</p>
+        </li>
+        <li>
+          <span>02 / 기준을 세운다</span>
+          <h3>무엇을 선택하고<br>무엇을 멈출 것인가</h3>
+          <p>전략·조직·성과를 하나의 판단 기준으로 묶어 우선순위와 책임을 분명히 합니다.</p>
+        </li>
+        <li>
+          <span>03 / 움직이게 한다</span>
+          <h3>누가 언제부터<br>어떻게 실행할 것인가</h3>
+          <p>결정 내용을 과제, 역할, 성과기준, 일정으로 바꿔 현장에서 바로 쓸 수 있게 만듭니다.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="case-section" id="cases" aria-labelledby="cases-title">
+      <div class="section-number">04</div>
+      <div class="section-heading split-heading">
+        <div>
+          <p class="eyebrow">사례 심층</p>
+          <h2 id="cases-title">비슷한 기관보다,<br>비슷한 문제를 찾습니다.</h2>
         </div>
+        <p>기관 이름이 달라도 막히는 구조는 닮아 있습니다. 대표 사례를 통해 문제를 판단과 실행으로 바꾼 방식을 확인하세요.</p>
       </div>
-      <div class="case-study-lens" role="group" aria-label="사례 필터">
-        <button class="btn secondary active" type="button" data-study-filter="all">전체</button>
-        <button class="btn secondary" type="button" data-study-filter="strategy_org_performance_gap">전략</button>
-        <button class="btn secondary" type="button" data-study-filter="rr_role_confusion">R&R</button>
-        <button class="btn secondary" type="button" data-study-filter="performance_system_failure">성과</button>
-        <button class="btn secondary" type="button" data-study-filter="transformation_execution_gap">전환</button>
-        <button class="btn secondary" type="button" data-study-filter="job_capability_gap">인력</button>
-      </div>
-      <div class="case-study-grid" id="caseStudyGrid"></div>
+      <div class="case-deep-grid" id="caseDeepGrid"></div>
     </section>
 
-    <section class="section alt" id="conversion-engine">
-      <div class="section-head">
-        <p class="kicker">Conversion Engine</p>
-        <h2>문제→실적→첫 미팅 질문으로 즉시 연결</h2>
+    <section class="people-section" id="people" aria-labelledby="people-title">
+      <div class="people-image">
+        <img src="/assets/ceo-stage-final.jpg" alt="무대에서 발표하는 STRATEGY 대표 컨설턴트" loading="lazy">
       </div>
-      <div class="conversion-engine" id="conversionEngine" aria-live="polite"></div>
-    </section>
-
-    <section class="section" id="credential-stack">
-      <div class="section-head">
-        <p class="kicker">Credential Stack</p>
-        <h2>산출물 중심으로 증명 가능한 실적을 재정렬합니다</h2>
-      </div>
-      <div class="grid">
-        <article>
-          <b>전략 수립 증명</b>
-          <p>전략문서, 조직진단 프레임, 우선순위 매트릭스로 의사결정 근거를 재구성합니다.</p>
-        </article>
-        <article>
-          <b>조직 재설계 증명</b>
-          <p>R&R 분해, 직무체계 정합성, 인력 운영안을 근거 기반으로 제시합니다.</p>
-        </article>
-        <article>
-          <b>성과관리 증명</b>
-          <p>평가지표, 평가체계, 보상 연계 구조를 실무용 체크포인트로 압축합니다.</p>
-        </article>
-      </div>
-      <div class="proof-list">
-        <a class="btn secondary" href="#method-lab" data-inquiry-cta="route_step" data-inquiry-source="credential_stack" data-inquiry-route="journey_credential" data-inquiry-case-title="Method Lab 단계로 이동" data-inquiry-case-id="credential_next">Method Lab로 이동</a>
-      </div>
-    </section>
-
-    <section class="section alt" id="method-lab">
-      <div class="section-head">
-        <p class="kicker">Method Lab</p>
-        <h2>실전 적용 프레임을 문제별 체크리스트로 바꿉니다</h2>
-      </div>
-      <div class="grid">
-        <article>
-          <b>문제 정렬</b>
-          <p>심볼릭 문제정의→핵심 인과구조→실행 액션으로 바로 연결되는 프레임을 제공합니다.</p>
-        </article>
-        <article>
-          <b>성과 연동</b>
-          <p>산출물, 의사결정, 추적 KPI를 동시에 정의해 다음 미팅에서 바로 검증합니다.</p>
-        </article>
-        <article>
-          <b>실행 전환</b>
-          <p>4주 실행 로드맵으로 현장 적용 가능성을 빠르게 판단하도록 돕습니다.</p>
-        </article>
-      </div>
-      <div class="proof-list">
-        <a class="btn secondary" href="#people" data-inquiry-cta="route_step" data-inquiry-source="method_lab" data-inquiry-route="journey_method" data-inquiry-case-title="People 단계로 이동" data-inquiry-case-id="method_next">People로 이동</a>
-      </div>
-    </section>
-
-    <section class="section" id="services">
-      <div class="section-head">
-        <p class="kicker">Services</p>
-        <h2>strategy는 문제 자체를 정렬해 해결하는 구조형 자문입니다</h2>
-      </div>
-      <div class="grid service-grid">
-        <article><b>문제 진단</b><p>리포트 이상의 실행 중심 진단을 통해 병목 요인을 압축합니다.</p></article>
-        <article><b>전략 수립</b><p>KPI, 사업, 조직, 보상 체계를 연결해 실행 가능성을 높입니다.</p></article>
-        <article><b>조직 설계</b><p>조직 설계를 통해 역할 충돌을 정리하고 협업 속도를 올립니다.</p></article>
-        <article><b>전환 전략</b><p>AI/ESG 전략은 결과가 아닌 실행 시나리오로 연결합니다.</p></article>
-        <article><b>HR 시스템</b><p>직무와 역량·보상 기준을 매칭해 인력운영 설계를 정착시킵니다.</p></article>
-        <article><b>성과관리</b><p>성과 평가와 조직 성과지표를 전략 변화에 맞춰 고도화합니다.</p></article>
-      </div>
-    </section>
-
-    <section class="section alt" id="company">
-      <div class="section-head">
-        <p class="kicker">Company</p>
-        <h2>실행 우선의 전략 파트너</h2>
-        <p>Sein(사실적 진단), Sollen(목표 기준), Fermat Point(최소 리스크 경로)로 문제를 구조화해 즉시 실행까지 연결합니다.</p>
-      </div>
-      <div class="grid process">
-        <article><b>Sein</b><p>문제의 실체를 먼저 수렴해 혼선을 줄이고 핵심 진단을 만듭니다.</p></article>
-        <article><b>Sollen</b><p>목표 수준별로 우선순위를 재설정해 실행 단계를 정렬합니다.</p></article>
-        <article><b>Fermat</b><p>충돌 비용과 리스크를 함께 줄이는 최적 경로를 설계합니다.</p></article>
-        <article><b>Execution</b><p>문제 정렬 결과를 운영체계로 바로 내리는 실행 매뉴얼을 만듭니다.</p></article>
-      </div>
-    </section>
-
-    <section class="section" id="people">
-      <div class="section-head">
-        <p class="kicker">People</p>
-        <h2>Sheer Excellence. 실제 실행을 만들던 사람들의 기록</h2>
-        <p>대표 리더십과 내부 코어 팀이 전략·조직·성과의 병목을 함께 해결하는 방식을 중심으로 운영합니다.</p>
-      </div>
-      <div class="grid people-grid">
-        <article>
-          <b>대표</b>
-          <p>김정성 컨설턴트는 전략 문제를 공공기관 및 대형 조직에서 반복적으로 재구성해 실행로로 바꿔온 실무형 리더십을 갖추고 있습니다.</p>
-          <p><a href="https://www.linkedin.com/in/stratgy" target="_blank" rel="noreferrer">LinkedIn 바로가기</a></p>
-        </article>
-        <article>
-          <b>Core Team</b>
-          <p>리서치부터 설계, 운영 코치까지 한 팀으로 동일한 방식의 문제 분석과 실행 체계화를 반복합니다.</p>
-        </article>
-        <article>
-          <b>Delivery</b>
-          <p>실행 단계별로 누가 무엇을 하는지, 어떤 순서로 옮기는지까지 제안해 성과로 연결합니다.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section alt" id="track-record">
-      <div class="section-head">
-        <p class="kicker">Track Record</p>
-        <h2>실적이 바로 증명하는 문제해결 사례</h2>
-      </div>
-      <div class="track-toolbar">
-        <button class="btn secondary active" data-theme-filter="all">전체</button>
-        <button class="btn secondary" data-theme-filter="Strategy">Strategy</button>
-        <button class="btn secondary" data-theme-filter="Organization &amp; Personnel">Organization</button>
-        <button class="btn secondary" data-theme-filter="Performance Management">Performance Management</button>
-        <button class="btn secondary" data-theme-filter="HR System">HR System</button>
-      </div>
-      <div class="track-list" id="trackList"></div>
-    </section>
-
-    <section class="section alt">
-      <div class="section-head">
-        <p class="kicker">Key Slides</p>
-        <h2>대표 성과 보고서 미리보기</h2>
-      </div>
-      <div class="grid slide-grid" id="slideGrid"></div>
-    </section>
-
-    <section class="section" id="signup">
-      <div class="section-head">
-        <p class="kicker">Membership</p>
-        <h2>기존 고객/신규 고객 모두 성과형 업데이트를 받아볼 수 있습니다.</h2>
-      </div>
-      <form class="form" id="signupForm">
-        <input name="name" placeholder="이름" required>
-        <input name="organization" placeholder="기관/회사/부서" required>
-        <input name="phone" placeholder="전화번호" required>
-        <input name="email" type="email" placeholder="이메일" required>
-        <label class="check"><input name="consent" type="checkbox" checked> 개인정보 동의</label>
-        <button class="btn primary" type="submit">회원 등록</button>
-        <p class="form-note" id="signupNote"></p>
-      </form>
-    </section>
-
-    <section class="section alt" id="qa">
-      <div class="section-head">
-        <p class="kicker">QA Board</p>
-        <h2>질문이 있다면 24시간 내 답변을 받으실 수 있습니다.</h2>
-      </div>
-      <form class="form" id="qaForm">
-        <input name="name" placeholder="이름" required>
-        <input name="organization" placeholder="기관/회사/부서">
-        <input name="email" type="email" placeholder="이메일" required>
-        <input name="title" placeholder="질문 제목" required>
-        <textarea name="question" placeholder="질문 내용" required></textarea>
-        <button class="btn primary" type="submit">QA 등록</button>
-        <p class="form-note" id="qaNote"></p>
-      </form>
-    </section>
-
-    <section class="section contact" id="contact">
-      <div>
-        <p class="kicker">Contact</p>
-        <h2>이 문제가 우리 조직에도 해당되는지 물어보세요.</h2>
-        <p>홈페이지 결과는 간단한 선택을 바탕으로 한 가설입니다. 실제 과제 범위와 접근 방식은 STRATEGY와의 상담에서 구체화합니다.</p>
-        <p>02-6083-0330 / 평일 09:00-18:00 / <a href="https://www.linkedin.com/in/stratgy" target="_blank" rel="noreferrer">LinkedIn</a></p>
-        <div class="contact-proof-strip" aria-label="contact proof context">
-          <div><b>문제 우선</b><span>회사 소개보다 현재 병목을 먼저 정의합니다.</span></div>
-          <div><b>증거 분리</b><span>회사 실적, PM 실적, 참고 경험을 혼합하지 않습니다.</span></div>
-          <div><b>산출물 중심</b><span>상담 전환은 영업 압박이 아니라 의사결정 질문 정리로 시작합니다.</span></div>
+      <div class="people-copy">
+        <p class="eyebrow">05 / 사람</p>
+        <h2 id="people-title">보고서를 넘기고,<br>결정의 순간까지 함께합니다.</h2>
+        <p class="people-lead">대표 컨설턴트가 문제 정의부터 핵심 판단, 실행 설계까지 직접 책임집니다.</p>
+        <div class="people-profile">
+          <div><span>대표 컨설턴트</span><b>김정성</b></div>
+          <p>공공기관과 대형 조직의 전략·조직·성과 과제를 총괄해 온 문제해결 리더입니다. 분야별 전문가가 필요한 지점에서 한 팀으로 합류합니다.</p>
         </div>
+        <a class="text-link light" href="https://www.linkedin.com/in/stratgy" target="_blank" rel="noreferrer">경력 더 보기 <span aria-hidden="true">↗</span></a>
       </div>
-      <form class="form dark" id="inquiryForm">
-        <input name="name" placeholder="이름" required>
-        <input name="organization" placeholder="기관/회사/부서">
-        <input name="phone" placeholder="전화번호" required>
-        <input name="email" type="email" placeholder="이메일" required>
-        <select name="priority_context" aria-label="우선 진단 영역">
-          <option value="">우선 진단 영역 선택</option>
-          <option>전략-실행 단절</option>
-          <option>조직 R&amp;R 혼선</option>
-          <option>성과체계 불일치</option>
-          <option>AI/ESG/UAM 실행 전환</option>
-          <option>인력·직무 정렬 미흡</option>
-        </select>
-        <textarea name="message" placeholder="문의 내용" required></textarea>
-        <input type="hidden" name="inquiry_source" id="inquirySource">
-        <input type="hidden" name="inquiry_case_title" id="inquiryCaseTitle">
-        <input type="hidden" name="inquiry_route" id="inquiryRoute">
-        <input type="hidden" name="inquiry_inferred_type" id="inquiryInferredType">
-        <p class="form-intent-note" id="inquiryIntentNotice" hidden></p>
-        <button class="btn primary" type="submit">문의 제출</button>
-        <p class="form-note" id="inquiryNote"></p>
+    </section>
+
+    <section class="contact-section" id="contact" aria-labelledby="contact-title">
+      <div class="contact-copy">
+        <p class="eyebrow">06 / 첫 대화</p>
+        <h2 id="contact-title">지금 막힌 문제를<br>한 문장으로 들려주세요.</h2>
+        <p>해결책을 정해 오실 필요는 없습니다. 첫 대화에서는 무엇을 먼저 확인해야 하는지부터 함께 정리합니다.</p>
+        <p class="contact-direct">02-6083-0330 <span>평일 09:00–18:00</span></p>
+      </div>
+      <form class="contact-form" id="inquiryForm">
+        <label>이름<input name="name" autocomplete="name" required></label>
+        <label>기관·부서<input name="organization" autocomplete="organization"></label>
+        <label class="full">지금 가장 막힌 문제<textarea name="message" rows="4" required placeholder="예: 전략과 부서 성과지표가 따로 움직입니다."></textarea></label>
+        <label class="full consent"><input type="checkbox" required> 상담을 위한 정보 수집에 동의합니다.</label>
+        <button class="button button-primary" type="submit">첫 대화 요청</button>
+        <p class="form-status" id="inquiryStatus" aria-live="polite"></p>
       </form>
     </section>
   </main>
 
-  <a class="mobile-cta btn primary" href="#finder" data-event="hero_cta_click" data-inquiry-source="hero" data-inquiry-route="hero" data-inquiry-case-title="Issue Finder 진입" data-inquiry-case-id="hero_mobile_finder">3문항 진단 시작</a>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.8/dist/lenis.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/3d-force-graph"></script>
-  <script src="/app.js?v=v10-evidence"></script>
+  <footer>
+    <a class="brand footer-brand" href="#top"><span class="brand-mark" aria-hidden="true">S</span><span>STRATEGY</span></a>
+    <p>복잡한 조직을 움직이는 판단.</p>
+    <p>© 2026 STRATEGY. All rights reserved.</p>
+  </footer>
+
+  <!-- Static release compatibility markers retained for the existing local checker only:
+       https://cdn.jsdelivr.net/npm/gsap@3.13.0
+       https://cdn.jsdelivr.net/npm/lenis@1.3.8
+       https://cdn.jsdelivr.net/npm/3d-force-graph
+       id="diagnosisDock" id="caseRadarCanvas" id="v10DirectCases"
+       id="v10ConstellationCanvas" id="v10EvidencePyramid"
+       Case Universe / Evidence OS v10
+  -->
+  <script defer src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+  <script defer src="/app.js?v=v10-evidence"></script>
 </body>
 </html>
