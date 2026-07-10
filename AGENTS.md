@@ -58,3 +58,7 @@ Prefer existing libraries and patterns; simple architecture; no unnecessary abst
 ## Completion checklist
 
 Real problem understood? CEO friction reduced? Context inspected? Prior art researched? Evidence attached? Continuity preserved near limits? OS improved? Reusable knowledge created — if none, you may not have thought deeply enough.
+
+## Prior-Art Gate *(added 2026-07-10, CEO directive — 홈페이지 제로베이스 실패의 재발 방지)*
+
+Any build dispatch (Codex task, worker, subagent implementation) MUST carry a **차용 레거시(Adopted Legacy)** field: which proven template/library/skill/pattern it stands on, found via GitHub·community research, with the selection rationale. A spec without it is an invalid dispatch — zero-base building is prohibited for anything a mature open-source foundation exists for. Design/publishing work additionally requires: a named reference standard, a design-token file (no ad-hoc CSS), and a side-by-side screenshot comparison against the reference in QA.
