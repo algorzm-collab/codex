@@ -1,0 +1,51 @@
+{
+  "_schema": {
+    "items": "Optional case-like records. Fields: id, masked_title, client_category, problem, approach, solution_cluster, deliverables, inferred_type.",
+    "nodes": "Optional direct graph nodes. Fields: id, name, group, inferredType, subtitle, val, color, item.",
+    "links": "Optional direct graph links. Fields: source, target, kind, value."
+  },
+  "items": [],
+  "nodes": [
+    {
+      "id": "method:sein-sollen",
+      "name": "Sein & Sollen",
+      "group": "method",
+      "subtitle": "현재 상태와 되어야 할 상태를 동시에 설계",
+      "val": 7,
+      "color": "#c4b5fd"
+    },
+    {
+      "id": "method:fermat-point",
+      "name": "Fermat Point",
+      "group": "method",
+      "subtitle": "전략·조직·성과가 동시에 움직이는 최소 실행점",
+      "val": 8,
+      "color": "#fbbf24"
+    },
+    {
+      "id": "output:executive-narrative",
+      "name": "Executive Narrative",
+      "group": "output",
+      "subtitle": "기관장과 실행부서가 같은 언어로 판단하는 장표 구조",
+      "val": 6,
+      "color": "#a7f3d0"
+    },
+    {
+      "id": "people:kim-jungsung",
+      "name": "김정성 대표",
+      "group": "people",
+      "subtitle": "문제해결 전략 컨설턴트",
+      "val": 9,
+      "color": "#ffffff"
+    }
+  ],
+  "links": [
+    { "source": "root:strategy", "target": "people:kim-jungsung", "kind": "leadership", "value": 2 },
+    { "source": "people:kim-jungsung", "target": "method:sein-sollen", "kind": "method", "value": 2 },
+    { "source": "people:kim-jungsung", "target": "method:fermat-point", "kind": "method", "value": 2 },
+    { "source": "method:fermat-point", "target": "output:executive-narrative", "kind": "output", "value": 1.5 },
+    { "source": "method:sein-sollen", "target": "problem:strategy_org_performance_gap", "kind": "problem", "value": 1.5 },
+    { "source": "method:fermat-point", "target": "problem:rr_role_confusion", "kind": "problem", "value": 1.5 },
+    { "source": "output:executive-narrative", "target": "problem:performance_system_failure", "kind": "problem", "value": 1.2 }
+  ]
+}

@@ -1,0 +1,530 @@
+{
+  "name": "STRAT Solution Finder",
+  "version": "1.0",
+  "purpose": "Route consulting prospects from problem selection to recommended solution clusters and consultation CTA.",
+  "entry_points": [
+    "home_hero",
+    "sticky_header_cta",
+    "mobile_bottom_cta",
+    "service_pages",
+    "case_pages",
+    "insight_articles",
+    "contact_page"
+  ],
+  "segments": [
+    {
+      "id": "public_institution",
+      "label": "공공기관",
+      "priority_solution_clusters": [
+        "strategy_alignment",
+        "kpi_performance_system",
+        "organization_rr",
+        "esg_social_value"
+      ]
+    },
+    {
+      "id": "local_public_company",
+      "label": "지방공기업/출자출연기관",
+      "priority_solution_clusters": [
+        "strategy_alignment",
+        "kpi_performance_system",
+        "organization_rr",
+        "work_process_collaboration"
+      ]
+    },
+    {
+      "id": "corporate",
+      "label": "민간기업",
+      "priority_solution_clusters": [
+        "strategy_alignment",
+        "organization_rr",
+        "hr_job_capability",
+        "ai_dt_transformation"
+      ]
+    },
+    {
+      "id": "startup_new_business",
+      "label": "스타트업/신사업조직",
+      "priority_solution_clusters": [
+        "strategy_alignment",
+        "work_process_collaboration",
+        "ai_dt_transformation",
+        "kpi_performance_system"
+      ]
+    },
+    {
+      "id": "unknown",
+      "label": "아직 정하기 어려움",
+      "priority_solution_clusters": [
+        "strategy_alignment",
+        "organization_rr",
+        "kpi_performance_system"
+      ]
+    }
+  ],
+  "problem_routes": [
+    {
+      "id": "new_strategy",
+      "label": "전략을 새로 수립해야 한다",
+      "primary_cluster": "strategy_alignment",
+      "secondary_clusters": [
+        "kpi_performance_system",
+        "organization_rr"
+      ],
+      "result_hook": "현재 과제는 전략체계 재정렬과 실행 로드맵 설계가 우선일 가능성이 높습니다."
+    },
+    {
+      "id": "execution_gap",
+      "label": "전략은 있지만 실행이 약하다",
+      "primary_cluster": "kpi_performance_system",
+      "secondary_clusters": [
+        "organization_rr",
+        "work_process_collaboration"
+      ],
+      "result_hook": "현재 과제는 전략과 KPI, R&R, 성과관리의 연결부를 점검해야 할 가능성이 높습니다."
+    },
+    {
+      "id": "organization_rr_issue",
+      "label": "조직구조와 R&R이 맞지 않는다",
+      "primary_cluster": "organization_rr",
+      "secondary_clusters": [
+        "work_process_collaboration",
+        "hr_job_capability"
+      ],
+      "result_hook": "현재 과제는 조직구조보다 먼저 역할, 책임, 권한의 정렬 상태를 진단해야 할 가능성이 높습니다."
+    },
+    {
+      "id": "performance_issue",
+      "label": "KPI와 성과평가가 작동하지 않는다",
+      "primary_cluster": "kpi_performance_system",
+      "secondary_clusters": [
+        "strategy_alignment",
+        "hr_job_capability"
+      ],
+      "result_hook": "현재 과제는 KPI와 평가제도가 전략 및 실제 업무성과와 연결되는지 점검해야 할 가능성이 높습니다."
+    },
+    {
+      "id": "hr_capability_issue",
+      "label": "인사/직무/역량 체계가 필요하다",
+      "primary_cluster": "hr_job_capability",
+      "secondary_clusters": [
+        "organization_rr",
+        "kpi_performance_system"
+      ],
+      "result_hook": "현재 과제는 직무, 역량, 배치, 승진 기준을 하나의 체계로 정리해야 할 가능성이 높습니다."
+    },
+    {
+      "id": "esg_ai_dt_issue",
+      "label": "ESG/AI/DT 과제를 실행과제로 바꿔야 한다",
+      "primary_cluster": "ai_dt_transformation",
+      "secondary_clusters": [
+        "esg_social_value",
+        "strategy_alignment",
+        "work_process_collaboration"
+      ],
+      "result_hook": "현재 과제는 새로운 전환 과제를 전략, 실행과제, 지표, 운영체계로 연결해야 할 가능성이 높습니다."
+    }
+  ],
+  "solution_clusters": [
+    {
+      "id": "strategy_alignment",
+      "label": "Strategy Alignment",
+      "korean_label": "전략체계 정렬",
+      "problem_language": "미션, 비전, 전략방향, 사업계획, 실행과제가 서로 따로 움직입니다.",
+      "recommended_services": [
+        "중장기 경영전략 수립",
+        "전략체계 재정렬",
+        "사업전략 연계 진단",
+        "실행 로드맵 설계"
+      ],
+      "deliverables": [
+        "미션/비전 체계",
+        "전략방향",
+        "전략과제",
+        "실행 로드맵",
+        "사업 연계 매트릭스"
+      ]
+    },
+    {
+      "id": "kpi_performance_system",
+      "label": "KPI & Performance System",
+      "korean_label": "KPI 및 성과관리체계",
+      "problem_language": "KPI와 평가제도가 전략 및 실제 성과 향상과 연결되지 않습니다.",
+      "recommended_services": [
+        "KPI 재설계",
+        "성과관리체계 개선",
+        "MBO/OKR/MBR 목표체계 설계",
+        "평가제도 개선",
+        "성과 모니터링 체계 구축"
+      ],
+      "deliverables": [
+        "전사 KPI 체계",
+        "부서 KPI",
+        "개인 KPI",
+        "평가 운영안",
+        "성과 모니터링 구조"
+      ]
+    },
+    {
+      "id": "organization_rr",
+      "label": "Organization & R&R",
+      "korean_label": "조직구조 및 R&R",
+      "problem_language": "조직구조, 역할, 권한, 책임이 전략 변화와 맞지 않습니다.",
+      "recommended_services": [
+        "조직진단",
+        "조직구조 재설계",
+        "R&R 정립",
+        "위임전결체계 개선",
+        "적정인력 산정"
+      ],
+      "deliverables": [
+        "조직진단 리포트",
+        "조직구조 개선안",
+        "R&R 매트릭스",
+        "위임전결표",
+        "적정인력 산정 모델"
+      ]
+    },
+    {
+      "id": "work_process_collaboration",
+      "label": "Work Process & Collaboration",
+      "korean_label": "업무프로세스 및 협업",
+      "problem_language": "부서 간 협업과 업무 방식이 성과 확산을 막고 있습니다.",
+      "recommended_services": [
+        "업무프로세스 개선",
+        "협업체계 설계",
+        "조직문화 진단",
+        "변화관리 로드맵"
+      ],
+      "deliverables": [
+        "업무 프로세스 맵",
+        "협업 이슈맵",
+        "개선과제 리스트",
+        "변화관리 실행계획"
+      ]
+    },
+    {
+      "id": "hr_job_capability",
+      "label": "HR, Job & Capability",
+      "korean_label": "인사·직무·역량",
+      "problem_language": "직무, 역량, 배치, 승진, 경력개발 기준이 체계적으로 연결되지 않습니다.",
+      "recommended_services": [
+        "직무분석",
+        "역량모델링",
+        "직무분류체계 설계",
+        "경력개발체계 설계",
+        "인사제도 개선"
+      ],
+      "deliverables": [
+        "직무분류체계",
+        "역량모델",
+        "직무기술서",
+        "경력개발경로",
+        "이동/승진 기준"
+      ]
+    },
+    {
+      "id": "esg_social_value",
+      "label": "ESG & Social Value",
+      "korean_label": "ESG 및 사회적가치",
+      "problem_language": "ESG와 사회적가치 활동이 전략, 지표, 부서성과와 연결되지 않습니다.",
+      "recommended_services": [
+        "ESG 전략 수립",
+        "사회적가치 성과체계",
+        "윤리경영 개선",
+        "지속가능경영 실행과제 설계"
+      ],
+      "deliverables": [
+        "ESG 전략체계",
+        "사회적가치 KPI",
+        "실행과제",
+        "성과측정 체계"
+      ]
+    },
+    {
+      "id": "ai_dt_transformation",
+      "label": "AI/DT Transformation",
+      "korean_label": "AI/DT 전환",
+      "problem_language": "AI/DT 과제가 실제 업무혁신과 운영체계로 연결되지 않습니다.",
+      "recommended_services": [
+        "AI/DT 준비도 진단",
+        "업무별 AI 적용 과제 도출",
+        "디지털 전환 로드맵",
+        "데이터 기반 의사결정 체계 설계"
+      ],
+      "deliverables": [
+        "AI/DT 과제 맵",
+        "적용 우선순위",
+        "실행 로드맵",
+        "운영체계 개선안"
+      ]
+    }
+  ],
+  "diagnostic_questions": {
+    "new_strategy": [
+      {
+        "id": "q_strategy_01",
+        "text": "기관/기업의 미션과 비전은 명확하게 설정되어 있습니까?",
+        "tags": [
+          "strategy_alignment"
+        ]
+      },
+      {
+        "id": "q_strategy_02",
+        "text": "전략은 비전의 실현방안을 명확하게 제시하고 있습니까?",
+        "tags": [
+          "strategy_alignment",
+          "kpi_performance_system"
+        ]
+      },
+      {
+        "id": "q_strategy_03",
+        "text": "경영전략체계는 일관되게 추진되고 있습니까?",
+        "tags": [
+          "strategy_alignment",
+          "kpi_performance_system"
+        ]
+      },
+      {
+        "id": "q_strategy_04",
+        "text": "사업전략과 조직편제는 서로 맞게 구성되어 있습니까?",
+        "tags": [
+          "strategy_alignment",
+          "organization_rr"
+        ]
+      }
+    ],
+    "execution_gap": [
+      {
+        "id": "q_exec_01",
+        "text": "전략 실천을 위한 세부실행과제가 조직, 부서, 개인 단위로 명확하게 제시되어 있습니까?",
+        "tags": [
+          "kpi_performance_system",
+          "organization_rr"
+        ]
+      },
+      {
+        "id": "q_exec_02",
+        "text": "현재 담당 역할과 책임은 상위 전략 또는 경영목표와 연결되어 있습니까?",
+        "tags": [
+          "organization_rr",
+          "kpi_performance_system"
+        ]
+      },
+      {
+        "id": "q_exec_03",
+        "text": "기관/기업의 성과지표는 전략과의 연계성을 갖추고 있습니까?",
+        "tags": [
+          "kpi_performance_system",
+          "strategy_alignment"
+        ]
+      },
+      {
+        "id": "q_exec_04",
+        "text": "연중 부서 성과에 대한 모니터링과 점검이 원활하게 이루어집니까?",
+        "tags": [
+          "kpi_performance_system"
+        ]
+      }
+    ],
+    "organization_rr_issue": [
+      {
+        "id": "q_org_01",
+        "text": "조직구조와 관리제도는 체계적입니까?",
+        "tags": [
+          "organization_rr"
+        ]
+      },
+      {
+        "id": "q_org_02",
+        "text": "부서의 핵심업무와 역할이 명확하게 설정되어 있습니까?",
+        "tags": [
+          "organization_rr",
+          "hr_job_capability"
+        ]
+      },
+      {
+        "id": "q_org_03",
+        "text": "부서 업무 추진에서 권한과 책임이 명확합니까?",
+        "tags": [
+          "organization_rr"
+        ]
+      },
+      {
+        "id": "q_org_04",
+        "text": "조직과 인력 배치는 합리적 기준과 방법에 따라 이루어지고 있습니까?",
+        "tags": [
+          "organization_rr",
+          "hr_job_capability"
+        ]
+      }
+    ],
+    "performance_issue": [
+      {
+        "id": "q_perf_01",
+        "text": "성과관리제도 전반에 만족하십니까?",
+        "tags": [
+          "kpi_performance_system"
+        ]
+      },
+      {
+        "id": "q_perf_02",
+        "text": "부서성과평가 결과는 승진 및 보상 기준으로 설득력 있게 활용될 수 있습니까?",
+        "tags": [
+          "kpi_performance_system"
+        ]
+      },
+      {
+        "id": "q_perf_03",
+        "text": "평가체계는 개인의 성과 향상에 도움이 됩니까?",
+        "tags": [
+          "kpi_performance_system"
+        ]
+      },
+      {
+        "id": "q_perf_04",
+        "text": "평가 결과에 대한 피드백이 원활하게 이루어집니까?",
+        "tags": [
+          "kpi_performance_system",
+          "hr_job_capability"
+        ]
+      }
+    ],
+    "hr_capability_issue": [
+      {
+        "id": "q_hr_01",
+        "text": "업무 수행에 필요한 전문지식과 경험이 체계적으로 관리되고 있습니까?",
+        "tags": [
+          "hr_job_capability"
+        ]
+      },
+      {
+        "id": "q_hr_02",
+        "text": "구성원의 인사이동 및 배치가 합리적 기준에 따라 이루어집니까?",
+        "tags": [
+          "hr_job_capability",
+          "organization_rr"
+        ]
+      },
+      {
+        "id": "q_hr_03",
+        "text": "직무별 필요역량이 명확하게 정의되어 있습니까?",
+        "tags": [
+          "hr_job_capability"
+        ]
+      },
+      {
+        "id": "q_hr_04",
+        "text": "각 직무에 대한 직무기술서와 매뉴얼이 잘 작성되어 있습니까?",
+        "tags": [
+          "hr_job_capability",
+          "work_process_collaboration"
+        ]
+      }
+    ],
+    "esg_ai_dt_issue": [
+      {
+        "id": "q_transform_01",
+        "text": "ESG, 사회적가치, AI/DT 과제가 부서 고유업무 및 성과와 연결되어 있습니까?",
+        "tags": [
+          "esg_social_value",
+          "ai_dt_transformation",
+          "kpi_performance_system"
+        ]
+      },
+      {
+        "id": "q_transform_02",
+        "text": "전환 과제가 구체적인 실행과제와 로드맵으로 정리되어 있습니까?",
+        "tags": [
+          "ai_dt_transformation",
+          "strategy_alignment"
+        ]
+      },
+      {
+        "id": "q_transform_03",
+        "text": "새로운 전환 과제를 추진하기 위한 조직 역할과 책임이 명확합니까?",
+        "tags": [
+          "ai_dt_transformation",
+          "organization_rr"
+        ]
+      },
+      {
+        "id": "q_transform_04",
+        "text": "전환 과제의 성과를 측정할 지표와 운영체계가 있습니까?",
+        "tags": [
+          "ai_dt_transformation",
+          "kpi_performance_system",
+          "esg_social_value"
+        ]
+      }
+    ]
+  },
+  "answer_scale": [
+    {
+      "label": "매우 그렇다",
+      "score": 5
+    },
+    {
+      "label": "그렇다",
+      "score": 4
+    },
+    {
+      "label": "보통",
+      "score": 3
+    },
+    {
+      "label": "아니다",
+      "score": 2
+    },
+    {
+      "label": "전혀 아니다",
+      "score": 1
+    },
+    {
+      "label": "잘 모르겠다",
+      "score": 2,
+      "special_signal": "information_gap"
+    }
+  ],
+  "scoring_rule": {
+    "improvement_need": "6 - answer_score",
+    "cluster_score": "sum(improvement_need for all questions tagged with cluster)",
+    "recommendation_count": 3,
+    "tie_breakers": [
+      "selected_problem_route.primary_cluster",
+      "segment.priority_solution_clusters",
+      "urgency"
+    ]
+  },
+  "result_screen": {
+    "sections": [
+      "one_line_diagnosis",
+      "risk_signals",
+      "recommended_solution_clusters",
+      "expected_deliverables",
+      "related_cases",
+      "consultation_cta"
+    ],
+    "primary_cta": "진단 결과 기반 상담받기",
+    "secondary_cta": "내부 보고용 진단 요약 받기",
+    "contact_form_fields": [
+      "name",
+      "organization",
+      "phone",
+      "email",
+      "project_type",
+      "desired_start_timing",
+      "message"
+    ],
+    "hidden_fields": [
+      "segment",
+      "problem_route",
+      "cluster_scores",
+      "recommended_clusters",
+      "clicked_cases",
+      "source_page",
+      "utm_source",
+      "utm_campaign"
+    ]
+  }
+}

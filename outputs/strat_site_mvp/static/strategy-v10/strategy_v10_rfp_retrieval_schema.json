@@ -1,0 +1,63 @@
+{
+  "version": "v10",
+  "name": "RFP Retrieval Schema",
+  "description": "RFP 전문 또는 기관명/과업명을 입력하면 직접·인접·간접 유사실적과 안전 문구를 반환한다.",
+  "input_schema": {
+    "target_institution_name": "string",
+    "target_institution_aliases": [
+      "string"
+    ],
+    "institution_type": "string",
+    "ministry_or_parent": "string",
+    "region": "string",
+    "evaluation_group": "string",
+    "rfp_title": "string",
+    "rfp_keywords": [
+      "string"
+    ],
+    "required_outputs": [
+      "string"
+    ],
+    "evaluation_criteria": [
+      "string"
+    ],
+    "risk_keywords": [
+      "string"
+    ]
+  },
+  "output_schema": {
+    "target_profile": "object",
+    "direct_cases": [
+      "case_object"
+    ],
+    "adjacent_cases": [
+      "case_object"
+    ],
+    "indirect_cases": [
+      "case_object"
+    ],
+    "case_selection_reasoning": "string",
+    "person_fit": "object",
+    "evidence_summary": "object",
+    "homepage_short_copy": "string",
+    "proposal_copy_blocks": [
+      "string"
+    ],
+    "forbidden_claims": [
+      "string"
+    ],
+    "visualization_recommendation": [
+      "heatmap|constellation|value_chain|evidence_pyramid|anchor_map|person_card"
+    ]
+  },
+  "retrieval_steps": [
+    "1. target 기관유형/주무부처/평가군/기능모델을 추론한다.",
+    "2. 과업테마와 산출물을 정규화한다.",
+    "3. 직접 유사실적을 먼저 고정한다.",
+    "4. 인접 유사실적은 기관기능과 정책맥락 중심으로 보강한다.",
+    "5. 간접 유사실적은 방법론/모듈 중심으로 보강한다.",
+    "6. 각 사례마다 왜 유사한지 1문장으로 설명한다.",
+    "7. 증빙 레이어에 맞춰 안전 문구를 생성한다.",
+    "8. 과장·혼용·인과 단정 문구를 제거한다."
+  ]
+}

@@ -1,0 +1,110 @@
+{
+  "version": "v10-public",
+  "target_profile": {
+    "target_institution": "public facility-management type institution",
+    "assumed_institution_type": [
+      "local public enterprise",
+      "facility-management corporation",
+      "public facility operator"
+    ],
+    "likely_needs": [
+      "organization diagnosis",
+      "performance system",
+      "staffing model",
+      "public facility operating model"
+    ],
+    "retrieval_policy": "direct > adjacent > indirect; evidence score ranks only within the same tier"
+  },
+  "direct_cases": [
+    {
+      "record_id": "TR-090",
+      "client_public": "도시·개발공사 G사",
+      "project_title_public": "도시·개발공사 전략수립 수행경험",
+      "tier": "direct",
+      "why_similar": "institution type, topic, and operating function overlap with the target RFP",
+      "evidence_layer": "L1_COMPANY_OFFICIAL",
+      "proof_public_label": "㈜STRATEGY 수행/ 회사·핵심인력 증빙 가능",
+      "safe_public_copy": "도시·개발공사 G사 / 전략수립",
+      "do_not_say": [
+        "evidence boundary overreach",
+        "private metadata exposure",
+        "causal impact assertion"
+      ]
+    },
+    {
+      "record_id": "TR-097",
+      "client_public": "도시·개발공사 H사",
+      "project_title_public": "도시·개발공사 전략수립 수행경험",
+      "tier": "direct",
+      "why_similar": "institution type, topic, and operating function overlap with the target RFP",
+      "evidence_layer": "L1_COMPANY_OFFICIAL",
+      "proof_public_label": "㈜STRATEGY 수행/ 회사·핵심인력 증빙 가능",
+      "safe_public_copy": "도시·개발공사 H사 / 전략수립",
+      "do_not_say": [
+        "evidence boundary overreach",
+        "private metadata exposure",
+        "causal impact assertion"
+      ]
+    },
+    {
+      "record_id": "TR-103",
+      "client_public": "도시·개발공사 I사",
+      "project_title_public": "도시·개발공사 전략수립 수행경험",
+      "tier": "direct",
+      "why_similar": "institution type, topic, and operating function overlap with the target RFP",
+      "evidence_layer": "L1_COMPANY_OFFICIAL",
+      "proof_public_label": "㈜STRATEGY 수행/ 회사·핵심인력 증빙 가능",
+      "safe_public_copy": "도시·개발공사 I사 / 전략수립",
+      "do_not_say": [
+        "evidence boundary overreach",
+        "private metadata exposure",
+        "causal impact assertion"
+      ]
+    },
+    {
+      "record_id": "TR-022",
+      "client_public": "도시·개발공사 D사",
+      "project_title_public": "도시·개발공사 전략수립 수행경험",
+      "tier": "direct",
+      "why_similar": "institution type, topic, and operating function overlap with the target RFP",
+      "evidence_layer": "L2_KEY_PERSON_PM_OFFICIAL",
+      "proof_public_label": "대표 컨설턴트 PM 수행경험/ 개인 실적증명 가능",
+      "safe_public_copy": "도시·개발공사 D사 / 전략수립",
+      "do_not_say": [
+        "evidence boundary overreach",
+        "private metadata exposure",
+        "causal impact assertion"
+      ]
+    },
+    {
+      "record_id": "TR-001",
+      "client_public": "도시·개발공사 A사",
+      "project_title_public": "도시·개발공사 전략수립·조직진단·조직재설계 수행경험",
+      "tier": "adjacent",
+      "why_similar": "institution type, topic, and operating function overlap with the target RFP",
+      "evidence_layer": "L2_KEY_PERSON_PM_OFFICIAL",
+      "proof_public_label": "대표 컨설턴트 PM 수행경험/ 개인 실적증명 가능",
+      "safe_public_copy": "도시·개발공사 A사 / 전략수립",
+      "do_not_say": [
+        "evidence boundary overreach",
+        "private metadata exposure",
+        "causal impact assertion"
+      ]
+    },
+    {
+      "record_id": "TR-086",
+      "client_public": "도시·개발공사 F사",
+      "project_title_public": "도시·개발공사 전략수립 수행경험",
+      "tier": "adjacent",
+      "why_similar": "institution type, topic, and operating function overlap with the target RFP",
+      "evidence_layer": "L3_FORMER_CEO_PERIOD",
+      "proof_public_label": "前 대표이사 재직 시 수행경험",
+      "safe_public_copy": "도시·개발공사 F사 / 전략수립",
+      "do_not_say": [
+        "evidence boundary overreach",
+        "private metadata exposure",
+        "causal impact assertion"
+      ]
+    }
+  ]
+}
