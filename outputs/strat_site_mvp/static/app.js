@@ -1,166 +1,31 @@
 "use strict";
 
-const caseRecords = [
-  {
-    id: "case-dev-2022",
-    group: "case",
-    label: "도시개발 공기업(2022)",
-    shortLabel: "도시개발(22)",
-    institution: "inst-development",
-    capabilities: ["cap-strategy", "cap-organization"],
-    summary: "중장기 전략과 조직 역할을 한 번에 다시 맞춘 수행경험입니다.",
-    problem: "전략과 조직 운영이 따로 움직여 실행 책임이 흐려진 상태",
-    approach: "경영 방향, 핵심과제, 조직 역할을 같은 기준으로 재정렬",
-    output: "중장기 전략안, 조직진단, 실행 우선순위",
-    proof: "대표 컨설턴트 총괄 수행경험 · 관련 증빙 범위 확인 가능",
-    sourceId: "TR-001"
-  },
-  {
-    id: "case-promo-2018",
-    group: "case",
-    label: "중앙부처 산하 산업진흥원(2018)",
-    shortLabel: "산업진흥(18)",
-    institution: "inst-promotion",
-    capabilities: ["cap-performance", "cap-execution"],
-    summary: "지원사업의 성과를 조사하고 다음 운영 판단으로 연결한 수행경험입니다.",
-    problem: "사업 실적은 쌓였지만 정책 목적과 현장 변화가 한눈에 보이지 않는 상태",
-    approach: "성과 기준을 다시 세우고 조사 결과를 개선 과제와 연결",
-    output: "성과분석, 판단 기준, 개선 과제",
-    proof: "대표 컨설턴트 총괄 수행경험 · 관련 증빙 범위 확인 가능",
-    sourceId: "TR-012"
-  },
-  {
-    id: "case-region-2020",
-    group: "case",
-    label: "지역 산업진흥기관(2020)",
-    shortLabel: "지역진흥(20)",
-    institution: "inst-promotion",
-    capabilities: ["cap-strategy", "cap-execution"],
-    summary: "지역 산업의 방향을 선택 가능한 사업과제로 바꾼 수행경험입니다.",
-    problem: "산업 변화와 지역 여건을 반영한 중장기 선택 기준이 필요한 상태",
-    approach: "환경 변화, 보유 자원, 정책 역할을 비교해 우선 분야를 선별",
-    output: "중장기 발전방향, 핵심사업, 단계별 실행계획",
-    proof: "대표 컨설턴트 총괄 수행경험 · 관련 증빙 범위 확인 가능",
-    sourceId: "TR-043"
-  },
-  {
-    id: "case-energy-2020",
-    group: "case",
-    label: "에너지·안전 공공기관(2020)",
-    shortLabel: "에너지·안전(20)",
-    institution: "inst-energy",
-    capabilities: ["cap-organization", "cap-workforce"],
-    summary: "조직 구조와 직무 기준을 함께 고도화한 수행경험입니다.",
-    problem: "조직의 역할 변화가 직무와 인력 운영 기준에 충분히 반영되지 않은 상태",
-    approach: "업무 흐름과 책임을 먼저 진단하고 조직·직무 기준을 함께 설계",
-    output: "조직 재설계안, 직무체계, 변화 실행계획",
-    proof: "대표 컨설턴트 총괄 수행경험 · 관련 증빙 범위 확인 가능",
-    sourceId: "TR-044"
-  },
-  {
-    id: "case-soc-2021",
-    group: "case",
-    label: "SOC·교통 공기업(2021)",
-    shortLabel: "SOC·교통(21)",
-    institution: "inst-soc",
-    capabilities: ["cap-organization", "cap-workforce", "cap-performance"],
-    summary: "직무와 보상 기준을 연결해 인력 운영의 납득 가능성을 높인 수행경험입니다.",
-    problem: "직무의 차이와 책임 수준이 보상 기준에 선명하게 반영되지 않은 상태",
-    approach: "직무 가치와 역할 수준을 비교하고 보상 운영 기준으로 전환",
-    output: "직무체계, 보상 기준, 운영 절차",
-    proof: "대표 컨설턴트 총괄 수행경험 · 관련 증빙 범위 확인 가능",
-    sourceId: "TR-048"
-  },
-  {
-    id: "case-local-2021",
-    group: "case",
-    label: "지방행정기관·공기업(2021)",
-    shortLabel: "지방행정(21)",
-    institution: "inst-local",
-    capabilities: ["cap-organization", "cap-workforce"],
-    summary: "여러 조직의 업무량과 책임을 같은 기준으로 진단한 수행경험입니다.",
-    problem: "기관별 업무와 인력 차이를 비교할 공통 기준이 부족한 상태",
-    approach: "업무량, 역할, 운영 여건을 함께 비교해 조정 우선순위를 도출",
-    output: "조직진단, 적정인력 기준, 개선 순서",
-    proof: "대표 컨설턴트 총괄 수행경험 · 관련 증빙 범위 확인 가능",
-    sourceId: "TR-052"
-  },
-  {
-    id: "case-promo-2021",
-    group: "case",
-    label: "지방 산하 산업진흥기관(2021)",
-    shortLabel: "산업진흥(21)",
-    institution: "inst-promotion",
-    capabilities: ["cap-organization", "cap-workforce"],
-    summary: "직무분석을 인력 배치 판단으로 연결한 수행경험입니다.",
-    problem: "사업 확대에 비해 직무별 업무량과 인력 배치의 근거가 부족한 상태",
-    approach: "핵심 직무와 업무량을 분석해 역할별 필요 인력을 산정",
-    output: "직무분석, 인력 산정 기준, 배치 개선안",
-    proof: "대표 컨설턴트 총괄 수행경험 · 관련 증빙 범위 확인 가능",
-    sourceId: "TR-059"
-  },
-  {
-    id: "case-marine-2022",
-    group: "case",
-    label: "해양 공공기관(2022)",
-    shortLabel: "해양기관(22)",
-    institution: "inst-marine",
-    capabilities: ["cap-organization", "cap-workforce", "cap-execution"],
-    summary: "정책 역할 변화에 맞춰 조직과 인력 운영을 다시 설계한 수행경험입니다.",
-    problem: "사업과 현장 기능의 변화가 조직·인력 운영에 충분히 반영되지 않은 상태",
-    approach: "기능별 업무와 책임을 진단하고 실행 순서까지 함께 설계",
-    output: "조직진단, 인력 운영안, 단계별 개선 과제",
-    proof: "대표 컨설턴트 총괄 수행경험 · 관련 증빙 범위 확인 가능",
-    sourceId: "TR-064"
-  },
-  {
-    id: "case-culture-2024",
-    group: "case",
-    label: "중앙부처 산하 문화·콘텐츠 진흥기관(2024)",
-    shortLabel: "문화진흥(24)",
-    institution: "inst-culture",
-    capabilities: ["cap-organization", "cap-workforce", "cap-performance"],
-    summary: "직무·보수·조직을 하나의 운영 기준으로 연결한 수행경험입니다.",
-    problem: "직무 중심 인사 운영과 효율적인 조직 구조를 함께 정비해야 하는 상태",
-    approach: "직무 가치, 조직 역할, 보상 기준을 한 흐름으로 설계",
-    output: "직무체계, 보수 운영안, 조직 구성안",
-    proof: "회사·핵심인력 수행경험 · 관련 증빙 범위 확인 가능",
-    sourceId: "TR-098"
-  }
-];
-
-const capabilityNodes = [
-  { id: "cap-strategy", group: "capability", label: "전략 방향 정렬", shortLabel: "전략 정렬", summary: "환경 변화와 기관 역할을 비교해 선택할 방향과 우선순위를 분명히 합니다." },
-  { id: "cap-organization", group: "capability", label: "조직·역할 설계", shortLabel: "조직·역할", summary: "업무, 권한, 책임을 함께 보며 조직이 실제로 움직이는 구조를 만듭니다." },
-  { id: "cap-performance", group: "capability", label: "성과기준 설계", shortLabel: "성과기준", summary: "전략이 현장의 행동으로 이어지도록 측정 기준과 운영 방식을 다시 맞춥니다." },
-  { id: "cap-workforce", group: "capability", label: "인력운영 설계", shortLabel: "인력운영", summary: "직무와 업무량, 책임 수준을 바탕으로 인력 배치와 보상 기준을 설계합니다." },
-  { id: "cap-execution", group: "capability", label: "실행계획 전환", shortLabel: "실행계획", summary: "결정 내용을 담당자, 일정, 우선과제로 바꿔 현장에서 시작할 수 있게 합니다." }
-];
-
-const institutionNodes = [
-  { id: "inst-development", group: "institution", label: "도시개발 공기업", shortLabel: "도시개발", summary: "개발사업과 공공 역할, 지역 가치가 함께 움직이는 기관군입니다." },
-  { id: "inst-promotion", group: "institution", label: "산업진흥기관", shortLabel: "산업진흥", summary: "정책 목적을 기업·산업 지원사업으로 바꾸고 성과를 설명해야 하는 기관군입니다." },
-  { id: "inst-energy", group: "institution", label: "에너지·안전 공공기관", shortLabel: "에너지·안전", summary: "정책, 기술, 안전 기준의 변화가 조직과 인력에 직접 영향을 주는 기관군입니다." },
-  { id: "inst-soc", group: "institution", label: "SOC·교통 공기업", shortLabel: "SOC·교통", summary: "대규모 인프라 운영과 미래 기술 대응을 동시에 판단해야 하는 기관군입니다." },
-  { id: "inst-local", group: "institution", label: "지방행정기관·공기업", shortLabel: "지방행정", summary: "지역 수요와 공공서비스 운영 여건을 함께 고려해야 하는 기관군입니다." },
-  { id: "inst-marine", group: "institution", label: "해양 공공기관", shortLabel: "해양기관", summary: "정책 역할과 현장 운영 기능의 연결이 중요한 기관군입니다." },
-  { id: "inst-culture", group: "institution", label: "문화·콘텐츠 진흥기관", shortLabel: "문화진흥", summary: "산업 지원과 사업 운영, 전문인력 관리가 함께 필요한 기관군입니다." }
-];
-
-const graphNodes = [...caseRecords, ...capabilityNodes, ...institutionNodes];
-const graphLinks = caseRecords.flatMap((record) => [
-  { source: record.id, target: record.institution, relation: "기관유형" },
-  ...record.capabilities.map((capability) => ({ source: record.id, target: capability, relation: "수행역량" }))
-]);
-
-const groupLabel = {
-  case: "사례",
-  capability: "역량",
-  institution: "기관유형"
+const graphState = {
+  data: null,
+  order: [],
+  cursor: 0,
+  cycle: 0,
+  batchSize: 16,
+  intervalMs: 8500,
+  timer: null,
+  paused: false,
+  inViewport: true,
+  reducedMotion: window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  selectedId: null
 };
 
+let allCaseRecords = [];
+let currentCaseRecords = [];
+let graphNodes = [];
+let graphLinks = [];
 let graphView = null;
 let resizeTimer = null;
+
+const groupLabel = {
+  case: "프로젝트",
+  capability: "과제",
+  institution: "기관 유형"
+};
 
 function escapeHTML(value) {
   return String(value ?? "")
@@ -171,10 +36,93 @@ function escapeHTML(value) {
     .replaceAll("'", "&#039;");
 }
 
+function dimensionId(prefix, label) {
+  const source = graphState.data?.[prefix === "theme" ? "themes" : "institutionTypes"] || [];
+  return `${prefix}-${Math.max(0, source.indexOf(label))}`;
+}
+
+function getBatchSize() {
+  if (window.innerWidth <= 600) return 6;
+  if (window.innerWidth <= 1040) return 10;
+  return 16;
+}
+
+function createCycleOrder(records, cycle = 0) {
+  const themes = [...(graphState.data?.themes || [])];
+  if (!themes.length) return [...records];
+  const offset = cycle % themes.length;
+  const rotatedThemes = themes.slice(offset).concat(themes.slice(0, offset));
+  const buckets = new Map(rotatedThemes.map((theme) => [
+    theme,
+    records
+      .filter((record) => record.theme === theme)
+      .sort((a, b) => b.year.localeCompare(a.year, "ko") || a.id.localeCompare(b.id))
+  ]));
+  const order = [];
+  let added = true;
+  while (added) {
+    added = false;
+    rotatedThemes.forEach((theme) => {
+      const bucket = buckets.get(theme);
+      if (bucket?.length) {
+        order.push(bucket.shift());
+        added = true;
+      }
+    });
+  }
+  return order;
+}
+
+function getVisibleBatch() {
+  return graphState.order.slice(
+    graphState.cursor,
+    Math.min(graphState.cursor + graphState.batchSize, graphState.order.length)
+  );
+}
+
+function buildGraphModel(batch) {
+  currentCaseRecords = batch.map((record) => ({
+    ...record,
+    institution: dimensionId("institution", record.institutionType),
+    capabilities: [dimensionId("theme", record.theme)]
+  }));
+
+  const usedThemes = [...new Set(currentCaseRecords.map((record) => record.theme))];
+  const usedInstitutions = [...new Set(currentCaseRecords.map((record) => record.institutionType))];
+  const themeNodes = usedThemes.map((theme) => ({
+    id: dimensionId("theme", theme),
+    group: "capability",
+    label: theme,
+    shortLabel: theme,
+    summary: `${theme} 관련 프로젝트 ${allCaseRecords.filter((record) => record.theme === theme).length}건`
+  }));
+  const institutionNodes = usedInstitutions.map((institution) => ({
+    id: dimensionId("institution", institution),
+    group: "institution",
+    label: institution,
+    shortLabel: institution.replace("기관", ""),
+    summary: `${institution} 프로젝트 ${allCaseRecords.filter((record) => record.institutionType === institution).length}건`
+  }));
+
+  graphNodes = [...currentCaseRecords, ...themeNodes, ...institutionNodes];
+  graphLinks = currentCaseRecords.flatMap((record) => [
+    { source: record.id, target: record.institution, relation: "기관 유형" },
+    ...record.capabilities.map((capability) => ({
+      source: record.id,
+      target: capability,
+      relation: "과제"
+    }))
+  ]);
+}
+
 function relatedCasesFor(item) {
   if (item.group === "case") return [item];
-  if (item.group === "capability") return caseRecords.filter((record) => record.capabilities.includes(item.id));
-  return caseRecords.filter((record) => record.institution === item.id);
+  if (item.group === "capability") {
+    const theme = graphState.data.themes[Number(item.id.replace("theme-", ""))];
+    return allCaseRecords.filter((record) => record.theme === theme);
+  }
+  const institution = graphState.data.institutionTypes[Number(item.id.replace("institution-", ""))];
+  return allCaseRecords.filter((record) => record.institutionType === institution);
 }
 
 function renderGraphDetail(item) {
@@ -183,38 +131,48 @@ function renderGraphDetail(item) {
 
   if (item.group === "case") {
     detail.innerHTML = `
-      <p class="detail-type">${groupLabel[item.group]}</p>
-      <h3>${escapeHTML(item.label)}</h3>
+      <p class="detail-type">${escapeHTML(item.code)} · ${escapeHTML(item.year)}</p>
+      <h2>${escapeHTML(item.institutionType)}<br>${escapeHTML(item.theme)} 프로젝트</h2>
       <p class="detail-summary">${escapeHTML(item.summary)}</p>
       <dl>
-        <div><dt>문제</dt><dd>${escapeHTML(item.problem)}</dd></div>
-        <div><dt>접근</dt><dd>${escapeHTML(item.approach)}</dd></div>
+        <div><dt>과제</dt><dd>${escapeHTML(item.problem)}</dd></div>
+        <div><dt>수행 내용</dt><dd>${escapeHTML(item.approach)}</dd></div>
         <div><dt>결과물</dt><dd>${escapeHTML(item.output)}</dd></div>
+        <div><dt>참여</dt><dd>${escapeHTML(item.experts.join(" · "))}</dd></div>
       </dl>
       <p class="detail-proof">${escapeHTML(item.proof)}</p>
-      <a class="detail-cta" href="#contact" data-selected-case="${escapeHTML(item.label)}">이 경험을 바탕으로 상담하기 <span aria-hidden="true">↗</span></a>
+      <a class="detail-cta" href="#contact" data-selected-case="${escapeHTML(item.code)} / ${escapeHTML(item.institutionType)} / ${escapeHTML(item.theme)}">유사 과제 문의 <span aria-hidden="true">↗</span></a>
     `;
   } else {
     const related = relatedCasesFor(item);
     detail.innerHTML = `
       <p class="detail-type">${groupLabel[item.group]}</p>
-      <h3>${escapeHTML(item.label)}</h3>
+      <h2>${escapeHTML(item.label)}</h2>
       <p class="detail-summary">${escapeHTML(item.summary)}</p>
       <div class="related-cases">
-        <span>연결된 수행경험 ${related.length}건</span>
-        ${related.map((record) => `<button type="button" data-related-case="${record.id}">${escapeHTML(record.label)}</button>`).join("")}
+        <span>관련 프로젝트 ${related.length}건</span>
+        ${related.slice(0, 7).map((record) => `
+          <button type="button" data-related-case="${record.id}">
+            ${escapeHTML(record.code)} · ${escapeHTML(record.year)} · ${escapeHTML(record.theme)}
+          </button>
+        `).join("")}
       </div>
     `;
   }
 
   detail.querySelectorAll("[data-related-case]").forEach((button) => {
-    button.addEventListener("click", () => focusGraphItem(button.dataset.relatedCase));
+    button.addEventListener("click", () => {
+      setLoopPaused(true);
+      showCaseInGraph(button.dataset.relatedCase, true);
+    });
   });
 
   const selectedCaseLink = detail.querySelector("[data-selected-case]");
   selectedCaseLink?.addEventListener("click", () => {
     const textarea = document.querySelector('#inquiryForm textarea[name="message"]');
-    if (textarea && !textarea.value) textarea.value = `${selectedCaseLink.dataset.selectedCase} 사례와 비슷한 문제를 상담하고 싶습니다.`;
+    if (textarea && !textarea.value) {
+      textarea.value = `관심 프로젝트: ${selectedCaseLink.dataset.selectedCase}\n문의 내용: `;
+    }
   });
 }
 
@@ -222,35 +180,48 @@ function setGraphSelection(id) {
   if (!graphView) return;
   graphView.nodeSelection.classed("is-selected", (node) => node.id === id);
   const item = graphView.nodes.find((node) => node.id === id);
-  if (item) {
-    renderGraphDetail(item);
-    document.getElementById("graphStatus").textContent = `${item.label} 상세를 표시했습니다.`;
-  }
+  if (!item) return;
+  graphState.selectedId = item.id;
+  renderGraphDetail(item);
 }
 
-function focusGraphItem(id, moveView = true) {
+function focusGraphItem(id, moveView = true, announce = false) {
   if (!graphView) return;
   const item = graphView.nodes.find((node) => node.id === id);
-  if (!item) return;
+  if (!item) {
+    if (allCaseRecords.some((record) => record.id === id)) showCaseInGraph(id, announce);
+    return;
+  }
   setGraphSelection(id);
-  if (moveView) {
-    const scale = graphView.mobile ? 1.05 : 1.25;
+  if (moveView && Number.isFinite(item.x) && Number.isFinite(item.y)) {
+    const scale = graphView.mobile ? 1 : 1.18;
     const transform = d3.zoomIdentity
       .translate(graphView.width / 2 - item.x * scale, graphView.height / 2 - item.y * scale)
       .scale(scale);
-    graphView.svg.transition().duration(500).call(graphView.zoom.transform, transform);
+    graphView.svg.transition().duration(graphState.reducedMotion ? 0 : 360)
+      .call(graphView.zoom.transform, transform);
+  }
+  if (announce) {
+    document.getElementById("graphStatus").textContent = `${item.label} 상세 내용을 표시했습니다.`;
   }
 }
 
 function fitTransformFor(nodes, width, height) {
-  const xMin = Math.min(...nodes.map((node) => node.x)) - 92;
-  const xMax = Math.max(...nodes.map((node) => node.x)) + 92;
-  const yMin = Math.min(...nodes.map((node) => node.y)) - 54;
-  const yMax = Math.max(...nodes.map((node) => node.y)) + 54;
-  const scale = Math.min(1, 0.9 / Math.max((xMax - xMin) / width, (yMax - yMin) / height));
-  const midX = (xMin + xMax) / 2;
-  const midY = (yMin + yMax) / 2;
-  return d3.zoomIdentity.translate(width / 2 - scale * midX, height / 2 - scale * midY).scale(scale);
+  const xValues = nodes.map((node) => node.x).filter(Number.isFinite);
+  const yValues = nodes.map((node) => node.y).filter(Number.isFinite);
+  if (!xValues.length || !yValues.length) return d3.zoomIdentity;
+  const minX = Math.min(...xValues);
+  const maxX = Math.max(...xValues);
+  const minY = Math.min(...yValues);
+  const maxY = Math.max(...yValues);
+  const dx = Math.max(1, maxX - minX + 120);
+  const dy = Math.max(1, maxY - minY + 90);
+  const scale = Math.max(0.58, Math.min(1.08, 0.9 / Math.max(dx / width, dy / height)));
+  const centerX = (minX + maxX) / 2;
+  const centerY = (minY + maxY) / 2;
+  return d3.zoomIdentity
+    .translate(width / 2 - centerX * scale, height / 2 - centerY * scale)
+    .scale(scale);
 }
 
 function renderKnowledgeGraph() {
@@ -258,8 +229,20 @@ function renderKnowledgeGraph() {
   if (!container) return;
 
   if (!window.d3) {
-    container.innerHTML = `<div class="graph-fallback"><p>연결지도를 불러오지 못했습니다. 아래 사례에서 수행경험을 확인해 주세요.</p>${caseRecords.map((record) => `<button type="button" data-fallback-case="${record.id}">${escapeHTML(record.label)}</button>`).join("")}</div>`;
-    container.querySelectorAll("[data-fallback-case]").forEach((button) => button.addEventListener("click", () => renderGraphDetail(caseRecords.find((record) => record.id === button.dataset.fallbackCase))));
+    container.innerHTML = `
+      <div class="graph-fallback">
+        <p>프로젝트 지도를 불러오지 못했습니다. 아래 목록에서 확인해 주세요.</p>
+        ${currentCaseRecords.map((record) => `
+          <button type="button" data-fallback-case="${record.id}">${escapeHTML(record.label)}</button>
+        `).join("")}
+      </div>
+    `;
+    container.querySelectorAll("[data-fallback-case]").forEach((button) => {
+      button.addEventListener("click", () => {
+        setLoopPaused(true);
+        renderGraphDetail(currentCaseRecords.find((record) => record.id === button.dataset.fallbackCase));
+      });
+    });
     return;
   }
 
@@ -277,20 +260,20 @@ function renderKnowledgeGraph() {
     const capabilities = nodes.filter((node) => node.group === "capability");
     const institutions = nodes.filter((node) => node.group === "institution");
     cases.forEach((node, index) => {
-      node.x = width * (0.34 + (index % 3) * 0.16);
-      node.y = height * (0.2 + Math.floor(index / 3) * 0.3);
+      node.x = width * (0.36 + (index % 3) * 0.14);
+      node.y = height * (0.14 + Math.floor(index / 3) * 0.145);
       node.layoutX = node.x;
       node.layoutY = node.y;
     });
     capabilities.forEach((node, index) => {
-      node.x = width * 0.13;
-      node.y = height * (0.16 + index * 0.17);
+      node.x = width * 0.12;
+      node.y = height * (0.1 + index * (0.8 / Math.max(1, capabilities.length - 1)));
       node.layoutX = node.x;
       node.layoutY = node.y;
     });
     institutions.forEach((node, index) => {
-      node.x = width * 0.87;
-      node.y = height * (0.11 + index * 0.13);
+      node.x = width * 0.88;
+      node.y = height * (0.1 + index * (0.8 / Math.max(1, institutions.length - 1)));
       node.layoutX = node.x;
       node.layoutY = node.y;
     });
@@ -300,15 +283,13 @@ function renderKnowledgeGraph() {
     .append("svg")
     .attr("viewBox", `0 0 ${width} ${height}`)
     .attr("role", "group")
-    .attr("aria-label", "사례, 역량, 기관유형의 연결지도. 항목을 선택하면 상세 내용이 표시됩니다.");
-
+    .attr("aria-label", "프로젝트, 과제, 기관유형의 연결지도");
   const viewport = svg.append("g").attr("class", "graph-viewport");
   const linkSelection = viewport.append("g")
     .attr("class", "graph-links")
     .selectAll("line")
     .data(links)
     .join("line");
-
   const nodeSelection = viewport.append("g")
     .attr("class", "graph-items")
     .selectAll("g")
@@ -320,56 +301,56 @@ function renderKnowledgeGraph() {
     .attr("aria-label", (node) => `${groupLabel[node.group]} ${node.label}`)
     .on("click", (event, node) => {
       event.stopPropagation();
-      focusGraphItem(node.id, false);
+      setLoopPaused(true);
+      focusGraphItem(node.id, false, true);
     })
     .on("keydown", (event, node) => {
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        focusGraphItem(node.id, false);
+        setLoopPaused(true);
+        focusGraphItem(node.id, false, true);
       }
     });
 
   nodeSelection.append("circle")
-    .attr("r", (node) => node.group === "case" ? (mobile ? 7 : 9) : node.group === "capability" ? (mobile ? 6 : 7) : 5);
-
+    .attr("r", (node) => node.group === "case" ? (mobile ? 7 : 8) : 6);
   nodeSelection.append("text")
-    .attr("y", (node) => node.group === "case" ? 24 : 20)
-    .text((node) => mobile ? node.shortLabel : node.label);
+    .attr("y", (node) => node.group === "case" ? 23 : 20)
+    .text((node) => node.group === "case" ? `${node.code} · ${node.shortLabel}` : (mobile ? node.shortLabel : node.label));
 
   const groupX = (node) => {
     if (Number.isFinite(node.layoutX)) return node.layoutX;
     if (mobile) return width / 2;
-    if (node.group === "capability") return width * 0.18;
-    if (node.group === "institution") return width * 0.82;
+    if (node.group === "capability") return width * 0.16;
+    if (node.group === "institution") return width * 0.84;
     return width * 0.5;
   };
   const groupY = (node) => {
     if (Number.isFinite(node.layoutY)) return node.layoutY;
     if (!mobile) return height / 2;
-    if (node.group === "capability") return height * 0.17;
-    if (node.group === "institution") return height * 0.84;
+    if (node.group === "capability") return height * 0.18;
+    if (node.group === "institution") return height * 0.83;
     return height * 0.5;
   };
   const collisionRadius = (node) => {
-    if (mobile) return node.group === "case" ? 33 : 28;
-    const labelRadius = Math.min(104, 30 + node.label.length * 4.2);
-    return Math.max(node.group === "case" ? 72 : node.group === "institution" ? 56 : 48, labelRadius);
+    if (mobile) return node.group === "case" ? 31 : 27;
+    const labelRadius = Math.min(92, 27 + node.label.length * 3.6);
+    return Math.max(node.group === "case" ? 58 : 46, labelRadius);
   };
 
   const simulation = d3.forceSimulation(nodes)
-    .force("link", d3.forceLink(links).id((node) => node.id).distance(mobile ? 58 : 102).strength(0.65))
-    .force("charge", d3.forceManyBody().strength(mobile ? -92 : -175))
+    .force("link", d3.forceLink(links).id((node) => node.id).distance(mobile ? 52 : 88).strength(0.64))
+    .force("charge", d3.forceManyBody().strength(mobile ? -82 : -145))
     .force("collision", d3.forceCollide(collisionRadius).iterations(3))
-    .force("x", d3.forceX(groupX).strength(mobile ? 0.12 : 0.14))
-    .force("y", d3.forceY(groupY).strength(mobile ? 0.2 : 0.14))
+    .force("x", d3.forceX(groupX).strength(mobile ? 0.1 : 0.15))
+    .force("y", d3.forceY(groupY).strength(mobile ? 0.18 : 0.15))
     .stop();
-
-  simulation.tick(mobile ? 280 : 230);
+  simulation.tick(mobile ? 260 : 230);
 
   const clampPosition = (node) => {
-    const xPad = mobile ? 46 : Math.min(138, Math.max(66, 18 + node.label.length * 3.2));
+    const xPad = mobile ? 44 : Math.min(126, Math.max(60, 18 + node.label.length * 3));
     node.x = Math.max(xPad, Math.min(width - xPad, node.x));
-    node.y = Math.max(34, Math.min(height - 38, node.y));
+    node.y = Math.max(34, Math.min(height - 44, node.y));
   };
   nodes.forEach(clampPosition);
 
@@ -383,34 +364,163 @@ function renderKnowledgeGraph() {
   };
   draw();
 
-  nodeSelection.call(d3.drag()
-    .on("start", (event, node) => {
-      node.fx = node.x;
-      node.fy = node.y;
-    })
-    .on("drag", (event, node) => {
-      node.fx = event.x;
-      node.fy = event.y;
-      node.x = event.x;
-      node.y = event.y;
-      clampPosition(node);
-      draw();
-    })
-    .on("end", (event, node) => {
-      node.fx = null;
-      node.fy = null;
-    }));
+  if (!mobile) {
+    nodeSelection.call(d3.drag()
+      .on("start", (_event, node) => {
+        setLoopPaused(true);
+        node.fx = node.x;
+        node.fy = node.y;
+      })
+      .on("drag", (event, node) => {
+        node.x = event.x;
+        node.y = event.y;
+        clampPosition(node);
+        draw();
+      })
+      .on("end", (_event, node) => {
+        node.fx = null;
+        node.fy = null;
+      }));
+  }
 
   const zoom = d3.zoom()
-    .scaleExtent([0.55, 2.8])
+    .scaleExtent([0.52, 2.8])
+    .on("start", (event) => {
+      if (event.sourceEvent) setLoopPaused(true);
+    })
     .on("zoom", (event) => viewport.attr("transform", event.transform));
   svg.call(zoom).on("dblclick.zoom", null);
-
   const fitTransform = fitTransformFor(nodes, width, height);
   svg.call(zoom.transform, fitTransform);
 
-  graphView = { container, svg, viewport, zoom, nodes, links, nodeSelection, linkSelection, simulation, width, height, mobile, fitTransform };
-  setGraphSelection("case-dev-2022");
+  graphView = {
+    container,
+    svg,
+    viewport,
+    zoom,
+    nodes,
+    links,
+    nodeSelection,
+    linkSelection,
+    simulation,
+    width,
+    height,
+    mobile,
+    fitTransform
+  };
+  const selection = nodes.some((node) => node.id === graphState.selectedId)
+    ? graphState.selectedId
+    : currentCaseRecords[0]?.id;
+  if (selection) setGraphSelection(selection);
+}
+
+function updateTicker() {
+  const target = document.getElementById("experienceTicker");
+  if (!target) return;
+  const content = currentCaseRecords.map((record) => `
+    <span><b>${escapeHTML(record.code)}</b>${escapeHTML(record.institutionType)} / ${escapeHTML(record.theme)} / ${escapeHTML(record.year)}</span>
+  `).join("");
+  target.innerHTML = `<div>${content}</div><div aria-hidden="true">${content}</div>`;
+}
+
+function updateBatchStatus() {
+  const status = document.getElementById("graphBatchStatus");
+  if (!status || !allCaseRecords.length) return;
+  const start = graphState.cursor + 1;
+  const end = Math.min(graphState.cursor + currentCaseRecords.length, allCaseRecords.length);
+  const loopState = graphState.reducedMotion
+    ? "수동 탐색"
+    : graphState.paused ? "자동 순환 멈춤" : "자동 순환 중";
+  status.textContent = `프로젝트 ${start}–${end} / ${allCaseRecords.length} · ${loopState}`;
+}
+
+function updateLoopUI() {
+  const button = document.querySelector('[data-graph-action="toggle-loop"]');
+  if (!button) return;
+  const stopped = graphState.paused || graphState.reducedMotion;
+  button.setAttribute("aria-pressed", String(stopped));
+  if (graphState.reducedMotion) {
+    button.textContent = "자동 넘김 꺼짐";
+    button.disabled = true;
+  } else {
+    button.textContent = graphState.paused ? "자동 넘김 시작" : "자동 넘김 멈춤";
+  }
+  updateBatchStatus();
+}
+
+function clearGraphTimer() {
+  window.clearTimeout(graphState.timer);
+  graphState.timer = null;
+}
+
+function scheduleGraphLoop() {
+  clearGraphTimer();
+  if (graphState.paused || graphState.reducedMotion || !graphState.inViewport || document.hidden) return;
+  graphState.timer = window.setTimeout(() => advanceGraphBatch("auto"), graphState.intervalMs);
+}
+
+function setLoopPaused(paused) {
+  graphState.paused = paused;
+  updateLoopUI();
+  if (paused) clearGraphTimer();
+  else scheduleGraphLoop();
+}
+
+function renderCurrentBatch() {
+  const batch = getVisibleBatch();
+  if (!batch.length) return;
+  buildGraphModel(batch);
+  renderKnowledgeGraph();
+  updateTicker();
+  updateLoopUI();
+}
+
+function advanceGraphBatch(source = "manual") {
+  let nextCursor = graphState.cursor + graphState.batchSize;
+  if (nextCursor >= graphState.order.length) {
+    graphState.cycle += 1;
+    graphState.order = createCycleOrder(allCaseRecords, graphState.cycle);
+    nextCursor = 0;
+  }
+  graphState.cursor = nextCursor;
+  graphState.selectedId = null;
+  renderCurrentBatch();
+  if (source !== "auto") {
+    const status = document.getElementById("graphStatus");
+    if (status) status.textContent = document.getElementById("graphBatchStatus")?.textContent || "";
+  }
+  scheduleGraphLoop();
+}
+
+function showCaseInGraph(id, announce = false) {
+  const index = graphState.order.findIndex((record) => record.id === id);
+  if (index < 0) return;
+  graphState.cursor = Math.floor(index / graphState.batchSize) * graphState.batchSize;
+  graphState.selectedId = id;
+  renderCurrentBatch();
+  window.requestAnimationFrame(() => focusGraphItem(id, true, announce));
+}
+
+function searchableText(record) {
+  return [
+    record.code,
+    record.label,
+    record.shortLabel,
+    record.institutionType,
+    record.theme,
+    record.year,
+    record.experts.join(" "),
+    record.summary,
+    record.problem,
+    record.approach,
+    record.output
+  ].join(" ").toLocaleLowerCase("ko-KR");
+}
+
+function searchAllRecords(query) {
+  const normalized = query.trim().toLocaleLowerCase("ko-KR");
+  if (!normalized) return [];
+  return allCaseRecords.filter((record) => searchableText(record).includes(normalized));
 }
 
 function highlightGraphMatches(query) {
@@ -421,27 +531,39 @@ function highlightGraphMatches(query) {
     graphView.linkSelection.classed("is-dimmed", false);
     return [];
   }
-  const matches = graphView.nodes.filter((node) => [node.label, node.shortLabel, node.summary, node.problem, node.approach, node.output]
-    .filter(Boolean)
-    .join(" ")
-    .toLocaleLowerCase("ko-KR")
-    .includes(normalized));
+  const matches = graphView.nodes.filter((node) => {
+    if (node.group === "case") return searchableText(node).includes(normalized);
+    return `${node.label} ${node.summary}`.toLocaleLowerCase("ko-KR").includes(normalized);
+  });
   const matchIds = new Set(matches.map((node) => node.id));
   graphView.nodeSelection
     .classed("is-match", (node) => matchIds.has(node.id))
     .classed("is-dimmed", (node) => !matchIds.has(node.id));
-  graphView.linkSelection.classed("is-dimmed", (link) => !matchIds.has(link.source.id) && !matchIds.has(link.target.id));
+  graphView.linkSelection.classed(
+    "is-dimmed",
+    (link) => !matchIds.has(link.source.id) && !matchIds.has(link.target.id)
+  );
   return matches;
 }
 
 function initGraphControls() {
   document.querySelectorAll("[data-graph-action]").forEach((button) => {
     button.addEventListener("click", () => {
-      if (!graphView) return;
       const action = button.dataset.graphAction;
+      if (action === "toggle-loop") {
+        setLoopPaused(!graphState.paused);
+        return;
+      }
+      if (action === "next") {
+        setLoopPaused(true);
+        advanceGraphBatch("manual");
+        return;
+      }
+      if (!graphView) return;
+      setLoopPaused(true);
       if (action === "zoom-in") graphView.svg.transition().duration(220).call(graphView.zoom.scaleBy, 1.28);
       if (action === "zoom-out") graphView.svg.transition().duration(220).call(graphView.zoom.scaleBy, 0.78);
-      if (action === "reset") graphView.svg.transition().duration(420).call(graphView.zoom.transform, graphView.fitTransform);
+      if (action === "reset") graphView.svg.transition().duration(360).call(graphView.zoom.transform, graphView.fitTransform);
     });
   });
 
@@ -450,13 +572,17 @@ function initGraphControls() {
   input?.addEventListener("input", () => highlightGraphMatches(input.value));
   form?.addEventListener("submit", (event) => {
     event.preventDefault();
-    const matches = highlightGraphMatches(input.value);
+    const query = input.value.trim();
+    const matches = searchAllRecords(query);
     const status = document.getElementById("graphStatus");
     if (matches.length) {
-      focusGraphItem(matches[0].id);
-      status.textContent = `${matches.length}개의 관련 항목을 찾았습니다. ${matches[0].label}을 표시합니다.`;
+      setLoopPaused(true);
+      showCaseInGraph(matches[0].id, false);
+      window.requestAnimationFrame(() => highlightGraphMatches(query));
+      status.textContent = `${matches.length}개의 관련 프로젝트를 찾았습니다. ${matches[0].code}를 표시합니다.`;
     } else {
-      status.textContent = "일치하는 항목이 없습니다. 다른 말로 찾아보세요.";
+      highlightGraphMatches("");
+      status.textContent = "일치하는 프로젝트가 없습니다. 다른 검색어를 입력해 주세요.";
     }
   });
 }
@@ -464,52 +590,93 @@ function initGraphControls() {
 function renderDeepCases() {
   const target = document.getElementById("caseDeepGrid");
   if (!target) return;
-  const featuredIds = ["case-region-2020", "case-energy-2020", "case-culture-2024"];
-  const featured = featuredIds.map((id) => caseRecords.find((record) => record.id === id)).filter(Boolean);
+  const themes = ["전략", "조직", "직무·인사"];
+  const featured = themes.map((theme) => allCaseRecords.find((record) => record.theme === theme)).filter(Boolean);
   target.innerHTML = featured.map((record, index) => `
     <article class="deep-case">
       <div class="deep-case-index">0${index + 1}</div>
-      <p class="deep-case-meta">${escapeHTML(record.label)}</p>
+      <p class="deep-case-meta">${escapeHTML(record.code)} · ${escapeHTML(record.institutionType)} · ${escapeHTML(record.year)}</p>
       <h3>${escapeHTML(record.summary)}</h3>
       <dl>
-        <div><dt>처음 마주한 문제</dt><dd>${escapeHTML(record.problem)}</dd></div>
-        <div><dt>판단을 바꾼 접근</dt><dd>${escapeHTML(record.approach)}</dd></div>
+        <div><dt>과제</dt><dd>${escapeHTML(record.problem)}</dd></div>
+        <div><dt>수행 내용</dt><dd>${escapeHTML(record.approach)}</dd></div>
+        <div><dt>결과물</dt><dd>${escapeHTML(record.output)}</dd></div>
       </dl>
-      <button type="button" class="case-map-link" data-case-focus="${record.id}">연결지도에서 보기 <span aria-hidden="true">↗</span></button>
+      <button type="button" class="case-map-link" data-case-focus="${record.id}">지도에서 프로젝트 보기 <span aria-hidden="true">↗</span></button>
     </article>
   `).join("");
 
   target.querySelectorAll("[data-case-focus]").forEach((button) => {
     button.addEventListener("click", () => {
-      document.getElementById("evidence-os")?.scrollIntoView({ behavior: "smooth", block: "start" });
-      window.setTimeout(() => focusGraphItem(button.dataset.caseFocus), 450);
+      setLoopPaused(true);
+      document.getElementById("evidence-os")?.scrollIntoView({
+        behavior: graphState.reducedMotion ? "auto" : "smooth",
+        block: "start"
+      });
+      window.setTimeout(() => showCaseInGraph(button.dataset.caseFocus, true), graphState.reducedMotion ? 0 : 420);
     });
   });
 }
 
+function setInquiryStatus(kind, message) {
+  const status = document.getElementById("inquiryStatus");
+  if (!status) return;
+  status.className = `form-status ${kind ? `is-${kind}` : ""}`;
+  status.textContent = message;
+}
+
 function initInquiryForm() {
   const form = document.getElementById("inquiryForm");
-  const status = document.getElementById("inquiryStatus");
-  if (!form || !status) return;
+  const startedAt = document.getElementById("inquiryFormStartedAt");
+  if (!form || !startedAt) return;
+  const resetStartedAt = () => {
+    startedAt.value = String(Date.now());
+  };
+  resetStartedAt();
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
     const button = form.querySelector("button[type='submit']");
+    const originalLabel = button.textContent;
     const data = Object.fromEntries(new FormData(form).entries());
     button.disabled = true;
-    status.textContent = "요청을 전달하고 있습니다.";
+    button.textContent = "보내는 중";
+    setInquiryStatus("sending", "문의 내용을 보내는 중입니다.");
     try {
       const response = await fetch("/api/inquiry", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
         body: JSON.stringify(data)
       });
-      if (!response.ok) throw new Error("request_failed");
-      form.reset();
-      status.textContent = "요청이 접수되었습니다. 확인 후 연락드리겠습니다.";
+      const result = await response.json().catch(() => ({}));
+      if (response.ok) {
+        form.reset();
+        resetStartedAt();
+        setInquiryStatus("success", "문의가 접수되었습니다. 확인 후 연락드리겠습니다.");
+        return;
+      }
+      const messages = {
+        400: "입력한 내용을 다시 확인해 주세요.",
+        403: "페이지를 새로고침한 뒤 다시 보내 주세요.",
+        429: "요청이 많습니다. 잠시 후 다시 보내 주세요."
+      };
+      const fallback = "온라인 접수가 지연되고 있습니다. ceo@strat.kr 또는 02-6083-0330으로 연락해 주세요.";
+      const message = response.status >= 500
+        ? fallback
+        : messages[response.status] || result.message || fallback;
+      setInquiryStatus("error", message);
     } catch (_error) {
-      status.textContent = "자동 접수가 연결되지 않았습니다. 02-6083-0330으로 연락해 주세요.";
+      setInquiryStatus("error", "온라인 접수가 지연되고 있습니다. ceo@strat.kr 또는 02-6083-0330으로 연락해 주세요.");
     } finally {
       button.disabled = false;
+      button.textContent = originalLabel;
     }
   });
 }
@@ -518,19 +685,74 @@ function initResponsiveGraph() {
   window.addEventListener("resize", () => {
     window.clearTimeout(resizeTimer);
     resizeTimer = window.setTimeout(() => {
+      const nextBatchSize = getBatchSize();
       const width = document.getElementById("caseUniverseGraph")?.clientWidth || 0;
-      if (graphView && Math.abs(width - graphView.width) < 24) return;
-      renderKnowledgeGraph();
+      const sizeChanged = nextBatchSize !== graphState.batchSize;
+      if (!sizeChanged && graphView && Math.abs(width - graphView.width) < 24) return;
+      graphState.batchSize = nextBatchSize;
+      if (graphState.selectedId && allCaseRecords.some((record) => record.id === graphState.selectedId)) {
+        showCaseInGraph(graphState.selectedId);
+      } else {
+        renderCurrentBatch();
+      }
     }, 180);
   }, { passive: true });
 }
 
+function initGraphLifecycle() {
+  const section = document.getElementById("evidence-os");
+  if ("IntersectionObserver" in window && section) {
+    const observer = new IntersectionObserver((entries) => {
+      graphState.inViewport = entries.some((entry) => entry.isIntersecting);
+      if (graphState.inViewport) scheduleGraphLoop();
+      else clearGraphTimer();
+    }, { threshold: 0.08 });
+    observer.observe(section);
+  }
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) clearGraphTimer();
+    else scheduleGraphLoop();
+  });
+}
+
+async function loadExperienceData() {
+  const response = await fetch("/graph-experience.json", { headers: { "Accept": "application/json" } });
+  if (!response.ok) throw new Error("experience_data_unavailable");
+  const payload = await response.json();
+  if (!Array.isArray(payload.records) || payload.records.length < 1) throw new Error("experience_data_invalid");
+  return payload;
+}
+
+async function initExperienceGraph() {
+  const container = document.getElementById("caseUniverseGraph");
+  try {
+    graphState.data = await loadExperienceData();
+    allCaseRecords = graphState.data.records;
+    graphState.batchSize = getBatchSize();
+    graphState.order = createCycleOrder(allCaseRecords);
+    renderCurrentBatch();
+    renderDeepCases();
+    initGraphLifecycle();
+    scheduleGraphLoop();
+  } catch (_error) {
+    if (container) {
+      container.innerHTML = `
+        <div class="graph-fallback">
+          <p>프로젝트 데이터를 불러오지 못했습니다.</p>
+          <a class="detail-cta" href="#contact">상담 문의 <span aria-hidden="true">↗</span></a>
+        </div>
+      `;
+    }
+    const status = document.getElementById("graphBatchStatus");
+    if (status) status.textContent = "프로젝트 데이터를 확인할 수 없습니다.";
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  renderKnowledgeGraph();
   initGraphControls();
-  renderDeepCases();
   initInquiryForm();
   initResponsiveGraph();
+  initExperienceGraph();
 });
 
 /* Existing release-check vocabulary retained as non-executable compatibility metadata:
