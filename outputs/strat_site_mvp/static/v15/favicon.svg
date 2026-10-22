@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="STRATEGY">
+  <rect width="64" height="64" rx="10" fill="#15171a"/>
+  <path d="M12 16h40v8H37v24h-9V24H12z" fill="#f7f8f5"/>
+  <path d="M42 31c6 1 10 5 10 10 0 7-6 11-16 11-6 0-11-1-16-4l4-7c4 2 8 3 12 3 4 0 7-1 7-3s-2-3-8-4c-8-2-13-5-13-12 0-6 5-11 15-11 5 0 10 1 14 3l-3 7c-4-2-7-2-11-2s-6 1-6 3 2 3 11 6z" fill="#0f766e"/>
+</svg>
