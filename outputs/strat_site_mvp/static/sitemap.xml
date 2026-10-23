@@ -20,4 +20,6 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url><loc>https://strat.kr/insights</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://strat.kr/report-strategy-ax-performance</loc><lastmod>2026-10-24</lastmod></url>
 </urlset>
