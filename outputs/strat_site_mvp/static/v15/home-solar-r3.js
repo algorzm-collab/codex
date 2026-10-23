@@ -32,7 +32,7 @@
   hero.dataset.visibleRecords=shown.length;
   panel.innerHTML=`<div class="r3-selection-head"><div><p class="r4-level-tag">${earth?'03 · EARTH':'02 · SOLAR SYSTEM'}</p><h2>${earth?'지구에서 살펴보는 ':''}${t.name}</h2><p class="r3-explain">${t.id==='ax'?'AI·AX는 방법과 적용조건을 살펴봅니다. 수행 자료 연결은 미확인입니다.':earth?`연결 자료 ${t.records.length}건 중 일부입니다. 자료 상세는 아래에서 별도로 엽니다.`:`${t.name} 태양계입니다. 궤도 위 지구를 선택하면 같은 공간 안에서 지구까지 확대합니다.`}</p></div></div>`+
    (earth&&shown.length?`<div class="r3-records">${shown.map(r=>`<a class="r3-record" data-record="${esc(r.id)}" href="atlas.html?view=list&record=${encodeURIComponent(r.id)}"><span class="r3-kind">${esc(r.layer||'경험 자료')}</span><h3>${esc(r.title)}</h3><span class="r3-basis">${esc(t.f?'기존 기능 분류: '+t.f:'원문 주제: '+t.theme)}</span><span class="r3-detail">자료 상세 별도로 보기 ↗</span></a>`).join('')}</div>`:'')+
-   `<div class="r3-selection-links">${!earth?'<button type="button" data-earth-open class="r3-reading">지구로 확대 →</button>':''}<a href="approach.html#framework-${t.id}">분석 방법과 적용조건 ↗</a>${t.records.length?`<a href="${listHref(t)}">연결 자료 ${t.records.length}건 모두 보기 →</a>`:''}</div>`;
+   `<div class="r3-selection-links">${!earth?'<button type="button" data-earth-open class="r3-reading">지구로 확대 →</button>':''}<a href="approach.html#framework-${t.id}">분석 방법과 적용조건 ↗</a>${earth&&['strategy','ax','performance','organization'].includes(t.id)?`<a data-industrial-report href="report-strategy-ax-performance.html?topic=${t.id}">전략·AX·성과관리 분석 리포트 읽기 ↗</a>`:''}${t.records.length?`<a href="${listHref(t)}">연결 자료 ${t.records.length}건 모두 보기 →</a>`:''}</div>`;
   panel.querySelector('[data-earth-open]')?.addEventListener('click',()=>go('earth',t,true));
  }
  function updateUI(){
