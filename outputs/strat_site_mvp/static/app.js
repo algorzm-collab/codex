@@ -135,12 +135,12 @@ function renderGraphDetail(item) {
       <h2>${escapeHTML(item.institutionType)}<br>${escapeHTML(item.theme)} 프로젝트</h2>
       <p class="detail-summary">${escapeHTML(item.summary)}</p>
       <dl>
-        <div><dt>과제</dt><dd>${escapeHTML(item.problem)}</dd></div>
-        <div><dt>수행 내용</dt><dd>${escapeHTML(item.approach)}</dd></div>
-        <div><dt>결과물</dt><dd>${escapeHTML(item.output)}</dd></div>
+        <div><dt>검토 과제</dt><dd>${escapeHTML(item.problem)}</dd></div>
+        <div><dt>접근 방법 예시</dt><dd>${escapeHTML(item.approach)}</dd></div>
+        <div><dt>결과물 예시</dt><dd>${escapeHTML(item.output)}</dd></div>
         <div><dt>참여</dt><dd>${escapeHTML(item.experts.join(" · "))}</dd></div>
       </dl>
-      <p class="detail-proof">${escapeHTML(item.proof)}</p>
+      <p class="detail-proof">개인의 이전 경력과 현 법인의 실적은 별도로 확인합니다. 세부 수행 범위와 증빙은 상담 시 공개 범위를 협의합니다.</p>
       <a class="detail-cta" href="#contact" data-selected-case="${escapeHTML(item.code)} / ${escapeHTML(item.institutionType)} / ${escapeHTML(item.theme)}">유사 과제 문의 <span aria-hidden="true">↗</span></a>
     `;
   } else {
@@ -598,9 +598,9 @@ function renderDeepCases() {
       <p class="deep-case-meta">${escapeHTML(record.code)} · ${escapeHTML(record.institutionType)} · ${escapeHTML(record.year)}</p>
       <h3>${escapeHTML(record.summary)}</h3>
       <dl>
-        <div><dt>과제</dt><dd>${escapeHTML(record.problem)}</dd></div>
-        <div><dt>수행 내용</dt><dd>${escapeHTML(record.approach)}</dd></div>
-        <div><dt>결과물</dt><dd>${escapeHTML(record.output)}</dd></div>
+        <div><dt>검토 과제</dt><dd>${escapeHTML(record.problem)}</dd></div>
+        <div><dt>접근 방법 예시</dt><dd>${escapeHTML(record.approach)}</dd></div>
+        <div><dt>결과물 예시</dt><dd>${escapeHTML(record.output)}</dd></div>
       </dl>
       <button type="button" class="case-map-link" data-case-focus="${record.id}">지도에서 프로젝트 보기 <span aria-hidden="true">↗</span></button>
     </article>
@@ -738,13 +738,13 @@ async function initExperienceGraph() {
     if (container) {
       container.innerHTML = `
         <div class="graph-fallback">
-          <p>프로젝트 데이터를 불러오지 못했습니다.</p>
+          <p>수행 경험을 불러오지 못했습니다. 잠시 후 다시 살펴보거나 상담으로 문의해 주십시오.</p>
           <a class="detail-cta" href="#contact">상담 문의 <span aria-hidden="true">↗</span></a>
         </div>
       `;
     }
     const status = document.getElementById("graphBatchStatus");
-    if (status) status.textContent = "프로젝트 데이터를 확인할 수 없습니다.";
+    if (status) status.textContent = "수행 경험을 불러오지 못했습니다. 상담 문의는 계속 이용할 수 있습니다.";
   }
 }
 

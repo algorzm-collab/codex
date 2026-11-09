@@ -178,7 +178,7 @@
       rows = [
         makeRow("주제", record.title || record.theme || "기타"),
         makeRow(
-          "프로젝트",
+          "경험 자료",
           Number.isFinite(count) ? `${count}개` : "주제 묶음"
         ),
       ].filter(Boolean);
@@ -190,7 +190,7 @@
         ),
         makeRow("기관명", record.institution),
         makeRow("주제", record.theme || record.practice || "기타"),
-        makeRow("핵심성공요인", record.successFactor),
+        makeRow(record.successFactorBasis === "case" ? "과업 검토 관점" : "분야별 검토 관점", record.successFactor),
       ].filter(Boolean);
     }
 
@@ -206,8 +206,8 @@
       const note = document.createElement("p");
       note.className = "experience-hover-card__note";
       note.textContent = record.successFactorBasis === "case"
-        ? "제안 당시 접근 방식이며 수행 성과를 뜻하지 않습니다."
-        : "주제 분류 안내이며 해당 기관의 성과 사실을 뜻하지 않습니다.";
+        ? "과업을 이해하기 위한 검토 관점입니다. 실제 수행 범위는 상세와 상담에서 확인하십시오."
+        : "이 분야의 과제를 검토할 때 살펴볼 관점입니다. 해당 기관의 실제 성과를 의미하지 않습니다.";
       node.append(note);
     }
 

@@ -8,7 +8,7 @@
  const mobile=matchMedia('(max-width:700px)'),reduced=matchMedia('(prefers-reduced-motion:reduce)');
  topics.forEach(t=>{t.records=t.f?records.filter(r=>r.profileTheme===t.f):t.theme?records.filter(r=>r.theme===t.theme):[];t.p=[(t.x-50)*.88,(50-t.y)*.66,0];});
  hero.dataset.sourceRecords=records.length;hero.dataset.overviewRecords='0';hero.dataset.institutionEdges='0';hero.dataset.visibleRecords='0';
- let level='universe',active=null,renderer,scene,camera,models=[],targetLook,animation=0,earthDistance=3.4,drag=null,motionEnabled=!reduced.matches;
+ let level='universe',active=null,renderer,scene,camera,models=[],targetLook,animation=0,earthDistance=3.4,drag=null,atmosphere=null,motionEnabled=!reduced.matches;
  const trail=document.createElement('nav');trail.className='r4-trail';trail.setAttribute('aria-label','공간 탐색 단계');
  trail.innerHTML='<button type="button" data-level="universe">01 우주</button><span>›</span><button type="button" data-level="solar" disabled>02 태양계</button><span>›</span><button type="button" data-level="earth" disabled>03 지구</button>';
  map.parentElement.prepend(trail);
@@ -30,8 +30,8 @@
   if(!active){panel.hidden=true;panel.replaceChildren();hero.dataset.visibleRecords='0';return;}
   panel.hidden=false;const t=active,earth=level==='earth',shown=earth?t.records.slice(0,mobile.matches?2:4):[];
   hero.dataset.visibleRecords=shown.length;
-  panel.innerHTML=`<div class="r3-selection-head"><div><p class="r4-level-tag">${earth?'03 · EARTH':'02 · SOLAR SYSTEM'}</p><h2>${earth?'지구에서 살펴보는 ':''}${t.name}</h2><p class="r3-explain">${t.id==='ax'?'AI·AX는 방법과 적용조건을 살펴봅니다. 수행 자료 연결은 미확인입니다.':earth?`연결 자료 ${t.records.length}건 중 일부입니다. 자료 상세는 아래에서 별도로 엽니다.`:`${t.name} 태양계입니다. 궤도 위 지구를 선택하면 같은 공간 안에서 지구까지 확대합니다.`}</p></div></div>`+
-   (earth&&shown.length?`<div class="r3-records">${shown.map(r=>`<a class="r3-record" data-record="${esc(r.id)}" href="atlas.html?view=list&record=${encodeURIComponent(r.id)}"><span class="r3-kind">${esc(r.layer||'경험 자료')}</span><h3>${esc(r.title)}</h3><span class="r3-basis">${esc(t.f?'기존 기능 분류: '+t.f:'원문 주제: '+t.theme)}</span><span class="r3-detail">자료 상세 별도로 보기 ↗</span></a>`).join('')}</div>`:'')+
+  panel.innerHTML=`<div class="r3-selection-head"><div><p class="r4-level-tag">${earth?'03 · EARTH':'02 · SOLAR SYSTEM'}</p><h2>${earth?'지구에서 살펴보는 ':''}${t.name}</h2><p class="r3-explain">${t.id==='ax'?'AI·AX는 업무와 운영 여건에 맞춰 적용 가능성을 검토합니다. 분석 방법과 상담 안내를 살펴보십시오.':earth?`관련 경험 ${t.records.length}건을 살펴보십시오. 관심 있는 과업을 선택하면 상세와 수행 주체를 확인할 수 있습니다.`:`${t.name} 태양계입니다. 궤도 위 지구를 선택하면 같은 공간 안에서 지구까지 확대합니다.`}</p></div></div>`+
+   (earth&&shown.length?`<div class="r3-records">${shown.map(r=>`<a class="r3-record" data-record="${esc(r.id)}" href="atlas.html?view=list&record=${encodeURIComponent(r.id)}"><span class="r3-kind">${esc(r.layer||'경험 자료')}</span><h3>${esc(r.title)}</h3><span class="r3-basis">${esc(t.f?'전문 분야: '+t.f:'과업 주제: '+t.theme)}</span><span class="r3-detail">과업 상세 보기 ↗</span></a>`).join('')}</div>`:'')+
    `<div class="r3-selection-links">${!earth?'<button type="button" data-earth-open class="r3-reading">지구로 확대 →</button>':''}<a href="approach.html#framework-${t.id}">분석 방법과 적용조건 ↗</a>${earth&&['strategy','ax','performance','organization'].includes(t.id)?`<a data-industrial-report href="report-strategy-ax-performance.html?topic=${t.id}">전략·AX·성과관리 분석 리포트 읽기 ↗</a>`:''}${t.records.length?`<a href="${listHref(t)}">연결 자료 ${t.records.length}건 모두 보기 →</a>`:''}</div>`;
   panel.querySelector('[data-earth-open]')?.addEventListener('click',()=>go('earth',t,true));
  }
@@ -45,14 +45,14 @@
   renderPanel();
  }
  function cameraDestination(l,t){
-  const T=window.THREE;if(l==='universe')return {p:new T.Vector3(0,0,Math.max(102,108/camera.aspect)),look:new T.Vector3(0,0,0)};
+  const T=window.THREE;if(l==='universe')return {p:new T.Vector3(0,0,Math.max(102,108/(Number.isFinite(camera.aspect)&&camera.aspect>0?camera.aspect:1))),look:new T.Vector3(0,0,0)};
   const m=models.find(m=>m.id===t.id),center=m.group.position.clone();
   if(l==='solar'){if(mobile.matches)center.x+=2.5;return {p:center.clone().add(new T.Vector3(0,1,mobile.matches?34:27)),look:center};}
   const earth=center.add(m.earth.position);return {p:earth.clone().add(new T.Vector3(0,.1,earthDistance)),look:earth};
  }
  function project(v){return v.clone().project(camera);}
  function renderFrame(){
-  if(!renderer)return;models.forEach(m=>{m.group.visible=level==='universe'||m.id===active?.id;});
+  if(!renderer)return;if(atmosphere)atmosphere.group.visible=level==='universe';models.forEach(m=>{m.group.visible=level==='universe'||m.id===active?.id;});
   renderer.render(scene,camera);
   if(level==='universe')topics.forEach(t=>{const p=project(new window.THREE.Vector3(...t.p));const b=$(`[data-topic="${t.id}"]`);b.style.left=Math.max(mobile.matches?22:10,Math.min(mobile.matches?78:90,(p.x+1)*50))+'%';b.style.top=((1-p.y)*50+6)+'%';});
   if(active&&level==='solar'){const m=models.find(m=>m.id===active.id),p=project(m.group.position.clone().add(m.earth.position));enter.style.left=Math.max(22,Math.min(mobile.matches?74:85,(p.x+1)*50))+'%';enter.style.top=((1-p.y)*50+10)+'%';}
@@ -60,7 +60,12 @@
   hero.dataset.cameraTarget=[targetLook.x,targetLook.y,targetLook.z].map(v=>v.toFixed(3)).join(',');
  }
  function travel(destination,animate){
-  cancelAnimationFrame(animation);const from=camera.position.clone(),lookFrom=targetLook.clone(),start=performance.now(),duration=animate&&motionEnabled?1100:0;
+  cancelAnimationFrame(animation);animation=0;
+  const finite=v=>[v.x,v.y,v.z].every(Number.isFinite);
+  if(!finite(destination.p)||!finite(destination.look)){hero.dataset.transitioning='false';hero.dataset.transitionFrames='0';hero.dataset.transitionElapsed='0';hero.dataset.cameraError='nonfinite-destination';status.textContent='3D 시야 좌표를 확인할 수 없습니다. 한 단계 축소 또는 새로고침을 이용해 주십시오.';return;}
+  delete hero.dataset.cameraError;
+  if(!finite(camera.position)||!finite(targetLook)){camera.position.copy(destination.p);targetLook.copy(destination.look);animate=false;}
+  const from=camera.position.clone(),lookFrom=targetLook.clone(),start=performance.now(),duration=animate&&motionEnabled?1100:0;
   hero.dataset.transitioning=String(duration>0);let frames=0;
   function step(now){frames++;const progress=duration?Math.min(1,(now-start)/duration):1,ease=progress<.5?4*progress**3:1-(-2*progress+2)**3/2;
    camera.position.lerpVectors(from,destination.p,ease);targetLook.lerpVectors(lookFrom,destination.look,ease);camera.lookAt(targetLook);renderFrame();
@@ -91,8 +96,9 @@
    [[-4,0,0,.34],[-7,-3,0,.53],[3.5,5.1,-1,.47]].forEach(([x,y,z,r],j)=>{const sphere=new T.Mesh(new T.SphereGeometry(r,20,16),new T.MeshPhongMaterial({color:[0xbfb2a0,0x617e99,0xa99781][j]}));sphere.position.set(x,y,z);group.add(sphere);});
    scene.add(group);models.push({id:t.id,group,earth,sun});
   });
+  if(window.StratDenseAtmosphere){try{atmosphere=window.StratDenseAtmosphere(T,hero);scene.add(atmosphere.group);hero.dataset.denseAtmosphere='ready';}catch(error){hero.dataset.denseAtmosphere='unavailable';}}
   hero.dataset.renderer='three-webgl';map.classList.add('r4-ready');
-  function resize(){const w=map.clientWidth,h=map.clientHeight;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();renderFrame();}
+  function resize(){atmosphere?.resize();const w=map.clientWidth,h=map.clientHeight;if(!Number.isFinite(w)||!Number.isFinite(h)||w<=0||h<=0)return;renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();renderFrame();}
   new ResizeObserver(resize).observe(map);resize();restore();
   renderer.domElement.addEventListener('pointerdown',e=>{if(level==='solar'){const rect=renderer.domElement.getBoundingClientRect(),pointer=new T.Vector2((e.clientX-rect.left)/rect.width*2-1,-(e.clientY-rect.top)/rect.height*2+1),ray=new T.Raycaster();ray.setFromCamera(pointer,camera);if(ray.intersectObject(models.find(m=>m.id===active.id).earth).length)go('earth',active,true);return;}if(level!=='earth')return;drag={x:e.clientX,y:e.clientY};renderer.domElement.setPointerCapture(e.pointerId);});
   renderer.domElement.addEventListener('pointermove',e=>{if(!drag||level!=='earth')return;const m=models.find(m=>m.id===active.id);m.earth.rotation.y+=(e.clientX-drag.x)*.008;m.earth.rotation.x=Math.max(-1,Math.min(1,m.earth.rotation.x+(e.clientY-drag.y)*.005));drag={x:e.clientX,y:e.clientY};hero.dataset.earthRotation=m.earth.rotation.y.toFixed(3);renderFrame();});

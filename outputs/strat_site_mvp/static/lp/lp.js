@@ -320,7 +320,7 @@
         }, 10000);
 
         var result = await response.json();
-        if (!response.ok || !result || result.ok !== true) {
+        if (!response.ok || !result || result.ok !== true || result.id !== eventId) {
           throw new Error('submission_failed');
         }
 
