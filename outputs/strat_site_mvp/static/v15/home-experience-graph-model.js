@@ -1,9 +1,10 @@
 (function (root, factory) {
   'use strict';
-  if (typeof module === 'object' && module.exports) module.exports = factory();
-  else root.HomeExperienceGraph = factory();
-})(globalThis, function () {
+  if (typeof module === 'object' && module.exports) module.exports = factory(require('./atlas-core.js'));
+  else root.HomeExperienceGraph = factory(root.AtlasCore);
+})(globalThis, function (core) {
   'use strict';
+  const { publicTitle } = core;
 
   const legacyTopics = Object.freeze({
     strategy: { themes: ['전략', '중장기전략'], report: true },
@@ -38,7 +39,7 @@
       if (group && !themes.has(group)) {
         themes.set(group, { key: group, kind: 'theme', label, members: [] });
       }
-      const title = clean(record.title) ? record.title : recordKindLabel(record.recordKind) + ' · 과업명 비공개';
+      const title = publicTitle(record);
       const document = { key: recordKey(record.id), kind: 'record', label: title, group, record };
       if (group) themes.get(group).members.push(document);
       documents.set(record.id, document);
@@ -63,7 +64,7 @@
     const matches = value => terms.every(term => value.includes(term));
     const hubs = availableHubs.filter(node => matches(normalize(node.label)));
     const entries = availableEntries.filter(({ label, record }) => matches(
-      normalize([label, record.theme, record.institution, record.id].filter(Boolean).join(' '))
+      normalize([label, record.title, record.theme, record.institution, record.id].filter(Boolean).join(' '))
     )).sort(byLabel);
     return { hubs, entries, nodes: [...hubs, ...entries] };
   }

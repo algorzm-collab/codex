@@ -27,6 +27,14 @@ const groupLabel = {
   institution: "기관 유형"
 };
 
+function displayCaseYear(record) {
+  return /^\d{4}$/.test(record.year) ? record.year : "";
+}
+
+function displayCaseLabel(record) {
+  return String(record.label ?? "").replace(/\s*·\s*연도\s+확인\s+중$/u, "");
+}
+
 function escapeHTML(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -131,7 +139,7 @@ function renderGraphDetail(item) {
 
   if (item.group === "case") {
     detail.innerHTML = `
-      <p class="detail-type">${escapeHTML(item.code)} · ${escapeHTML(item.year)}</p>
+      <p class="detail-type">${escapeHTML([item.code, displayCaseYear(item)].filter(Boolean).join(" · "))}</p>
       <h2>${escapeHTML(item.institutionType)}<br>${escapeHTML(item.theme)} 프로젝트</h2>
       <p class="detail-summary">${escapeHTML(item.summary)}</p>
       <dl>
@@ -140,7 +148,7 @@ function renderGraphDetail(item) {
         <div><dt>결과물 예시</dt><dd>${escapeHTML(item.output)}</dd></div>
         <div><dt>참여</dt><dd>${escapeHTML(item.experts.join(" · "))}</dd></div>
       </dl>
-      <p class="detail-proof">개인의 이전 경력과 현 법인의 실적은 별도로 확인합니다. 세부 수행 범위와 증빙은 상담 시 공개 범위를 협의합니다.</p>
+      <p class="detail-proof">세부 수행 범위와 증빙의 공개 범위는 상담 시 안내합니다. 법인 실적과 대표 개인 경력은 수행 경험 지도에서 구분해 표시합니다.</p>
       <a class="detail-cta" href="#contact" data-selected-case="${escapeHTML(item.code)} / ${escapeHTML(item.institutionType)} / ${escapeHTML(item.theme)}">유사 과제 문의 <span aria-hidden="true">↗</span></a>
     `;
   } else {
@@ -153,7 +161,7 @@ function renderGraphDetail(item) {
         <span>관련 프로젝트 ${related.length}건</span>
         ${related.slice(0, 7).map((record) => `
           <button type="button" data-related-case="${record.id}">
-            ${escapeHTML(record.code)} · ${escapeHTML(record.year)} · ${escapeHTML(record.theme)}
+            ${escapeHTML([record.code, displayCaseYear(record), record.theme].filter(Boolean).join(" · "))}
           </button>
         `).join("")}
       </div>
@@ -202,7 +210,7 @@ function focusGraphItem(id, moveView = true, announce = false) {
       .call(graphView.zoom.transform, transform);
   }
   if (announce) {
-    document.getElementById("graphStatus").textContent = `${item.label} 상세 내용을 표시했습니다.`;
+    document.getElementById("graphStatus").textContent = `${displayCaseLabel(item)} 상세 내용을 표시했습니다.`;
   }
 }
 
@@ -233,7 +241,7 @@ function renderKnowledgeGraph() {
       <div class="graph-fallback">
         <p>프로젝트 지도를 불러오지 못했습니다. 아래 목록에서 확인해 주세요.</p>
         ${currentCaseRecords.map((record) => `
-          <button type="button" data-fallback-case="${record.id}">${escapeHTML(record.label)}</button>
+          <button type="button" data-fallback-case="${record.id}">${escapeHTML(displayCaseLabel(record))}</button>
         `).join("")}
       </div>
     `;
@@ -298,7 +306,7 @@ function renderKnowledgeGraph() {
     .attr("class", (node) => `graph-item graph-item-${node.group}`)
     .attr("tabindex", 0)
     .attr("role", "button")
-    .attr("aria-label", (node) => `${groupLabel[node.group]} ${node.label}`)
+    .attr("aria-label", (node) => `${groupLabel[node.group]} ${displayCaseLabel(node)}`)
     .on("click", (event, node) => {
       event.stopPropagation();
       setLoopPaused(true);
@@ -418,7 +426,7 @@ function updateTicker() {
   const target = document.getElementById("experienceTicker");
   if (!target) return;
   const content = currentCaseRecords.map((record) => `
-    <span><b>${escapeHTML(record.code)}</b>${escapeHTML(record.institutionType)} / ${escapeHTML(record.theme)} / ${escapeHTML(record.year)}</span>
+    <span><b>${escapeHTML(record.code)}</b>${escapeHTML([record.institutionType, record.theme, displayCaseYear(record)].filter(Boolean).join(" / "))}</span>
   `).join("");
   target.innerHTML = `<div>${content}</div><div aria-hidden="true">${content}</div>`;
 }
@@ -595,7 +603,7 @@ function renderDeepCases() {
   target.innerHTML = featured.map((record, index) => `
     <article class="deep-case">
       <div class="deep-case-index">0${index + 1}</div>
-      <p class="deep-case-meta">${escapeHTML(record.code)} · ${escapeHTML(record.institutionType)} · ${escapeHTML(record.year)}</p>
+      <p class="deep-case-meta">${escapeHTML([record.code, record.institutionType, displayCaseYear(record)].filter(Boolean).join(" · "))}</p>
       <h3>${escapeHTML(record.summary)}</h3>
       <dl>
         <div><dt>검토 과제</dt><dd>${escapeHTML(record.problem)}</dd></div>

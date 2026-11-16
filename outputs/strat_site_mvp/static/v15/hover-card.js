@@ -1,6 +1,7 @@
 (() => {
   "use strict";
 
+  const { publicTitle, publicInstitution } = window.AtlasCore;
   const INTERNAL_VALUE =
     /(?:미확인|미대조|증빙 대조|원본 연결|확인 전|확인 중|미분류|내부 검수)/;
 
@@ -185,10 +186,10 @@
     } else {
       rows = [
         makeRow(
-          "프로젝트",
-          record.title || record.projectTitle || record.originalProjectText || record.name
+          "과업",
+          publicTitle({ ...record, title: record.title || record.projectTitle || record.originalProjectText || record.name })
         ),
-        makeRow("기관명", record.institution),
+        makeRow("기관명", publicInstitution(record.institution)),
         makeRow("주제", record.theme || record.practice || "기타"),
         makeRow(record.successFactorBasis === "case" ? "과업 검토 관점" : "분야별 검토 관점", record.successFactor),
       ].filter(Boolean);
@@ -206,8 +207,8 @@
       const note = document.createElement("p");
       note.className = "experience-hover-card__note";
       note.textContent = record.successFactorBasis === "case"
-        ? "과업을 이해하기 위한 검토 관점입니다. 실제 수행 범위는 상세와 상담에서 확인하십시오."
-        : "이 분야의 과제를 검토할 때 살펴볼 관점입니다. 해당 기관의 실제 성과를 의미하지 않습니다.";
+        ? "과업을 이해하기 위한 검토 관점입니다. 자료 상세에서 과업의 범위와 출처를 볼 수 있습니다."
+        : "과업 성과와 별도로 안내하는 분야별 검토 관점입니다.";
       node.append(note);
     }
 

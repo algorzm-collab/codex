@@ -37,18 +37,7 @@
     return node;
   }
   function kicker(label) { return element('p', label, { class: 'xn-kicker' }); }
-  function publicValue(value) { return value != null && String(value).trim() && !/(?:\[?미확인\]?|미대조|확인 중|확인 전|미분류|증빙 대조|원본 연결|내부 검수)/.test(String(value)); }
-  function layerLabel(value) {
-    return { '원본 엑셀 이력': '수행 이력 자료', '기존 익명 이력': '비공개 수행 이력', '이전 공개 이력': '공개 수행 이력', '대표 제공 프로필': '대표 프로필' }[value] || value || '';
-  }
-  function sourceLabel(record) {
-    return { '증명 원장': '수행실적 목록', '원본후보 엑셀': '수행 이력 자료', '기존 익명 이력': '비공개 수행 이력', '대표 제공 프로필': '대표 프로필', '이전 홈페이지 이력': '기존 홈페이지 소개', '이전 공개자료': '기존 공개자료' }[record.sourceType || record.source] || '';
-  }
-  function ownerLabel(record) {
-    if (record.layer === '법인 실적') return '주식회사 스트래티지';
-    if (record.layer === '대표 개인 이력') return '대표 개인의 이전 수행 경력';
-    return publicValue(record.evidenceOwner) ? record.evidenceOwner : '';
-  }
+  const { publicValue, publicInstitution, layerLabel, sourceLabel, ownerLabel } = window.AtlasCore;
   function link(label, href, primary = false) { return element('a', label, { href, class: primary ? 'xn-action xn-primary' : 'xn-action' }); }
   function button(label, action, key, primary = false) {
     const item = element('button', label, { type: 'button', class: primary ? 'xn-action xn-primary' : 'xn-action', 'data-action': action });
@@ -145,7 +134,7 @@
   function renderCounts() {
     const visibleHub = model.byKey.get(state.group);
     const stats = visibleHub ? [[visibleHub.members.length, '관련 자료'], [1, '과업 주제']] :
-      [[model.entries.length, '공개 자료'], [model.hubs.length, '과업 주제']];
+      [[model.entries.length, '경험 자료'], [model.hubs.length, '과업 주제']];
     $('xn-counts').replaceChildren(...stats.map(([value, label]) => {
       const stat = element('span');
       stat.append(element('b', count.format(value)), document.createTextNode(' ' + label));
@@ -177,26 +166,26 @@
       content.push(kicker('선택한 수행 경험'), element('h2', node.label));
       const facts = element('dl', null, { class: 'xn-facts' });
       for (const [name, value] of [
-        ['과업 주제', record.theme], ['수행 구분', layerLabel(record.layer)], ['수행 주체', ownerLabel(record)],
-        ['당시 소속', record.affiliation || record.organizationAtTime], ['공개 기관명', record.institution],
+        ['과업 주제', record.theme], ['자료 구분', layerLabel(record.layer)], ['수행 주체', ownerLabel(record)],
+        ['당시 소속', record.affiliation || record.organizationAtTime], ['기관명', publicInstitution(record.institution)],
         ['자료 유형', recordKindLabel(record.recordKind)], ['자료 출처', sourceLabel(record)],
         ['기간', record.period || record.year]
       ]) {
         if (publicValue(value)) facts.append(element('dt', name), element('dd', value));
       }
       content.push(facts);
-      if (!ownerLabel(record)) content.push(element('p', '수행 주체와 당시 소속은 상담 시 개별 확인합니다.'));
-      content.push(link('과업·수행 주체·출처 상세 보기 ↗', atlasHref('record', record.id), true));
+      if (!ownerLabel(record)) content.push(element('p', '출처별 경험 자료로 소개하는 과업입니다.'));
+      content.push(link('과업과 자료 출처 보기 ↗', atlasHref('record', record.id), true));
       content.push(link('이 과업을 참고해 상담하기 ↗', 'inquiry.html?records=' + encodeURIComponent(record.id)));
       if (hub && !state.group) content.push(button('이 자료의 주제 탐색 →', 'explore', hub.key));
     } else if (hub) {
       content.push(kicker('선택한 과업 주제'), element('h2', hub.label),
-        element('p', '관련 수행 경험과 자료 ' + count.format(hub.members.length) + '개를 살펴보십시오. 과업을 선택하면 수행 구분과 출처를 확인할 수 있습니다.'),
+        element('p', '관련 수행 경험과 자료 ' + count.format(hub.members.length) + '개를 살펴보십시오. 과업을 선택하면 자료 유형과 출처를 볼 수 있습니다.'),
         state.level === 'earth' ? button('관련 과업 목록 보기 ↓', 'list', null, true) : state.group ? button('지구 · 수행 경험 보기 →', 'earth', hub.key, true) : button('주제 탐색 →', 'explore', hub.key, true),
         link('이 주제의 전체 경험 보기 ↗', atlasHref('theme', hub.label)));
     } else {
       content.push(kicker('수행 경험 탐색'), element('h2', '우리 기관과 비슷한 과제를 찾아보십시오.'),
-        element('p', '주제를 고르고 실제 과업과 수행 주체를 살펴보십시오. 법인 실적과 대표 컨설턴트의 경력은 자료 상세에서 구분해 안내합니다.'),
+        element('p', '주제별로 과업과 공개 자료를 살펴보십시오. 법인 실적과 대표 개인 경력은 자료 상세에 구분해 표시합니다.'),
         button('주제와 자료 목록 ↓', 'list'));
     }
     detail.replaceChildren(...content);
@@ -210,7 +199,7 @@
       link('분석 방법과 적용조건 ↗', topic ? 'approach.html#framework-' + topic : 'approach.html'),
       link('기관·과업별 전체 경험 보기 ↗', 'atlas.html?view=list'),
       link('우리 기관의 과제 상담하기 ↗', 'inquiry.html' + (hub ? '?topic=' + encodeURIComponent(hub.label) : '')),
-      element('p', '같은 과업이 여러 출처에 기록될 수 있습니다. 자료 수와 고유 계약 건수는 다릅니다.'));
+      element('p', '같은 과업을 다룬 자료가 여러 개 포함될 수 있습니다.'));
   }
 
   function renderList() {
@@ -270,7 +259,7 @@
     $('xn-earth-title').textContent = title;
     $('xn-earth-intro').textContent = state.legacy === 'ax' && !hub ?
       'AI·AX 적용 방법과 검토 조건을 확인하십시오. 아래는 함께 참고할 수 있는 전체 수행 경험입니다.' :
-      '실제 과업을 선택해 수행 주체와 자료를 살펴보고, 우리 기관에 필요한 분석 방법을 확인하십시오.';
+      '과업별 자료를 살펴보고, 우리 기관에 필요한 분석 방법을 확인하십시오.';
     const entries = orderedRecords(data.entries);
     let featured = entries.slice(0, 3);
     if (!state.group) {
@@ -304,7 +293,7 @@
     const hub = hubOf(node) || model.byKey.get(state.group);
     data = searchGraph(model, state.query, state.group);
     queryInput.value = state.query;
-    $('xn-search').querySelector('label').textContent = state.group ? '이 주제의 공개 자료 검색' : '공개 경험 자료 검색';
+    $('xn-search').querySelector('label').textContent = state.group ? '이 주제의 경험 자료 검색' : '수행 경험 검색';
     const selected = node ? ' · ' + node.label + ' 선택' : '';
     const lens = state.group ? model.byKey.get(state.group)?.label || '' : '';
     root.dataset.level = state.level;
