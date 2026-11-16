@@ -1,5 +1,37 @@
 # strategy Site MVP
 
+## 현재 공개 홈페이지
+
+Cloudflare Pages 배포 기준:
+
+```text
+프로젝트 루트: outputs/strat_site_mvp
+정적 출력: static
+문의 API: functions/api/inquiry.js
+```
+
+메인 프로젝트 그래프는 `static/graph-experience.json`의 공개 전용 데이터만 읽습니다.
+현재 데이터는 실적 엑셀의 중복을 제거한 169건이며, 고객명과 원문 프로젝트명은 포함하지 않습니다.
+
+최신 실적 엑셀로 그래프 데이터를 다시 만들 때:
+
+```powershell
+& 'C:\Users\USER\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin\node.exe' `
+  'outputs\strat_site_mvp\tools\rebuild-graph-data.mjs' `
+  'C:\path\실적 모음.xlsx'
+```
+
+생성기는 `참여인력별 실적 모음` 시트를 읽어 기관 유형·과제·연도·참여 전문가만 공개 데이터로 만듭니다.
+원본 엑셀은 저장소나 `static/` 폴더에 복사하지 않습니다.
+
+문의 폼에 필요한 Cloudflare Pages 환경변수:
+
+```text
+RESEND_API_KEY
+CONTACT_TO_EMAIL=algorzm@gmail.com
+CONTACT_FROM_EMAIL=STRATEGY 웹 문의 <website@notify.strat.kr>
+```
+
 ## GitHub-style Operating Philosophy
 
 This project should be operated as a growth product, not as a one-time company homepage.

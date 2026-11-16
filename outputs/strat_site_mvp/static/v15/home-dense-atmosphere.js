@@ -1,0 +1,38 @@
+/* R3 atmosphere extraction: decoration only. No record IDs, routes or hit testing.
+ * Source: network-space-reference-20261029/dense-candidate-r3/home-universe.js.
+ * Camera and real Earth remain owned by home-solar-r3.js. */
+window.StratDenseAtmosphere=function(THREE,stage){'use strict';
+const world=new THREE.Group(),v3=(x,y,z)=>new THREE.Vector3(x,y,z);
+let seed=10942;function random(){seed=(seed*1664525+1013904223)>>>0;return seed/4294967296}
+const rand=(a,b)=>a+(b-a)*random();
+const glow=document.createElement('canvas');glow.width=glow.height=128;const ctx=glow.getContext('2d'),gr=ctx.createRadialGradient(64,64,0,64,64,64);gr.addColorStop(0,'rgba(255,255,255,1)');gr.addColorStop(.06,'rgba(255,255,255,.95)');gr.addColorStop(.17,'rgba(255,255,255,.32)');gr.addColorStop(.46,'rgba(255,255,255,.065)');gr.addColorStop(1,'rgba(255,255,255,0)');ctx.fillStyle=gr;ctx.fillRect(0,0,128,128);const texture=new THREE.CanvasTexture(glow);
+function cloud(list,size,opacity){const g=new THREE.BufferGeometry(),p=[],c=[];list.forEach(n=>{p.push(n.x,n.y,n.z);const color=new THREE.Color(n.color||'#9fc8e8');c.push(color.r,color.g,color.b)});g.setAttribute('position',new THREE.Float32BufferAttribute(p,3));g.setAttribute('color',new THREE.Float32BufferAttribute(c,3));const mat=new THREE.PointsMaterial({size,map:texture,transparent:true,opacity,vertexColors:true,depthWrite:false,blending:THREE.AdditiveBlending,sizeAttenuation:true});const mesh=new THREE.Points(g,mat);world.add(mesh);return mesh}
+// Dense reference candidate. All gold dust, knots and filaments are decoration.
+// They use independent seeded geometry, never institution endpoints or relationship data.
+const denseLayers=[],denseCurveMeshes=[];
+const narrow=()=>matchMedia('(max-width:700px), (pointer:coarse)').matches;
+function decorCloud(list,size,opacity,mobileCap){const mesh=cloud(list,size,opacity);denseLayers.push({mesh,mobileCap});return mesh}
+function applyDenseBudget(){const mobile=narrow();let visible=0;denseLayers.forEach(({mesh,mobileCap})=>{const count=mobile?Math.min(mobileCap,mesh.geometry.attributes.position.count):mesh.geometry.attributes.position.count;mesh.geometry.setDrawRange(0,count);visible+=count});denseCurveMeshes.forEach(({mesh,mobileVertices})=>mesh.geometry.setDrawRange(0,mobile?mobileVertices:Infinity));stage.dataset.decorativeParticles=String(visible);stage.dataset.decorativeCurves=String(mobile?64:224);stage.dataset.decorativeMeaning='atmosphere-only';stage.dataset.denseSourceRecords='0'}
+const stars=[];for(let i=0;i<5000;i++)stars.push({x:rand(-380,380),y:rand(-230,230),z:rand(-400,35),color:random()<.2?'#efc89c':'#948ac4'});decorCloud(stars,1.45,.83,1800);
+// Irregular glowing knots and long dusty wakes, rather than a spherical dot grid.
+const knots=[];for(let j=0;j<24;j++){const a=j*2.399+.25,rr=12+Math.sqrt(j)*20;knots.push(v3(24+Math.cos(a)*rr+rand(-9,9),Math.sin(a)*rr*.68+rand(-8,8)-2,rand(-65,28)))}
+const dust=[],haze=[];
+for(let i=0;i<64000;i++){const k=i%knots.length,p=knots[k],branch=Math.floor(random()*5),a=branch*1.256+k*.73,tail=Math.pow(random(),2.2),span=k%4===0?30:21,t=tail*span,jitter=random()+random()+random()-1.5;const cross=(random()+random()+random()-1.5)*(1.1+tail*5);const q={x:p.x+Math.cos(a+tail*.7)*t+cross,y:p.y+Math.sin(a+tail*.7)*t*.71+cross*.8,z:p.z+Math.sin(branch*1.73)*t*.8+jitter*(1+tail*6),color:random()<.88?(random()<.57?'#ffda9c':'#e6a36f'):(random()<.6?'#b39adb':'#b5d2ed')};(i%12===0?haze:dust).push(q)}
+decorCloud(dust,2.75,1,12500);decorCloud(haze,7.5,.24,1200);
+// Open branching filaments follow neighboring atmospheric knots, never institution data.
+// Each filament is short and one-way; no closed/global ellipse is generated.
+const flowPaths=[],linePositions=[],lineColors=[];
+for(let j=0;j<224;j++){const index=j%knots.length,start=knots[index],near=knots.map((p,i)=>({p,i,d:p.distanceToSquared(start)})).filter(x=>x.i!==index).sort((a,b)=>a.d-b.d),end=near[j%3].p;const spread=(j%9-4)*.8,mid=start.clone().lerp(end,.48);mid.x+=rand(-6,6);mid.y+=spread+rand(-3,3);mid.z+=rand(-10,10);const controls=[start.clone().add(v3(rand(-2,2),rand(-2,2),rand(-2,2))),start.clone().lerp(mid,.5).add(v3(0,spread*.6,4)),mid,end.clone().lerp(mid,.35).add(v3(0,-spread*.6,-3)),end.clone().add(v3(rand(-3,3),rand(-3,3),rand(-3,3)))];const samples=new THREE.CatmullRomCurve3(controls).getPoints(80);flowPaths.push(samples);const tint=new THREE.Color(j%9===0?'#b6b5f2':'#efb27e').multiplyScalar(j%8===0?.8:.45);for(let k=1;k<samples.length;k++){const a=samples[k-1],b=samples[k];linePositions.push(a.x,a.y,a.z,b.x,b.y,b.z);for(let n=0;n<2;n++)lineColors.push(tint.r,tint.g,tint.b)}}
+const denseLineGeo=new THREE.BufferGeometry();denseLineGeo.setAttribute('position',new THREE.Float32BufferAttribute(linePositions,3));denseLineGeo.setAttribute('color',new THREE.Float32BufferAttribute(lineColors,3));const denseLineMesh=new THREE.LineSegments(denseLineGeo,new THREE.LineBasicMaterial({vertexColors:true,transparent:true,opacity:.16,depthWrite:false,blending:THREE.AdditiveBlending}));world.add(denseLineMesh);denseCurveMeshes.push({mesh:denseLineMesh,mobileVertices:64*80*2});
+const flowP=new Float32Array(flowPaths.length*2*3*3),flowC=new Float32Array(flowP.length);for(let path=0;path<flowPaths.length;path++){const tint=new THREE.Color(path%5===0?'#c5c7ff':'#f8cb92');for(let head=0;head<2;head++)for(let tail=0;tail<3;tail++){const k=((path*2+head)*3+tail)*3,fade=[1,.28,.07][tail];flowC[k]=tint.r*fade;flowC[k+1]=tint.g*fade;flowC[k+2]=tint.b*fade}}
+const flowGeometry=new THREE.BufferGeometry();flowGeometry.setAttribute('position',new THREE.BufferAttribute(flowP,3));flowGeometry.setAttribute('color',new THREE.BufferAttribute(flowC,3));const flowMaterial=new THREE.PointsMaterial({size:2.8,map:texture,transparent:true,opacity:.76,vertexColors:true,depthWrite:false,blending:THREE.AdditiveBlending,sizeAttenuation:true});const flowMesh=new THREE.Points(flowGeometry,flowMaterial);flowMesh.frustumCulled=false;world.add(flowMesh);denseLayers.push({mesh:flowMesh,mobileCap:64*6});stage.dataset.flowPoints=String(flowPaths.length*6);
+let sampledFlowTime=-1;function updateFlow(time){if(time===sampledFlowTime)return;sampledFlowTime=time;for(let path=0;path<flowPaths.length;path++){const samples=flowPaths[path],count=samples.length-1;for(let head=0;head<2;head++)for(let tail=0;tail<3;tail++){const phase=((time*(.008+(path%5)*.0007)+path*.137+head*.5-tail*.0035)%1+1)%1,at=phase*count,a=Math.floor(at),b=Math.min(a+1,count),mix=at-a,k=((path*2+head)*3+tail)*3;flowP[k]=samples[a].x+(samples[b].x-samples[a].x)*mix;flowP[k+1]=samples[a].y+(samples[b].y-samples[a].y)*mix;flowP[k+2]=samples[a].z+(samples[b].z-samples[a].z)*mix}}flowGeometry.attributes.position.needsUpdate=true}
+knots.forEach((p,i)=>{const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,color:i%5===0?0xa69ee3:0xffe6b4,transparent:true,opacity:i%5===0?.34:.82,depthWrite:false,blending:THREE.AdditiveBlending}));sprite.position.copy(p);sprite.scale.set(i%4===0?28:19,i%4===0?28:19,1);world.add(sprite)});
+for(let i=0;i<10;i++){const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,color:i%2?0x5e4a9b:0x4774a6,transparent:true,opacity:.16,depthWrite:false,blending:THREE.AdditiveBlending}));sprite.position.set(rand(-110,165),rand(-80,90),-75);sprite.scale.set(115,80,1);world.add(sprite)}
+
+// Fit the inherited 155-distance composition behind the existing 102-distance
+// overview. Keep it still: this adapter adds no animation loop or listeners.
+world.scale.setScalar(.35);world.position.set(-8,0,-15);
+updateFlow(0);applyDenseBudget();
+return {group:world,resize:applyDenseBudget};
+};

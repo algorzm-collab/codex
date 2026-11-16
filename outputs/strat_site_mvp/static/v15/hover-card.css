@@ -1,0 +1,72 @@
+.experience-hover-card {
+  position: fixed;
+  z-index: 10000;
+  width: min(270px, calc(100vw - 24px));
+  box-sizing: border-box;
+  padding: 13px 15px 11px;
+  border: 1px solid rgba(190, 211, 231, 0.28);
+  border-radius: 10px;
+  background: rgba(9, 17, 28, 0.97);
+  color: #eef4fa;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.36);
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+  font-family: inherit;
+}
+
+.experience-hover-card[hidden] {
+  display: none;
+}
+
+.experience-hover-card__row {
+  display: grid;
+  grid-template-columns: 86px minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+  padding: 5px 0;
+}
+
+.experience-hover-card__row + .experience-hover-card__row {
+  border-top: 1px solid rgba(190, 211, 231, 0.12);
+}
+
+.experience-hover-card__label {
+  color: #9db3c9;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.experience-hover-card__value {
+  color: #f4f7fb;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.experience-hover-card__note {
+  margin: 7px 0 0;
+  padding-top: 7px;
+  border-top: 1px solid rgba(190, 211, 231, 0.12);
+  color: #aebdca;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+
+/* ───────────── 삽입 줄 ─────────────
+각 화면 HTML의 </head> 바로 앞:
+<link rel="stylesheet" href="hover-card.css">
+
+각 화면 HTML의 </body> 바로 앞:
+<script defer src="hover-card.js"></script>
+
+home-universe.js의 recordButton 함수에서 버튼을 만든 직후:
+b.dataset.recordId = r.id;
+
+home-universe.js의 태양계 행성 버튼을 만든 직후:
+p.dataset.recordId = r.id;
+
+apply_wording.py가 위 두 HTML 삽입과 두 dataset 줄을 자동 적용한다.
+원본 파일을 수정할 때 기존 .bak 파일이 있으면 덮어쓰지 않는다.
+──────────────────────────────── */
